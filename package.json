@@ -5,6 +5,7 @@
   "dependencies": {
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-dropzone": "^10.2.1",
     "react-scripts": "^3.2.0",
     "xmldom": "^0.1.27",
     "xpath": "^0.0.27"
@@ -29,5 +30,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "homepage": "https://floppy.org.uk/scriptorum"
 }
