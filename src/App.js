@@ -1,5 +1,8 @@
 import React from 'react';
 import Model from './Model';
+import Dropzone from 'react-dropzone';
+var xpath = require('xpath')
+  , dom = require('xmldom').DOMParser
 
 const models = [
   {
@@ -41,6 +44,29 @@ const models = [
 function App() {
   return (
     <>
+      <Dropzone onDrop={acceptedFiles => {
+        acceptedFiles.forEach((file) => {
+          const reader = new FileReader()
+          reader.onabort = () => console.log('file reading was aborted')
+          reader.onerror = () => console.log('file reading has failed')
+          reader.onload = () => {
+            console.log(reader.result);
+            var doc = new dom().parseFromString(reader.result);
+            var nodes = xpath.select("//force", doc);
+            console.log(nodes);
+          }
+          reader.readAsText(file)
+        })}
+      }>
+        {({getRootProps, getInputProps}) => (
+          <section>
+            <div {...getRootProps()}>
+              <input {...getInputProps()} />
+              <p>Drop a .ros file here, or click to select one</p>
+            </div>
+          </section>
+        )}
+      </Dropzone>
       {
         models.map((model) => (
           <Model model={model}>
