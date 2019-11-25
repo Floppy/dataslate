@@ -5,12 +5,12 @@ function Model(props) {
   return (
     <div className="model">
       <h1>
-        {props.model.name}
+      {props.model.type}: {props.model.name}
       </h1>
-      <h2>
-        {props.model.type}
-      </h2>
       <StatsTable {...props.model.stats}/>
+      <div>
+        Keywords: {props.model.faction}
+      </div>
     </div>
   );
 }

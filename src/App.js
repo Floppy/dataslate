@@ -17,7 +17,9 @@ function App() {
           "attacks": 2,
           "leadership": 5,
           "save": 6
-        }
+        },
+        "faction": "tyranids",
+        "keywords": ["infantry", "hormagaunt", "kraken"]
       }}>
       </Model>
     </div>
