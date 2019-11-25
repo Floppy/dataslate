@@ -11,7 +11,12 @@ function App() {
           "movement": 8,
           "weapon_skill": 4,
           "ballistic_skill": 4,
-          "wounds": 1
+          "strength": 3,
+          "toughness": 3,
+          "wounds": 1,
+          "attacks": 2,
+          "leadership": 5,
+          "save": 6
         }
       }}>
       </Model>
