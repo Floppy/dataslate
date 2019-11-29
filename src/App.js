@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Model from './Model';
 import Dropzone from 'react-dropzone';
 const dom = require('xmldom').DOMParser;
