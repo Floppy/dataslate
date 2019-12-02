@@ -13,23 +13,48 @@ const stat = (name, model) => {
     return "";
 };
 
-const parseModel = (model) => ({
-  name: model.getAttribute('customName'),
-  type: model.getAttribute('name'),
-  stats: {
-    movement: stat("M", model),
-    weapon_skill: stat("WS", model),
-    ballistic_skill: stat("BS", model),
-    strength: stat("S", model),
-    toughness: stat("T", model),
-    wounds: stat("W", model),
-    attacks: stat("A", model),
-    leadership: stat("Ld", model),
-    save: stat("Sv", model),
-  },
-  faction: "tyranids",
-  keywords: ["infantry", "lictor", "kraken"],
+const weaponStat = (name, weapon) => {
+  const nodes = xpath(`roster:characteristics/roster:characteristic[@name='${name}']`, weapon);
+  if (nodes.length > 0) {
+    return parseInt(nodes[0].childNodes[0].nodeValue);
+  }
+  else
+    return "";
+};
+
+const parseAbility = (ability) => ({
+  name: ability.getAttribute('name'),
+  description: xpath("roster:characteristics/roster:characteristic[@name='Description']", ability)[0].childNodes[0].nodeValue,
 });
+
+const parseWeapon = (weapon) => ({
+  name: weapon.getAttribute('name'),
+  range: weaponStat("Range", weapon),
+  strength: weaponStat("S", weapon),
+});
+
+const parseModel = (model) => {
+  const abilities = xpath("roster:profiles/roster:profile[@typeName='Ability']", model).map(parseAbility);
+  const weapons = xpath("roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Weapon']", model).map(parseWeapon);
+  return {
+    name: model.getAttribute('customName'),
+    type: model.getAttribute('name'),
+    stats: {
+      movement: stat("M", model),
+      weapon_skill: stat("WS", model),
+      ballistic_skill: stat("BS", model),
+      strength: stat("S", model),
+      toughness: stat("T", model),
+      wounds: stat("W", model),
+      attacks: stat("A", model),
+      leadership: stat("Ld", model),
+      save: stat("Sv", model),
+    },
+    abilities,
+    weapons,
+    faction: "tyranids",
+  };
+};
 
 class App extends React.Component {
   constructor(props) {
