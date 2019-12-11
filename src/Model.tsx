@@ -25,7 +25,10 @@ function Model(props: Props ) {
   return (
     <div className="model">
       <h1>
-        {props.model.type}: {props.model.name}
+        {props.model.name &&
+          <em>{props.model.name} - </em>
+        }
+        {props.model.type}
       </h1>
       <h2>
         {props.model.category}
