@@ -40,6 +40,7 @@ const parseModel = (model) => {
   return {
     name: model.getAttribute('customName'),
     type: model.getAttribute('name'),
+    category: category !== "Non-specialist" ? category : null,
     stats: {
       movement: stat("M", model),
       weapon_skill: stat("WS", model),
