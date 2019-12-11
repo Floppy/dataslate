@@ -47,20 +47,6 @@ function Model(props: Props ) {
         }
         {props.model.type}
       </h1>
-      <StatsTable {...props.model.stats}/>
-      <dl>
-        {props.model.abilities.map((x) => (
-          <>
-            <dt>{x.name}</dt>
-            <dd>{x.description}</dd>
-          </>
-        ))}
-      </dl>
-      <ul>
-        {props.model.weapons.map((x) => (
-          <li>{x.name}</li>
-        ))}
-      </ul>
       <div>
         {props.model.faction}
       </div>
@@ -71,6 +57,32 @@ function Model(props: Props ) {
           </span>
         ))}
       </div>
+      <StatsTable {...props.model.stats}/>
+      <dl>
+        {props.model.abilities.map((x) => (
+          <>
+            <dt>{x.name}</dt>
+            <dd>{x.description}</dd>
+          </>
+        ))}
+      </dl>
+      {props.model.keywords.indexOf('Psyker') > 0 && <h2>
+        Psychic
+      </h2>}
+      <h2>
+        Fight
+      </h2>
+      <h2>
+        Shoot
+      </h2>
+      <ul>
+        {props.model.weapons.map((x) => (
+          <li>{x.name}</li>
+        ))}
+      </ul>
+      <h2>
+        Morale
+      </h2>
     </div>
   );
 }
