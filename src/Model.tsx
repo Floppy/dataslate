@@ -72,17 +72,19 @@ function Model(props: Props ) {
       <h2>
         Fight
       </h2>
-      <h2>
-        Shoot
-      </h2>
       <ul>
-        {props.model.weapons.map((x) => (
+        {props.model.weapons.filter((x) => isNaN(x.range)).map((x) => (
           <li>{x.name}</li>
         ))}
       </ul>
       <h2>
-        Morale
+        Shoot
       </h2>
+      <ul>
+       {props.model.weapons.filter((x) => !isNaN(x.range)).map((x) => (
+          <li>{x.name}</li>
+        ))}
+      </ul>
     </div>
   );
 }
