@@ -42,7 +42,7 @@ const parseModel = (model) => {
   return {
     name: model.getAttribute('customName'),
     type: model.getAttribute('name'),
-    category: category !== "Non-specialist" ? category : null,
+    category: xpath("roster:categories/roster:category[@primary='true']", model)[0].getAttribute('name'),
     stats: {
       movement: stat("M", model),
       weapon_skill: stat("WS", model),
@@ -56,7 +56,8 @@ const parseModel = (model) => {
     },
     abilities,
     weapons,
-    faction: "tyranids",
+    faction: xpath("roster:categories/roster:category[@primary='false' and starts-with(@name,'Faction: ')]", model)[0].getAttribute('name'),
+    keywords: xpath("roster:categories/roster:category[@primary='false' and not(starts-with(@name,'Faction: '))]", model).map((x) => x.getAttribute('name')),
   };
 };
 
@@ -75,7 +76,7 @@ class App extends React.Component {
       const categoryId = category.getAttribute('entryId');
       const categoryName = pluralize.singular(category.getAttribute('name'));
       for (const model of xpath(`//roster:selection[@type='model' and roster:categories/roster:category/@entryId='${categoryId}']`, doc)) {
-        models.push(parseModel(model, categoryName));
+        models.push(parseModel(model));
       }
     }
     this.setState({models: _.uniqBy(models, hash.hash)});
