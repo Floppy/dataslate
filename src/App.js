@@ -1,6 +1,7 @@
 import React from 'react';
 import Model from './Model';
 import Dropzone from 'react-dropzone';
+const pluralize = require('pluralize');
 const dom = require('xmldom').DOMParser;
 const xpath = require('xpath').useNamespaces({"roster": "http://www.battlescribe.net/schema/rosterSchema"});
 
@@ -68,9 +69,10 @@ class App extends React.Component {
     var models = [];
     var doc = new dom().parseFromString(event.target.result);
     for (const category of xpath("//roster:force/roster:categories/roster:category", doc)) {
-      const category_id = category.getAttribute('entryId')
-      for (const model of xpath(`//roster:selection[roster:categories/roster:category/@entryId='${category_id}']`, doc)) {
-        models.push(parseModel(model));
+      const categoryId = category.getAttribute('entryId');
+      const categoryName = pluralize.singular(category.getAttribute('name'));
+      for (const model of xpath(`//roster:selection[@type='model' and roster:categories/roster:category/@entryId='${categoryId}']`, doc)) {
+        models.push(parseModel(model, categoryName));
       }
     }
     this.setState({models});
@@ -87,7 +89,6 @@ class App extends React.Component {
   };
 
   render() {
-    console.log(this.state);
     return (<>
       <Dropzone onDrop={this.fileHandler}>
         {({getRootProps, getInputProps}) => (
