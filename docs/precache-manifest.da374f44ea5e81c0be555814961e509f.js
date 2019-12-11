@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "21d20cd774647f8787122760dfecae2d",
+    "revision": "7a92f76c5cfa0800c283582bae397460",
     "url": "/scriptorum/index.html"
   },
   {
-    "revision": "10df9405c8379030df28",
+    "revision": "63a3299803eca3e3cd71",
     "url": "/scriptorum/static/css/main.34de6062.chunk.css"
   },
   {
-    "revision": "8e29a2c39ce055fff65c",
-    "url": "/scriptorum/static/js/2.8528595a.chunk.js"
+    "revision": "aa8dd17adea751226cc1",
+    "url": "/scriptorum/static/js/2.0d43d3c4.chunk.js"
   },
   {
-    "revision": "10df9405c8379030df28",
-    "url": "/scriptorum/static/js/main.c435ba8c.chunk.js"
+    "revision": "63a3299803eca3e3cd71",
+    "url": "/scriptorum/static/js/main.97a44e16.chunk.js"
   },
   {
     "revision": "c14f34bbd12903de2cd4",
