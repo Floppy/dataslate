@@ -20,6 +20,15 @@ type Props = {
       leadership: number,
       save: number,
     },
+    abilities: [{
+      name: string,
+      description: string,
+    }],
+    weapons: [{
+      name: string,
+      range: number,
+      strength: number,
+    }],
     faction: string,
     keywords: [string],
   },
@@ -39,6 +48,19 @@ function Model(props: Props ) {
         {props.model.type}
       </h1>
       <StatsTable {...props.model.stats}/>
+      <dl>
+        {props.model.abilities.map((x) => (
+          <>
+            <dt>{x.name}</dt>
+            <dd>{x.description}</dd>
+          </>
+        ))}
+      </dl>
+      <ul>
+        {props.model.weapons.map((x) => (
+          <li>{x.name}</li>
+        ))}
+      </ul>
       <div>
         {props.model.faction}
       </div>
