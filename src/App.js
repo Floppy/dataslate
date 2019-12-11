@@ -2,6 +2,8 @@ import React from 'react';
 import Model from './Model';
 import Dropzone from 'react-dropzone';
 const pluralize = require('pluralize');
+const _ = require('lodash');
+const hash = require('node-object-hash')([]);
 const dom = require('xmldom').DOMParser;
 const xpath = require('xpath').useNamespaces({"roster": "http://www.battlescribe.net/schema/rosterSchema"});
 
@@ -76,7 +78,7 @@ class App extends React.Component {
         models.push(parseModel(model, categoryName));
       }
     }
-    this.setState({models});
+    this.setState({models: _.uniqBy(models, hash.hash)});
   };
 
   fileHandler = (acceptedFiles) => {
@@ -102,7 +104,8 @@ class App extends React.Component {
         )}
       </Dropzone>
       {
-        this.state.models.map((model) => (
+        // Display models sorted by category and type
+        _.sortBy(this.state.models, (x) => ([x.category == null, x.category, x.type])).map((model) => (
           <Model model={model}>
           </Model>
         ))
