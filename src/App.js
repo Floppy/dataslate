@@ -1,5 +1,5 @@
 import React from 'react'
-import Model from './Model'
+import Datasheet from './Datasheet'
 import Dropzone from 'react-dropzone'
 const _ = require('lodash')
 const hash = require('node-object-hash')([])
@@ -129,7 +129,7 @@ class App extends React.Component {
         {
           // Display models sorted by category and type
           _.sortBy(this.state.models, (x) => ([x.category == null, x.category, x.type])).map((model) => (
-            <Model model={model} key={hash.hash(model)} />
+            <Datasheet model={model} key={hash.hash(model)} />
           ))
         }
       </>
