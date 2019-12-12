@@ -1,29 +1,35 @@
+export type Ability = {
+  name: string,
+  description: string,
+  phases: [string],
+}
+
+export type Weapon = {
+  name: string,
+  range: number,
+  strength: number,
+}
+
+export type ModelStats = {
+  movement: number,
+  weapon_skill: number,
+  ballistic_skill: number,
+  strength: number,
+  toughness: number,
+  wounds: number,
+  attacks: number,
+  leadership: number,
+  save: number,
+}
+
 export type Model = {
   type: string,
   name: string,
   category: string,
   specialism: string,
-  stats: {
-    movement: number,
-    weapon_skill: number,
-    ballistic_skill: number,
-    strength: number,
-    toughness: number,
-    wounds: number,
-    attacks: number,
-    leadership: number,
-    save: number,
-  },
-  abilities: [{
-    name: string,
-    description: string,
-    phases: [string],
-  }],
-  weapons: [{
-    name: string,
-    range: number,
-    strength: number,
-  }],
+  stats: ModelStats,
+  abilities: [Ability],
+  weapons: [Weapon],
   faction: string,
-  keywords: [string]
+  keywords: [string],
 };

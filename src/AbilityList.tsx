@@ -1,15 +1,12 @@
 import React from 'react';
+import { Ability } from './types';
 
 type Props = {
-  abilities: [{
-    name: string,
-    description: string,
-    phases: [string],
-  }],
+  abilities: [Ability],
   phase: string,
 };
 
-function AbilityList(props: Props ) {
+function AbilityList(props: Props) {
   const abilities = props.abilities.filter((x) => (x.phases.indexOf(props.phase) >= 0))
   return (
     <dl>
