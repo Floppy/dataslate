@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/scriptorum/static/css/main.34de6062.chunk.css",
-    "main.js": "/scriptorum/static/js/main.2c909f69.chunk.js",
-    "main.js.map": "/scriptorum/static/js/main.2c909f69.chunk.js.map",
+    "main.js": "/scriptorum/static/js/main.82e51211.chunk.js",
+    "main.js.map": "/scriptorum/static/js/main.82e51211.chunk.js.map",
     "runtime-main.js": "/scriptorum/static/js/runtime-main.e538d274.js",
     "runtime-main.js.map": "/scriptorum/static/js/runtime-main.e538d274.js.map",
     "static/js/2.6e0ecf34.chunk.js": "/scriptorum/static/js/2.6e0ecf34.chunk.js",
     "static/js/2.6e0ecf34.chunk.js.map": "/scriptorum/static/js/2.6e0ecf34.chunk.js.map",
     "index.html": "/scriptorum/index.html",
-    "precache-manifest.cd16d05bbcb14401fb4155b5d6c296c1.js": "/scriptorum/precache-manifest.cd16d05bbcb14401fb4155b5d6c296c1.js",
+    "precache-manifest.3deed8762ec4080e85338ab8858defc2.js": "/scriptorum/precache-manifest.3deed8762ec4080e85338ab8858defc2.js",
     "service-worker.js": "/scriptorum/service-worker.js",
     "static/css/main.34de6062.chunk.css.map": "/scriptorum/static/css/main.34de6062.chunk.css.map"
   },
@@ -16,6 +16,6 @@
     "static/js/runtime-main.e538d274.js",
     "static/js/2.6e0ecf34.chunk.js",
     "static/css/main.34de6062.chunk.css",
-    "static/js/main.2c909f69.chunk.js"
+    "static/js/main.82e51211.chunk.js"
   ]
 }
