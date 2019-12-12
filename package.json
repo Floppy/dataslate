@@ -22,7 +22,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "./node_modules/.bin/standard",
+    "lint-fix": "./node_modules/.bin/standard --fix"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -39,5 +41,19 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://floppy.org.uk/scriptorum"
+  "homepage": "https://floppy.org.uk/scriptorum",
+  "devDependencies": {
+    "standard": "^14.3.1"
+  },
+  "standard": {
+    "env": [
+      "jest",
+      "es6",
+      "browser"
+   ],
+    "ignore": [
+      "build/*",
+      "docs/*"
+    ]
+  }
 }
