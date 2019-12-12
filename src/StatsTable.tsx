@@ -1,6 +1,7 @@
 import React from 'react'
+import { ModelStats } from './types'
 
-function StatsTable (props) {
+function StatsTable (props: ModelStats) {
   return (
     <table>
       <tr>
