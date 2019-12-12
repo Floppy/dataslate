@@ -25,10 +25,37 @@ const weaponStat = (name, weapon) => {
     return "";
 };
 
-const parseAbility = (ability) => ({
-  name: ability.getAttribute('name'),
-  description: xpath("roster:characteristics/roster:characteristic[@name='Description']", ability)[0].childNodes[0].nodeValue,
-});
+const parseAbility = (ability) => {
+  const description = xpath("roster:characteristics/roster:characteristic[@name='Description']", ability)[0].childNodes[0].nodeValue;
+  let phases = [];
+  switch (true) {
+    case /charge/i.test(description):
+      phases.push('movement');
+      break;
+    case /advance/i.test(description):
+      phases.push('movement');
+      break;
+    case /move/i.test(description):
+      phases.push('movement');
+      break;
+    case /psychic/i.test(description):
+      phases.push('psychic');
+      break;
+    case /shoot/i.test(description):
+      phases.push('shooting');
+      break;
+    case /nerve/i.test(description):
+      phases.push('morale');
+      break;
+    default:
+      phases.push('all');
+  }
+  return {
+    name: ability.getAttribute('name'),
+    description,
+    phases,
+  }
+};
 
 const parseWeapon = (weapon) => ({
   name: weapon.getAttribute('name'),
@@ -74,7 +101,6 @@ class App extends React.Component {
     var doc = new dom().parseFromString(event.target.result);
     for (const category of xpath("//roster:force/roster:categories/roster:category", doc)) {
       const categoryId = category.getAttribute('entryId');
-      const categoryName = pluralize.singular(category.getAttribute('name'));
       for (const model of xpath(`//roster:selection[@type='model' and roster:categories/roster:category/@entryId='${categoryId}']`, doc)) {
         models.push(parseModel(model));
       }

@@ -1,5 +1,6 @@
 import React from 'react';
 import StatsTable from './StatsTable';
+import AbilityList from './AbilityList';
 import { SpecialistIcon } from './SpecialistIcon';
 import { CategoryIcon } from './CategoryIcon';
 
@@ -23,6 +24,7 @@ type Props = {
     abilities: [{
       name: string,
       description: string,
+      phases: [string],
     }],
     weapons: [{
       name: string,
@@ -58,17 +60,25 @@ function Model(props: Props ) {
         ))}
       </div>
       <StatsTable {...props.model.stats}/>
-      <dl>
-        {props.model.abilities.map((x) => (
-          <>
-            <dt>{x.name}</dt>
-            <dd>{x.description}</dd>
-          </>
-        ))}
-      </dl>
-      {props.model.keywords.indexOf('Psyker') > 0 && <h2>
+      <AbilityList abilities={props.model.abilities} phase='all'/>
+      <h2>
+        Movement
+      </h2>
+      <AbilityList abilities={props.model.abilities} phase='movement'/>
+      <h2>
         Psychic
-      </h2>}
+      </h2>
+      <AbilityList abilities={props.model.abilities} phase='psychic'/>
+      <AbilityList abilities={props.model.abilities} phase='fight'/>
+      <h2>
+        Shooting
+      </h2>
+      <ul>
+       {props.model.weapons.filter((x) => !isNaN(x.range)).map((x) => (
+          <li>{x.name}</li>
+        ))}
+      </ul>
+      <AbilityList abilities={props.model.abilities} phase='shooting'/>
       <h2>
         Fight
       </h2>
@@ -78,13 +88,9 @@ function Model(props: Props ) {
         ))}
       </ul>
       <h2>
-        Shoot
+        Morale
       </h2>
-      <ul>
-       {props.model.weapons.filter((x) => !isNaN(x.range)).map((x) => (
-          <li>{x.name}</li>
-        ))}
-      </ul>
+      <AbilityList abilities={props.model.abilities} phase='morale'/>
     </div>
   );
 }
