@@ -21,7 +21,7 @@ function WeaponList(props: Props) {
         </tr>
       </thead>
       <tbody>
-        {props.weapons.map((x) => (
+        {weapons.map((x) => (
           <tr>
             <td>{x.name}</td>
             {props.phase === "shooting" && <td>{x.range}</td>}
