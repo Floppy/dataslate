@@ -1,6 +1,7 @@
 import React from 'react';
 import StatsTable from './StatsTable';
 import AbilityList from './AbilityList';
+import WeaponList from './WeaponList';
 import { SpecialistIcon } from './SpecialistIcon';
 import { CategoryIcon } from './CategoryIcon';
 import { Badge } from 'react-bootstrap'
@@ -44,24 +45,16 @@ function Datasheet(props: Props ) {
         Psychic
       </h2>
       <AbilityList abilities={props.model.abilities} phase='psychic'/>
-      <AbilityList abilities={props.model.abilities} phase='fight'/>
       <h2>
         Shooting
       </h2>
-      <ul>
-       {props.model.weapons.filter((x) => !isNaN(x.range)).map((x) => (
-          <li>{x.name}</li>
-        ))}
-      </ul>
+      <WeaponList weapons={props.model.weapons.filter((x) => !isNaN(x.range))} phase='shooting'/>
       <AbilityList abilities={props.model.abilities} phase='shooting'/>
       <h2>
         Fight
       </h2>
-      <ul>
-        {props.model.weapons.filter((x) => isNaN(x.range)).map((x) => (
-          <li>{x.name}</li>
-        ))}
-      </ul>
+      <WeaponList weapons={props.model.weapons.filter((x) => isNaN(x.range))} phase='fight'/>
+      <AbilityList abilities={props.model.abilities} phase='fight'/>
       <h2>
         Morale
       </h2>
