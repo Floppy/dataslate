@@ -26,28 +26,18 @@ const weaponStat = (name, weapon) => {
 const parseAbility = (ability) => {
   const description = xpath("roster:characteristics/roster:characteristic[@name='Description']", ability)[0].childNodes[0].nodeValue
   const phases = []
-  switch (true) {
-    case /charge/i.test(description):
-      phases.push('movement')
-      break
-    case /advance/i.test(description):
-      phases.push('movement')
-      break
-    case /move/i.test(description):
-      phases.push('movement')
-      break
-    case /psychic/i.test(description):
-      phases.push('psychic')
-      break
-    case /shoot/i.test(description):
-      phases.push('shooting')
-      break
-    case /nerve/i.test(description):
-      phases.push('morale')
-      break
-    default:
-      phases.push('all')
-  }
+  if (/charge/i.test(description))
+    phases.push('movement')
+  if (/advance/i.test(description))
+    phases.push('movement')
+  if (/move/i.test(description))
+    phases.push('movement')
+  if (/psychic/i.test(description))
+    phases.push('psychic')
+  if (/shoot/i.test(description))
+    phases.push('shooting')
+  if (/nerve/i.test(description))
+    phases.push('morale')
   return {
     name: ability.getAttribute('name'),
     description,
