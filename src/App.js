@@ -113,12 +113,12 @@ class App extends React.Component {
   render () {
     return (
       <Container>
-        <Dropzone onDrop={this.handleDrop} accept='.rosz,.ros'>
+        <Dropzone onDrop={this.handleDrop} accept='.ros'>
           {({ getRootProps, getInputProps }) => (
             <Alert variant="info" {...getRootProps()} style={{textAlign: "center"}}>
               <input {...getInputProps()} />
               <p>Drop a Battlescribe roster file here, or click to select one.</p>
-              <p><em>(Only *.ros and *.rosz will be accepted)</em></p>
+              <p><em>(Only *.ros files will be accepted, not .rosz yet)</em></p>
             </Alert>
           )}
         </Dropzone>
