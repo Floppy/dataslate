@@ -15,7 +15,9 @@ type Props = {
 
 function Datasheet(props: Props ) {
   return (
-    <div className="model">
+    <div className="model" style={{
+      pageBreakAfter: "always",
+    }}>
       <h1>
         {props.model.category && <CategoryIcon category={props.model.category} />}
         {' '}
