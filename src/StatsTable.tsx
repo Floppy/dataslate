@@ -22,7 +22,7 @@ function StatsTable (props: ModelStats) {
         <tr>
           <td>{props.movement}&quot;</td>
           <td>{props.weapon_skill}+</td>
-          <td>{props.ballistic_skill}+</td>
+          <td>{isNaN(props.ballistic_skill) ? '-' : props.ballistic_skill+"+"}</td>
           <td>{props.strength}</td>
           <td>{props.toughness}</td>
           <td>{props.wounds}</td>
