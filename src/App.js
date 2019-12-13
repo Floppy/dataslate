@@ -75,7 +75,7 @@ const parseModel = (model) => {
     },
     abilities,
     weapons,
-    faction: xpath("roster:categories/roster:category[@primary='false' and starts-with(@name,'Faction: ')]", model)[0].getAttribute('name'),
+    faction: xpath("roster:categories/roster:category[@primary='false' and starts-with(@name,'Faction: ')]", model)[0].getAttribute('name').split(": ",2)[1],
     keywords: xpath("roster:categories/roster:category[@primary='false' and not(starts-with(@name,'Faction: '))]", model).map((x) => x.getAttribute('name'))
   }
 }
