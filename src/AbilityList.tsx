@@ -9,7 +9,8 @@ type Props = {
 
 function AbilityList(props: Props) {
   const abilities = props.abilities.filter((x) => (x.phases.indexOf(props.phase) >= 0))
-  return (
+
+  return abilities.length === 0 ? <></> : (
     <Table striped bordered>
       <tbody>
         {abilities.map((x) => (

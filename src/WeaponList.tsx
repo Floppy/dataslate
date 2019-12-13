@@ -11,7 +11,8 @@ function WeaponList(props: Props) {
   const weapons = props.phase === 'shooting'
     ? props.weapons.filter((x) => !isNaN(x.range))
     : props.weapons.filter((x) => isNaN(x.range))
-  return (
+
+  return weapons.length === 0 ? <></> : (
     <Table striped bordered>
       <thead>
         <tr>
