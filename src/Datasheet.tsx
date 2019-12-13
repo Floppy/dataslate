@@ -27,15 +27,19 @@ function Datasheet(props: Props ) {
         {props.model.type}
       </h1>
       <div>
-        {props.model.faction}
-      </div>
-      <div>
-        Keywords: {props.model.keywords.map((keyword: string) => (
-          <span className='keyword'>
-            <Badge pill variant="primary" style={{
-              textTransform: "uppercase"
-            }}>{keyword}</Badge>
-          </span>
+        <Badge pill variant="danger" style={{
+          textTransform: "uppercase",
+          marginRight: "10px",
+        }}>
+          {props.model.faction}
+        </Badge>
+        {props.model.keywords.map((keyword: string) => (
+          <Badge pill variant="primary" style={{
+            textTransform: "uppercase",
+            marginRight: "10px",
+          }}>
+            {keyword}
+          </Badge>
         ))}
       </div>
       <StatsTable {...props.model.stats}/>
