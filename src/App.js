@@ -2,6 +2,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react'
 import Datasheet from './Datasheet'
 import Dropzone from 'react-dropzone'
+import { Container } from 'react-bootstrap'
+
 const _ = require('lodash')
 const hash = require('node-object-hash')([])
 const DOMParser = require('xmldom').DOMParser
@@ -116,7 +118,7 @@ class App extends React.Component {
 
   render () {
     return (
-      <>
+      <Container>
         <Dropzone onDrop={this.handleDrop}>
           {({ getRootProps, getInputProps }) => (
             <section>
@@ -133,7 +135,7 @@ class App extends React.Component {
             <Datasheet model={model} key={hash.hash(model)} />
           ))
         }
-      </>
+      </Container>
     )
   }
 }
