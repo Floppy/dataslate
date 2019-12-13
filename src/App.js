@@ -16,10 +16,10 @@ const stat = (name, model) => {
   } else { return '' }
 }
 
-const weaponStat = (name, weapon) => {
+const weaponStat = (name, weapon, numeric) => {
   const nodes = xpath(`roster:characteristics/roster:characteristic[@name='${name}']`, weapon)
   if (nodes.length > 0) {
-    return parseInt(nodes[0].childNodes[0].nodeValue)
+    return numeric ? parseInt(nodes[0].childNodes[0].nodeValue) : nodes[0].childNodes[0].nodeValue
   } else { return '' }
 }
 
@@ -47,8 +47,12 @@ const parseAbility = (ability) => {
 
 const parseWeapon = (weapon) => ({
   name: weapon.getAttribute('name'),
-  range: weaponStat('Range', weapon),
-  strength: weaponStat('S', weapon)
+  range: weaponStat('Range', weapon, true),
+  type: weaponStat('Type', weapon, false),
+  strength: weaponStat('S', weapon, true),
+  armourPiercing: weaponStat('AP', weapon , true),
+  damage: weaponStat('D', weapon, true),
+  abilities: weaponStat('Abilities', weapon, false)
 })
 
 const parseModel = (model) => {

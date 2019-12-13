@@ -7,7 +7,11 @@ export type Ability = {
 export type Weapon = {
   name: string,
   range: number,
+  type: string,
   strength: number,
+  armourPiercing: number,
+  damage: number,
+  abilities: string
 }
 
 export type ModelStats = {

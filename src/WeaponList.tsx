@@ -17,7 +17,11 @@ function WeaponList(props: Props) {
         <tr>
           <th>Name</th>
           {props.phase === "shooting" && <th>Range</th>}
-          <th>Strength</th>
+          {props.phase === "shooting" && <th>Type</th>}
+          <th>S</th>
+          <th>D</th>
+          <th>AP</th>
+          <th>Abilities</th>
         </tr>
       </thead>
       <tbody>
@@ -25,7 +29,11 @@ function WeaponList(props: Props) {
           <tr>
             <td>{x.name}</td>
             {props.phase === "shooting" && <td>{x.range}</td>}
+            {props.phase === "shooting" && <td>{x.type}</td>}
             <td>{x.strength}</td>
+            <td>{x.damage}</td>
+            <td>{x.armourPiercing}</td>
+            <td>{x.abilities}</td>
           </tr>
         ))}
       </tbody>
