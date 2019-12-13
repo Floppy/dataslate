@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react'
 import Datasheet from './Datasheet'
 import Dropzone from 'react-dropzone'
