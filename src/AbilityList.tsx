@@ -9,14 +9,14 @@ type Props = {
 function AbilityList(props: Props) {
   const abilities = props.abilities.filter((x) => (x.phases.indexOf(props.phase) >= 0))
   return (
-    <dl>
+    <table>
       {abilities.map((x) => (
-        <>
-          <dt>{x.name}</dt>
-          <dd>{x.description}</dd>
-        </>
+        <tr>
+          <td>{x.name}</td>
+          <td>{x.description}</td>
+        </tr>
       ))}
-    </dl>
+    </table>
   );
 }
 
