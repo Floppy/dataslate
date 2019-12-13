@@ -1,5 +1,6 @@
 import React from 'react';
 import { Ability } from './types';
+import { Table } from 'react-bootstrap';
 
 type Props = {
   abilities: [Ability],
@@ -9,14 +10,16 @@ type Props = {
 function AbilityList(props: Props) {
   const abilities = props.abilities.filter((x) => (x.phases.indexOf(props.phase) >= 0))
   return (
-    <table>
-      {abilities.map((x) => (
-        <tr>
-          <td>{x.name}</td>
-          <td>{x.description}</td>
-        </tr>
-      ))}
-    </table>
+    <Table striped bordered>
+      <tbody>
+        {abilities.map((x) => (
+          <tr>
+            <td>{x.name}</td>
+            <td>{x.description}</td>
+          </tr>
+        ))}
+      </tbody>
+    </Table>
   );
 }
 

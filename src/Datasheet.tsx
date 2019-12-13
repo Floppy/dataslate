@@ -3,6 +3,7 @@ import StatsTable from './StatsTable';
 import AbilityList from './AbilityList';
 import { SpecialistIcon } from './SpecialistIcon';
 import { CategoryIcon } from './CategoryIcon';
+import { Badge } from 'react-bootstrap'
 
 import { Model } from './types';
 
@@ -29,7 +30,7 @@ function Datasheet(props: Props ) {
       <div>
         Keywords: {props.model.keywords.map((keyword: string) => (
           <span className='keyword'>
-            {keyword}
+            <Badge pill variant="primary">{keyword}</Badge>
           </span>
         ))}
       </div>
