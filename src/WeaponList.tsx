@@ -15,7 +15,7 @@ function WeaponList(props: Props) {
     <Table striped bordered>
       <thead>
         <tr>
-          <th>Name</th>
+          <th>Weapon</th>
           {props.phase === "shooting" && <th>Range</th>}
           {props.phase === "shooting" && <th>Type</th>}
           <th>S</th>
