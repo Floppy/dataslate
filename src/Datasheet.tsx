@@ -53,11 +53,11 @@ function Datasheet(props: Props ) {
         <AbilityList abilities={props.model.abilities} phase='psychic'/>
       </Phase>
       <Phase name="shooting">
-        <WeaponList weapons={props.model.weapons} phase='shooting'/>
+        <WeaponList weapons={props.model.weapons} phase='shooting' userStrength={props.model.stats.strength}/>
         <AbilityList abilities={props.model.abilities} phase='shooting'/>
       </Phase>
       <Phase name="fight">
-        <WeaponList weapons={props.model.weapons} phase='fight'/>
+        <WeaponList weapons={props.model.weapons} phase='fight' userStrength={props.model.stats.strength}/>
         <AbilityList abilities={props.model.abilities} phase='fight'/>
       </Phase>
       <Phase name="morale">

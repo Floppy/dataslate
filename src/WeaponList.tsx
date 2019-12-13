@@ -4,7 +4,8 @@ import { Table } from 'react-bootstrap';
 
 type Props = {
   weapons: Weapon[],
-  phase: string
+  phase: string,
+  userStrength: number,
 };
 
 function WeaponList(props: Props) {
@@ -31,7 +32,7 @@ function WeaponList(props: Props) {
             <td>{x.name}</td>
             {props.phase === "shooting" && <td>{x.range}</td>}
             {props.phase === "shooting" && <td>{x.type}</td>}
-            <td>{x.strength}</td>
+            <td>{isNaN(x.strength) ? props.userStrength : x.strength}</td>
             <td>{x.damage}</td>
             <td>{x.armourPiercing}</td>
             <td>{x.abilities}</td>
