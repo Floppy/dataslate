@@ -3,7 +3,7 @@ import { Ability } from './types';
 import { Table } from 'react-bootstrap';
 
 type Props = {
-  abilities: [Ability],
+  abilities: Ability[],
   phase: string,
 };
 

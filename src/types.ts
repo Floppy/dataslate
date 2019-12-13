@@ -1,7 +1,7 @@
 export type Ability = {
   name: string,
   description: string,
-  phases: [string],
+  phases: string[],
 }
 
 export type Weapon = {
@@ -28,8 +28,8 @@ export type Model = {
   category: string,
   specialism: string,
   stats: ModelStats,
-  abilities: [Ability],
-  weapons: [Weapon],
+  abilities: Ability[],
+  weapons: Weapon[],
   faction: string,
-  keywords: [string],
+  keywords: string[],
 };
