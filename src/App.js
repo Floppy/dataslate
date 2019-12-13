@@ -51,7 +51,7 @@ const parseWeapon = (weapon) => ({
   type: weaponStat('Type', weapon, false),
   strength: weaponStat('S', weapon, true),
   armourPiercing: weaponStat('AP', weapon , true),
-  damage: weaponStat('D', weapon, true),
+  damage: weaponStat('D', weapon, false),
   abilities: weaponStat('Abilities', weapon, false)
 })
 
