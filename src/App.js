@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react'
 import Datasheet from './Datasheet'
 import Dropzone from 'react-dropzone'
-import { Container } from 'react-bootstrap'
+import { Container, Alert } from 'react-bootstrap'
 
 const _ = require('lodash')
 const hash = require('node-object-hash')([])
@@ -115,12 +115,10 @@ class App extends React.Component {
       <Container>
         <Dropzone onDrop={this.handleDrop}>
           {({ getRootProps, getInputProps }) => (
-            <section>
-              <div {...getRootProps()}>
-                <input {...getInputProps()} />
-                <p>Drop a .ros file here, or click to select one</p>
-              </div>
-            </section>
+            <Alert variant="info" {...getRootProps()}>
+              <input {...getInputProps()} />
+              <p>Drop a .ros file here, or click to select one</p>
+            </Alert>
           )}
         </Dropzone>
         {
