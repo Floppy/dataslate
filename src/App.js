@@ -88,9 +88,18 @@ class App extends React.Component {
     }
   }
 
+  unzip = (file) => {
+    if (file[0] !== 'P')
+      return Promise.resolve(file);
+    else
+      return Promise.reject();
+  }
+
   parseFile = (event) => {
+    this.unzip(event.target.result)
+      .then((xml) => {
     var models = []
-    var doc = new DOMParser().parseFromString(event.target.result)
+        var doc = new DOMParser().parseFromString(xml)
     for (const category of xpath('//roster:force/roster:categories/roster:category', doc)) {
       const categoryId = category.getAttribute('entryId')
       for (const model of xpath(`//roster:selection[@type='model' and roster:categories/roster:category/@entryId='${categoryId}']`, doc)) {
@@ -98,6 +107,7 @@ class App extends React.Component {
       }
     }
     this.setState({ models: _.uniqBy(models, hash.hash) })
+      });
   };
 
   handleDrop = (acceptedFiles) => {
@@ -106,7 +116,7 @@ class App extends React.Component {
       reader.onabort = () => console.log('file reading was aborted')
       reader.onerror = () => console.log('file reading has failed')
       reader.onloadend = this.parseFile
-      reader.readAsText(file)
+      reader.readAsBinaryString(file)
     })
   };
 
