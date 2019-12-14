@@ -123,16 +123,18 @@ class App extends React.Component {
   render () {
     return (
       <Container>
-        <Dropzone onDrop={this.handleDrop} accept='.ros'>
-          {({ getRootProps, getInputProps }) => (
-            <Alert variant="info" {...getRootProps()} style={{textAlign: "center"}}>
-              <input {...getInputProps()} />
-              <p>Drop a Battlescribe roster file here, or click to select one.</p>
-              <p><em>(Only *.ros files will be accepted, not .rosz yet)</em></p>
-            </Alert>
-          )}
-        </Dropzone>
-        {
+        { this.state.models.length === 0 &&
+          <Dropzone onDrop={this.handleDrop} accept='.ros'>
+            {({ getRootProps, getInputProps }) => (
+              <Alert variant="info" {...getRootProps()} style={{textAlign: "center"}}>
+                <input {...getInputProps()} />
+                <p>Drop a Battlescribe roster file here, or click to select one.</p>
+                <p><em>(Only *.ros files will be accepted, not .rosz yet)</em></p>
+              </Alert>
+            )}
+          </Dropzone>
+        }
+        { this.state.models.length > 0 &&
           // Display models sorted by category and type
           _.sortBy(this.state.models, (x) => ([x.category == null, x.category, x.type])).map((model) => (
             <Datasheet model={model} key={hash.hash(model)} />
