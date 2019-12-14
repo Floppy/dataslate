@@ -124,21 +124,50 @@ class App extends React.Component {
     return (
       <Container>
         { this.state.models.length === 0 &&
-          <Dropzone onDrop={this.handleDrop} accept='.ros'>
-            {({ getRootProps, getInputProps }) => (
-              <Alert variant="info" {...getRootProps()} style={{textAlign: "center"}}>
-                <input {...getInputProps()} />
-                <p>Drop a Battlescribe roster file here, or click to select one.</p>
-                <p><em>(Only *.ros files will be accepted, not .rosz yet)</em></p>
-              </Alert>
-            )}
-          </Dropzone>
+          <>
+            <h1>
+              Scriptorum
+            </h1>
+            <p className='lead'>
+              Readable datasheets for Warhammer 40k Kill Team
+            </p>
+            <ul>
+              <li>Organises abilities and weapons by phase</li>
+              <li>Merges identical models</li>
+              <li>Prints out as one datasheet per page</li>
+              <li>Clear, readable layout</li>
+            </ul>
+            <Alert variant='danger'>
+              Scriptorum is a work in progress! So far we only support .ros files,
+              not .rosz, and the output and formatting is unfinished. But it should work,
+              so try it out! If you spot any problems, please create an
+              issue <a href='https://github.com/Floppy/scriptorum/issues'>on GitHub</a> and
+              include your roster file if possible.
+            </Alert>
+            <Dropzone onDrop={this.handleDrop} accept='.ros'>
+              {({ getRootProps, getInputProps }) => (
+                <Alert variant="info" {...getRootProps()} style={{textAlign: "center"}}>
+                  <input {...getInputProps()} />
+                  <p>Drop a Battlescribe roster file here, or click to select one.</p>
+                  <p><em>(Only *.ros files will be accepted, not .rosz yet)</em></p>
+                </Alert>
+              )}
+            </Dropzone>
+            <footer>
+              Built with React and Bootstrap. Released as Open Source, code <a href='https://github.com/floppy/scriptorum'>on GitHub</a>.
+            </footer>
+          </>
         }
         { this.state.models.length > 0 &&
           // Display models sorted by category and type
-          _.sortBy(this.state.models, (x) => ([x.category == null, x.category, x.type])).map((model) => (
-            <Datasheet model={model} key={hash.hash(model)} />
-          ))
+          <>
+            {_.sortBy(this.state.models, (x) => ([x.category == null, x.category, x.type])).map((model) => (
+              <Datasheet model={model} key={hash.hash(model)} />
+            ))}
+            <footer>
+              Created by Scriptorum: <a href='https://floppy.org.uk/scriptorum'>https://floppy.org.uk/scriptorum</a>
+            </footer>
+          </>
         }
       </Container>
     )
