@@ -9,7 +9,7 @@ export function CategoryIcon(props: Props) {
     [index: string]: string;
   } = {
     'commander': '👑',
-    'leader': '🎩',
+    'leader': '💀',
     'specialist': '',
   };
   return (<span className='category'>
