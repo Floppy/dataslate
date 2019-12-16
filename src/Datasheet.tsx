@@ -28,6 +28,7 @@ function Datasheet(props: Props ) {
         }
         {props.model.type}
       </h1>
+      {props.model.specialism && <div>Specialism: <Badge variant="warning">{props.model.specialism}</Badge></div>}
       <div>
         <Badge pill variant="danger" style={{
           textTransform: "uppercase",

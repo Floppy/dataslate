@@ -8,16 +8,16 @@ export function SpecialistIcon(props: Props) {
   const icons: {
     [index: string]: string;
   } = {
-    'combat': '⚔️',
-    'comms': '📞',
+    'combat': '🤜',
+    'comms': '📻',
     'demolitions': '💣',
     'ferocity': '🦖',
     'fortitude': '🛡️',
     'heavy': '💥',
-    'leadership': '🎩',
+    'leadership': '💀',
     'logistics': '🚚',
     'medic': '⚕️',
-    'melee': '⚔️',
+    'melee': '🤜',
     'psyker': '🧠',
     'scout': '🔦',
     'shooting': '🔫',
@@ -25,7 +25,7 @@ export function SpecialistIcon(props: Props) {
     'strategist': '🗺️',
     'strength': '💪',
     'sniper': '🎯',
-    'veteran': '👴',
+    'veteran': '⭐',
     'zealot': '😤'
   };
   return (<span className='specialism'>

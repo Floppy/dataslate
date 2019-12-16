@@ -58,6 +58,8 @@ const parseWeapon = (weapon) => ({
 const parseModel = (model) => {
   const abilities = xpath("roster:profiles/roster:profile[@typeName='Ability']", model).map(parseAbility)
   const weapons = xpath("roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Weapon']", model).map(parseWeapon)
+  const specialismSelection = xpath("roster:selections/roster:selection[roster:selections]", model)
+  console.log(specialismSelection)
   return {
     name: model.getAttribute('customName'),
     type: model.getAttribute('name'),
@@ -75,6 +77,7 @@ const parseModel = (model) => {
     },
     abilities,
     weapons,
+    specialism: specialismSelection.length > 0 ? specialismSelection[0].getAttribute('name') : null,
     faction: xpath("roster:categories/roster:category[@primary='false' and starts-with(@name,'Faction: ')]", model)[0].getAttribute('name').split(": ",2)[1],
     keywords: xpath("roster:categories/roster:category[@primary='false' and not(starts-with(@name,'Faction: '))]", model).map((x) => x.getAttribute('name'))
   }
