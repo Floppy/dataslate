@@ -46,7 +46,7 @@ function Datasheet(props: Props ) {
         ))}
       </div>
       <StatsTable {...props.model.stats}/>
-      <AbilityList abilities={props.model.abilities} phase='all'/>
+      <AbilityList abilities={props.model.abilities} phase=''/>
       <Phase name="movement">
         <AbilityList abilities={props.model.abilities} phase='movement'/>
       </Phase>

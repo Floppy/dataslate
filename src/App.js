@@ -26,6 +26,8 @@ const weaponStat = (name, weapon, numeric) => {
 const parseAbility = (ability) => {
   const description = xpath("roster:characteristics/roster:characteristic[@name='Description']", ability)[0].childNodes[0].nodeValue
   const phases = []
+  if (/attacks/i.test(description))
+    phases.push('fight')
   if (/charge/i.test(description))
     phases.push('movement')
   if (/advance/i.test(description))
@@ -60,7 +62,6 @@ const parseModel = (model) => {
   const weapons = xpath("roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Weapon']", model).map(parseWeapon)
   const specialismSelection = xpath("roster:selections/roster:selection[roster:selections]", model)
   const specialistAbilities = xpath("roster:selections/roster:selection/roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Ability']", model).map(parseAbility)
-  console.log(specialismSelection)
   return {
     name: model.getAttribute('customName'),
     type: model.getAttribute('name'),
