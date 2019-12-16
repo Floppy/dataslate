@@ -8,7 +8,9 @@ type Props = {
 };
 
 function AbilityList(props: Props) {
-  const abilities = props.abilities.filter((x) => (x.phases.indexOf(props.phase) >= 0))
+  const abilities = props.phase ?
+    props.abilities.filter((x) => (x.phases.indexOf(props.phase) >= 0)) :
+    props.abilities.filter((x) => (x.phases.length === 0))
 
   return abilities.length === 0 ? <></> : (
     <Table striped bordered>
