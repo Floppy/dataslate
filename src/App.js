@@ -62,10 +62,11 @@ const parseModel = (model) => {
   const weapons = xpath("roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Weapon']", model).map(parseWeapon)
   const specialismSelection = xpath("roster:selections/roster:selection[roster:selections]", model)
   const specialistAbilities = xpath("roster:selections/roster:selection/roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Ability']", model).map(parseAbility)
+  const category = xpath("roster:categories/roster:category[@primary='true']", model)[0].getAttribute('name');
   return {
     name: model.getAttribute('customName'),
     type: model.getAttribute('name'),
-    category: xpath("roster:categories/roster:category[@primary='true']", model)[0].getAttribute('name'),
+    category: category === 'Non-specialist' ? 'zzz-so-it-sorts-last-what-a-massive-hack' : category,
     stats: {
       movement: stat('M', model),
       weapon_skill: stat('WS', model),
