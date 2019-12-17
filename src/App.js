@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react'
 import Datasheet from './Datasheet'
 import Dropzone from 'react-dropzone'
+import Intro from './Intro'
 import { Container, Alert } from 'react-bootstrap'
 
 const _ = require('lodash')
@@ -121,25 +122,7 @@ class App extends React.Component {
       <Container>
         { this.state.models.length === 0 &&
           <>
-            <h1>
-              Scriptorum
-            </h1>
-            <p className='lead'>
-              Readable datasheets for Warhammer 40k Kill Team
-            </p>
-            <ul>
-              <li>Organises abilities and weapons by phase</li>
-              <li>Merges identical models</li>
-              <li>Prints out as one datasheet per page</li>
-              <li>Clear, readable layout</li>
-            </ul>
-            <Alert variant='danger'>
-              Scriptorum is a work in progress! So far we only support .ros files,
-              not .rosz, and the output and formatting is unfinished. But it should work,
-              so try it out! If you spot any problems, please create an
-              issue <a href='https://github.com/Floppy/scriptorum/issues'>on GitHub</a> and
-              include your roster file if possible.
-            </Alert>
+            <Intro/>
             <Dropzone onDrop={this.handleDrop} accept='.ros'>
               {({ getRootProps, getInputProps }) => (
                 <Alert variant="info" {...getRootProps()} style={{textAlign: "center"}}>
