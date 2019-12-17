@@ -19,16 +19,28 @@ function Datasheet(props: Props ) {
       pageBreakAfter: "always",
     }}>
       <h1>
-        {props.model.category && <CategoryIcon category={props.model.category} />}
-        {' '}
-        {props.model.specialism && <SpecialistIcon specialism={props.model.specialism} />}
-        {' '}
-        {props.model.name &&
-          <em>{props.model.name} - </em>
+        {(props.model.category === 'Commander' || props.model.category === 'Leader') ?
+          (
+            <Badge variant="warning">
+              <CategoryIcon category={props.model.category} />
+              {' '}
+              {props.model.category}
+            </Badge>
+          )
+          : (
+              props.model.specialism &&
+                <Badge variant="warning">
+                  <SpecialistIcon specialism={props.model.specialism} />
+                  {' '}
+                  {props.model.specialism}
+                </Badge>
+          )
         }
+        {' '}
         {props.model.type}
+        {props.model.name && <>: <em>{props.model.name}</em></>
+        }
       </h1>
-      {props.model.specialism && <div>Specialism: <Badge variant="warning">{props.model.specialism}</Badge></div>}
       <div>
         <Badge pill variant="danger" style={{
           textTransform: "uppercase",
