@@ -61,7 +61,8 @@ const parseWeapon = (weapon) => ({
 const parseModel = (model) => {
   const abilities = xpath("roster:profiles/roster:profile[@typeName='Ability']", model).map(parseAbility)
   const weapons = xpath("roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Weapon']", model).map(parseWeapon)
-  const specialismSelection = xpath("roster:selections/roster:selection[roster:selections]", model)
+  const specialismSelection = xpath("roster:selections/roster:selection[roster:selections/roster:selection/roster:profiles]", model)
+  console.log(specialismSelection);
   const specialistAbilities = xpath("roster:selections/roster:selection/roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Ability']", model).map(parseAbility)
   const category = xpath("roster:categories/roster:category[@primary='true']", model)[0].getAttribute('name');
   return {
