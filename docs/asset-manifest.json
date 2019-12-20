@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/scriptorum/static/css/main.34de6062.chunk.css",
-    "main.js": "/scriptorum/static/js/main.f0238c0f.chunk.js",
-    "main.js.map": "/scriptorum/static/js/main.f0238c0f.chunk.js.map",
+    "main.js": "/scriptorum/static/js/main.ba92c25d.chunk.js",
+    "main.js.map": "/scriptorum/static/js/main.ba92c25d.chunk.js.map",
     "runtime-main.js": "/scriptorum/static/js/runtime-main.e538d274.js",
     "runtime-main.js.map": "/scriptorum/static/js/runtime-main.e538d274.js.map",
     "static/css/2.83ace7dd.chunk.css": "/scriptorum/static/css/2.83ace7dd.chunk.css",
     "static/js/2.872f0b92.chunk.js": "/scriptorum/static/js/2.872f0b92.chunk.js",
     "static/js/2.872f0b92.chunk.js.map": "/scriptorum/static/js/2.872f0b92.chunk.js.map",
     "index.html": "/scriptorum/index.html",
-    "precache-manifest.ff54ff98afea460e6c93bbc3c93aa31d.js": "/scriptorum/precache-manifest.ff54ff98afea460e6c93bbc3c93aa31d.js",
+    "precache-manifest.ee76f172add9b0484bfaba1cf7b98600.js": "/scriptorum/precache-manifest.ee76f172add9b0484bfaba1cf7b98600.js",
     "service-worker.js": "/scriptorum/service-worker.js",
     "static/css/2.83ace7dd.chunk.css.map": "/scriptorum/static/css/2.83ace7dd.chunk.css.map",
     "static/css/main.34de6062.chunk.css.map": "/scriptorum/static/css/main.34de6062.chunk.css.map"
@@ -19,6 +19,6 @@
     "static/css/2.83ace7dd.chunk.css",
     "static/js/2.872f0b92.chunk.js",
     "static/css/main.34de6062.chunk.css",
-    "static/js/main.f0238c0f.chunk.js"
+    "static/js/main.ba92c25d.chunk.js"
   ]
 }
