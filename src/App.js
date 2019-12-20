@@ -176,9 +176,6 @@ class App extends React.Component {
             {_.sortBy(this.state.models, (x) => ([x.category == null, x.category, x.type])).map((model) => (
               <Datasheet model={model} key={hash.hash(model)} />
             ))}
-            <footer>
-              Created by Scriptorum: <a href='https://floppy.org.uk/scriptorum'>https://floppy.org.uk/scriptorum</a>
-            </footer>
           </>
         }
       </Container>
