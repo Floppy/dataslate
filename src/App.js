@@ -8,6 +8,7 @@ const _ = require('lodash')
 const hash = require('node-object-hash')([])
 const DOMParser = require('xmldom').DOMParser
 const xpath = require('xpath').useNamespaces({ roster: 'http://www.battlescribe.net/schema/rosterSchema' })
+const JSZip = require("jszip")
 
 const stat = (name, model) => {
   const nodes = xpath(`roster:profiles/roster:profile[@typeName='Model']//roster:characteristic[@name='${name}']`, model)
@@ -97,15 +98,20 @@ class App extends React.Component {
   unzip = (file) => {
     if (file[0] !== 'P')
       return Promise.resolve(file);
-    else
-      return Promise.reject();
+    else {
+      const jszip = new JSZip()
+      return jszip.loadAsync(file)
+      .then((zip) => (
+        zip.file(/[^/]+\.ros/)[0].async("string") // Get roster files that are in the root
+      ));
+    }
   }
 
   parseFile = (event) => {
     this.unzip(event.target.result)
       .then((xml) => {
     var models = []
-        var doc = new DOMParser().parseFromString(xml)
+    var doc = new DOMParser().parseFromString(xml)
     for (const category of xpath('//roster:force/roster:categories/roster:category', doc)) {
       const categoryId = category.getAttribute('entryId')
       for (const model of xpath(`//roster:selection[@type='model' and roster:categories/roster:category/@entryId='${categoryId}']`, doc)) {
@@ -144,18 +150,16 @@ class App extends React.Component {
               <li>Clear, readable layout</li>
             </ul>
             <Alert variant='danger'>
-              Scriptorum is a work in progress! So far we only support .ros files,
-              not .rosz, and the output and formatting is unfinished. But it should work,
+              Scriptorum is a work in progress, but it should work,
               so try it out! If you spot any problems, please create an
               issue <a href='https://github.com/Floppy/scriptorum/issues'>on GitHub</a> and
               include your roster file if possible.
             </Alert>
-            <Dropzone onDrop={this.handleDrop} accept='.ros'>
+            <Dropzone onDrop={this.handleDrop} accept='.ros,.rosz'>
               {({ getRootProps, getInputProps }) => (
                 <Alert variant="info" {...getRootProps()} style={{textAlign: "center"}}>
                   <input {...getInputProps()} />
                   <p>Drop a Battlescribe roster file here, or click to select one.</p>
-                  <p><em>(Only *.ros files will be accepted, not .rosz yet)</em></p>
                 </Alert>
               )}
             </Dropzone>
