@@ -14,6 +14,12 @@ function AbilityList(props: Props) {
 
   return abilities.length === 0 ? <></> : (
     <Table striped bordered>
+      <thead>
+        <tr>
+          <th>Ability</th>
+          <th>Description</th>
+        </tr>
+      </thead>
       <tbody>
         {abilities.map((x) => (
           <tr>

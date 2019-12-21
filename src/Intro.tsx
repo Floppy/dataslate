@@ -16,8 +16,7 @@ function Intro() {
       <li>Clear, readable layout</li>
     </ul>
     <Alert variant='danger'>
-      Scriptorum is a work in progress! So far we only support .ros files,
-      not .rosz, and the output and formatting is unfinished. But it should work,
+      Scriptorum is a work in progress, but it should work,
       so try it out! If you spot any problems, please create an
       issue <a href='https://github.com/Floppy/scriptorum/issues'>on GitHub</a> and
       include your roster file if possible.

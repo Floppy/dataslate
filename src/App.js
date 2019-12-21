@@ -9,6 +9,7 @@ const _ = require('lodash')
 const hash = require('node-object-hash')([])
 const DOMParser = require('xmldom').DOMParser
 const xpath = require('xpath').useNamespaces({ roster: 'http://www.battlescribe.net/schema/rosterSchema' })
+const JSZip = require('jszip')
 
 const stat = (name, model) => {
   const nodes = xpath(`roster:profiles/roster:profile[@typeName='Model']//roster:characteristic[@name='${name}']`, model)
@@ -61,7 +62,8 @@ const parseWeapon = (weapon) => ({
 const parseModel = (model) => {
   const abilities = xpath("roster:profiles/roster:profile[@typeName='Ability']", model).map(parseAbility)
   const weapons = xpath("roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Weapon']", model).map(parseWeapon)
-  const specialismSelection = xpath("roster:selections/roster:selection[roster:selections]", model)
+  const specialismSelection = xpath("roster:selections/roster:selection[roster:selections/roster:selection/roster:profiles]", model)
+  console.log(specialismSelection);
   const specialistAbilities = xpath("roster:selections/roster:selection/roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Ability']", model).map(parseAbility)
   const category = xpath("roster:categories/roster:category[@primary='true']", model)[0].getAttribute('name');
   return {
@@ -95,16 +97,31 @@ class App extends React.Component {
     }
   }
 
-  parseFile = (event) => {
-    var models = []
-    var doc = new DOMParser().parseFromString(event.target.result)
-    for (const category of xpath('//roster:force/roster:categories/roster:category', doc)) {
-      const categoryId = category.getAttribute('entryId')
-      for (const model of xpath(`//roster:selection[@type='model' and roster:categories/roster:category/@entryId='${categoryId}']`, doc)) {
-        models.push(parseModel(model))
-      }
+  unzip = (file) => {
+    if (file[0] !== 'P')
+      return Promise.resolve(file);
+    else {
+      const jszip = new JSZip()
+      return jszip.loadAsync(file)
+      .then((zip) => (
+        zip.file(/[^/]+\.ros/)[0].async("string") // Get roster files that are in the root
+      ));
     }
-    this.setState({ models: _.uniqBy(models, hash.hash) })
+  }
+
+  parseFile = (event) => {
+    this.unzip(event.target.result)
+      .then((xml) => {
+        var models = []
+        var doc = new DOMParser().parseFromString(xml)
+        for (const category of xpath('//roster:force/roster:categories/roster:category', doc)) {
+          const categoryId = category.getAttribute('entryId')
+          for (const model of xpath(`//roster:selection[@type='model' and roster:categories/roster:category/@entryId='${categoryId}']`, doc)) {
+            models.push(parseModel(model))
+          }
+        }
+        this.setState({ models: _.uniqBy(models, hash.hash) })
+      });
   };
 
   handleDrop = (acceptedFiles) => {
@@ -113,7 +130,7 @@ class App extends React.Component {
       reader.onabort = () => console.log('file reading was aborted')
       reader.onerror = () => console.log('file reading has failed')
       reader.onloadend = this.parseFile
-      reader.readAsText(file)
+      reader.readAsBinaryString(file)
     })
   };
 
@@ -123,12 +140,12 @@ class App extends React.Component {
         { this.state.models.length === 0 &&
           <>
             <Intro/>
-            <Dropzone onDrop={this.handleDrop} accept='.ros'>
+            <Dropzone onDrop={this.handleDrop} accept='.ros,.rosz'>
               {({ getRootProps, getInputProps }) => (
                 <Alert variant="info" {...getRootProps()} style={{textAlign: "center"}}>
                   <input {...getInputProps()} />
                   <p>Drop a Battlescribe roster file here, or click to select one.</p>
-                  <p><em>(Only *.ros files will be accepted, not .rosz yet)</em></p>
+                  <p><em>(*.rosz and *.ros accepted)</em></p>
                 </Alert>
               )}
             </Dropzone>
@@ -143,9 +160,6 @@ class App extends React.Component {
             {_.sortBy(this.state.models, (x) => ([x.category == null, x.category, x.type])).map((model) => (
               <Datasheet model={model} key={hash.hash(model)} />
             ))}
-            <footer>
-              Created by Scriptorum: <a href='https://floppy.org.uk/scriptorum'>https://floppy.org.uk/scriptorum</a>
-            </footer>
           </>
         }
       </Container>
