@@ -21,8 +21,8 @@ function WeaponList(props: Props) {
           {props.phase === "shooting" && <th>Range</th>}
           {props.phase === "shooting" && <th>Type</th>}
           <th>S</th>
-          <th>D</th>
           <th>AP</th>
+          <th>D</th>
           <th>Abilities</th>
         </tr>
       </thead>
@@ -33,8 +33,8 @@ function WeaponList(props: Props) {
             {props.phase === "shooting" && <td>{x.range}&quot;</td>}
             {props.phase === "shooting" && <td>{x.type}</td>}
             <td>{isNaN(x.strength) ? props.userStrength : x.strength}</td>
-            <td>{x.damage}</td>
             <td>{x.armourPiercing}</td>
+            <td>{x.damage}</td>
             <td>{x.abilities}</td>
           </tr>
         ))}
