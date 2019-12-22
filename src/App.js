@@ -66,6 +66,7 @@ const parseModel = (model) => {
   console.log(specialismSelection);
   const specialistAbilities = xpath("roster:selections/roster:selection/roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Ability']", model).map(parseAbility)
   const category = xpath("roster:categories/roster:category[@primary='true']", model)[0].getAttribute('name');
+  const faction = xpath("roster:categories/roster:category[@primary='false' and starts-with(@name,'Faction: ')]", model);
   return {
     name: model.getAttribute('customName'),
     type: model.getAttribute('name'),
@@ -84,7 +85,7 @@ const parseModel = (model) => {
     abilities: abilities.concat(specialistAbilities),
     weapons,
     specialism: specialismSelection.length > 0 ? specialismSelection[0].getAttribute('name') : null,
-    faction: xpath("roster:categories/roster:category[@primary='false' and starts-with(@name,'Faction: ')]", model)[0].getAttribute('name').split(": ",2)[1],
+    faction: faction.length > 0 ? faction[0].getAttribute('name').split(": ",2)[1] : null,
     keywords: xpath("roster:categories/roster:category[@primary='false' and not(starts-with(@name,'Faction: '))]", model).map((x) => x.getAttribute('name'))
   }
 }
