@@ -59,6 +59,7 @@ const parseWeapon = (weapon) => ({
   abilities: weaponStat('Abilities', weapon, false)
 })
 
+
 const parseModel = (model) => {
   const abilities = xpath("roster:profiles/roster:profile[@typeName='Ability']", model).map(parseAbility)
   const weapons = xpath("roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Weapon']", model).map(parseWeapon)
