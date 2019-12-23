@@ -60,20 +60,24 @@ function Datasheet(props: Props ) {
       <StatsTable {...props.model.stats}/>
       <AbilityList abilities={props.model.abilities} phase=''/>
       <Phase name="movement">
+        <p className="lead">Movement: {props.model.stats.movement}&quot;</p>
         <AbilityList abilities={props.model.abilities} phase='movement'/>
       </Phase>
       <Phase name="psychic">
         <AbilityList abilities={props.model.abilities} phase='psychic'/>
       </Phase>
       <Phase name="shooting">
+        <p className="lead">Ballistic Skill: {props.model.stats.ballistic_skill}+</p>
         <WeaponList weapons={props.model.weapons} phase='shooting' userStrength={props.model.stats.strength}/>
         <AbilityList abilities={props.model.abilities} phase='shooting'/>
       </Phase>
       <Phase name="fight">
+        <p className="lead">Attacks: {props.model.stats.attacks}, Weapon Skill: {props.model.stats.weapon_skill}+</p>
         <WeaponList weapons={props.model.weapons} phase='fight' userStrength={props.model.stats.strength}/>
         <AbilityList abilities={props.model.abilities} phase='fight'/>
       </Phase>
       <Phase name="morale">
+        <p className="lead">Leadership: {props.model.stats.leadership}</p>
         <AbilityList abilities={props.model.abilities} phase='morale'/>
       </Phase>
     </div>
