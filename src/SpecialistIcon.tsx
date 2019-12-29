@@ -26,9 +26,10 @@ export function SpecialistIcon(props: Props) {
     'strength': '💪',
     'sniper': '🎯',
     'veteran': '⭐',
-    'zealot': '😤'
+    'zealot': '😤',
+    '': ''
   };
   return (<span className='specialism'>
-    {icons[props.specialism.toLowerCase()]}
+    {props.specialism ? icons[props.specialism.toLowerCase()] : ''}
   </span>);
 }
