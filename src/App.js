@@ -1,8 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import React from 'react'
-import Datasheet from './components/Datasheet'
 import Dropzone from 'react-dropzone'
 import Intro from './components/Intro'
+import Roster from './components/Roster'
 import { Container, Alert } from 'react-bootstrap'
 
 const _ = require('lodash')
@@ -142,29 +142,24 @@ class App extends React.Component {
   render () {
     return (
       <Container>
-        {this.state.models.length === 0 &&
-          <>
-            <Intro />
-            <Dropzone onDrop={this.handleDrop} accept='.ros,.rosz'>
-              {({ getRootProps, getInputProps }) => (
-                <Alert variant='info' {...getRootProps()} style={{ textAlign: 'center' }}>
-                  <input {...getInputProps()} />
-                  <p>Drop a Battlescribe roster file here, or click to select one.</p>
-                  <p><em>(*.rosz and *.ros accepted)</em></p>
-                </Alert>
-              )}
-            </Dropzone>
-            <footer>
-              Built with React and Bootstrap. Released as Open Source, code <a href='https://github.com/floppy/scriptorum'>on GitHub</a>.
-            </footer>
-          </>}
-        {this.state.models.length > 0 &&
-          // Display models sorted by category and type
-          <>
-            {_.sortBy(this.state.models, (x) => ([x.category == null, x.category, x.type])).map((model) => (
-              <Datasheet model={model} key={hash.hash(model)} />
-            ))}
-          </>}
+        {this.state.models.length === 0
+          ? <>
+              <Intro />
+              <Dropzone onDrop={this.handleDrop} accept='.ros,.rosz'>
+                {({ getRootProps, getInputProps }) => (
+                  <Alert variant='info' {...getRootProps()} style={{ textAlign: 'center' }}>
+                    <input {...getInputProps()} />
+                    <p>Drop a Battlescribe roster file here, or click to select one.</p>
+                    <p><em>(*.rosz and *.ros accepted)</em></p>
+                  </Alert>
+                )}
+              </Dropzone>
+              <footer>
+                Built with React and Bootstrap. Released as Open Source, code <a href='https://github.com/floppy/scriptorum'>on GitHub</a>.
+              </footer>
+            </>
+          : <Roster models={this.state.models} />
+        }
       </Container>
     )
   }
