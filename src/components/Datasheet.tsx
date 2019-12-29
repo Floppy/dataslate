@@ -7,7 +7,7 @@ import { SpecialistIcon } from './SpecialistIcon';
 import { CategoryIcon } from './CategoryIcon';
 import { Badge } from 'react-bootstrap'
 
-import { Model } from './types';
+import { Model } from '../types';
 
 type Props = {
   model: Model

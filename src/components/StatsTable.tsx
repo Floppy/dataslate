@@ -1,5 +1,5 @@
 import React from 'react'
-import { ModelStats } from './types'
+import { ModelStats } from '../types'
 import { Table } from 'react-bootstrap'
 
 function StatsTable (props: ModelStats) {

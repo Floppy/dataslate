@@ -1,8 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import React from 'react'
-import Datasheet from './Datasheet'
+import Datasheet from './components/Datasheet'
 import Dropzone from 'react-dropzone'
-import Intro from './Intro'
+import Intro from './components/Intro'
 import { Container, Alert } from 'react-bootstrap'
 
 const _ = require('lodash')
