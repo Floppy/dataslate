@@ -12,9 +12,9 @@ class App extends React.Component {
       models: []
     }
 
-    this.onUpload = (acceptedFiles) => {
+    this.handleUpload = (acceptedFiles) => {
       loadFiles(acceptedFiles).then((models) => {
-        this.setState({models});
+        this.setState({ models })
       })
     }
   }
@@ -23,7 +23,7 @@ class App extends React.Component {
     return (
       <Container>
         {this.state.models.length === 0
-          ? <Homepage onUpload={this.onUpload} />
+          ? <Homepage onUpload={this.handleUpload} />
           : <Roster models={this.state.models} />}
       </Container>
     )

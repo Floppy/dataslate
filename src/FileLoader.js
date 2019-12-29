@@ -20,16 +20,16 @@ export const loadFile = async (file) => {
   const reader = new FileReader()
   return new Promise((resolve, reject) => {
     reader.onerror = () => {
-      reader.abort();
-      reject(new DOMException("Problem parsing input file."));
-    };
-    reader.onloadend = async () => {
-      resolve(parseFile(reader.result));
+      reader.abort()
+      reject(new DOMException('Problem parsing input file.'))
     }
-    reader.readAsBinaryString(file);
-  });
+    reader.onloadend = async () => {
+      resolve(parseFile(reader.result))
+    }
+    reader.readAsBinaryString(file)
+  })
 }
 
 export const loadFiles = (files) => {
-  return loadFile(files[0]);
+  return loadFile(files[0])
 }
