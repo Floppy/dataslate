@@ -143,8 +143,7 @@ class App extends React.Component {
       <Container>
         {this.state.models.length === 0
           ? <Homepage onUpload={this.handleDrop} />
-          : <Roster models={this.state.models} />
-        }
+          : <Roster models={this.state.models} />}
       </Container>
     )
   }
