@@ -1,9 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import React from 'react'
-import Dropzone from 'react-dropzone'
-import Intro from './components/Intro'
+import Homepage from './components/Homepage'
 import Roster from './components/Roster'
-import { Container, Alert } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 
 const _ = require('lodash')
 const hash = require('node-object-hash')([])
@@ -143,21 +142,7 @@ class App extends React.Component {
     return (
       <Container>
         {this.state.models.length === 0
-          ? <>
-              <Intro />
-              <Dropzone onDrop={this.handleDrop} accept='.ros,.rosz'>
-                {({ getRootProps, getInputProps }) => (
-                  <Alert variant='info' {...getRootProps()} style={{ textAlign: 'center' }}>
-                    <input {...getInputProps()} />
-                    <p>Drop a Battlescribe roster file here, or click to select one.</p>
-                    <p><em>(*.rosz and *.ros accepted)</em></p>
-                  </Alert>
-                )}
-              </Dropzone>
-              <footer>
-                Built with React and Bootstrap. Released as Open Source, code <a href='https://github.com/floppy/scriptorum'>on GitHub</a>.
-              </footer>
-            </>
+          ? <Homepage onUpload={this.handleDrop} />
           : <Roster models={this.state.models} />
         }
       </Container>
