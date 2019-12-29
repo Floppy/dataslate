@@ -1,0 +1,46 @@
+on: [push]
+name: CI
+jobs:
+  test:
+    name: Run tests
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+    - uses: borales/actions-yarn@v2.1.0
+      with:
+        cmd: install
+    - uses: borales/actions-yarn@v2.1.0
+      with:
+        cmd: test
+  lint:
+    name: Lint code
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+    - uses: borales/actions-yarn@v2.1.0
+      with:
+        cmd: install
+    - uses: borales/actions-yarn@v2.1.0
+      with:
+        cmd: lint
+  test:
+    name: Test build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+    - uses: borales/actions-yarn@v2.1.0
+      with:
+        cmd: install
+    - uses: borales/actions-yarn@v2.1.0
+      with:
+        cmd: build
+
