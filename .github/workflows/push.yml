@@ -2,7 +2,7 @@ on: [push]
 name: CI
 jobs:
   test:
-    name: Run tests
+    name: Test
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
@@ -16,7 +16,7 @@ jobs:
       with:
         cmd: test
   lint:
-    name: Lint code
+    name: Lint
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
@@ -30,7 +30,7 @@ jobs:
       with:
         cmd: lint
   build:
-    name: Test build
+    name: Build
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
