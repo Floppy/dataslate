@@ -36,4 +36,5 @@ export type Model = {
   weapons: Weapon[],
   faction: string,
   keywords: string[],
+  hash: string,
 };

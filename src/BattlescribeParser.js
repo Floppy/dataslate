@@ -66,7 +66,7 @@ const parseModel = (model) => {
   const specialistAbilities = xpath("roster:selections/roster:selection/roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Ability']", model).map(parseAbility)
   const category = xpath("roster:categories/roster:category[@primary='true']", model)[0].getAttribute('name')
   const faction = xpath("roster:categories/roster:category[@primary='false' and starts-with(@name,'Faction: ')]", model)
-  return {
+  const details = {
     name: model.getAttribute('customName'),
     type: model.getAttribute('name'),
     category: category === 'Non-specialist' ? 'zzz-so-it-sorts-last-what-a-massive-hack' : category,
@@ -87,6 +87,7 @@ const parseModel = (model) => {
     faction: faction.length > 0 ? faction[0].getAttribute('name').split(': ', 2)[1] : null,
     keywords: xpath("roster:categories/roster:category[@primary='false' and not(starts-with(@name,'Faction: '))]", model).map((x) => x.getAttribute('name'))
   }
+  return {...details, hash: hash.hash(details)}
 }
 
 export const parseBattlescribeXML = (xml) => {
@@ -98,5 +99,5 @@ export const parseBattlescribeXML = (xml) => {
       models.push(parseModel(model))
     }
   }
-  return _.uniqBy(models, hash.hash)
+  return _.uniqBy(models, (m) => m.hash)
 }
