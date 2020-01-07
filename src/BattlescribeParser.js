@@ -27,6 +27,7 @@ const calculatePhases = (description) => {
   if (/psychic/i.test(description)) { phases.push('psychic') }
   if (/shoot/i.test(description)) { phases.push('shooting') }
   if (/nerve/i.test(description)) { phases.push('morale') }
+  if (/leadership/i.test(description)) { phases.push('morale') }
   return phases
 }
 
@@ -58,9 +59,19 @@ const parseWeapon = (weapon) => ({
   abilities: weaponStat('Abilities', weapon, false)
 })
 
+const parseWargear = (wargear) => {
+  const description = xpath("roster:characteristics/roster:characteristic[@name='Ability']", wargear)[0].childNodes[0].nodeValue
+  return {
+    name: wargear.getAttribute('name'),
+    description,
+    phases: calculatePhases(description)
+  }
+}
+
 const parseModel = (model) => {
   const forceRules = xpath('//roster:force/roster:rules/roster:rule', model).map(parseForceRule)
-  const abilities = xpath("roster:profiles/roster:profile[@typeName='Ability']", model).map(parseAbility).concat(forceRules)
+  const wargear = xpath("roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Wargear']", model).map(parseWargear)
+  const abilities = xpath("roster:profiles/roster:profile[@typeName='Ability']", model).map(parseAbility).concat(forceRules).concat(wargear)
   const weapons = xpath("roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Weapon']", model).map(parseWeapon)
   const specialismSelection = xpath('roster:selections/roster:selection[roster:selections/roster:selection/roster:profiles]', model)
   const specialistAbilities = xpath("roster:selections/roster:selection/roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Ability']", model).map(parseAbility)

@@ -13,7 +13,7 @@ type Props = {
   model: Model
 };
 
-function Datasheet(props: Props ) {
+function Datasheet(props: Props) {
   return (
     <div className="model" style={{
       pageBreakAfter: "always",
