@@ -2,6 +2,8 @@ import React from 'react';
 import { Weapon } from '../types';
 import { Table } from 'react-bootstrap';
 
+const _ = require('lodash')
+
 type Props = {
   weapons: Weapon[],
   phase: string,
@@ -39,7 +41,7 @@ function WeaponList(props: Props) {
         </tr>
       </thead>
       <tbody>
-        {weapons.map((x) => (
+        {_.sortBy(weapons, ['name']).map((x: Weapon) => (
           <tr>
             <td style={{"whiteSpace": "nowrap"}}>{x.name}</td>
             {props.phase === "shooting" && <td>{x.range}&quot;</td>}

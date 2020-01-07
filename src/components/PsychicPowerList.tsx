@@ -2,6 +2,8 @@ import React from 'react';
 import { PsychicPower } from '../types';
 import { Table } from 'react-bootstrap';
 
+const _ = require('lodash')
+
 type Props = {
   powers: PsychicPower[],
 };
@@ -17,7 +19,7 @@ function PsychicPowerList(props: Props) {
         </tr>
       </thead>
       <tbody>
-        {props.powers.map((x) => (
+        {_.sortBy(props.powers, ['name']).map((x: PsychicPower) => (
           <tr>
             <td>{x.name}</td>
             <td>{x.charge}</td>
