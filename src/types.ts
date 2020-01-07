@@ -43,4 +43,5 @@ export type Model = {
   psychicPowers: PsychicPower[],
   faction: string,
   keywords: string[],
+  points: number,
 };

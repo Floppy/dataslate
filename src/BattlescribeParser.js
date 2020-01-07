@@ -18,6 +18,11 @@ const weaponStat = (name, weapon, numeric) => {
   } else { return '' }
 }
 
+const points = (model) => {
+  const costNode = xpath(`.//roster:costs/roster:cost[@name='pts']`, model)
+  return _.sumBy(costNode, (x) => parseInt(x.getAttribute("value")))
+}
+
 const calculatePhases = (description) => {
   const phases = []
   if (/attacks/i.test(description)) { phases.push('fight') }
@@ -113,7 +118,8 @@ const parseModel = (model) => {
     psychicPowers,
     specialism: specialismSelection.length > 0 ? specialismSelection[0].getAttribute('name') : null,
     faction: faction.length > 0 ? faction[0].getAttribute('name').split(': ', 2)[1] : null,
-    keywords: xpath("roster:categories/roster:category[@primary='false' and not(starts-with(@name,'Faction: '))]", model).map((x) => x.getAttribute('name'))
+    keywords: xpath("roster:categories/roster:category[@primary='false' and not(starts-with(@name,'Faction: '))]", model).map((x) => x.getAttribute('name')),
+    points: points(model),
   }
 }
 

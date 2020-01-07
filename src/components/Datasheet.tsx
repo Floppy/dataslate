@@ -58,6 +58,9 @@ function Datasheet(props: Props) {
           </Badge>
         ))}
       </div>
+      <div>
+        Points: {props.model.points}
+      </div>
       <StatsTable {...props.model.stats}/>
       <AbilityList abilities={props.model.abilities} phase=''/>
       <Phase name="movement">
