@@ -4,6 +4,12 @@ export type Ability = {
   phases: string[],
 }
 
+export type PsychicPower = {
+  name: string,
+  charge: number,
+  description: string,
+}
+
 export type Weapon = {
   name: string,
   range: number,
@@ -34,7 +40,9 @@ export type Model = {
   stats: ModelStats,
   abilities: Ability[],
   weapons: Weapon[],
+  psychicPowers: PsychicPower[],
   faction: string,
   keywords: string[],
   hash: string,
+  points: number,
 };

@@ -2,6 +2,8 @@ import React from 'react';
 import { Ability } from '../types';
 import { Table } from 'react-bootstrap';
 
+const _ = require('lodash')
+
 type Props = {
   abilities: Ability[],
   phase: string,
@@ -21,7 +23,7 @@ function AbilityList(props: Props) {
         </tr>
       </thead>
       <tbody>
-        {abilities.map((x) => (
+        {_.sortBy(abilities, ['name']).map((x: Ability) => (
           <tr>
             <td>{x.name}</td>
             <td>{x.description}</td>

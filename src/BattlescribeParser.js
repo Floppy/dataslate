@@ -1,5 +1,5 @@
 const DOMParser = require('xmldom').DOMParser
-const xpath = require('xpath').useNamespaces({ roster: 'http://www.battlescribe.net/schema/rosterSchema' })
+const xpath = require('xpath-ts').useNamespaces({ roster: 'http://www.battlescribe.net/schema/rosterSchema' })
 
 const _ = require('lodash')
 const hash = require('node-object-hash')([])
@@ -18,6 +18,11 @@ const weaponStat = (name, weapon, numeric) => {
   } else { return '' }
 }
 
+const points = (model) => {
+  const costNode = xpath(`.//roster:costs/roster:cost[@name='pts']`, model)
+  return _.sumBy(costNode, (x) => parseInt(x.getAttribute("value")))
+}
+
 const calculatePhases = (description) => {
   const phases = []
   if (/attacks/i.test(description)) { phases.push('fight') }
@@ -27,6 +32,7 @@ const calculatePhases = (description) => {
   if (/psychic/i.test(description)) { phases.push('psychic') }
   if (/shoot/i.test(description)) { phases.push('shooting') }
   if (/nerve/i.test(description)) { phases.push('morale') }
+  if (/leadership/i.test(description)) { phases.push('morale') }
   return phases
 }
 
@@ -58,12 +64,38 @@ const parseWeapon = (weapon) => ({
   abilities: weaponStat('Abilities', weapon, false)
 })
 
+const parseWargear = (wargear) => {
+  const description = xpath("roster:characteristics/roster:characteristic[@name='Ability']", wargear)[0].childNodes[0].nodeValue
+  return {
+    name: wargear.getAttribute('name'),
+    description,
+    phases: calculatePhases(description)
+  }
+}
+
+const parsePsychicPower = (power) => {
+  let description = xpath("roster:characteristics/roster:characteristic[@name='Psychic Power']", power)[0].childNodes[0].nodeValue
+  const warpChargeDescription = description.match(/warp charge value of ([0-9]+)\.(.*)/)
+  let charge = null
+  if (warpChargeDescription.length > 2) {
+    charge = parseInt(warpChargeDescription[1])
+    description = warpChargeDescription[2]
+  }
+  return {
+    name: power.getAttribute('name'),
+    charge,
+    description
+  }
+}
+
 const parseModel = (model) => {
   const forceRules = xpath('//roster:force/roster:rules/roster:rule', model).map(parseForceRule)
-  const abilities = xpath("roster:profiles/roster:profile[@typeName='Ability']", model).map(parseAbility).concat(forceRules)
+  const wargear = xpath("roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Wargear']", model).map(parseWargear)
+  const abilities = xpath("roster:profiles/roster:profile[@typeName='Ability']", model).map(parseAbility).concat(forceRules).concat(wargear)
   const weapons = xpath("roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Weapon']", model).map(parseWeapon)
   const specialismSelection = xpath('roster:selections/roster:selection[roster:selections/roster:selection/roster:profiles]', model)
   const specialistAbilities = xpath("roster:selections/roster:selection/roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Ability']", model).map(parseAbility)
+  const psychicPowers = xpath("roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Psychic Power']", model).map(parsePsychicPower)
   const category = xpath("roster:categories/roster:category[@primary='true']", model)[0].getAttribute('name')
   const faction = xpath("roster:categories/roster:category[@primary='false' and starts-with(@name,'Faction: ')]", model)
   const details = {
@@ -83,9 +115,11 @@ const parseModel = (model) => {
     },
     abilities: abilities.concat(specialistAbilities),
     weapons,
+    psychicPowers,
     specialism: specialismSelection.length > 0 ? specialismSelection[0].getAttribute('name') : null,
     faction: faction.length > 0 ? faction[0].getAttribute('name').split(': ', 2)[1] : null,
-    keywords: xpath("roster:categories/roster:category[@primary='false' and not(starts-with(@name,'Faction: '))]", model).map((x) => x.getAttribute('name'))
+    keywords: xpath("roster:categories/roster:category[@primary='false' and not(starts-with(@name,'Faction: '))]", model).map((x) => x.getAttribute('name')),
+    points: points(model),
   }
   return {...details, hash: hash.hash(details)}
 }
