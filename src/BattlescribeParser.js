@@ -68,6 +68,21 @@ const parseWargear = (wargear) => {
   }
 }
 
+const parsePsychicPower = (power) => {
+  let description = xpath("roster:characteristics/roster:characteristic[@name='Psychic Power']", power)[0].childNodes[0].nodeValue
+  const warpChargeDescription = description.match(/warp charge value of ([0-9]+)\.(.*)/)
+  let charge = null
+  if (warpChargeDescription.length > 2) {
+    charge = parseInt(warpChargeDescription[1])
+    description = warpChargeDescription[2]
+  }
+  return {
+    name: power.getAttribute('name'),
+    charge,
+    description
+  }
+}
+
 const parseModel = (model) => {
   const forceRules = xpath('//roster:force/roster:rules/roster:rule', model).map(parseForceRule)
   const wargear = xpath("roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Wargear']", model).map(parseWargear)
@@ -75,6 +90,7 @@ const parseModel = (model) => {
   const weapons = xpath("roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Weapon']", model).map(parseWeapon)
   const specialismSelection = xpath('roster:selections/roster:selection[roster:selections/roster:selection/roster:profiles]', model)
   const specialistAbilities = xpath("roster:selections/roster:selection/roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Ability']", model).map(parseAbility)
+  const psychicPowers = xpath("roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Psychic Power']", model).map(parsePsychicPower)
   const category = xpath("roster:categories/roster:category[@primary='true']", model)[0].getAttribute('name')
   const faction = xpath("roster:categories/roster:category[@primary='false' and starts-with(@name,'Faction: ')]", model)
   return {
@@ -94,6 +110,7 @@ const parseModel = (model) => {
     },
     abilities: abilities.concat(specialistAbilities),
     weapons,
+    psychicPowers,
     specialism: specialismSelection.length > 0 ? specialismSelection[0].getAttribute('name') : null,
     faction: faction.length > 0 ? faction[0].getAttribute('name').split(': ', 2)[1] : null,
     keywords: xpath("roster:categories/roster:category[@primary='false' and not(starts-with(@name,'Faction: '))]", model).map((x) => x.getAttribute('name'))

@@ -1,6 +1,7 @@
 import React from 'react';
 import StatsTable from './StatsTable';
 import AbilityList from './AbilityList';
+import PsychicPowerList from './PsychicPowerList';
 import WeaponList from './WeaponList';
 import Phase from './Phase';
 import { SpecialistIcon } from './SpecialistIcon';
@@ -64,6 +65,7 @@ function Datasheet(props: Props) {
         <AbilityList abilities={props.model.abilities} phase='movement'/>
       </Phase>
       <Phase name="psychic">
+        <PsychicPowerList powers={props.model.psychicPowers}/>
         <AbilityList abilities={props.model.abilities} phase='psychic'/>
       </Phase>
       <Phase name="shooting">
