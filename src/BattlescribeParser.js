@@ -1,5 +1,5 @@
 const DOMParser = require('xmldom').DOMParser
-const xpath = require('xpath').useNamespaces({ roster: 'http://www.battlescribe.net/schema/rosterSchema' })
+const xpath = require('xpath-ts').useNamespaces({ roster: 'http://www.battlescribe.net/schema/rosterSchema' })
 
 const _ = require('lodash')
 const hash = require('node-object-hash')([])
