@@ -19,8 +19,8 @@ const weaponStat = (name, weapon, numeric) => {
 }
 
 const points = (model) => {
-  const costNode = xpath(`.//roster:costs/roster:cost[@name='pts']`, model)
-  return _.sumBy(costNode, (x) => parseInt(x.getAttribute("value")))
+  const costNode = xpath('.//roster:costs/roster:cost[@name=\'pts\']', model)
+  return _.sumBy(costNode, (x) => parseInt(x.getAttribute('value')))
 }
 
 const calculatePhases = (description) => {
@@ -119,9 +119,9 @@ const parseModel = (model) => {
     specialism: specialismSelection.length > 0 ? specialismSelection[0].getAttribute('name') : null,
     faction: faction.length > 0 ? faction[0].getAttribute('name').split(': ', 2)[1] : null,
     keywords: xpath("roster:categories/roster:category[@primary='false' and not(starts-with(@name,'Faction: '))]", model).map((x) => x.getAttribute('name')),
-    points: points(model),
+    points: points(model)
   }
-  return {...details, hash: hash.hash(details)}
+  return { ...details, hash: hash.hash(details) }
 }
 
 export const parseBattlescribeXML = (xml) => {
