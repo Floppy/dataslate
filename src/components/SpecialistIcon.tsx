@@ -29,7 +29,7 @@ export function SpecialistIcon(props: Props) {
     'zealot': '😤',
     '': ''
   };
-  return (<span className='specialism'>
+  return (<span className='specialism' style={{marginRight: '10px'}}>
     {props.specialism ? icons[props.specialism.toLowerCase()] : ''}
   </span>);
 }

@@ -12,7 +12,7 @@ export function CategoryIcon(props: Props) {
     'leader': '💀',
     'specialist': '',
   };
-  return (<span className='category'>
+  return (<span className='category' style={{marginRight: '10px'}}>
     {props.category ? icons[props.category.toLowerCase()] : ''}
   </span>);
 }

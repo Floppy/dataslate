@@ -16,31 +16,28 @@ type Props = {
 };
 
 function Datasheet(props: Props) {
+  const headingStyle = {
+    background: 'black',
+    color: 'white',
+    padding: '10px',
+  }
   return (
     <div className="model" style={{
-      pageBreakAfter: "always",
+      pageBreakBefore: "always",
     }}>
-      <h1>
-        {(props.model.category === 'Commander' || props.model.category === 'Leader') ?
-          (
-            <Badge variant="warning">
-              <CategoryIcon category={props.model.category} />
-              {' '}
-              {props.model.category}
-            </Badge>
-          )
-          : (
-              props.model.specialism &&
-                <Badge variant="warning">
-                  <SpecialistIcon specialism={props.model.specialism} />
-                  {' '}
-                  {props.model.specialism}
-                </Badge>
-          )
-        }
-        {' '}
+      <h1 style={headingStyle}>
+        {props.model.category === "Specialist" && <SpecialistIcon specialism={props.model.specialism} />}
+        {props.model.category && <CategoryIcon category={props.model.category} />}
         {props.model.type}
-        {props.model.name && <>: <em>{props.model.name}</em></>
+        {props.model.category &&
+          <>
+            {' '}
+            <em>
+              {props.model.category === "Specialist"
+                ? `(${[props.model.specialism, props.model.category].join(' ')})`
+                : `(${props.model.category})`}
+            </em>
+          </>
         }
       </h1>
       <div>
@@ -62,6 +59,7 @@ function Datasheet(props: Props) {
       <div>
         Points: {props.model.points}
       </div>
+      {props.model.name && <div>{props.model.name}</div>}
       <StatsTable {...props.model.stats}/>
       <AbilityList abilities={props.model.abilities} phase=''/>
       <Phase name="movement">
