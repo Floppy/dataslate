@@ -28,7 +28,7 @@ function WeaponList(props: Props) {
   }
 
   return weapons.length === 0 ? <></> : (
-    <Table striped bordered>
+    <Table striped bordered size="sm">
       <thead>
         <tr>
           <th>Weapon</th>

@@ -78,6 +78,7 @@ function Datasheet(props: Props) {
         <PsychicPowerList powers={props.model.psychicPowers}/>
         <AbilityList abilities={props.model.abilities} phase='psychic'/>
       </Phase>
+      { !isNaN(props.model.stats.ballistic_skill) &&
       <Phase name="shooting">
         <Row>
           <Col sm='1'>
@@ -89,6 +90,7 @@ function Datasheet(props: Props) {
           </Col>
         </Row>
       </Phase>
+      }
       <Phase name="fight">
         <Row>
           <Col sm='1'>
