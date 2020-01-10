@@ -13,6 +13,6 @@ export function CategoryIcon(props: Props) {
     'specialist': '',
   };
   return (<span className='category'>
-    {icons[props.category.toLowerCase()]}
+    {props.category ? icons[props.category.toLowerCase()] : ''}
   </span>);
 }
