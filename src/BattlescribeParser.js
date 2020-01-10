@@ -137,7 +137,7 @@ const parseModel = (model) => {
   const details = {
     name: model.getAttribute('customName'),
     type: model.getAttribute('name'),
-    category: category === 'Non-specialist' ? 'zzz-so-it-sorts-last-what-a-massive-hack' : category,
+    category: category === 'Non-specialist' ? null : category,
     stats,
     abilities: abilities.concat(specialistAbilities),
     weapons,
