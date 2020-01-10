@@ -15,7 +15,7 @@ function AbilityList(props: Props) {
     props.abilities.filter((x) => (x.phases.length === 0))
 
   return abilities.length === 0 ? <></> : (
-    <Table striped bordered>
+    <Table striped bordered size="sm">
       <thead>
         <tr>
           <th>Ability</th>

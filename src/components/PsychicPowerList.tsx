@@ -10,7 +10,7 @@ type Props = {
 
 function PsychicPowerList(props: Props) {
   return props.powers.length === 0 ? <></> : (
-    <Table striped bordered>
+    <Table striped bordered size="sm">
       <thead>
         <tr>
           <th>Power</th>
