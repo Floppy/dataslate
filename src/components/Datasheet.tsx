@@ -74,10 +74,12 @@ function Datasheet(props: Props) {
           </Col>
         </Row>
       </Phase>
-      <Phase name="psychic">
-        <PsychicPowerList powers={props.model.psychicPowers}/>
-        <AbilityList abilities={props.model.abilities} phase='psychic'/>
-      </Phase>
+      { (props.model.psychicPowers.length > 0 || (props.model.abilities.filter((x) => (x.phases.indexOf("psychic") >= 0))).length > 0) &&
+        <Phase name="psychic">
+          <PsychicPowerList powers={props.model.psychicPowers}/>
+          <AbilityList abilities={props.model.abilities} phase='psychic'/>
+        </Phase>
+      }
       { !isNaN(props.model.stats.ballistic_skill) &&
       <Phase name="shooting">
         <Row>
