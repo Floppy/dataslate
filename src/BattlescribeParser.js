@@ -26,6 +26,7 @@ const points = (model) => {
 const calculatePhases = (description) => {
   const phases = []
   if (/attacks/i.test(description)) { phases.push('fight') }
+  if (/ranged/i.test(description)) { phases.push('shooting') }
   if (/charge/i.test(description)) { phases.push('movement') }
   if (/advance/i.test(description)) { phases.push('movement') }
   if (/move/i.test(description)) { phases.push('movement') }
@@ -54,15 +55,29 @@ const parseAbility = (ability) => {
   }
 }
 
-const parseWeapon = (weapon) => ({
-  name: weapon.getAttribute('name'),
-  range: weaponStat('Range', weapon, true),
-  type: weaponStat('Type', weapon, false),
-  strength: weaponStat('S', weapon, true),
-  armourPiercing: weaponStat('AP', weapon, true),
-  damage: weaponStat('D', weapon, false),
-  abilities: weaponStat('Abilities', weapon, false)
-})
+const parseWeapon = (weapon, userStrength) => {
+  let strength = weaponStat('S', weapon, false);
+  if (strength === "User") {
+    strength = userStrength;
+  }
+  let match = /x([0-9]+)/i.exec(strength)
+  if (match) {
+    strength = userStrength * parseInt(match[1]);
+  }
+  match = /\+([0-9]+)/i.exec(strength)
+  if (match) {
+    strength = userStrength + parseInt(match[1]);
+  }
+  return {
+    name: weapon.getAttribute('name'),
+    range: weaponStat('Range', weapon, true),
+    type: weaponStat('Type', weapon, false),
+    strength,
+    armourPiercing: weaponStat('AP', weapon, true),
+    damage: weaponStat('D', weapon, false),
+    abilities: weaponStat('Abilities', weapon, false)
+  }
+};
 
 const parseWargear = (wargear) => {
   const description = xpath("roster:characteristics/roster:characteristic[@name='Ability']", wargear)[0].childNodes[0].nodeValue
@@ -89,10 +104,30 @@ const parsePsychicPower = (power) => {
 }
 
 const parseModel = (model) => {
+  const stats = {
+    movement: stat('M', model),
+    weapon_skill: stat('WS', model),
+    ballistic_skill: stat('BS', model),
+    strength: stat('S', model),
+    toughness: stat('T', model),
+    wounds: stat('W', model),
+    attacks: stat('A', model),
+    leadership: stat('Ld', model),
+    save: stat('Sv', model)
+  };
+  const closeCombatWeapon = {
+    name: "Bare fists",
+    range: "-",
+    type: "Melee",
+    strength: stats.strength,
+    armourPiercing: 0,
+    damage: 1,
+    abilities: "Default close combat weapon available to all models"
+  };
   const forceRules = xpath('//roster:force/roster:rules/roster:rule', model).map(parseForceRule)
   const wargear = xpath("roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Wargear']", model).map(parseWargear)
   const abilities = xpath("roster:profiles/roster:profile[@typeName='Ability']", model).map(parseAbility).concat(forceRules).concat(wargear)
-  const weapons = xpath("roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Weapon']", model).map(parseWeapon)
+  const weapons = xpath("roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Weapon']", model).map((x) => (parseWeapon(x,stats.strength))).concat([closeCombatWeapon])
   const specialismSelection = xpath('roster:selections/roster:selection[roster:selections/roster:selection/roster:profiles]', model)
   const specialistAbilities = xpath("roster:selections/roster:selection/roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Ability']", model).map(parseAbility)
   const psychicPowers = xpath("roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Psychic Power']", model).map(parsePsychicPower)
@@ -102,17 +137,7 @@ const parseModel = (model) => {
     name: model.getAttribute('customName'),
     type: model.getAttribute('name'),
     category: category === 'Non-specialist' ? 'zzz-so-it-sorts-last-what-a-massive-hack' : category,
-    stats: {
-      movement: stat('M', model),
-      weapon_skill: stat('WS', model),
-      ballistic_skill: stat('BS', model),
-      strength: stat('S', model),
-      toughness: stat('T', model),
-      wounds: stat('W', model),
-      attacks: stat('A', model),
-      leadership: stat('Ld', model),
-      save: stat('Sv', model)
-    },
+    stats,
     abilities: abilities.concat(specialistAbilities),
     weapons,
     psychicPowers,

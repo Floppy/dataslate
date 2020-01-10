@@ -12,20 +12,8 @@ type Props = {
 
 function WeaponList(props: Props) {
   const weapons = props.phase === 'shooting'
-    ? props.weapons.filter((x) => !isNaN(x.range))
-    : props.weapons.filter((x) => isNaN(x.range))
-
-  if (props.phase !== "shooting" && weapons.length === 0) {
-    weapons.push({
-      name: "Close combat weapon",
-      range: NaN,
-      type: "Melee",
-      strength: NaN,
-      armourPiercing: 0,
-      damage: 1,
-      abilities: "-"
-    });
-  }
+    ? props.weapons.filter((x) => (x.type !== "Melee"))
+    : props.weapons.filter((x) => (x.type === "Melee"))
 
   return weapons.length === 0 ? <></> : (
     <Table striped bordered size="sm">
@@ -46,7 +34,7 @@ function WeaponList(props: Props) {
             <td style={{"whiteSpace": "nowrap"}}>{x.name}</td>
             {props.phase === "shooting" && <td>{x.range}&quot;</td>}
             {props.phase === "shooting" && <td style={{"whiteSpace": "nowrap"}}>{x.type}</td>}
-            <td>{isNaN(x.strength) ? props.userStrength : x.strength}</td>
+            <td>{x.strength}</td>
             <td>{x.armourPiercing}</td>
             <td>{x.damage}</td>
             <td>{x.abilities}</td>
