@@ -56,17 +56,17 @@ const parseAbility = (ability) => {
 }
 
 const parseWeapon = (weapon, userStrength) => {
-  let strength = weaponStat('S', weapon, false);
-  if (strength === "User") {
-    strength = userStrength;
+  let strength = weaponStat('S', weapon, false)
+  if (strength === 'User') {
+    strength = userStrength
   }
   let match = /x([0-9]+)/i.exec(strength)
   if (match) {
-    strength = userStrength * parseInt(match[1]);
+    strength = userStrength * parseInt(match[1])
   }
   match = /\+([0-9]+)/i.exec(strength)
   if (match) {
-    strength = userStrength + parseInt(match[1]);
+    strength = userStrength + parseInt(match[1])
   }
   return {
     name: weapon.getAttribute('name'),
@@ -77,7 +77,7 @@ const parseWeapon = (weapon, userStrength) => {
     damage: weaponStat('D', weapon, false),
     abilities: weaponStat('Abilities', weapon, false)
   }
-};
+}
 
 const parseWargear = (wargear) => {
   const description = xpath("roster:characteristics/roster:characteristic[@name='Ability']", wargear)[0].childNodes[0].nodeValue
@@ -114,20 +114,20 @@ const parseModel = (model) => {
     attacks: stat('A', model),
     leadership: stat('Ld', model),
     save: stat('Sv', model)
-  };
+  }
   const closeCombatWeapon = {
-    name: "Bare fists",
-    range: "-",
-    type: "Melee",
+    name: 'Bare fists',
+    range: '-',
+    type: 'Melee',
     strength: stats.strength,
     armourPiercing: 0,
     damage: 1,
-    abilities: "Default close combat weapon available to all models"
-  };
+    abilities: 'Default close combat weapon available to all models'
+  }
   const forceRules = xpath('//roster:force/roster:rules/roster:rule', model).map(parseForceRule)
   const wargear = xpath("roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Wargear']", model).map(parseWargear)
   const abilities = xpath("roster:profiles/roster:profile[@typeName='Ability']", model).map(parseAbility).concat(forceRules).concat(wargear)
-  const weapons = xpath("roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Weapon']", model).map((x) => (parseWeapon(x,stats.strength))).concat([closeCombatWeapon])
+  const weapons = xpath("roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Weapon']", model).map((x) => (parseWeapon(x, stats.strength))).concat([closeCombatWeapon])
   const specialismSelection = xpath('roster:selections/roster:selection[roster:selections/roster:selection/roster:profiles]', model)
   const specialistAbilities = xpath("roster:selections/roster:selection/roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Ability']", model).map(parseAbility)
   const psychicPowers = xpath("roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Psychic Power']", model).map(parsePsychicPower)
