@@ -23,7 +23,7 @@ const points = (model) => {
   return _.sumBy(costNode, (x) => parseInt(x.getAttribute('value')))
 }
 
-const calculatePhases = (description) => {
+export const calculatePhases = (description) => {
   const phases = []
   if (/ attacks characteristic/i.test(description)) { phases.push('fight') }
   if (/ ranged /i.test(description)) { phases.push('shooting') }
@@ -33,9 +33,10 @@ const calculatePhases = (description) => {
   if (/ move /i.test(description)) { phases.push('movement') }
   if (/ psychic /i.test(description)) { phases.push('psychic') }
   if (/ shoot/i.test(description)) { phases.push('shooting') }
+  if (/ obscured/i.test(description)) { phases.push('shooting') }
   if (/ nerve /i.test(description)) { phases.push('morale') }
   if (/ leadership /i.test(description)) { phases.push('morale') }
-  return phases
+  return _.uniq(phases).sort()
 }
 
 const parseForceRule = (rule) => {
