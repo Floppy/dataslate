@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f5fc5c2b742b0ae679e70c9c4499ea3c",
+    "revision": "03eb47970ac2e99822dc5941fe09198a",
     "url": "/scriptorum/index.html"
   },
   {
-    "revision": "3fa2aeaffdace90e9025",
+    "revision": "8ce76c2378e70687fff5",
     "url": "/scriptorum/static/css/2.47e06e2e.chunk.css"
   },
   {
-    "revision": "0d4cfe3856de5eb201c0",
+    "revision": "6db66fa025e2108e7f20",
     "url": "/scriptorum/static/css/main.34de6062.chunk.css"
   },
   {
-    "revision": "3fa2aeaffdace90e9025",
-    "url": "/scriptorum/static/js/2.efda0ef6.chunk.js"
+    "revision": "8ce76c2378e70687fff5",
+    "url": "/scriptorum/static/js/2.d3210de2.chunk.js"
   },
   {
     "revision": "a6e64841a021603687e1e47903c2c8ec",
-    "url": "/scriptorum/static/js/2.efda0ef6.chunk.js.LICENSE"
+    "url": "/scriptorum/static/js/2.d3210de2.chunk.js.LICENSE"
   },
   {
-    "revision": "0d4cfe3856de5eb201c0",
-    "url": "/scriptorum/static/js/main.be844c13.chunk.js"
+    "revision": "6db66fa025e2108e7f20",
+    "url": "/scriptorum/static/js/main.d1369095.chunk.js"
   },
   {
     "revision": "75b1d67f89e302246bea",
