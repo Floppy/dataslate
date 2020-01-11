@@ -20,25 +20,28 @@ function Datasheet(props: Props) {
     background: 'black',
     color: 'white',
     padding: '10px',
+    display: 'flex',
+    width: '100%',
+    justifyContent: 'space-between',
   }
   return (
     <div className="model" style={{
       pageBreakBefore: "always",
     }}>
       <h1 style={headingStyle}>
-        {props.model.category === "Specialist" && <SpecialistIcon specialism={props.model.specialism} />}
-        {props.model.category && <CategoryIcon category={props.model.category} />}
-        {props.model.type}
-        {props.model.category &&
-          <>
-            {' '}
-            <em>
-              {props.model.category === "Specialist"
-                ? `(${[props.model.specialism, props.model.category].join(' ')})`
-                : `(${props.model.category})`}
-            </em>
-          </>
-        }
+        <Col>
+          {props.model.category === "Specialist" && <SpecialistIcon specialism={props.model.specialism} />}
+          {props.model.category && <CategoryIcon category={props.model.category} />}
+          <strong>{props.model.type}</strong>
+          {props.model.category &&
+            (props.model.category === "Specialist"
+              ? ` (${[props.model.specialism, props.model.category].join(' ')})`
+              : ` (${props.model.category})`)
+          }
+        </Col>
+        <Col style={{flexGrow: 0, textAlign: 'right'}}>
+          <small>{props.model.points}pts</small>
+        </Col>
       </h1>
       <div>
         <Badge pill variant="danger" style={{
@@ -56,10 +59,8 @@ function Datasheet(props: Props) {
           </Badge>
         ))}
       </div>
-      <div>
-        Points: {props.model.points}
-      </div>
-      {props.model.name && <div>{props.model.name}</div>}
+      {props.model.name && <div>Name: <strong>{props.model.name}</strong></div>}
+      {props.model.category === "Commander" && <div>Commander specialism: <strong>{props.model.specialism}</strong></div>}
       <StatsTable {...props.model.stats}/>
       <AbilityList abilities={props.model.abilities} phase=''/>
       <Phase name="movement">
