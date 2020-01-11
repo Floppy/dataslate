@@ -136,8 +136,8 @@ const parseModel = (model) => {
   const psychicPowers = xpath("roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Psychic Power']", model).map(parsePsychicPower)
   const category = xpath("roster:categories/roster:category[@primary='true']", model)[0].getAttribute('name')
   const faction = xpath("roster:categories/roster:category[@primary='false' and starts-with(@name,'Faction: ')]", model)
-  let keywords = xpath("roster:categories/roster:category[@primary='false' and not(starts-with(@name,'Faction: '))]", model).map((x) => x.getAttribute('name'));
-  _.remove(keywords, (x) => (x === "Model"))
+  const keywords = xpath("roster:categories/roster:category[@primary='false' and not(starts-with(@name,'Faction: '))]", model).map((x) => x.getAttribute('name'))
+  _.remove(keywords, (x) => (x === 'Model'))
   const details = {
     name: model.getAttribute('customName'),
     type: model.getAttribute('name'),
