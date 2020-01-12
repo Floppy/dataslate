@@ -25,17 +25,17 @@ const points = (model) => {
 
 export const calculatePhases = (description) => {
   const phases = []
-  if (/ attacks characteristic/i.test(description)) { phases.push('fight') }
+  if (/attacks characteristic/i.test(description)) { phases.push('fight') }
   if (/ ranged /i.test(description)) { phases.push('shooting') }
-  if (/ fight phase/i.test(description)) { phases.push('fight') }
+  if (/fight phase/i.test(description)) { phases.push('fight') }
   if (/ charge /i.test(description)) { phases.push('movement') }
   if (/ advance /i.test(description)) { phases.push('movement') }
   if (/ move /i.test(description)) { phases.push('movement') }
-  if (/ psychic /i.test(description)) { phases.push('psychic') }
+  if (/psychic/i.test(description)) { phases.push('psychic') }
   if (/ shoot/i.test(description)) { phases.push('shooting') }
-  if (/ obscured/i.test(description)) { phases.push('shooting') }
-  if (/ nerve /i.test(description)) { phases.push('morale') }
-  if (/ leadership /i.test(description)) { phases.push('morale') }
+  if (/obscured/i.test(description)) { phases.push('shooting') }
+  if (/nerve/i.test(description)) { phases.push('morale') }
+  if (/leadership/i.test(description)) { phases.push('morale') }
   return _.uniq(phases).sort()
 }
 
