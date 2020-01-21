@@ -106,23 +106,17 @@ const parsePsychicPower = (power) => {
 }
 
 const additionalAttacks = (weapons, abilities) => {
-  const attackRegexp = / ([0-9]|an) additional attack/
-  const attacks = _.map(weapons, (w) => {
-    const match = w.abilities.match(attackRegexp)
+  const descriptions = _.map(weapons, (w) => w.abilities).concat(_.map(abilities, (a) => a.description))
+  const attackRegexp = / ([0-9]|an) additional attack|Add ([0-9]{1}) to this model's Attacks characteristic/
+  const attacks = _.map(descriptions, (d) => {
+    const match = d.match(attackRegexp)
+    console.log(match)
     if (match) {
       if (match[1] === 'an') return 1;
-      return parseInt(match[1])
+      return parseInt(match[1] || match[2])
     }
     return null;
   })
-  attacks.concat(_.map(abilities, (a) => {
-    const match = a.description.match(attackRegexp)
-    if (match) {
-      if (match[1] === 'an') return 1;
-      return parseInt(match[1])
-    }
-    return null;
-  }))
   return _.sum(attacks)
 }
 
@@ -142,9 +136,9 @@ const parseModel = (model) => {
   const forceRules = xpath('//roster:force/roster:rules/roster:rule', model).map(parseForceRule)
   const wargear = xpath("roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Wargear']", model).map(parseWargear)
   const upgrades = xpath("roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Ability']", model).map(parseAbility)
-  const abilities = xpath("roster:profiles/roster:profile[@typeName='Ability']", model).map(parseAbility).concat(forceRules).concat(wargear).concat(upgrades)
   const specialismSelection = xpath('roster:selections/roster:selection[roster:selections/roster:selection/roster:profiles]', model)
   const specialistAbilities = xpath("roster:selections/roster:selection/roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Ability']", model).map(parseAbility)
+  const abilities = xpath("roster:profiles/roster:profile[@typeName='Ability']", model).map(parseAbility).concat(forceRules).concat(wargear).concat(upgrades).concat(specialistAbilities)
   const stats = {
     movement: stat('M', model),
     weapon_skill: stat('WS', model),
@@ -178,7 +172,7 @@ const parseModel = (model) => {
     type: model.getAttribute('name'),
     category: category === 'Non-specialist' ? null : category,
     stats,
-    abilities: abilities.concat(specialistAbilities),
+    abilities,
     weapons,
     psychicPowers,
     specialism: specialismSelection.length > 0 ? specialismSelection[0].getAttribute('name') : null,
