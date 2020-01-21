@@ -95,7 +95,8 @@ function Datasheet(props: Props) {
       <Phase name="fight">
         <Row>
           <Col sm='1'>
-            <StatBadge name="A" value={`${props.model.stats.attacks}`}/>
+            <StatBadge name="A" value={`${props.model.stats.attacks}${ props.model.stats.additional_attacks ? `+${props.model.stats.additional_attacks}` : ''}
+`}/>
             <StatBadge name="WS" value={`${props.model.stats.weapon_skill}+`}/>
           </Col>
           <Col>

@@ -105,7 +105,46 @@ const parsePsychicPower = (power) => {
   }
 }
 
+const additionalAttacks = (weapons, abilities) => {
+  const attackRegexp = / ([0-9]|an) additional attack/
+  const attacks = _.map(weapons, (w) => {
+    const match = w.abilities.match(attackRegexp)
+    if (match) {
+      if (match[1] === 'an') return 1;
+      return parseInt(match[1])
+    }
+    return null;
+  })
+  attacks.concat(_.map(abilities, (a) => {
+    const match = a.description.match(attackRegexp)
+    if (match) {
+      if (match[1] === 'an') return 1;
+      return parseInt(match[1])
+    }
+    return null;
+  }))
+  return _.sum(attacks)
+}
+
+const invulnerableSave = (abilities) => {
+  const saveRegexp = /model has a ([0-9]{1})\+ invulnerable save/
+  const saves = _.map(abilities, (a) => {
+    const match = a.description.match(saveRegexp)
+    if (match) {
+      return parseInt(match[1])
+    }
+    return null;
+  })
+  return _.min(saves)
+}
+
 const parseModel = (model) => {
+  const forceRules = xpath('//roster:force/roster:rules/roster:rule', model).map(parseForceRule)
+  const wargear = xpath("roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Wargear']", model).map(parseWargear)
+  const upgrades = xpath("roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Ability']", model).map(parseAbility)
+  const abilities = xpath("roster:profiles/roster:profile[@typeName='Ability']", model).map(parseAbility).concat(forceRules).concat(wargear).concat(upgrades)
+  const specialismSelection = xpath('roster:selections/roster:selection[roster:selections/roster:selection/roster:profiles]', model)
+  const specialistAbilities = xpath("roster:selections/roster:selection/roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Ability']", model).map(parseAbility)
   const stats = {
     movement: stat('M', model),
     weapon_skill: stat('WS', model),
@@ -115,7 +154,8 @@ const parseModel = (model) => {
     wounds: stat('W', model),
     attacks: stat('A', model),
     leadership: stat('Ld', model),
-    save: stat('Sv', model)
+    save: stat('Sv', model),
+    invulnerable_save: invulnerableSave(abilities),
   }
   const closeCombatWeapon = {
     name: 'Bare fists',
@@ -126,13 +166,8 @@ const parseModel = (model) => {
     damage: 1,
     abilities: 'Default close combat weapon available to all models'
   }
-  const forceRules = xpath('//roster:force/roster:rules/roster:rule', model).map(parseForceRule)
-  const wargear = xpath("roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Wargear']", model).map(parseWargear)
-  const upgrades = xpath("roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Ability']", model).map(parseAbility)
-  const abilities = xpath("roster:profiles/roster:profile[@typeName='Ability']", model).map(parseAbility).concat(forceRules).concat(wargear).concat(upgrades)
   const weapons = xpath("roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Weapon']", model).map((x) => (parseWeapon(x, stats.strength))).concat([closeCombatWeapon])
-  const specialismSelection = xpath('roster:selections/roster:selection[roster:selections/roster:selection/roster:profiles]', model)
-  const specialistAbilities = xpath("roster:selections/roster:selection/roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Ability']", model).map(parseAbility)
+  stats['additional_attacks'] = additionalAttacks(weapons, abilities);
   const psychicPowers = xpath("roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Psychic Power']", model).map(parsePsychicPower)
   const category = xpath("roster:categories/roster:category[@primary='true']", model)[0].getAttribute('name')
   const faction = xpath("roster:categories/roster:category[@primary='false' and starts-with(@name,'Faction: ')]", model)

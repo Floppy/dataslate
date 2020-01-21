@@ -28,8 +28,10 @@ export type ModelStats = {
   toughness: number,
   wounds: number,
   attacks: number,
+  additional_attacks: number,
   leadership: number,
   save: number,
+  invulnerable_save: number,
 }
 
 export type Model = {

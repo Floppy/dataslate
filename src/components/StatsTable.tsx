@@ -9,8 +9,10 @@ type Props = {
   toughness: number,
   wounds: number,
   attacks: number,
+  additional_attacks: number,
   leadership: number,
   save: number,
+  invulnerable_save: number,
 }
 
 function StatsTable (props: Props) {
@@ -37,9 +39,12 @@ function StatsTable (props: Props) {
           <td>{props.strength}</td>
           <td>{props.toughness}</td>
           <td>{props.wounds}</td>
-          <td>{props.attacks}</td>
+          <td>{props.attacks}
+          { props.additional_attacks ? <strong>{' +'}{props.additional_attacks}</strong> : null}
+          </td>
           <td>{props.leadership}</td>
-          <td>{props.save}+</td>
+          <td>{props.save}+
+          { props.invulnerable_save ? <>{' / '}<strong>{props.invulnerable_save}++</strong></> : null}</td>
         </tr>
       </tbody>
     </Table>
