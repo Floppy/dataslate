@@ -49,7 +49,7 @@ const parseForceRule = (rule) => {
 }
 
 const parseAbility = (ability) => {
-  const description = xpath("roster:characteristics/roster:characteristic[@name='Description']", ability)[0].childNodes[0].nodeValue
+  const description = xpath(".//roster:characteristic[@name='Description']", ability)[0].childNodes[0].nodeValue
   return {
     name: ability.getAttribute('name'),
     description,
@@ -82,7 +82,7 @@ const parseWeapon = (weapon, userStrength) => {
 }
 
 const parseWargear = (wargear) => {
-  const description = xpath("roster:characteristics/roster:characteristic[@name='Ability']", wargear)[0].childNodes[0].nodeValue
+  const description = xpath(".//roster:characteristic[@name='Ability']", wargear)[0].childNodes[0].nodeValue
   return {
     name: wargear.getAttribute('name'),
     description,
@@ -91,7 +91,7 @@ const parseWargear = (wargear) => {
 }
 
 const parsePsychicPower = (power) => {
-  let description = xpath("roster:characteristics/roster:characteristic[@name='Psychic Power']", power)[0].childNodes[0].nodeValue
+  let description = xpath(".//roster:characteristic[@name='Psychic Power']", power)[0].childNodes[0].nodeValue
   const warpChargeDescription = description.match(/warp charge value of ([0-9]+)\.(.*)/)
   let charge = null
   if (warpChargeDescription.length > 2) {
@@ -110,7 +110,6 @@ const additionalAttacks = (weapons, abilities) => {
   const attackRegexp = / ([0-9]|an) additional attack|Add ([0-9]{1}) to this model's Attacks characteristic/
   const attacks = _.map(descriptions, (d) => {
     const match = d.match(attackRegexp)
-    console.log(match)
     if (match) {
       if (match[1] === 'an') return 1;
       return parseInt(match[1] || match[2])
@@ -134,11 +133,9 @@ const invulnerableSave = (abilities) => {
 
 const parseModel = (model) => {
   const forceRules = xpath('//roster:force/roster:rules/roster:rule', model).map(parseForceRule)
-  const wargear = xpath("roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Wargear']", model).map(parseWargear)
-  const upgrades = xpath("roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Ability']", model).map(parseAbility)
+  const wargear = xpath(".//roster:profile[@typeName='Wargear']", model).map(parseWargear)
   const specialismSelection = xpath('roster:selections/roster:selection[roster:selections/roster:selection/roster:profiles]', model)
-  const specialistAbilities = xpath("roster:selections/roster:selection/roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Ability']", model).map(parseAbility)
-  const abilities = xpath("roster:profiles/roster:profile[@typeName='Ability']", model).map(parseAbility).concat(forceRules).concat(wargear).concat(upgrades).concat(specialistAbilities)
+  const abilities = xpath(".//roster:profile[@typeName='Ability']", model).map(parseAbility).concat(forceRules).concat(wargear)
   const stats = {
     movement: stat('M', model),
     weapon_skill: stat('WS', model),
@@ -160,7 +157,7 @@ const parseModel = (model) => {
     damage: 1,
     abilities: 'Default close combat weapon available to all models'
   }
-  const weapons = xpath("roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Weapon']", model).map((x) => (parseWeapon(x, stats.strength))).concat([closeCombatWeapon])
+  const weapons = xpath(".//roster:profile[@typeName='Weapon']", model).map((x) => (parseWeapon(x, stats.strength))).concat([closeCombatWeapon])
   stats['additional_attacks'] = additionalAttacks(weapons, abilities);
   const psychicPowers = xpath("roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Psychic Power']", model).map(parsePsychicPower)
   const category = xpath("roster:categories/roster:category[@primary='true']", model)[0].getAttribute('name')
