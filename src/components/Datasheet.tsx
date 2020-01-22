@@ -84,8 +84,12 @@ function Datasheet(props: Props) {
         <Row>
           <Col sm='1'>
             <StatBadge name="BS" value={`${props.model.stats.ballistic_skill}+`}/>
+            <StatBadge name="Sv" value={`${props.model.stats.save}+` + (props.model.stats.invulnerable_save ? ` / ${props.model.stats.invulnerable_save}++` : '')}/>
           </Col>
-          <Col>
+          <Col sm='1'>
+            <StatBadge name="T" value={`${props.model.stats.toughness}`}/>
+          </Col>
+        <Col>
             <WeaponList weapons={props.model.weapons} phase='shooting' userStrength={props.model.stats.strength}/>
             <AbilityList abilities={props.model.abilities} phase='shooting'/>
           </Col>
@@ -97,7 +101,11 @@ function Datasheet(props: Props) {
           <Col sm='1'>
             <StatBadge name="A" value={`${props.model.stats.attacks}${ props.model.stats.additional_attacks ? `+${props.model.stats.additional_attacks}` : ''}
 `}/>
+            <StatBadge name="T" value={`${props.model.stats.toughness}`}/>
+          </Col>
+          <Col sm='1'>
             <StatBadge name="WS" value={`${props.model.stats.weapon_skill}+`}/>
+            <StatBadge name="Sv" value={`${props.model.stats.save}+` + (props.model.stats.invulnerable_save ? ` / ${props.model.stats.invulnerable_save}++` : '')}/>
           </Col>
           <Col>
             <WeaponList weapons={props.model.weapons} phase='fight' userStrength={props.model.stats.strength}/>
