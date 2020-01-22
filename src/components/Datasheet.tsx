@@ -79,7 +79,7 @@ function Datasheet(props: Props) {
           <AbilityList abilities={props.model.abilities} phase='psychic'/>
         </Phase>
       }
-      { !isNaN(props.model.stats.ballistic_skill) &&
+      { !isNaN(props.model.stats.ballistic_skill) && (props.model.weapons.filter((x) => (x.type !== "Melee")).length > 0) &&
       <Phase name="shooting">
         <Row>
           <Col sm='1'>
