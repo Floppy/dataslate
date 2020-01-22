@@ -36,6 +36,7 @@ export const calculatePhases = (description) => {
   if (/obscured/i.test(description)) { phases.push('shooting') }
   if (/nerve/i.test(description)) { phases.push('morale') }
   if (/leadership/i.test(description)) { phases.push('morale') }
+  if (/ reserve/i.test(description)) { phases.push('movement') }
   return _.uniq(phases).sort()
 }
 
