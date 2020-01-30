@@ -4,7 +4,7 @@ import _ from 'lodash'
 const abilities = {
   "This model does not suffer the -1 penalty for shooting with a Heavy weapon after moving in the preceding Movement phase, or for shooting an Assault weapon after Advancing.": ['shooting'],
   "You can re-roll Advance rolls for this model.": ["movement"],
-  "You can re-roll hit rolls of 1 for this model when it makes a shooting attack.": ["shooting"],
+  //PENDING "You can re-roll hit rolls of 1 for this model when it makes a shooting attack.": ["shooting"],
   "This model ignores penalties to its Leadership characteristic and Nerve tests.": ["morale"],
   "Add 1 to this model’s Attacks characteristic": ["fight"],
   "You can add 1 to this model’s wound rolls against targets that are obscured.": ["shooting"],
