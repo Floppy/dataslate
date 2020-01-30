@@ -114,10 +114,10 @@ const additionalAttacks = (weapons, abilities) => {
   const attacks = _.map(descriptions, (d) => {
     const match = d.match(attackRegexp)
     if (match) {
-      if (match[1] === 'an') return 1;
+      if (match[1] === 'an') return 1
       return parseInt(match[1] || match[2])
     }
-    return null;
+    return null
   })
   return _.sum(attacks)
 }
@@ -129,7 +129,7 @@ const invulnerableSave = (abilities) => {
     if (match) {
       return parseInt(match[1])
     }
-    return null;
+    return null
   })
   return _.min(saves)
 }
@@ -149,7 +149,7 @@ const parseModel = (model) => {
     attacks: stat('A', model),
     leadership: stat('Ld', model),
     save: stat('Sv', model),
-    invulnerable_save: invulnerableSave(abilities),
+    invulnerable_save: invulnerableSave(abilities)
   }
   const closeCombatWeapon = {
     name: 'Bare fists',
@@ -161,7 +161,7 @@ const parseModel = (model) => {
     abilities: 'Default close combat weapon available to all models'
   }
   const weapons = xpath(".//roster:profile[@typeName='Weapon']", model).map((x) => (parseWeapon(x, stats.strength))).concat([closeCombatWeapon])
-  stats['additional_attacks'] = additionalAttacks(weapons, abilities);
+  stats.additional_attacks = additionalAttacks(weapons, abilities)
   const psychicPowers = xpath("roster:selections/roster:selection/roster:profiles/roster:profile[@typeName='Psychic Power']", model).map(parsePsychicPower)
   const category = xpath("roster:categories/roster:category[@primary='true']", model)[0].getAttribute('name')
   const faction = xpath("roster:categories/roster:category[@primary='false' and starts-with(@name,'Faction: ')]", model)
