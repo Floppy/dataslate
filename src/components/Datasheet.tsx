@@ -66,7 +66,7 @@ function Datasheet(props: Props) {
       <Phase name="movement">
         <Row>
           <Col sm='1'>
-            <StatBadge name="M" value={`${props.model.stats.movement}"`}/>
+            <StatBadge name="M" value={`${props.model.stats.movement}`}/>
           </Col>
           <Col>
             <AbilityList abilities={props.model.abilities} phase='movement'/>
@@ -83,11 +83,15 @@ function Datasheet(props: Props) {
       <Phase name="shooting">
         <Row>
           <Col sm='1'>
-            <StatBadge name="BS" value={`${props.model.stats.ballistic_skill}+`}/>
-            <StatBadge name="Sv" value={`${props.model.stats.save}+` + (props.model.stats.invulnerable_save ? ` / ${props.model.stats.invulnerable_save}++` : '')}/>
+            <StatBadge name="BS" value={`${props.model.stats.ballistic_skill}`} secondaryValue="+"/>
+            <StatBadge name="T" value={`${props.model.stats.toughness}`}/>
           </Col>
           <Col sm='1'>
-            <StatBadge name="T" value={`${props.model.stats.toughness}`}/>
+            <StatBadge name="Sv" value={`${props.model.stats.save}`} secondaryValue="+"/>
+            { props.model.stats.invulnerable_save
+              ? <StatBadge name="Inv" value={`${props.model.stats.invulnerable_save}`} secondaryValue="+"/>
+              : <></>
+            }
           </Col>
         <Col>
             <WeaponList weapons={props.model.weapons} phase='shooting' userStrength={props.model.stats.strength}/>
@@ -99,13 +103,16 @@ function Datasheet(props: Props) {
       <Phase name="fight">
         <Row>
           <Col sm='1'>
-            <StatBadge name="A" value={`${props.model.stats.attacks}${ props.model.stats.additional_attacks ? `+${props.model.stats.additional_attacks}` : ''}
-`}/>
+            <StatBadge name="A" value={`${props.model.stats.attacks}`} secondaryValue={ props.model.stats.additional_attacks ? `+${props.model.stats.additional_attacks}` : null}/>
             <StatBadge name="T" value={`${props.model.stats.toughness}`}/>
           </Col>
           <Col sm='1'>
-            <StatBadge name="WS" value={`${props.model.stats.weapon_skill}+`}/>
-            <StatBadge name="Sv" value={`${props.model.stats.save}+` + (props.model.stats.invulnerable_save ? ` / ${props.model.stats.invulnerable_save}++` : '')}/>
+            <StatBadge name="WS" value={`${props.model.stats.weapon_skill}`} secondaryValue="+"/>
+            <StatBadge name="Sv" value={`${props.model.stats.save}`} secondaryValue="+"/>
+            { props.model.stats.invulnerable_save
+              ? <StatBadge name="Inv" value={`${props.model.stats.invulnerable_save}`} secondaryValue="+"/>
+              : <></>
+            }
           </Col>
           <Col>
             <WeaponList weapons={props.model.weapons} phase='fight' userStrength={props.model.stats.strength}/>

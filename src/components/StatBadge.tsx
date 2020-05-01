@@ -3,7 +3,8 @@ import CSS from 'csstype'
 
 type Props = {
   name: string,
-  value: string
+  value: string,
+  secondaryValue?: string | null,
 }
 
 function StatBadge (props: Props) {
@@ -32,7 +33,13 @@ function StatBadge (props: Props) {
   return (
     <div className='statbadge' style={badgeStyle}>
       <div className='name' style={nameStyle}>{props.name}</div>
-      <div className='value' style={valueStyle}>{props.value}</div>
+      <div className='value' style={valueStyle}>
+        { props.value }
+        { props.secondaryValue
+          ? <small>{props.secondaryValue}</small>
+          : <></>
+        }
+      </div>
     </div>
   )
 }
