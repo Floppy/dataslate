@@ -2,9 +2,9 @@ import React from 'react';
 import StatsTable from './StatsTable';
 import StatBadge from './StatBadge';
 import AbilityList from './AbilityList';
-import PsychicPowerList from './PsychicPowerList';
 import WeaponList from './WeaponList';
 import Phase from './Phase';
+import { PsychicPhaseDetails, hasPsychicPhase } from './PsychicPhaseDetails';
 import { SpecialistIcon } from './SpecialistIcon';
 import { CategoryIcon } from './CategoryIcon';
 import { Badge, Row, Col } from 'react-bootstrap'
@@ -73,10 +73,9 @@ function Datasheet(props: Props) {
           </Col>
         </Row>
       </Phase>
-      { (props.model.psychicPowers.length > 0 || (props.model.abilities.filter((x) => (x.phases.indexOf("psychic") >= 0))).length > 0) &&
+      { hasPsychicPhase(props.model) &&
         <Phase name="psychic">
-          <PsychicPowerList powers={props.model.psychicPowers}/>
-          <AbilityList abilities={props.model.abilities} phase='psychic'/>
+          <PsychicPhaseDetails model={props.model}/>
         </Phase>
       }
       { !isNaN(props.model.stats.ballistic_skill) && (props.model.weapons.filter((x) => (x.type !== "Melee")).length > 0) &&
