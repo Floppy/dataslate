@@ -2,11 +2,11 @@ import React from 'react';
 import StatsTable from './StatsTable';
 import StatBadge from './StatBadge';
 import AbilityList from './AbilityList';
-import WeaponList from './WeaponList';
 import Phase from './Phase';
 import { MovementPhaseDetails } from './MovementPhaseDetails';
 import { PsychicPhaseDetails, hasPsychicPhase } from './PsychicPhaseDetails';
 import { ShootingPhaseDetails, hasShootingPhase } from './ShootingPhaseDetails';
+import { FightPhaseDetails } from './FightPhaseDetails';
 import { SpecialistIcon } from './SpecialistIcon';
 import { CategoryIcon } from './CategoryIcon';
 import { Badge, Row, Col } from 'react-bootstrap'
@@ -79,24 +79,7 @@ function Datasheet(props: Props) {
         </Phase>
       }
       <Phase name="fight">
-        <Row>
-          <Col sm='1'>
-            <StatBadge name="A" value={`${props.model.stats.attacks}`} secondaryValue={ props.model.stats.additional_attacks ? `+${props.model.stats.additional_attacks}` : null}/>
-            <StatBadge name="T" value={`${props.model.stats.toughness}`}/>
-          </Col>
-          <Col sm='1'>
-            <StatBadge name="WS" value={`${props.model.stats.weapon_skill}`} secondaryValue="+"/>
-            <StatBadge name="Sv" value={`${props.model.stats.save}`} secondaryValue="+"/>
-            { props.model.stats.invulnerable_save
-              ? <StatBadge name="Inv" value={`${props.model.stats.invulnerable_save}`} secondaryValue="+"/>
-              : <></>
-            }
-          </Col>
-          <Col>
-            <WeaponList weapons={props.model.weapons} phase='fight' userStrength={props.model.stats.strength}/>
-            <AbilityList abilities={props.model.abilities} phase='fight'/>
-          </Col>
-        </Row>
+        <FightPhaseDetails model={props.model}/>
       </Phase>
       <Phase name="morale">
         <Row>
