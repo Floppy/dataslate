@@ -5,6 +5,7 @@ import AbilityList from './AbilityList';
 import WeaponList from './WeaponList';
 import Phase from './Phase';
 import { PsychicPhaseDetails, hasPsychicPhase } from './PsychicPhaseDetails';
+import { MovementPhaseDetails } from './MovementPhaseDetails';
 import { SpecialistIcon } from './SpecialistIcon';
 import { CategoryIcon } from './CategoryIcon';
 import { Badge, Row, Col } from 'react-bootstrap'
@@ -64,14 +65,7 @@ function Datasheet(props: Props) {
       <StatsTable {...props.model.stats}/>
       <AbilityList abilities={props.model.abilities} phase=''/>
       <Phase name="movement">
-        <Row>
-          <Col sm='1'>
-            <StatBadge name="M" value={`${props.model.stats.movement}`}/>
-          </Col>
-          <Col>
-            <AbilityList abilities={props.model.abilities} phase='movement'/>
-          </Col>
-        </Row>
+        <MovementPhaseDetails model={props.model}/>
       </Phase>
       { hasPsychicPhase(props.model) &&
         <Phase name="psychic">
