@@ -1,15 +1,15 @@
 import React from 'react';
 import StatsTable from './StatsTable';
-import StatBadge from './StatBadge';
 import AbilityList from './AbilityList';
 import Phase from './Phase';
 import { MovementPhaseDetails } from './MovementPhaseDetails';
 import { PsychicPhaseDetails, hasPsychicPhase } from './PsychicPhaseDetails';
 import { ShootingPhaseDetails, hasShootingPhase } from './ShootingPhaseDetails';
 import { FightPhaseDetails } from './FightPhaseDetails';
+import { MoralePhaseDetails } from './MoralePhaseDetails';
 import { SpecialistIcon } from './SpecialistIcon';
 import { CategoryIcon } from './CategoryIcon';
-import { Badge, Row, Col } from 'react-bootstrap'
+import { Badge, Col } from 'react-bootstrap'
 
 import { Model } from '../types';
 
@@ -82,14 +82,7 @@ function Datasheet(props: Props) {
         <FightPhaseDetails model={props.model}/>
       </Phase>
       <Phase name="morale">
-        <Row>
-          <Col sm='1'>
-            <StatBadge name="Ld" value={`${props.model.stats.leadership}`}/>
-          </Col>
-          <Col>
-        <AbilityList abilities={props.model.abilities} phase='morale'/>
-           </Col>
-        </Row>
+        <MoralePhaseDetails model={props.model}/>
       </Phase>
     </div>
   );
