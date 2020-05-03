@@ -1,7 +1,6 @@
 import React from 'react';
-import StatsTable from './StatsTable';
-import AbilityList from './AbilityList';
 import Phase from './Phase';
+import { NoPhaseDetails } from './NoPhaseDetails';
 import { MovementPhaseDetails } from './MovementPhaseDetails';
 import { PsychicPhaseDetails, hasPsychicPhase } from './PsychicPhaseDetails';
 import { ShootingPhaseDetails, hasShootingPhase } from './ShootingPhaseDetails';
@@ -9,7 +8,7 @@ import { FightPhaseDetails } from './FightPhaseDetails';
 import { MoralePhaseDetails } from './MoralePhaseDetails';
 import { SpecialistIcon } from './SpecialistIcon';
 import { CategoryIcon } from './CategoryIcon';
-import { Badge, Col } from 'react-bootstrap'
+import { Col } from 'react-bootstrap'
 
 import { Model } from '../types';
 
@@ -45,26 +44,7 @@ function Datasheet(props: Props) {
           <small>{props.model.points}pts</small>
         </Col>
       </h1>
-      <div>
-        <Badge pill variant="danger" style={{
-          textTransform: "uppercase",
-          marginRight: "10px",
-        }}>
-          {props.model.faction}
-        </Badge>
-        {props.model.keywords.map((keyword: string) => (
-          <Badge pill variant="primary" style={{
-            textTransform: "uppercase",
-            marginRight: "10px",
-          }}>
-            {keyword}
-          </Badge>
-        ))}
-      </div>
-      {props.model.name && <div>Name: <strong>{props.model.name}</strong></div>}
-      {props.model.category === "Commander" && <div>Commander specialism: <strong>{props.model.specialism}</strong></div>}
-      <StatsTable {...props.model.stats}/>
-      <AbilityList abilities={props.model.abilities} phase=''/>
+      <NoPhaseDetails model={props.model}/>
       <Phase name="movement">
         <MovementPhaseDetails model={props.model}/>
       </Phase>
