@@ -2168,7 +2168,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-transition-group@^4.2.4":
+"@types/react-transition-group@^4.4.0":
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/@types/react-transition-group/-/react-transition-group-4.4.0.tgz#882839db465df1320e4753e6e9f70ca7e9b4d46d"
   integrity sha512-/QfLHGpu+2fQOqQaXh8MG9q03bFENooTb/it4jr5kKaZlDQfWvjqWZg48AwzPVMBHlRuTRAY7hRHCEOXz5kV6w==
@@ -9427,10 +9427,10 @@ react-app-polyfill@^1.0.6:
     regenerator-runtime "^0.13.3"
     whatwg-fetch "^3.0.0"
 
-react-bootstrap@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/react-bootstrap/-/react-bootstrap-1.1.1.tgz#986606d8777b97e4eeeb365592aadc154520b557"
-  integrity sha512-DsJ1aaXQPa3ob/Bh2JXnbWmZJHNxS18HbiJdyBhumf6OHk6rVXo329uwa2lHI0ZuxPO3mA8OJLOT0lighV/e8Q==
+react-bootstrap@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/react-bootstrap/-/react-bootstrap-1.2.2.tgz#dbae0c3d4fb20cd545c8efc62f49190f690cea2b"
+  integrity sha512-G+QcEyBqFtakBNghdDugie+yU/ABDeqw3n+SOeRGxEn1m0dbIyHTroZpectcQk6FB3aS4RJGkZTuLVYH86Cu2A==
   dependencies:
     "@babel/runtime" "^7.4.2"
     "@restart/context" "^2.1.4"
@@ -9439,14 +9439,14 @@ react-bootstrap@^1.1.1:
     "@types/invariant" "^2.2.33"
     "@types/prop-types" "^15.7.3"
     "@types/react" "^16.9.35"
-    "@types/react-transition-group" "^4.2.4"
+    "@types/react-transition-group" "^4.4.0"
     "@types/warning" "^3.0.0"
     classnames "^2.2.6"
     dom-helpers "^5.1.2"
     invariant "^2.2.4"
     prop-types "^15.7.2"
     prop-types-extra "^1.1.0"
-    react-overlays "^3.2.0"
+    react-overlays "^4.0.0"
     react-transition-group "^4.0.0"
     uncontrollable "^7.0.0"
     warning "^4.0.3"
@@ -9515,10 +9515,10 @@ react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
-react-overlays@^3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/react-overlays/-/react-overlays-3.2.0.tgz#ed8335adb0871e701b0fc8396c44dfd2467e7a55"
-  integrity sha512-YTgCmw6l4uBOYylSnc3V8WLX+A0EoGnzDrqkYz0K7MUKbMBZFpaxLXH4EF9eZbspd+syZHQ5XAABI7n/zak1EA==
+react-overlays@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/react-overlays/-/react-overlays-4.0.0.tgz#7fbcb60d12fee3733e9e4dd216b225e94fb3befe"
+  integrity sha512-LpznWocwgeB5oWKg6cDdkqKP7MbX4ClKbJqgZGUMXPRBBYcqrgM6TjjZ/8DeurNU//GuqwQMjhmo/JVma4XEWw==
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@popperjs/core" "^2.0.0"
