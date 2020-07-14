@@ -15,7 +15,7 @@
     "react": "^16.13.1",
     "react-bootstrap": "^1.2.2",
     "react-dom": "^16.13.1",
-    "react-dropzone": "^11.0.1",
+    "react-dropzone": "^11.0.2",
     "react-scripts": "^3.4.1",
     "typescript": "^3.9.6",
     "xmldom": "^0.3.0",
