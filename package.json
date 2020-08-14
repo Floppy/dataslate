@@ -9,7 +9,7 @@
     "@types/react-dom": "^16.9.8",
     "bootstrap": "^4.5.2",
     "jszip": "^3.5.0",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.20",
     "node-object-hash": "^2.0.0",
     "pluralize": "^8.0.0",
     "react": "^16.13.1",
