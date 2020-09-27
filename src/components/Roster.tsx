@@ -38,7 +38,7 @@ function Roster(props: Props) {
           <Phase name="shooting">
             <ShootingPhaseDetails model={model}/>
           </Phase>
-        }
+        }c
         <Phase name="fight">
           <FightPhaseDetails model={model}/>
         </Phase>
