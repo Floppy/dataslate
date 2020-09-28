@@ -17,7 +17,7 @@ export function MovementPhaseDetails(props: Props) {
         <ModelTitle model={props.model}/>
         <AbilityList abilities={props.model.abilities} phase='movement'/>
       </Col>
-      <Col sm='1'>
+      <Col sm='auto'>
         <StatBadge name="M" value={`${props.model.stats.movement}`}/>
       </Col>
     </Row>

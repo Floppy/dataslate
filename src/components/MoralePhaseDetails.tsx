@@ -17,7 +17,7 @@ export function MoralePhaseDetails(props: Props) {
         <ModelTitle model={props.model}/>
         <AbilityList abilities={props.model.abilities} phase='morale'/>
       </Col>
-      <Col sm='1'>
+      <Col sm='auto'>
         <StatBadge name="Ld" value={`${props.model.stats.leadership}`}/>
       </Col>
     </Row>

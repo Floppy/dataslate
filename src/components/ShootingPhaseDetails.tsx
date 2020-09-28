@@ -19,11 +19,11 @@ export function ShootingPhaseDetails(props: Props) {
         <WeaponList weapons={props.model.weapons} phase='shooting' userStrength={props.model.stats.strength}/>
         <AbilityList abilities={props.model.abilities} phase='shooting'/>
       </Col>
-      <Col sm='1'>
+      <Col sm='auto'>
         <StatBadge name="BS" value={`${props.model.stats.ballistic_skill}`} secondaryValue="+"/>
         <StatBadge name="T" value={`${props.model.stats.toughness}`}/>
       </Col>
-      <Col sm='1'>
+      <Col sm='auto'>
         <StatBadge name="Sv" value={`${props.model.stats.save}`} secondaryValue="+"/>
         { props.model.stats.invulnerable_save
           ? <StatBadge name="Inv" value={`${props.model.stats.invulnerable_save}`} secondaryValue="+"/>
