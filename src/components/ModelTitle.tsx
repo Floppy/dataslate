@@ -5,7 +5,10 @@ import { Col } from 'react-bootstrap'
 
 import { Model } from '../types';
 
+const _ = require('lodash')
+
 type Props = {
+  showPoints?: boolean,
   model: Model
 };
 
@@ -18,21 +21,26 @@ export function ModelTitle(props: Props) {
     width: '100%',
     justifyContent: 'space-between',
   }
+  const titleComponents = _.without([
+    props.model.name,
+    props.model.type,
+    (props.model.category === "Specialist"
+      ? props.model.specialism
+      : props.model.category)
+  ],null, "");
   return (
     <h2 style={headingStyle}>
       <Col>
         {props.model.category === "Specialist" && <SpecialistIcon specialism={props.model.specialism} />}
         {props.model.category && <CategoryIcon category={props.model.category} />}
-        <strong>{props.model.type}</strong>
-        {props.model.category &&
-          (props.model.category === "Specialist"
-            ? ` (${props.model.specialism})`
-            : ` (${props.model.category})`)
-        }
+        <strong>{titleComponents[0]} </strong>
+        <small>{_.join(_.slice(titleComponents,1), ", ")}</small>
       </Col>
-      <Col style={{flexGrow: 0, textAlign: 'right'}}>
-        <small>{props.model.points}pts</small>
-      </Col>
+      {props.showPoints && (
+        <Col style={{flexGrow: 0, textAlign: 'right'}}>
+          <small>{props.model.points}pts</small>
+        </Col>
+      )}
     </h2>
   );
 }

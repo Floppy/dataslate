@@ -14,8 +14,7 @@ export function NoPhaseDetails(props: Props) {
   return (
     <Row>
       <Col>
-        <ModelTitle model={props.model}/>
-        {props.model.name && <div>Name: <strong>{props.model.name}</strong></div>}
+        <ModelTitle model={props.model} showPoints={true}/>
         {props.model.category === "Commander" && <div>Commander specialism: <strong>{props.model.specialism}</strong></div>}
         <StatsTable {...props.model.stats}/>
         <AbilityList abilities={props.model.abilities} phase=''/>
