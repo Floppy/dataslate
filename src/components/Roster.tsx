@@ -18,13 +18,15 @@ type Props = {
 function Roster(props: Props) {
   // Display models sorted by category and type
   const sortedModels = _.sortBy(props.models, (x: Model) => ([x.category == null, x.category, x.type]))
+  const totalPoints = _.sumBy(props.models, (x: Model) => (x.points))
   return <>
     <Phase name={props.name}>
-      {sortedModels.map((model: Model) => (
-        <>
+      <>
+        <span>{`${totalPoints}pts`}</span>
+        {sortedModels.map((model: Model) => (
           <NoPhaseDetails model={model}/>
-        </>
-      ))}
+        ))}
+      </>
     </Phase>
     <Phase name="movement">
       {sortedModels.map((model: Model) => (
