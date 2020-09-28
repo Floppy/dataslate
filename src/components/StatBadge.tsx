@@ -19,7 +19,6 @@ function StatBadge (props: Props) {
     flexDirection: 'column',
     textAlign: 'center',
     borderRadius: '50%',
-    marginBottom: '1vw',
   };
   const nameStyle: CSS.Properties = {
     fontSize: '1vw',
@@ -31,7 +30,7 @@ function StatBadge (props: Props) {
     fontWeight: 'bold'
   }
   return (
-    <div className='statbadge' style={badgeStyle}>
+    <div className='statbadge mb-4' style={badgeStyle}>
       <div className='name' style={nameStyle}>{props.name}</div>
       <div className='value' style={valueStyle}>
         { props.value }
