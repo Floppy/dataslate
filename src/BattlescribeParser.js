@@ -193,8 +193,10 @@ export const parseBattlescribeXML = (xml) => {
       models.push(parseModel(model))
     }
   }
+  const points = _.sumBy(models, (x) => (x.points))
   return {
     name,
+    points,
     models: _.uniqBy(models, (m) => m.hash)
   }
 }

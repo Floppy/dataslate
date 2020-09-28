@@ -10,6 +10,7 @@ class App extends React.Component {
     super(props)
     this.state = {
       name: null,
+      points: 0,
       models: []
     }
 
@@ -25,7 +26,7 @@ class App extends React.Component {
       <Container>
         {this.state.models.length === 0
           ? <Homepage onUpload={this.handleUpload} />
-          : <Roster name={this.state.name} models={this.state.models} />}
+          : <Roster points={this.state.points} name={this.state.name} models={this.state.models} />}
       </Container>
     )
   }

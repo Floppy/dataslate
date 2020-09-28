@@ -12,17 +12,17 @@ const _ = require('lodash')
 
 type Props = {
   name: string,
+  points: number,
   models: Model[],
 };
 
 function Roster(props: Props) {
   // Display models sorted by category and type
   const sortedModels = _.sortBy(props.models, (x: Model) => ([x.category == null, x.category, x.type]))
-  const totalPoints = _.sumBy(props.models, (x: Model) => (x.points))
   return <>
     <Phase name={props.name}>
       <>
-        <span>{`${totalPoints}pts`}</span>
+        <span>{`${props.points}pts`}</span>
         {sortedModels.map((model: Model) => (
           <NoPhaseDetails model={model}/>
         ))}
