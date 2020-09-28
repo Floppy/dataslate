@@ -11,6 +11,7 @@ import { MoralePhaseDetails } from './MoralePhaseDetails';
 const _ = require('lodash')
 
 type Props = {
+  name: string,
   models: Model[],
 };
 
@@ -18,7 +19,7 @@ function Roster(props: Props) {
   // Display models sorted by category and type
   const sortedModels = _.sortBy(props.models, (x: Model) => ([x.category == null, x.category, x.type]))
   return <>
-    <Phase name="Overview">
+    <Phase name={props.name}>
       {sortedModels.map((model: Model) => (
         <>
           <NoPhaseDetails model={model}/>

@@ -186,11 +186,15 @@ const parseModel = (model) => {
 export const parseBattlescribeXML = (xml) => {
   var models = []
   var doc = new DOMParser().parseFromString(xml)
+  const name = xpath('/roster:roster', doc)[0].getAttribute('name')
   for (const category of xpath('//roster:force/roster:categories/roster:category', doc)) {
     const categoryId = category.getAttribute('entryId')
     for (const model of xpath(`//roster:selection[@type='model' and roster:categories/roster:category/@entryId='${categoryId}']`, doc)) {
       models.push(parseModel(model))
     }
   }
-  return _.uniqBy(models, (m) => m.hash)
+  return {
+    name,
+    models: _.uniqBy(models, (m) => m.hash)
+  }
 }
