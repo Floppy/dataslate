@@ -20,15 +20,15 @@ function StatsTable (props: Props) {
     <Table striped bordered size="sm">
       <thead>
         <tr>
-          <th>Movement</th>
-          <th>Weapon Skill</th>
-          <th>Ballistic Skill</th>
-          <th>Strength</th>
-          <th>Toughness</th>
-          <th>Wounds</th>
-          <th>Attacks</th>
-          <th>Leadership</th>
-          <th>Save</th>
+          <th>M</th>
+          <th>WS</th>
+          <th>BS</th>
+          <th>S</th>
+          <th>T</th>
+          <th>W</th>
+          <th>A</th>
+          <th>Ld</th>
+          <th>Sv</th>
         </tr>
       </thead>
       <tbody>
