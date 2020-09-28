@@ -2,7 +2,7 @@ import React from 'react';
 import StatsTable from './StatsTable';
 import AbilityList from './AbilityList';
 import { Badge } from 'react-bootstrap'
-
+import { ModelTitle } from './ModelTitle';
 import { Model } from '../types';
 
 type Props = {
@@ -12,6 +12,7 @@ type Props = {
 export function NoPhaseDetails(props: Props) {
   return (
     <>
+      <ModelTitle model={props.model}/>
       <div>
         <Badge pill variant="danger" style={{
           textTransform: "uppercase",

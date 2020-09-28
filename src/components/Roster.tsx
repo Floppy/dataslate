@@ -1,14 +1,12 @@
 import React from 'react';
+import { Model } from '../types';
 import Phase from './Phase';
-import { ModelTitle } from './ModelTitle';
 import { NoPhaseDetails } from './NoPhaseDetails';
 import { MovementPhaseDetails } from './MovementPhaseDetails';
 import { PsychicPhaseDetails, hasPsychicPhase } from './PsychicPhaseDetails';
 import { ShootingPhaseDetails, hasShootingPhase } from './ShootingPhaseDetails';
 import { FightPhaseDetails } from './FightPhaseDetails';
 import { MoralePhaseDetails } from './MoralePhaseDetails';
-
-import { Model } from '../types';
 
 const _ = require('lodash')
 
@@ -18,35 +16,44 @@ type Props = {
 
 function Roster(props: Props) {
   // Display models sorted by category and type
-  const sortedModels = _.sortBy(props.models, (x: Model) => ([x.category == null, x.category, x.type]));
+  const sortedModels = _.sortBy(props.models, (x: Model) => ([x.category == null, x.category, x.type]))
   return <>
-    {sortedModels.map((model: Model) => (
-      <div className="model" style={{
-        pageBreakBefore: "always",
-      }}>
-        <ModelTitle model={model}/>
-        <NoPhaseDetails model={model}/>
-        <Phase name="movement">
-          <MovementPhaseDetails model={model}/>
-        </Phase>
-        { hasPsychicPhase(model) &&
-          <Phase name="psychic">
-            <PsychicPhaseDetails model={model}/>
-          </Phase>
-        }
-        { hasShootingPhase(model) &&
-          <Phase name="shooting">
-            <ShootingPhaseDetails model={model}/>
-          </Phase>
-        }c
-        <Phase name="fight">
-          <FightPhaseDetails model={model}/>
-        </Phase>
-        <Phase name="morale">
-          <MoralePhaseDetails model={model}/>
-        </Phase>
-      </div>
-    ))}
+    <Phase name="Overview">
+      {sortedModels.map((model: Model) => (
+        <>
+          <NoPhaseDetails model={model}/>
+        </>
+      ))}
+    </Phase>
+    <Phase name="movement">
+      {sortedModels.map((model: Model) => (
+        <MovementPhaseDetails model={model}/>
+      ))}
+    </Phase>
+    {_.some(sortedModels, hasPsychicPhase) &&
+      <Phase name="psychic">
+        {sortedModels.map((model: Model) => (
+          hasPsychicPhase(model) &&
+          <PsychicPhaseDetails model={model}/>
+        ))}
+      </Phase>
+    }
+    <Phase name="shooting">
+      {sortedModels.map((model: Model) => (
+        hasShootingPhase(model) &&
+          <ShootingPhaseDetails model={model}/>
+      ))}
+    </Phase>
+    <Phase name="fight">
+      {sortedModels.map((model: Model) => (
+        <FightPhaseDetails model={model}/>
+      ))}
+    </Phase>
+    <Phase name="morale">
+      {sortedModels.map((model: Model) => (
+        <MoralePhaseDetails model={model}/>
+      ))}
+    </Phase>
   </>
 }
 

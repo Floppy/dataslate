@@ -7,11 +7,15 @@ type Props = {
 
 function Phase(props: Props) {
   return <>
-    <h2 style={{
-      textTransform: "capitalize"
+    <h1 style={{
+      background: 'black',
+      color: 'white',
+      padding: '10px',
+      width: '100%',
+      textTransform: 'capitalize',
     }}>
       {props.name}
-    </h2>
+    </h1>
     {props.children}
   </>
 }

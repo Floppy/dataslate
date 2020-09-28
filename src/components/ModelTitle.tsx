@@ -11,28 +11,28 @@ type Props = {
 
 export function ModelTitle(props: Props) {
   const headingStyle = {
-    background: 'black',
-    color: 'white',
-    padding: '10px',
+    background: 'lightgrey',
+    color: 'black',
+    padding: '5px',
     display: 'flex',
     width: '100%',
     justifyContent: 'space-between',
   }
   return (
-    <h1 style={headingStyle}>
+    <h2 style={headingStyle}>
       <Col>
         {props.model.category === "Specialist" && <SpecialistIcon specialism={props.model.specialism} />}
         {props.model.category && <CategoryIcon category={props.model.category} />}
         <strong>{props.model.type}</strong>
         {props.model.category &&
           (props.model.category === "Specialist"
-            ? ` (${[props.model.specialism, props.model.category].join(' ')})`
+            ? ` (${props.model.specialism})`
             : ` (${props.model.category})`)
         }
       </Col>
       <Col style={{flexGrow: 0, textAlign: 'right'}}>
         <small>{props.model.points}pts</small>
       </Col>
-    </h1>
+    </h2>
   );
 }
