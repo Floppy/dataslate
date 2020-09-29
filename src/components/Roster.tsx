@@ -20,9 +20,8 @@ function Roster(props: Props) {
   // Display models sorted by category and type
   const sortedModels = _.sortBy(props.models, (x: Model) => ([x.category == null, x.category, x.type]))
   return <>
-    <Phase name={props.name}>
+    <Phase name={props.name} note={`${props.points}pts`}>
       <>
-        <span>{`${props.points}pts`}</span>
         {sortedModels.map((model: Model) => (
           <NoPhaseDetails model={model}/>
         ))}
