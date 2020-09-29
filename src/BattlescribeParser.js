@@ -194,9 +194,12 @@ export const parseBattlescribeXML = (xml) => {
     }
   }
   const points = _.sumBy(models, (x) => (x.points))
+  const uniqueModels = _.groupBy(models, (m) => m.hash)
   return {
     name,
     points,
-    models: _.uniqBy(models, (m) => m.hash)
+    models: _.map(uniqueModels, (m) => (
+      {...m[0], count: m.length }
+    ))
   }
 }

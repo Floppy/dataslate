@@ -47,4 +47,5 @@ export type Model = {
   keywords: string[],
   hash: string,
   points: number,
+  count: number,
 };
