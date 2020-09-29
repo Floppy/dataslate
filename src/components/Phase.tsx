@@ -8,7 +8,9 @@ type Props = {
 };
 
 function Phase(props: Props) {
-  return <>
+  return <div style={{
+    pageBreakAfter: 'always',
+  }}>
     <h1 style={{
       background: 'black',
       color: 'white',
@@ -27,7 +29,7 @@ function Phase(props: Props) {
       </Col>
     </h1>
     {props.children}
-  </>
+  </div>
 }
 
 export default Phase;
