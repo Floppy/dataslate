@@ -13,31 +13,45 @@ function Homepage(props: Props) {
     <Row>
       <Col>
         <Card>
-          <Card.Title>Step 1</Card.Title>
-          <Card.Text>
-            Build your force in{' '}
-            <a href='https://battlescribe.net/'>Battlescribe</a>
-          </Card.Text>
+          <Card.Header as="h3">Step 1</Card.Header>
+          <Card.Body style={{minHeight: '12em'}}>
+            <Card.Text>
+              Build your force in{' '}
+              <a href='https://battlescribe.net/'>Battlescribe</a>.
+            </Card.Text>
+            <Card.Text>
+              Currently only Kill Team rosters are supported.
+            </Card.Text>
+          </Card.Body>
         </Card>
       </Col>
       <Col>
         <Card>
-          <Card.Title>Step 2</Card.Title>
-          <Card.Text><Dropzone onDrop={props.onUpload} accept='.ros,.rosz'>
-            {({ getRootProps, getInputProps }) => (
-              <Alert variant='primary' {...getRootProps()} style={{ textAlign: 'center' }}>
-                <input {...getInputProps()} />
-                <p>Drop your roster file here, or click to select one.</p>
-                <p><em>(*.rosz and *.ros accepted)</em></p>
-              </Alert>
-            )}
-          </Dropzone></Card.Text>
+          <Card.Header as="h3">Step 2</Card.Header>
+          <Card.Body style={{minHeight: '12em'}}>
+            <Card.Text><Dropzone onDrop={props.onUpload} accept='.ros,.rosz'>
+              {({ getRootProps, getInputProps }) => (
+                <Alert variant='primary' {...getRootProps()} style={{ textAlign: 'center' }}>
+                  <input {...getInputProps()} />
+                  <p>Drop your roster file here, or click to select one.</p>
+                  <p><em>(*.rosz and *.ros accepted)</em></p>
+                </Alert>
+              )}
+            </Dropzone></Card.Text>
+          </Card.Body>
         </Card>
       </Col>
       <Col>
         <Card>
-          <Card.Title>Step 3</Card.Title>
-          <Card.Text>Print out, and dominate your foes!</Card.Text>
+          <Card.Header as="h3">Step 3</Card.Header>
+          <Card.Body style={{minHeight: '12em'}}>
+            <Card.Text>
+              Print your datasheets out, and never forget an ability again!
+            </Card.Text>
+            <Card.Text>
+              Prepare to dominate your foes!
+            </Card.Text>
+          </Card.Body>
         </Card>
       </Col>
     </Row>
