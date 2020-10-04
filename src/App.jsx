@@ -8,17 +8,23 @@ import { loadFiles } from './FileLoader'
 class App extends React.Component {
   constructor (props) {
     super(props)
-    this.state = {
+    const initialState = {
       name: null,
       points: 0,
       models: []
-    }
+    };
+    this.state = initialState;
 
     this.handleUpload = (acceptedFiles) => {
       loadFiles(acceptedFiles).then((result) => {
         this.setState(result)
       })
     }
+
+    this.onClose = () => {
+      this.setState(initialState)
+    }
+
   }
 
   render () {
@@ -26,7 +32,7 @@ class App extends React.Component {
       <Container>
         {this.state.models.length === 0
           ? <Homepage onUpload={this.handleUpload} />
-          : <Roster points={this.state.points} name={this.state.name} models={this.state.models} />}
+          : <Roster points={this.state.points} name={this.state.name} models={this.state.models} onClose={this.onClose}/>}
       </Container>
     )
   }
