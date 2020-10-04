@@ -1,4 +1,3 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
 import React from 'react'
 import Homepage from './components/Homepage'
 import Roster from './components/Roster'

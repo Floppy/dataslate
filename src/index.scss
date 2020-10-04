@@ -1,3 +1,9 @@
+$theme-colors: (
+    "primary": #FF6F2D,
+);
+
+@import "~bootstrap/scss/bootstrap";
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",

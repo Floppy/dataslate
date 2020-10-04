@@ -25,7 +25,7 @@ function Homepage(props: Props) {
           <Card.Title>Step 2</Card.Title>
           <Card.Text><Dropzone onDrop={props.onUpload} accept='.ros,.rosz'>
             {({ getRootProps, getInputProps }) => (
-              <Alert variant='info' {...getRootProps()} style={{ textAlign: 'center' }}>
+              <Alert variant='primary' {...getRootProps()} style={{ textAlign: 'center' }}>
                 <input {...getInputProps()} />
                 <p>Drop your roster file here, or click to select one.</p>
                 <p><em>(*.rosz and *.ros accepted)</em></p>
@@ -42,7 +42,10 @@ function Homepage(props: Props) {
       </Col>
     </Row>
     <footer>
-      Built with <a href='https://reactjs.org/'>React</a> and <a href='https://getbootstrap.com'>Bootstrap</a>. Icons courtesy of <a href='https://killteam.app/'>Companion for Kill Team</a>. Released as <a href='https://github.com/floppy/scriptorum'>Open Source</a>, report problems <a href='https://github.com/floppy/scriptorum/issues/new'>on GitHub</a>.
+      Built with <a href='https://reactjs.org/'>React</a> and <a href='https://getbootstrap.com'>Bootstrap</a>.
+      Icons courtesy of <a href='https://killteam.app/'>Companion for Kill Team</a>.
+      Released as <a href='https://github.com/floppy/scriptorum'>Open Source</a>,
+      report problems <a href='https://github.com/floppy/scriptorum/issues/new'>on GitHub</a>.
     </footer>
   </>
 }
