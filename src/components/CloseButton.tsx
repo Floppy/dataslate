@@ -6,5 +6,5 @@ type Props = {
 };
 
 export function CloseButton(props: Props) {
-  return (<Button variant="danger" onClick={props.onClose}>Close</Button>);
+  return (<Button variant="danger" className='d-print-none' onClick={props.onClose}>Close</Button>);
 }
