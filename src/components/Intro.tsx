@@ -1,27 +1,22 @@
 import React from 'react';
-import { Alert } from 'react-bootstrap'
+import { Jumbotron } from 'react-bootstrap'
 
 function Intro() {
-  return <>
+  return <Jumbotron>
     <h1>
       Scriptorum
     </h1>
     <p className='lead'>
-      Readable datasheets for Warhammer 40k Kill Team
+      Easy-to-use datasheets for Warhammer 40,000: Kill Team
     </p>
     <ul>
-      <li>Organises abilities and weapons by phase</li>
-      <li>Merges identical models</li>
-      <li>Prints out as one datasheet per page</li>
-      <li>Clear, readable layout</li>
+      <li>All the info you need, when you need it</li>
+      <li>Stats and abilities organised by phase</li>
+      <li>No wasted space for identical mdels</li>
+      <li>Designed for print or screen</li>
+      <li>Clear, uncluttered layout for easy reference</li>
     </ul>
-    <Alert variant='danger'>
-      Scriptorum is a work in progress, but it should work,
-      so try it out! If you spot any problems, please create an
-      issue <a href='https://github.com/Floppy/scriptorum/issues'>on GitHub</a> and
-      include your roster file if possible.
-    </Alert>
-  </>
+  </Jumbotron>
 }
 
 export default Intro;
