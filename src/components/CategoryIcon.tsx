@@ -5,14 +5,8 @@ type Props = {
 };
 
 export function CategoryIcon(props: Props) {
-  const icons: {
-    [index: string]: string;
-  } = {
-    'commander': '👑',
-    'leader': '💀',
-    'specialist': '',
-  };
-  return (<span className='category' style={{marginRight: '10px'}}>
-    {props.category ? icons[props.category.toLowerCase()] : ''}
-  </span>);
+  return (props.category && props.category.toLowerCase() !== 'specialist'
+    ? <img className='category' style={{height: '1em', marginRight: '10px'}} alt={props.category} src={`/scriptorum/icons/${props.category}.svg`}/>
+    : <></>
+);
 }

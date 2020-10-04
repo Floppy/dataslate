@@ -42,7 +42,7 @@ function Homepage(props: Props) {
       </Col>
     </Row>
     <footer>
-      Built with <a href='https://reactjs.org/'>React</a> and <a href='https://getbootstrap.com'>Bootstrap</a>. Released as <a href='https://github.com/floppy/scriptorum'>Open Source</a>, report problems <a href='https://github.com/floppy/scriptorum/issues/new'>on GitHub</a>.
+      Built with <a href='https://reactjs.org/'>React</a> and <a href='https://getbootstrap.com'>Bootstrap</a>. Icons courtesy of <a href='https://killteam.app/'>Companion for Kill Team</a>. Released as <a href='https://github.com/floppy/scriptorum'>Open Source</a>, report problems <a href='https://github.com/floppy/scriptorum/issues/new'>on GitHub</a>.
     </footer>
   </>
 }
