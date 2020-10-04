@@ -20,7 +20,7 @@ function Phase(props: Props) {
       display: 'flex',
     }}>
       <Col>
-        {props.name}
+        {props.name} Phase
       </Col>
       <Col style={{flexGrow: 0, textAlign: 'right'}}>
         {props.note && (
