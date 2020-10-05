@@ -24,14 +24,14 @@ export function ModelTitle(props: Props) {
   const titleComponents = _.without([
     props.model.name,
     props.model.type,
-    (props.model.category === "Specialist"
+    (props.model.category === "Specialist" || props.model.category === "Specialist Retainer"
       ? props.model.specialism
       : props.model.category)
   ],null, "");
   return (
     <h2 style={headingStyle}>
       <Col>
-        {props.model.category === "Specialist" && <SpecialistIcon specialism={props.model.specialism} />}
+        {(props.model.category === "Specialist" || props.model.category === "Specialist Retainer") && <SpecialistIcon specialism={props.model.specialism} />}
         {props.model.category && <CategoryIcon category={props.model.category} />}
         <strong>{titleComponents[0]} </strong>
         {props.model.count > 1 && (
