@@ -11,8 +11,8 @@ class App extends React.Component {
       name: null,
       points: 0,
       models: []
-    };
-    this.state = initialState;
+    }
+    this.state = initialState
 
     this.handleUpload = (acceptedFiles) => {
       loadFiles(acceptedFiles).then((result) => {
@@ -20,18 +20,17 @@ class App extends React.Component {
       })
     }
 
-    this.onClose = () => {
+    this.handleClose = () => {
       this.setState(initialState)
     }
-
   }
 
   render () {
     return (
-      <Container fluid="lg">
+      <Container fluid='lg'>
         {this.state.models.length === 0
           ? <Homepage onUpload={this.handleUpload} />
-          : <Roster points={this.state.points} name={this.state.name} models={this.state.models} onClose={this.onClose}/>}
+          : <Roster points={this.state.points} name={this.state.name} models={this.state.models} handleClose={this.handleClose} />}
       </Container>
     )
   }
