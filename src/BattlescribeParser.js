@@ -137,7 +137,7 @@ const invulnerableSave = (abilities) => {
 const parseModel = (model) => {
   const forceRules = xpath('//roster:force/roster:rules/roster:rule', model).map(parseForceRule)
   const wargear = xpath(".//roster:profile[@typeName='Wargear']", model).map(parseWargear)
-  const specialismSelection = xpath('roster:selections/roster:selection[roster:selections/roster:selection/roster:profiles]', model)
+  const specialismSelection = xpath("roster:selections/roster:selection[roster:selections/roster:selection/roster:profiles/roster:profile/@typeName='Ability']", model)
   const abilities = xpath(".//roster:profile[@typeName='Ability']", model).map(parseAbility).concat(forceRules).concat(wargear)
   const stats = {
     movement: stat('M', model),
