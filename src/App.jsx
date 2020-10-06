@@ -30,7 +30,7 @@ class App extends React.Component {
       <Container fluid='lg'>
         {this.state.models.length === 0
           ? <Homepage onUpload={this.handleUpload} />
-          : <Roster points={this.state.points} name={this.state.name} models={this.state.models} handleClose={this.handleClose} />}
+          : <Roster points={this.state.points} name={this.state.name} models={this.state.models} onClose={this.handleClose} />}
       </Container>
     )
   }

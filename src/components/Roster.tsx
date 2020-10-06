@@ -16,7 +16,7 @@ type Props = {
   name: string,
   points: number,
   models: Model[],
-  handleClose: any,
+  onClose: any,
 };
 
 function Roster(props: Props) {
@@ -38,7 +38,7 @@ function Roster(props: Props) {
         <small>{props.points}pts</small>
       </Col>
       <Col style={{flexGrow: 0, textAlign: 'right'}}>
-        <CloseButton handleClose={props.handleClose}/>
+        <CloseButton onClose={props.onClose}/>
       </Col>
     </h1>
     <>
