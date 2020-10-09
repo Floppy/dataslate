@@ -1,17 +1,31 @@
 import { calculatePhases } from './BattlescribeParser'
 import _ from 'lodash'
+import parse from 'csv-parse/lib/sync'
+import fs from 'fs'
 
-const abilities = {
-  "This model does not suffer the -1 penalty for shooting with a Heavy weapon after moving in the preceding Movement phase, or for shooting an Assault weapon after Advancing.": ['shooting'],
-  "You can re-roll Advance rolls for this model.": ["movement"],
-  //PENDING "You can re-roll hit rolls of 1 for this model when it makes a shooting attack.": ["shooting"],
-  "This model ignores penalties to its Leadership characteristic and Nerve tests.": ["morale"],
-  "Add 1 to this model’s Attacks characteristic": ["fight"],
-  "You can add 1 to this model’s wound rolls against targets that are obscured.": ["shooting"],
-  "Subtract 1 from any psychic tests made for enemy PSYKERS within 18\" of a model with this ability. TYRANIDS PSYKERS are not affected.": ["psychic"],
-}
-_.forIn(abilities, (phases, description) => {
-  it(`works out right phases for ${description}`, () => {
-    expect(calculatePhases(description)).toEqual(phases);
-  })
+const abilities = parse(fs.readFileSync("abilities.csv"), {
+  columns: true,
+  skip_empty_lines: true
+})
+_.forEach(abilities, (a) => {
+  describe(`for the ability "${a.ability}"`, () => {
+    it('works out correct phases', () => {
+      const phases = calculatePhases(a.ability)
+      const expectedPhases = []
+      _.forIn({
+        scouting: a.scouting === 'Y',
+        deployment: a.deployment === 'Y',
+        initiative: a.initiative === 'Y',
+        movement: a.movement === 'Y',
+        psychic: a.psychic === 'Y',
+        shooting: a.shooting === 'Y',
+        fight: a.fight === 'Y',
+        morale: a.morale === 'Y'
+      },(value, key) => {
+        if (value)
+          expectedPhases.push(key)
+      });
+      expect(phases.sort()).toEqual(expectedPhases.sort());
+    });
+  });
 });
