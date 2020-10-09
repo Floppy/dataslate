@@ -1,4 +1,4 @@
-import { calculatePhases } from './BattlescribeParser'
+import { calculatePhases, parseAdditionalAttacks, invulnerableSave } from './BattlescribeParser'
 import _ from 'lodash'
 import parse from 'csv-parse/lib/sync'
 import fs from 'fs'
@@ -26,6 +26,14 @@ _.forEach(abilities, (a) => {
           expectedPhases.push(key)
       });
       expect(phases.sort()).toEqual(expectedPhases.sort());
+    });
+
+    it(`works out correct additional attacks`, () => {
+      expect(parseAdditionalAttacks(a['ability'])).toEqual(parseInt(a['A']) || 0);
+    });
+
+    it(`works out correct invulnerable save`, () => {
+      expect(invulnerableSave([{description: a['ability']}])).toEqual(parseInt(a['Inv']) || undefined);
     });
   });
 });
