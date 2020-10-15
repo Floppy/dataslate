@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/scriptorum/static/css/main.edc690f1.chunk.css",
+    "main.js": "/scriptorum/static/js/main.0a17b06d.chunk.js",
+    "main.js.map": "/scriptorum/static/js/main.0a17b06d.chunk.js.map",
+    "runtime-main.js": "/scriptorum/static/js/runtime-main.1fb77578.js",
+    "runtime-main.js.map": "/scriptorum/static/js/runtime-main.1fb77578.js.map",
+    "static/js/2.5b07df95.chunk.js": "/scriptorum/static/js/2.5b07df95.chunk.js",
+    "static/js/2.5b07df95.chunk.js.map": "/scriptorum/static/js/2.5b07df95.chunk.js.map",
+    "index.html": "/scriptorum/index.html",
+    "precache-manifest.4f457ce05794864a01e40d9acf7c7af7.js": "/scriptorum/precache-manifest.4f457ce05794864a01e40d9acf7c7af7.js",
+    "service-worker.js": "/scriptorum/service-worker.js",
+    "static/css/main.edc690f1.chunk.css.map": "/scriptorum/static/css/main.edc690f1.chunk.css.map",
+    "static/js/2.5b07df95.chunk.js.LICENSE.txt": "/scriptorum/static/js/2.5b07df95.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1fb77578.js",
+    "static/js/2.5b07df95.chunk.js",
+    "static/css/main.edc690f1.chunk.css",
+    "static/js/main.0a17b06d.chunk.js"
+  ]
+}
