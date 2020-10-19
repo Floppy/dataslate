@@ -4,6 +4,9 @@ import { Model } from '../types';
 import Phase from './Phase';
 import { NoPhaseDetails } from './NoPhaseDetails';
 import { MovementPhaseDetails } from './MovementPhaseDetails';
+import { ScoutingPhaseDetails, hasScoutingPhase } from './ScoutingPhaseDetails';
+import { DeploymentPhaseDetails, hasDeploymentPhase } from './DeploymentPhaseDetails';
+import { InitiativePhaseDetails, hasInitiativePhase } from './InitiativePhaseDetails';
 import { PsychicPhaseDetails, hasPsychicPhase } from './PsychicPhaseDetails';
 import { ShootingPhaseDetails, hasShootingPhase } from './ShootingPhaseDetails';
 import { FightPhaseDetails } from './FightPhaseDetails';
@@ -46,6 +49,30 @@ function Roster(props: Props) {
         <NoPhaseDetails model={model}/>
       ))}
     </>
+    {_.some(sortedModels, hasScoutingPhase) &&
+      <Phase name="scouting">
+        {sortedModels.map((model: Model) => (
+          hasScoutingPhase(model) &&
+          <ScoutingPhaseDetails model={model}/>
+        ))}
+      </Phase>
+    }
+    {_.some(sortedModels, hasDeploymentPhase) &&
+      <Phase name="deployment">
+        {sortedModels.map((model: Model) => (
+          hasDeploymentPhase(model) &&
+          <DeploymentPhaseDetails model={model}/>
+        ))}
+      </Phase>
+    }
+    {_.some(sortedModels, hasInitiativePhase) &&
+      <Phase name="initiative">
+        {sortedModels.map((model: Model) => (
+          hasInitiativePhase(model) &&
+          <InitiativePhaseDetails model={model}/>
+        ))}
+      </Phase>
+    }
     <Phase name="movement">
       {sortedModels.map((model: Model) => (
         <MovementPhaseDetails model={model}/>
