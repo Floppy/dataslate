@@ -14,6 +14,7 @@ export type Weapon = {
   name: string,
   range: number,
   type: string,
+  shots: string,
   strength: number,
   armourPiercing: number,
   damage: number,

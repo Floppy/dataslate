@@ -220,10 +220,14 @@ const parseWeapon = (weapon, userStrength) => {
   if (match) {
     strength = userStrength + parseInt(match[1])
   }
+  let weaponType = weaponStat('Type', weapon, false);
+  if (weaponType !== "Melee")
+    weaponType = weaponType.split(' ').slice(0,-1).join(' ')
   return {
     name: weapon.getAttribute('name'),
     range: weaponStat('Range', weapon, true),
-    type: weaponStat('Type', weapon, false),
+    type: weaponType,
+    shots: weaponStat('Type', weapon, false).split(' ').slice(-1)[0],
     strength,
     armourPiercing: weaponStat('AP', weapon, true),
     damage: weaponStat('D', weapon, false),
