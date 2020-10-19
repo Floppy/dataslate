@@ -262,20 +262,34 @@ export const additionalAttacks = (weapons, abilities) => {
 }
 
 export const parseAdditionalAttacks = (description) => {
-  const attackRegexp = / ([0-9]|an|two) additional attack|Add ([0-9]{1}) to this model's Attacks characteristic/
-  const match = description.match(attackRegexp)
-  if (match) {
-    if (match[1] === 'an') return 1
-    if (match[1] === 'two') return 2
-    return parseInt(match[1] || match[2])
-  }
-  return 0
+  const patterns = [
+    /Add ([1-9]{1}) to this model's Attacks characteristic/,
+    / ([1-9]|an|one|two) additional attack/,
+    /(one) \(and only one\) attack with this weapon./
+  ]
+  const antiPatterns = [
+    /if a model/,
+    /if the bearer/,
+    /unless/
+  ]
+  return _.sum(_.map(patterns, (pattern) => {
+    const match = description.match(pattern)
+    if (match) {
+      if (_.some(antiPatterns, (re) => (re.test(description)))) {
+        return 0
+      }
+      if (match[1] === 'an' || match[1] === 'one') return 1
+      if (match[1] === 'two') return 2
+      return parseInt(match[1] || match[2])
+    }
+    return 0
+  }))
 }
 
 export const invulnerableSave = (abilities) => {
   const patterns = [
     /models with this ability have a ([1-6]{1})\+ invulnerable save/,
-    /has a ([1-6]{1})\+ invulnerable save($|\.|\,| and| instead of)/,
+    /has a ([1-6]{1})\+ invulnerable save($|\.|,| and| instead of)/,
     /has an invulnerable save of ([1-6]{1})\+/
   ]
   const saves = _.map(abilities, (a) => {
