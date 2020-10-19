@@ -16,11 +16,11 @@ export function ShootingPhaseDetails(props: Props) {
     <Row>
       <Col>
         <ModelTitle model={props.model}/>
-        <WeaponList weapons={props.model.weapons} phase='shooting' userStrength={props.model.stats.strength}/>
+        {hasRangedWeapons(props.model) && <WeaponList weapons={props.model.weapons} phase='shooting' userStrength={props.model.stats.strength}/>}
         <AbilityList abilities={props.model.abilities} phase='shooting'/>
       </Col>
       <Col sm='auto'>
-        <StatBadge name="BS" value={`${props.model.stats.ballistic_skill}`} secondaryValue="+"/>
+        {hasRangedWeapons(props.model) && <StatBadge name="BS" value={`${props.model.stats.ballistic_skill}`} secondaryValue="+"/>}
         <StatBadge name="T" value={`${props.model.stats.toughness}`}/>
       </Col>
       <Col sm='auto'>
@@ -34,6 +34,6 @@ export function ShootingPhaseDetails(props: Props) {
   );
 }
 
-export function hasShootingPhase(model: Model) {
+export function hasRangedWeapons(model: Model) {
   return !isNaN(model.stats.ballistic_skill) && (model.weapons.filter((x) => (x.type !== "Melee")).length > 0)
 }

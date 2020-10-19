@@ -8,7 +8,7 @@ import { ScoutingPhaseDetails, hasScoutingPhase } from './ScoutingPhaseDetails';
 import { DeploymentPhaseDetails, hasDeploymentPhase } from './DeploymentPhaseDetails';
 import { InitiativePhaseDetails, hasInitiativePhase } from './InitiativePhaseDetails';
 import { PsychicPhaseDetails, hasPsychicPhase } from './PsychicPhaseDetails';
-import { ShootingPhaseDetails, hasShootingPhase } from './ShootingPhaseDetails';
+import { ShootingPhaseDetails } from './ShootingPhaseDetails';
 import { FightPhaseDetails } from './FightPhaseDetails';
 import { MoralePhaseDetails } from './MoralePhaseDetails';
 import { CloseButton } from './CloseButton';
@@ -88,8 +88,7 @@ function Roster(props: Props) {
     }
     <Phase name="shooting">
       {sortedModels.map((model: Model) => (
-        hasShootingPhase(model) &&
-          <ShootingPhaseDetails model={model}/>
+        <ShootingPhaseDetails model={model}/>
       ))}
     </Phase>
     <Phase name="fight">
