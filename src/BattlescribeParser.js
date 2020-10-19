@@ -308,10 +308,9 @@ export const invulnerableSave = (abilities) => {
 }
 
 const parseModel = (model) => {
-  const forceRules = xpath('//roster:force/roster:rules/roster:rule', model).map(parseForceRule)
   const wargear = xpath(".//roster:profile[@typeName='Wargear']", model).map(parseWargear)
   const specialismSelection = xpath("roster:selections/roster:selection[roster:selections/roster:selection/roster:profiles/roster:profile/@typeName='Ability']", model)
-  const abilities = xpath(".//roster:profile[@typeName='Ability']", model).map(parseAbility).concat(forceRules).concat(wargear)
+  const abilities = xpath(".//roster:profile[@typeName='Ability']", model).map(parseAbility).concat(wargear)
   const stats = {
     movement: stat('M', model),
     weapon_skill: stat('WS', model),
@@ -360,6 +359,7 @@ export const parseBattlescribeXML = (xml) => {
   var models = []
   var doc = new DOMParser().parseFromString(xml)
   const name = xpath('/roster:roster', doc)[0].getAttribute('name')
+  const forceRules = xpath('//roster:force/roster:rules/roster:rule', doc).map(parseForceRule)
   for (const category of xpath('//roster:force/roster:categories/roster:category', doc)) {
     const categoryId = category.getAttribute('entryId')
     for (const model of xpath(`//roster:selection[@type='model' and roster:categories/roster:category/@entryId='${categoryId}']`, doc)) {
@@ -370,6 +370,7 @@ export const parseBattlescribeXML = (xml) => {
   const uniqueModels = _.groupBy(models, (m) => m.hash)
   return {
     name,
+    forceRules,
     points,
     models: _.map(uniqueModels, (m) => (
       { ...m[0], count: m.length }
