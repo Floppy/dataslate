@@ -273,13 +273,19 @@ export const parseAdditionalAttacks = (description) => {
 }
 
 export const invulnerableSave = (abilities) => {
-  const saveRegexp = /([0-9]{1})\+ invulnerable save|invulnerable save of ([0-9]{1})\+/
+  const patterns = [
+    /models with this ability have a ([1-6]{1})\+ invulnerable save/,
+    /has a ([1-6]{1})\+ invulnerable save($|\.|\,| and| instead of)/,
+    /has an invulnerable save of ([1-6]{1})\+/
+  ]
   const saves = _.map(abilities, (a) => {
-    const match = a.description.match(saveRegexp)
-    if (match) {
-      return parseInt(match[1])
-    }
-    return null
+    return _.min(_.map(patterns, (pattern) => {
+      const match = a.description.match(pattern)
+      if (match) {
+        return parseInt(match[1])
+      }
+      return null
+    }))
   })
   return _.min(saves)
 }
