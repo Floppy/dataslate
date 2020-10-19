@@ -29,7 +29,7 @@ function Homepage(props: Props) {
         <Card>
           <Card.Header as="h3">Step 2</Card.Header>
           <Card.Body style={{minHeight: '12em'}}>
-            <Card.Text><Dropzone onDrop={props.onUpload} accept='.ros,.rosz'>
+            <Dropzone onDrop={props.onUpload} accept='.ros,.rosz'>
               {({ getRootProps, getInputProps }) => (
                 <Alert variant='primary' {...getRootProps()} style={{ textAlign: 'center' }}>
                   <input {...getInputProps()} />
@@ -37,7 +37,7 @@ function Homepage(props: Props) {
                   <p><em>(*.rosz and *.ros accepted)</em></p>
                 </Alert>
               )}
-            </Dropzone></Card.Text>
+            </Dropzone>
           </Card.Body>
         </Card>
       </Col>
