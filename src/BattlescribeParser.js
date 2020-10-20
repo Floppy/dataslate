@@ -24,7 +24,7 @@ const points = (model) => {
 }
 
 export const calculatePhases = (description) => {
-  const minDesc = ' ' + description.toLowerCase().replace(/[.,]/g, '') + ' '
+  const minDesc = ' ' + description.toLowerCase().replace(/[.,)(]/g, '') + ' '
   const phases = []
   const phasePatterns = {
     scouting: [
@@ -76,6 +76,7 @@ export const calculatePhases = (description) => {
       / fire[sd]+ /,
       / firing /,
       / obscured /,
+      / obcured /, // handle typo
       / order(ed)? /,
       / voice of command /,
       / invulnerable save /,
@@ -102,6 +103,7 @@ export const calculatePhases = (description) => {
       / invulnerable save /,
       / look out sir! /,
       / intervening terrain /,
+      / terrain that is between the two models /,
       / damage characteristic is [0-9] in a battle round in which this model charged /,
       / add [0-9] to saving throws /
     ],
@@ -131,7 +133,8 @@ export const calculatePhases = (description) => {
       / toughness characteristic /,
       / suffers? a mortal wound /,
       / taken out of action /,
-      / this weapon/
+      / this weapon/,
+      / reduced to 0 wounds /
     ]
     if (_.some(genericPatterns, (re) => (re.test(minDesc)))) {
       phases.push('fight', 'shooting')
@@ -164,10 +167,12 @@ export const calculatePhases = (description) => {
       / when (it|this model) fires overwatch /,
       / invulnerable save (against attacks made )?in the fight phase /,
       / as if it were your shooting phase /,
-      / tactical support turret /
+      / tactical support turret /,
+      / out of action in the shooting phase /,
+      / mordian /
     ],
     fight: [
-      / as if it were the fight phase /,
+      / the ordered model immediately fights /,
       / shots equal to its attacks characteristic /,
       / stunned /,
       / target enemies at [0-9]{1,2}" or less /,
@@ -308,10 +313,9 @@ export const invulnerableSave = (abilities) => {
 }
 
 const parseModel = (model) => {
-  const forceRules = xpath('//roster:force/roster:rules/roster:rule', model).map(parseForceRule)
   const wargear = xpath(".//roster:profile[@typeName='Wargear']", model).map(parseWargear)
   const specialismSelection = xpath("roster:selections/roster:selection[roster:selections/roster:selection/roster:profiles/roster:profile/@typeName='Ability']", model)
-  const abilities = xpath(".//roster:profile[@typeName='Ability']", model).map(parseAbility).concat(forceRules).concat(wargear)
+  const abilities = xpath(".//roster:profile[@typeName='Ability']", model).map(parseAbility).concat(wargear)
   const stats = {
     movement: stat('M', model),
     weapon_skill: stat('WS', model),
@@ -360,6 +364,7 @@ export const parseBattlescribeXML = (xml) => {
   var models = []
   var doc = new DOMParser().parseFromString(xml)
   const name = xpath('/roster:roster', doc)[0].getAttribute('name')
+  const forceRules = xpath('//roster:force/roster:rules/roster:rule', doc).map(parseForceRule)
   for (const category of xpath('//roster:force/roster:categories/roster:category', doc)) {
     const categoryId = category.getAttribute('entryId')
     for (const model of xpath(`//roster:selection[@type='model' and roster:categories/roster:category/@entryId='${categoryId}']`, doc)) {
@@ -370,6 +375,7 @@ export const parseBattlescribeXML = (xml) => {
   const uniqueModels = _.groupBy(models, (m) => m.hash)
   return {
     name,
+    forceRules,
     points,
     models: _.map(uniqueModels, (m) => (
       { ...m[0], count: m.length }

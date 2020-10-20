@@ -1,7 +1,8 @@
 import React from 'react';
 import { Col } from 'react-bootstrap';
-import { Model } from '../types';
+import { Model, Ability } from '../types';
 import Phase from './Phase';
+import AbilityList from './AbilityList';
 import { NoPhaseDetails } from './NoPhaseDetails';
 import { MovementPhaseDetails } from './MovementPhaseDetails';
 import { ScoutingPhaseDetails, hasScoutingPhase } from './ScoutingPhaseDetails';
@@ -19,6 +20,7 @@ type Props = {
   name: string,
   points: number,
   models: Model[],
+  forceRules: Ability[],
   onClose: any,
 };
 
@@ -45,61 +47,86 @@ function Roster(props: Props) {
       </Col>
     </h1>
     <>
+      <AbilityList abilities={props.forceRules} phase="" highlight/>
       {sortedModels.map((model: Model) => (
         <NoPhaseDetails model={model}/>
       ))}
     </>
     {_.some(sortedModels, hasScoutingPhase) &&
       <Phase name="scouting">
-        {sortedModels.map((model: Model) => (
-          hasScoutingPhase(model) &&
-          <ScoutingPhaseDetails model={model}/>
-        ))}
+        <>
+          <AbilityList abilities={props.forceRules} phase="scouting" highlight/>
+          {sortedModels.map((model: Model) => (
+            hasScoutingPhase(model) &&
+            <ScoutingPhaseDetails model={model}/>
+          ))}
+        </>
       </Phase>
     }
     {_.some(sortedModels, hasDeploymentPhase) &&
       <Phase name="deployment">
-        {sortedModels.map((model: Model) => (
-          hasDeploymentPhase(model) &&
-          <DeploymentPhaseDetails model={model}/>
-        ))}
+        <>
+          <AbilityList abilities={props.forceRules} phase="deployment" highlight/>
+          {sortedModels.map((model: Model) => (
+            hasDeploymentPhase(model) &&
+            <DeploymentPhaseDetails model={model}/>
+          ))}
+        </>
       </Phase>
     }
     {_.some(sortedModels, hasInitiativePhase) &&
       <Phase name="initiative">
-        {sortedModels.map((model: Model) => (
-          hasInitiativePhase(model) &&
-          <InitiativePhaseDetails model={model}/>
-        ))}
+        <>
+          <AbilityList abilities={props.forceRules} phase="initiative" highlight/>
+          {sortedModels.map((model: Model) => (
+            hasInitiativePhase(model) &&
+            <InitiativePhaseDetails model={model}/>
+          ))}
+        </>
       </Phase>
     }
     <Phase name="movement">
-      {sortedModels.map((model: Model) => (
-        <MovementPhaseDetails model={model}/>
-      ))}
+      <>
+        <AbilityList abilities={props.forceRules} phase="movement" highlight/>
+        {sortedModels.map((model: Model) => (
+          <MovementPhaseDetails model={model}/>
+        ))}
+      </>
     </Phase>
     {_.some(sortedModels, hasPsychicPhase) &&
       <Phase name="psychic">
-        {sortedModels.map((model: Model) => (
-          hasPsychicPhase(model) &&
-          <PsychicPhaseDetails model={model}/>
-        ))}
+        <>
+          <AbilityList abilities={props.forceRules} phase="psychic" highlight/>
+          {sortedModels.map((model: Model) => (
+            hasPsychicPhase(model) &&
+            <PsychicPhaseDetails model={model}/>
+          ))}
+        </>
       </Phase>
     }
     <Phase name="shooting">
-      {sortedModels.map((model: Model) => (
-        <ShootingPhaseDetails model={model}/>
-      ))}
+      <>
+        <AbilityList abilities={props.forceRules} phase="shooting" highlight />
+        {sortedModels.map((model: Model) => (
+          <ShootingPhaseDetails model={model}/>
+        ))}
+      </>
     </Phase>
     <Phase name="fight">
-      {sortedModels.map((model: Model) => (
-        <FightPhaseDetails model={model}/>
-      ))}
+      <>
+        <AbilityList abilities={props.forceRules} phase="fight" highlight/>
+        {sortedModels.map((model: Model) => (
+          <FightPhaseDetails model={model}/>
+        ))}
+      </>
     </Phase>
     <Phase name="morale">
-      {sortedModels.map((model: Model) => (
-        <MoralePhaseDetails model={model}/>
-      ))}
+      <>
+        <AbilityList abilities={props.forceRules} phase="morale" highlight/>
+        {sortedModels.map((model: Model) => (
+          <MoralePhaseDetails model={model}/>
+        ))}
+      </>
     </Phase>
   </>
 }
