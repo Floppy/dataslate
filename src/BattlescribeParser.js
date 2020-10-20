@@ -37,7 +37,8 @@ export const calculatePhases = (description) => {
     ],
     initiative: [
       / start of each battle round /,
-      / beginning of each battle round /
+      / beginning of each battle round /,
+      / at the beginning of the battle round /
     ],
     movement: [
       / movement phase /,
