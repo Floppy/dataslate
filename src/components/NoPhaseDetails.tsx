@@ -12,7 +12,7 @@ type Props = {
 
 export function NoPhaseDetails(props: Props) {
   return (
-    <Row>
+    <Row style={{opacity: props.model.selected > 0 ? "1" : "0.25"}}>
       <Col>
         <ModelTitle model={props.model} showPoints={true}/>
         {props.model.category === "Commander" && <div>Commander specialism: <strong>{props.model.specialism}</strong></div>}
