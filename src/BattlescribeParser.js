@@ -352,6 +352,7 @@ const parseModel = (model) => {
     stats,
     abilities,
     weapons,
+    wargear,
     psychicPowers,
     specialism: specialismSelection.length > 0 ? specialismSelection[0].getAttribute('name') : null,
     faction: faction.length > 0 ? faction[0].getAttribute('name').split(': ', 2)[1] : null,

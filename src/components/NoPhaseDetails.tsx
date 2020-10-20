@@ -16,6 +16,7 @@ export function NoPhaseDetails(props: Props) {
       <Col>
         <ModelTitle model={props.model} showPoints={true}/>
         {props.model.category === "Commander" && <div>Commander specialism: <strong>{props.model.specialism}</strong></div>}
+        <p>{props.model.weapons.map((w) => (w.name)).concat(props.model.wargear.map((w) => (w.name))).join(", ")}</p>
         <StatsTable {...props.model.stats}/>
         <AbilityList abilities={props.model.abilities} phase=''/>
       </Col>

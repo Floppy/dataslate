@@ -21,6 +21,11 @@ export type Weapon = {
   abilities: string
 }
 
+export type Wargear = {
+  name: string,
+  abilities: string
+}
+
 export type ModelStats = {
   movement: number,
   weapon_skill: number,
@@ -43,6 +48,7 @@ export type Model = {
   stats: ModelStats,
   abilities: Ability[],
   weapons: Weapon[],
+  wargear: Wargear[],
   psychicPowers: PsychicPower[],
   faction: string,
   keywords: string[],
