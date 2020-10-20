@@ -49,4 +49,5 @@ export type Model = {
   hash: string,
   points: number,
   count: number,
+  selected: number,
 };

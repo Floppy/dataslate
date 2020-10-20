@@ -377,8 +377,10 @@ export const parseBattlescribeXML = (xml) => {
     name,
     forceRules,
     points,
-    models: _.map(uniqueModels, (m) => (
-      { ...m[0], count: m.length }
-    ))
+    models: _.map(uniqueModels, (model) => ({
+      ...model[0],
+      count: model.length,
+      selected: model.length
+    }))
   }
 }
