@@ -134,7 +134,7 @@ export const calculatePhases = (description) => {
       / suffers? a mortal wound /,
       / taken out of action /,
       / this weapon/,
-      / reduced to 0 wounds /,
+      / reduced to 0 wounds /
     ]
     if (_.some(genericPatterns, (re) => (re.test(minDesc)))) {
       phases.push('fight', 'shooting')
@@ -169,7 +169,7 @@ export const calculatePhases = (description) => {
       / as if it were your shooting phase /,
       / tactical support turret /,
       / out of action in the shooting phase /,
-      / mordian /,
+      / mordian /
     ],
     fight: [
       / the ordered model immediately fights /,
