@@ -371,12 +371,10 @@ export const parseBattlescribeXML = (xml) => {
       models.push(parseModel(model))
     }
   }
-  const points = _.sumBy(models, (x) => (x.points))
   const uniqueModels = _.groupBy(models, (m) => m.hash)
   return {
     name,
     forceRules,
-    points,
     models: _.map(uniqueModels, (model) => ({
       ...model[0],
       count: model.length,

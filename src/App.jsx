@@ -9,7 +9,6 @@ class App extends React.Component {
     super(props)
     const initialState = {
       name: null,
-      points: 0,
       forceRules: [],
       models: []
     }
@@ -31,7 +30,7 @@ class App extends React.Component {
       <Container fluid='lg'>
         {this.state.models.length === 0
           ? <Homepage onUpload={this.handleUpload} />
-          : <Roster points={this.state.points} name={this.state.name} models={this.state.models} onClose={this.handleClose} forceRules={this.state.forceRules} />}
+          : <Roster name={this.state.name} models={this.state.models} onClose={this.handleClose} forceRules={this.state.forceRules} />}
       </Container>
     )
   }

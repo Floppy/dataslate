@@ -18,7 +18,6 @@ const _ = require('lodash')
 
 type Props = {
   name: string,
-  points: number,
   models: Model[],
   forceRules: Ability[],
   onClose: any,
@@ -40,7 +39,7 @@ function Roster(props: Props) {
         {props.name}
       </Col>
       <Col style={{flexGrow: 0, textAlign: 'right'}}>
-        <small>{props.points}pts</small>
+        <small>{_.sumBy(props.models, (model: Model) => (model.selected * model.points))}pts</small>
       </Col>
       <Col style={{flexGrow: 0, textAlign: 'right'}}>
         <CloseButton onClose={props.onClose}/>
