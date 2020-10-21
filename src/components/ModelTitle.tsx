@@ -41,7 +41,7 @@ export function ModelTitle(props: Props) {
         <small>{_.join(_.slice(titleComponents,1), ", ")}</small>
       </Col>
       {props.showSelector && (
-        <Col style={{flexGrow: 0, textAlign: 'right'}}>
+        <Col style={{flexGrow: 0}}>
           <ReactBootstrapSlider
             value={props.model.selected}
             slideStop={(x: any) => props.onSelectionChanged(props.model.uuid, x.target.value)}
