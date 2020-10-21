@@ -52,7 +52,7 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://floppy.org.uk/dataslate",
+  "homepage": "https://dataslate.rocks",
   "devDependencies": {
     "@types/react-test-renderer": "^16.9.3",
     "csv-parse": "^4.12.0",
