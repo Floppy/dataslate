@@ -24,9 +24,16 @@ class App extends React.Component {
       this.setState(initialState)
     }
 
-    this.handleSelectionChanged = (model, selectedCount) => {
-      console.log(model);
-      console.log(selectedCount);
+    this.handleSelectionChanged = (uuid, selectedCount) => {
+      this.setState({
+        ...this.state,
+        models: this.state.models.map((model) => (
+          model.uuid !== uuid ? model : {
+            ...model,
+            selected: selectedCount
+          }
+        ))
+      })
     }
   }
 
@@ -35,7 +42,7 @@ class App extends React.Component {
       <Container fluid='lg'>
         {this.state.models.length === 0
           ? <Homepage onUpload={this.handleUpload} />
-          : <Roster name={this.state.name} models={this.state.models} onClose={this.handleClose} forceRules={this.state.forceRules} onSelectionChanged={this.handleSelectionChanged}/>}
+          : <Roster name={this.state.name} models={this.state.models} onClose={this.handleClose} forceRules={this.state.forceRules} onSelectionChanged={this.handleSelectionChanged} />}
       </Container>
     )
   }
