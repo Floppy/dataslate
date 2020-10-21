@@ -41,6 +41,7 @@ export type ModelStats = {
 }
 
 export type Model = {
+  uuid: string,
   type: string,
   name: string,
   category: string,
@@ -55,4 +56,5 @@ export type Model = {
   hash: string,
   points: number,
   count: number,
+  selected: number,
 };

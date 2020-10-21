@@ -18,15 +18,17 @@ const _ = require('lodash')
 
 type Props = {
   name: string,
-  points: number,
   models: Model[],
   forceRules: Ability[],
   onClose: any,
+  onSelectionChanged: any,
 };
 
 function Roster(props: Props) {
   // Display models sorted by category and type
   const sortedModels = _.sortBy(props.models, (x: Model) => ([x.category == null, x.category, x.type]))
+  // Work out which models are actually selected
+  const selectedModels = _.filter(sortedModels, (x: Model) => (x.selected > 0))
   return <>
     <h1 style={{
       background: 'black',
@@ -40,7 +42,7 @@ function Roster(props: Props) {
         {props.name}
       </Col>
       <Col style={{flexGrow: 0, textAlign: 'right'}}>
-        <small>{props.points}pts</small>
+        <small>{_.sumBy(props.models, (model: Model) => (model.selected * model.points))}pts</small>
       </Col>
       <Col style={{flexGrow: 0, textAlign: 'right'}}>
         <CloseButton onClose={props.onClose}/>
@@ -49,36 +51,36 @@ function Roster(props: Props) {
     <>
       <AbilityList abilities={props.forceRules} phase="" highlight/>
       {sortedModels.map((model: Model) => (
-        <NoPhaseDetails model={model}/>
+        <NoPhaseDetails model={model} onSelectionChanged={props.onSelectionChanged}/>
       ))}
     </>
-    {_.some(sortedModels, hasScoutingPhase) &&
+    {_.some(selectedModels, hasScoutingPhase) &&
       <Phase name="scouting">
         <>
           <AbilityList abilities={props.forceRules} phase="scouting" highlight/>
-          {sortedModels.map((model: Model) => (
+          {selectedModels.map((model: Model) => (
             hasScoutingPhase(model) &&
             <ScoutingPhaseDetails model={model}/>
           ))}
         </>
       </Phase>
     }
-    {_.some(sortedModels, hasDeploymentPhase) &&
+    {_.some(selectedModels, hasDeploymentPhase) &&
       <Phase name="deployment">
         <>
           <AbilityList abilities={props.forceRules} phase="deployment" highlight/>
-          {sortedModels.map((model: Model) => (
+          {selectedModels.map((model: Model) => (
             hasDeploymentPhase(model) &&
             <DeploymentPhaseDetails model={model}/>
           ))}
         </>
       </Phase>
     }
-    {_.some(sortedModels, hasInitiativePhase) &&
+    {_.some(selectedModels, hasInitiativePhase) &&
       <Phase name="initiative">
         <>
           <AbilityList abilities={props.forceRules} phase="initiative" highlight/>
-          {sortedModels.map((model: Model) => (
+          {selectedModels.map((model: Model) => (
             hasInitiativePhase(model) &&
             <InitiativePhaseDetails model={model}/>
           ))}
@@ -88,16 +90,16 @@ function Roster(props: Props) {
     <Phase name="movement">
       <>
         <AbilityList abilities={props.forceRules} phase="movement" highlight/>
-        {sortedModels.map((model: Model) => (
+        {selectedModels.map((model: Model) => (
           <MovementPhaseDetails model={model}/>
         ))}
       </>
     </Phase>
-    {_.some(sortedModels, hasPsychicPhase) &&
+    {_.some(selectedModels, hasPsychicPhase) &&
       <Phase name="psychic">
         <>
           <AbilityList abilities={props.forceRules} phase="psychic" highlight/>
-          {sortedModels.map((model: Model) => (
+          {selectedModels.map((model: Model) => (
             hasPsychicPhase(model) &&
             <PsychicPhaseDetails model={model}/>
           ))}
@@ -107,7 +109,7 @@ function Roster(props: Props) {
     <Phase name="shooting">
       <>
         <AbilityList abilities={props.forceRules} phase="shooting" highlight />
-        {sortedModels.map((model: Model) => (
+        {selectedModels.map((model: Model) => (
           <ShootingPhaseDetails model={model}/>
         ))}
       </>
@@ -115,7 +117,7 @@ function Roster(props: Props) {
     <Phase name="fight">
       <>
         <AbilityList abilities={props.forceRules} phase="fight" highlight/>
-        {sortedModels.map((model: Model) => (
+        {selectedModels.map((model: Model) => (
           <FightPhaseDetails model={model}/>
         ))}
       </>
@@ -123,7 +125,7 @@ function Roster(props: Props) {
     <Phase name="morale">
       <>
         <AbilityList abilities={props.forceRules} phase="morale" highlight/>
-        {sortedModels.map((model: Model) => (
+        {selectedModels.map((model: Model) => (
           <MoralePhaseDetails model={model}/>
         ))}
       </>

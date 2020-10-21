@@ -2,13 +2,14 @@ import React from 'react';
 import { SpecialistIcon } from './SpecialistIcon';
 import { CategoryIcon } from './CategoryIcon';
 import { Col } from 'react-bootstrap'
-
+import ReactBootstrapSlider from 'react-bootstrap-slider';
 import { Model } from '../types';
 
 const _ = require('lodash')
 
 type Props = {
-  showPoints?: boolean,
+  showSelector?: boolean,
+  onSelectionChanged?: any,
   model: Model
 };
 
@@ -33,15 +34,20 @@ export function ModelTitle(props: Props) {
       <Col>
         {(props.model.category === "Specialist" || props.model.category === "Specialist Retainer") && <SpecialistIcon specialism={props.model.specialism} />}
         {props.model.category && <CategoryIcon category={props.model.category} />}
-        <strong>{titleComponents[0]} </strong>
-        {props.model.count > 1 && (
-          <small>x{props.model.count}</small>
+        {props.model.selected > 1 && (
+          <small>{props.model.selected} x </small>
         )}
+        <strong>{titleComponents[0]} </strong>
         <small>{_.join(_.slice(titleComponents,1), ", ")}</small>
       </Col>
-      {props.showPoints && (
-        <Col style={{flexGrow: 0, textAlign: 'right'}}>
-          <small>{props.model.points}pts</small>
+      {props.showSelector && (
+        <Col style={{flexGrow: 0}}>
+          <ReactBootstrapSlider
+            value={props.model.selected}
+            slideStop={(x: any) => props.onSelectionChanged(props.model.uuid, x.target.value)}
+            step={1}
+            max={props.model.count}
+            min={0} />
         </Col>
       )}
     </h2>

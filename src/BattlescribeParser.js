@@ -1,6 +1,6 @@
+import { v4 as uuidv4 } from 'uuid'
 const DOMParser = require('xmldom').DOMParser
 const xpath = require('xpath-ts').useNamespaces({ roster: 'http://www.battlescribe.net/schema/rosterSchema' })
-
 const _ = require('lodash')
 const hash = require('node-object-hash')([])
 
@@ -373,14 +373,15 @@ export const parseBattlescribeXML = (xml) => {
       models.push(parseModel(model))
     }
   }
-  const points = _.sumBy(models, (x) => (x.points))
   const uniqueModels = _.groupBy(models, (m) => m.hash)
   return {
     name,
     forceRules,
-    points,
-    models: _.map(uniqueModels, (m) => (
-      { ...m[0], count: m.length }
-    ))
+    models: _.map(uniqueModels, (model) => ({
+      ...model[0],
+      uuid: uuidv4(),
+      count: model.length,
+      selected: model.length
+    }))
   }
 }

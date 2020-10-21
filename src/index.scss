@@ -1,5 +1,7 @@
+$primary: #FF6F2D;
+
 $theme-colors: (
-    "primary": #FF6F2D,
+  "primary": $primary,
 );
 
 @import "~bootstrap/scss/bootstrap";
@@ -16,4 +18,10 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+@import "~bootstrap-slider/dist/css/bootstrap-slider.css";
+
+.slider-handle {
+  background: $primary;
 }
