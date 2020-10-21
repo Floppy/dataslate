@@ -9,6 +9,7 @@ const _ = require('lodash')
 
 type Props = {
   showSelector?: boolean,
+  onSelectionChanged?: any,
   model: Model
 };
 
@@ -43,7 +44,7 @@ export function ModelTitle(props: Props) {
         <Col style={{flexGrow: 0, textAlign: 'right'}}>
           <ReactBootstrapSlider
             value={props.model.selected}
-            slideStop={() => (null)}
+            slideStop={(x: any) => props.onSelectionChanged(props.model, x.target.value)}
             step={1}
             max={props.model.count}
             min={0} />

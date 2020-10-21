@@ -21,6 +21,7 @@ type Props = {
   models: Model[],
   forceRules: Ability[],
   onClose: any,
+  onSelectionChanged: any,
 };
 
 function Roster(props: Props) {
@@ -50,7 +51,7 @@ function Roster(props: Props) {
     <>
       <AbilityList abilities={props.forceRules} phase="" highlight/>
       {sortedModels.map((model: Model) => (
-        <NoPhaseDetails model={model}/>
+        <NoPhaseDetails model={model} onSelectionChanged={props.onSelectionChanged}/>
       ))}
     </>
     {_.some(selectedModels, hasScoutingPhase) &&

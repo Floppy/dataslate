@@ -23,6 +23,11 @@ class App extends React.Component {
     this.handleClose = () => {
       this.setState(initialState)
     }
+
+    this.handleSelectionChanged = (model, selectedCount) => {
+      console.log(model);
+      console.log(selectedCount);
+    }
   }
 
   render () {
@@ -30,7 +35,7 @@ class App extends React.Component {
       <Container fluid='lg'>
         {this.state.models.length === 0
           ? <Homepage onUpload={this.handleUpload} />
-          : <Roster name={this.state.name} models={this.state.models} onClose={this.handleClose} forceRules={this.state.forceRules} />}
+          : <Roster name={this.state.name} models={this.state.models} onClose={this.handleClose} forceRules={this.state.forceRules} onSelectionChanged={this.handleSelectionChanged}/>}
       </Container>
     )
   }
