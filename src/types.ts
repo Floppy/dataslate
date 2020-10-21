@@ -41,6 +41,7 @@ export type ModelStats = {
 }
 
 export type Model = {
+  uuid: string,
   type: string,
   name: string,
   category: string,

@@ -1,6 +1,6 @@
+import { v4 as uuidv4 } from 'uuid';
 const DOMParser = require('xmldom').DOMParser
 const xpath = require('xpath-ts').useNamespaces({ roster: 'http://www.battlescribe.net/schema/rosterSchema' })
-
 const _ = require('lodash')
 const hash = require('node-object-hash')([])
 
@@ -379,6 +379,7 @@ export const parseBattlescribeXML = (xml) => {
     forceRules,
     models: _.map(uniqueModels, (model) => ({
       ...model[0],
+      uuid: uuidv4(),
       count: model.length,
       selected: model.length
     }))

@@ -44,7 +44,7 @@ export function ModelTitle(props: Props) {
         <Col style={{flexGrow: 0, textAlign: 'right'}}>
           <ReactBootstrapSlider
             value={props.model.selected}
-            slideStop={(x: any) => props.onSelectionChanged(props.model, x.target.value)}
+            slideStop={(x: any) => props.onSelectionChanged(props.model.uuid, x.target.value)}
             step={1}
             max={props.model.count}
             min={0} />
