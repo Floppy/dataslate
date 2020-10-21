@@ -2,13 +2,13 @@ import React from 'react';
 import { SpecialistIcon } from './SpecialistIcon';
 import { CategoryIcon } from './CategoryIcon';
 import { Col } from 'react-bootstrap'
-
+import ReactBootstrapSlider from 'react-bootstrap-slider';
 import { Model } from '../types';
 
 const _ = require('lodash')
 
 type Props = {
-  showPoints?: boolean,
+  showSelector?: boolean,
   model: Model
 };
 
@@ -39,9 +39,14 @@ export function ModelTitle(props: Props) {
         <strong>{titleComponents[0]} </strong>
         <small>{_.join(_.slice(titleComponents,1), ", ")}</small>
       </Col>
-      {props.showPoints && (
+      {props.showSelector && (
         <Col style={{flexGrow: 0, textAlign: 'right'}}>
-          <small>{props.model.points}pts</small>
+          <ReactBootstrapSlider
+            value={props.model.selected}
+            slideStop={() => (null)}
+            step={1}
+            max={props.model.count}
+            min={0} />
         </Col>
       )}
     </h2>

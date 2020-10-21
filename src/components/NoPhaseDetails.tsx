@@ -14,7 +14,7 @@ export function NoPhaseDetails(props: Props) {
   return (
     <Row style={{opacity: props.model.selected > 0 ? "1" : "0.25"}}>
       <Col>
-        <ModelTitle model={props.model} showPoints={true}/>
+        <ModelTitle model={props.model} showSelector />
         {props.model.category === "Commander" && <div>Commander specialism: <strong>{props.model.specialism}</strong></div>}
         <p>{props.model.weapons.map((w) => (w.name)).concat(props.model.wargear.map((w) => (w.name))).join(", ")}</p>
         <StatsTable {...props.model.stats} points={props.model.points} />
