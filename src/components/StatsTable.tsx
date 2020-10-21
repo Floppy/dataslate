@@ -13,6 +13,7 @@ type Props = {
   leadership: number,
   save: number,
   invulnerable_save: number,
+  points: number,
 }
 
 function StatsTable (props: Props) {
@@ -29,6 +30,7 @@ function StatsTable (props: Props) {
           <th>A</th>
           <th>Ld</th>
           <th>Sv</th>
+          <th>Points</th>
         </tr>
       </thead>
       <tbody>
@@ -45,6 +47,7 @@ function StatsTable (props: Props) {
           <td>{props.leadership}</td>
           <td>{props.save}+
           { props.invulnerable_save ? <>{' / '}<strong>{props.invulnerable_save}++</strong></> : null}</td>
+          <td>{props.points}</td>
         </tr>
       </tbody>
     </Table>
