@@ -3,6 +3,7 @@ $theme-colors: (
 );
 
 @import "~bootstrap/scss/bootstrap";
+@import "~bootstrap-slider/dist/css/bootstrap-slider.css";
 
 body {
   margin: 0;
