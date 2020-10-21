@@ -1,5 +1,5 @@
 {
-  "name": "scriptorum",
+  "name": "dataslate",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -52,7 +52,7 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://floppy.org.uk/scriptorum",
+  "homepage": "https://floppy.org.uk/dataslate",
   "devDependencies": {
     "@types/react-test-renderer": "^16.9.3",
     "csv-parse": "^4.12.0",

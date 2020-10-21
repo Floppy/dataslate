@@ -4,7 +4,7 @@ import { Jumbotron } from 'react-bootstrap'
 function Intro() {
   return <Jumbotron>
     <h1>
-      Scriptorum
+      Dataslate
     </h1>
     <p className='lead'>
       Easy-to-use datasheets for Warhammer 40,000: Kill Team
