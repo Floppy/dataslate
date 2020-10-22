@@ -28,10 +28,12 @@ class App extends React.Component {
       this.setState({
         ...this.state,
         models: this.state.models.map((model) => (
-          model.uuid !== uuid ? model : {
-            ...model,
-            selected: selectedCount
-          }
+          model.uuid !== uuid
+            ? model
+            : {
+                ...model,
+                selected: selectedCount
+              }
         ))
       })
     }
