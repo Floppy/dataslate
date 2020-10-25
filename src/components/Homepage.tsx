@@ -1,10 +1,11 @@
 import React from 'react';
 import Dropzone from 'react-dropzone'
+import type { DropzoneOptions } from 'react-dropzone'
 import Intro from './Intro'
 import { Row, Col, Alert, Card } from 'react-bootstrap'
 
 type Props = {
-  onUpload: any,
+  onUpload: DropzoneOptions["onDrop"],
 }
 
 function Homepage(props: Props) {
