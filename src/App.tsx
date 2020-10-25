@@ -3,7 +3,7 @@ import Homepage from './components/Homepage'
 import { Roster } from './components/Roster'
 import { Container } from 'react-bootstrap'
 import { loadFiles } from './FileLoader'
-import { Model, Ability } from './types';
+import { Model, Ability } from './types'
 
 export function App() {
 
@@ -11,12 +11,11 @@ export function App() {
   const [models, setModels] = useState<Model[]>([])
   const [forceRules, setForceRules] = useState<Ability[]>([])
 
-  const handleUpload = (acceptedFiles: any) => {
-    loadFiles(acceptedFiles).then(({name, forceRules, models}) => {
-      setName(name)
-      setForceRules(forceRules)
-      setModels(models)
-    })
+  const handleUpload = async (acceptedFiles: File[]) => {
+    const roster = await loadFiles(acceptedFiles);
+    setName(roster.name)
+    setForceRules(roster.forceRules)
+    setModels(roster.models)
   }
 
   const handleClose = () => {

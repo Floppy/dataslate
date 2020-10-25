@@ -1,19 +1,20 @@
 import { parseBattlescribeXML } from './BattlescribeParser'
 import JSZip from 'jszip'
 
-const unzip = (file) => {
-  if (file[0] !== 'P') { return Promise.resolve(file) } else {
+const unzip = async (file) => {
+  if (file[0] !== 'P') {
+    return file
+  } else {
     const jszip = new JSZip()
-    return jszip.loadAsync(file)
-      .then((zip) => (
-        zip.file(/[^/]+\.ros/)[0].async('string') // Get roster files that are in the root
-      ))
+    const zip = await jszip.loadAsync(file)
+    return zip.file(/[^/]+\.ros/)[0].async('string') // Get roster files that are in the root
   }
 }
 
-const parseFile = (file) => (
-  unzip(file).then(parseBattlescribeXML)
-)
+const parseFile = async (file) => {
+  const xml = await unzip(file)
+  return parseBattlescribeXML(xml)
+}
 
 export const loadFile = async (file) => {
   const reader = new FileReader()
