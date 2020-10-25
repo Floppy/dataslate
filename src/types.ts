@@ -58,3 +58,9 @@ export type Model = {
   count: number,
   selected: number,
 };
+
+export type Roster = {
+  name: string,
+  models: Model[],
+  forceRules: Ability[],
+};

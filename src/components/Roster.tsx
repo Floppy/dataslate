@@ -23,7 +23,7 @@ type Props = {
   onSelectionChanged: (uuid: string, value: number) => void,
 };
 
-function Roster(props: Props) {
+export function Roster(props: Props) {
   // Display models sorted by category and type
   const sortedModels = _.sortBy(props.models, (x: Model) => ([x.category == null, x.category, x.type]))
   // Work out which models are actually selected
@@ -131,5 +131,3 @@ function Roster(props: Props) {
     </Phase>
   </>
 }
-
-export default Roster;
