@@ -8,7 +8,7 @@ import { Model } from '../types';
 
 type Props = {
   model: Model
-  onSelectionChanged: any,
+  onSelectionChanged: (uuid: string, value: number) => void,
 };
 
 export function NoPhaseDetails(props: Props) {

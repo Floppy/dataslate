@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { MouseEvent } from 'react';
 import { Col } from 'react-bootstrap';
 import { Model, Ability } from '../types';
 import Phase from './Phase';
@@ -19,8 +19,8 @@ type Props = {
   name: string,
   models: Model[],
   forceRules: Ability[],
-  onClose: any,
-  onSelectionChanged: any,
+  onClose: (event: MouseEvent<HTMLButtonElement>) => void,
+  onSelectionChanged: (uuid: string, value: number) => void,
 };
 
 function Roster(props: Props) {

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { MouseEvent } from 'react';
 import { Button } from 'react-bootstrap';
 
 type Props = {
-  onClose: any,
+  onClose: (event: MouseEvent<HTMLButtonElement>) => void,
 };
 
 export function CloseButton(props: Props) {
