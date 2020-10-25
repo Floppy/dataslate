@@ -13,8 +13,7 @@ import { ShootingPhaseDetails } from './ShootingPhaseDetails';
 import { FightPhaseDetails } from './FightPhaseDetails';
 import { MoralePhaseDetails } from './MoralePhaseDetails';
 import { CloseButton } from './CloseButton';
-
-const _ = require('lodash')
+import _ from 'lodash'
 
 type Props = {
   name: string,

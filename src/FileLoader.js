@@ -1,6 +1,5 @@
 import { parseBattlescribeXML } from './BattlescribeParser'
-
-const JSZip = require('jszip')
+import JSZip from 'jszip'
 
 const unzip = (file) => {
   if (file[0] !== 'P') { return Promise.resolve(file) } else {

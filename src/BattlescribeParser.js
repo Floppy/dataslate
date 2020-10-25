@@ -1,8 +1,10 @@
 import { v4 as uuidv4 } from 'uuid'
-const DOMParser = require('xmldom').DOMParser
-const xpath = require('xpath-ts').useNamespaces({ roster: 'http://www.battlescribe.net/schema/rosterSchema' })
-const _ = require('lodash')
-const hash = require('node-object-hash')([])
+import { DOMParser } from 'xmldom'
+import _ from 'lodash'
+import hash from 'node-object-hash'
+import * as XPath from 'xpath-ts'
+
+const xpath = XPath.useNamespaces({ roster: 'http://www.battlescribe.net/schema/rosterSchema' })
 
 const stat = (name, model) => {
   const nodes = xpath(`roster:profiles/roster:profile[@typeName='Model']//roster:characteristic[@name='${name}']`, model)
@@ -359,7 +361,7 @@ const parseModel = (model) => {
     keywords,
     points: points(model)
   }
-  return { ...details, hash: hash.hash(details) }
+  return { ...details, hash: hash([]).hash(details) }
 }
 
 export const parseBattlescribeXML = (xml) => {

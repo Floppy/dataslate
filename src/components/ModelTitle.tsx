@@ -4,8 +4,7 @@ import { CategoryIcon } from './CategoryIcon';
 import { Col } from 'react-bootstrap'
 import ReactBootstrapSlider from 'react-bootstrap-slider';
 import { Model } from '../types';
-
-const _ = require('lodash')
+import _ from 'lodash'
 
 type Props = {
   showSelector?: boolean,

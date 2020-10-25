@@ -1,8 +1,7 @@
 import React from 'react';
 import { Ability } from '../types';
 import { Table } from 'react-bootstrap';
-
-const _ = require('lodash')
+import _ from 'lodash'
 
 type Props = {
   abilities: Ability[],
