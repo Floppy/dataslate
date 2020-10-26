@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@sentry/react": "^5.27.1",
-    "@sentry/tracing": "^5.27.0",
+    "@sentry/tracing": "^5.27.1",
     "@types/jest": "^26.0.15",
     "@types/lodash": "^4.14.162",
     "@types/node": "^14.14.3",
