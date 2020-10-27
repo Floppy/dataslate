@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import { Ability } from '../types'
+import { Ability } from '../../types'
 
 const phasePatterns = {
   scouting: [
