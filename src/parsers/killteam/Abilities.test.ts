@@ -1,4 +1,4 @@
-import { calculatePhases, parseAdditionalAttacks, invulnerableSave } from './BattlescribeParser'
+import { calculatePhases, parseAdditionalAttacks, invulnerableSave } from './Abilities'
 import _ from 'lodash'
 import parse from 'csv-parse/lib/sync'
 import fs from 'fs'
