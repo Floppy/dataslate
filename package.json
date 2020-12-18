@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@sentry/react": "^5.29.0",
+    "@sentry/react": "^5.29.2",
     "@sentry/tracing": "^5.29.2",
     "@types/jest": "^26.0.19",
     "@types/lodash": "^4.14.165",
