@@ -1138,17 +1138,10 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2":
+"@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.4.2", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7":
   version "7.12.5"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.12.5.tgz#410e7e487441e1b360c29be715d870d9b985882e"
   integrity sha512-plcc+hbExy3McchJCEQG3knOsuh3HH+Prx1P6cLIkET/0dLuQDEnrT+s27Axgc9bqfsmNUNHfscgMUdBpC9xfg==
-  dependencies:
-    regenerator-runtime "^0.13.4"
-
-"@babel/runtime@^7.4.2", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7":
-  version "7.12.0"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.12.0.tgz#98bd7666186969c04be893d747cf4a6c6c8fa6b0"
-  integrity sha512-lS4QLXQ2Vbw2ubfQjeQcn+BZgZ5+ROHW9f+DWjEp5Y+NHYmkRGKqHSJ1tuhbUauKu2nhZNTBIvsIQ8dXfY5Gjw==
   dependencies:
     regenerator-runtime "^0.13.4"
 
@@ -1957,7 +1950,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^17.0.0":
+"@types/react@*", "@types/react@>=16.9.35", "@types/react@^17.0.0":
   version "17.0.0"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.0.tgz#5af3eb7fad2807092f0046a1302b7823e27919b8"
   integrity sha512-aj/L7RIMsRlWML3YB6KZiXB3fV2t41+5RBGYF8z+tAKU43Px8C3cYUZsDvf1/+Bm4FK21QWBrDutu8ZJ/70qOw==
@@ -1965,7 +1958,7 @@
     "@types/prop-types" "*"
     csstype "^3.0.2"
 
-"@types/react@^16.9.11", "@types/react@^16.9.35":
+"@types/react@^16.9.11":
   version "16.9.56"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.56.tgz#ea25847b53c5bec064933095fc366b1462e2adf0"
   integrity sha512-gIkl4J44G/qxbuC6r2Xh+D3CGZpJ+NdWTItAPmZbR5mUS+JQ8Zvzpl0ea5qT/ZT3ZNTUcDKUVqV3xBE8wv/DyQ==
@@ -9588,10 +9581,10 @@ react-bootstrap-slider@^3.0.0:
   dependencies:
     bootstrap-slider "^11.0.2"
 
-react-bootstrap@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/react-bootstrap/-/react-bootstrap-1.4.0.tgz#806a8b48b065cedfb28c6c5c7b0c0e3c3b53445d"
-  integrity sha512-0BMzgeUAxH126v7VYDzIXbHxQVHSnniPVKpz9fblumdQpWaiElMnnzk+u8h8DoELX0nCXwPlcUzgXqmpncdc2Q==
+react-bootstrap@^1.4.3:
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/react-bootstrap/-/react-bootstrap-1.4.3.tgz#9a76a66800b57f422dd824c9dbe4c9dcef634790"
+  integrity sha512-4tYhk26KRnK0myMEp2wvNjOvnHMwWfa6pWFIiCtj9wewYaTxP7TrCf7MwcIMBgUzyX0SJXx6UbbDG0+hObiXNg==
   dependencies:
     "@babel/runtime" "^7.4.2"
     "@restart/context" "^2.1.4"
@@ -9599,7 +9592,7 @@ react-bootstrap@^1.4.0:
     "@types/classnames" "^2.2.10"
     "@types/invariant" "^2.2.33"
     "@types/prop-types" "^15.7.3"
-    "@types/react" "^16.9.35"
+    "@types/react" ">=16.9.35"
     "@types/react-transition-group" "^4.4.0"
     "@types/warning" "^3.0.0"
     classnames "^2.2.6"
