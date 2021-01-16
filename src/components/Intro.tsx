@@ -12,7 +12,7 @@ function Intro() {
     <ul>
       <li>All the info you need, when you need it</li>
       <li>Stats and abilities organised by phase</li>
-      <li>No wasted space for identical mdels</li>
+      <li>No wasted space for identical models</li>
       <li>Designed for print or screen</li>
       <li>Clear, uncluttered layout for easy reference</li>
     </ul>
