@@ -56,7 +56,7 @@
   "homepage": "https://dataslate.rocks",
   "devDependencies": {
     "@types/react-test-renderer": "^17.0.0",
-    "csv-parse": "^4.15.0",
+    "csv-parse": "^4.15.1",
     "react-test-renderer": "^16.13.1",
     "standard": "^16.0.3"
   },
