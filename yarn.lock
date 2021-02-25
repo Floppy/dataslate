@@ -8695,10 +8695,10 @@ node-notifier@^8.0.0:
     uuid "^8.3.0"
     which "^2.0.2"
 
-node-object-hash@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/node-object-hash/-/node-object-hash-2.2.0.tgz#e55fa8d20f59d7588d4d0b3608f17d52d235f238"
-  integrity sha512-OSDFfdMTLMnKt0CdH3h0CpGdChS2rVtzpL4fW1n6t8GP3FiwkOsTN4435YmnmIBGf9zLx8+Jati/xK6AJcU5Mw==
+node-object-hash@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/node-object-hash/-/node-object-hash-2.3.0.tgz#32c4c10951dc5b5ef655884d7a13393cb765971c"
+  integrity sha512-1z2MMT5H3NvCpo1eCuiktkX7hhGq6BjmiQpjnI/UUWJiVRnAafdhJivDR/VYMlvYnD9sMU2sRg1griSZRpIEtA==
 
 node-releases@^1.1.61:
   version "1.1.63"
