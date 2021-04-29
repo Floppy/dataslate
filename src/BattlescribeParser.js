@@ -5,6 +5,8 @@ import hash from 'node-object-hash'
 import * as XPath from 'xpath-ts'
 import { parseAdditionalAttacks, calculatePhases, invulnerableSave } from './parsers/killteam/Abilities'
 
+// useNamespaces is NOT a React hook, so:
+// eslint-disable-next-line react-hooks/rules-of-hooks
 const xpath = XPath.useNamespaces({ roster: 'http://www.battlescribe.net/schema/rosterSchema' })
 
 const stat = (name, model) => {
