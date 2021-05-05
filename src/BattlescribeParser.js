@@ -153,8 +153,8 @@ const parseModel = (model) => {
 }
 
 export const parseBattlescribeXML = (xml) => {
-  var models = []
-  var doc = new DOMParser().parseFromString(xml)
+  const models = []
+  const doc = new DOMParser().parseFromString(xml)
   const name = xpath('/roster:roster', doc)[0].getAttribute('name')
   const forceRules = xpath('//roster:force/roster:rules/roster:rule', doc).map(parseForceRule)
   for (const category of xpath('//roster:force/roster:categories/roster:category', doc)) {
