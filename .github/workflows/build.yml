@@ -8,16 +8,15 @@ jobs:
     name: Pages
     runs-on: ubuntu-latest
     steps:
+    - uses: FranzDiebold/github-env-vars-action@v2
     - uses: actions/checkout@master
     - uses: actions/setup-node@v1
       with:
         node-version: '12.x'
-    - uses: borales/actions-yarn@v2.1.0
-      with:
-        cmd: install
-    - uses: borales/actions-yarn@v2.1.0
-      with:
-        cmd: build
+    - run: yarn install
+    - run: yarn build
+      env:
+        REACT_APP_GIT_SHA: ${{ env.CI_SHA_SHORT }}
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@3.6.2
       with:
