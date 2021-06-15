@@ -22,6 +22,7 @@ function StatBadge (props: Props) {
   };
   const nameStyle: CSS.Properties = {
     fontSize: '1vw',
+    fontWeight: 'bold',
     lineHeight: '1vw',
   };
   const valueStyle: CSS.Properties = {
