@@ -25,3 +25,11 @@ code {
 .slider-handle {
   background: $primary;
 }
+
+.excluded {
+  opacity: 0.25;
+
+  @media print {
+    display: none;
+  }
+}
