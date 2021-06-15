@@ -14,7 +14,7 @@
     "jquery": "^3.6.0",
     "jszip": "^3.6.0",
     "lodash": "^4.17.21",
-    "node-object-hash": "^2.3.3",
+    "node-object-hash": "^2.3.4",
     "node-sass": "^6.0.0",
     "pluralize": "^8.0.0",
     "popper.js": "^1.16.1",
