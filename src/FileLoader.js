@@ -1,4 +1,5 @@
-import { parseBattlescribeXML } from './parsers/KillTeam2018/BattlescribeParser'
+import { parseBattlescribeXML as parseKillTeam2018 } from './parsers/KillTeam2018/BattlescribeParser'
+import { parseBattlescribeXML as parseKillTeam2021 } from './parsers/KillTeam2021/BattlescribeParser'
 import JSZip from 'jszip'
 import { DOMParser } from 'xmldom'
 import * as XPath from 'xpath-ts'
@@ -22,11 +23,10 @@ const parseFile = async (file) => {
   const doc = new DOMParser().parseFromString(xml)
   const gameSystemId = xpath('/roster:roster', doc)[0].getAttribute('gameSystemId')
   switch(gameSystemId) {
-    case "a467-5f42-d24c-6e5b": // Kill Team 2018
-      return parseBattlescribeXML(doc);
-    case "3b7e-7dab-f79f-2e74": // Kill Team 2021
-      console.log("KT2021 roster detected! Support coming soon, but nothing yet, sorry!");
-      break;
+    case "a467-5f42-d24c-6e5b":
+      return parseKillTeam2018(doc);
+    case "3b7e-7dab-f79f-2e74":
+      return parseKillTeam2021(doc);
     default:
       console.log("Unsupported game system!");
   }
