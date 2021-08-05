@@ -1,4 +1,4 @@
-import { parseBattlescribeXML } from './BattlescribeParser'
+import { parseBattlescribeXML } from './parsers/KillTeam2018/BattlescribeParser'
 import JSZip from 'jszip'
 
 const unzip = async (file) => {
