@@ -3,7 +3,7 @@ import { SpecialistIcon } from './SpecialistIcon';
 import { CategoryIcon } from './CategoryIcon';
 import { Col } from 'react-bootstrap'
 import ReactBootstrapSlider from 'react-bootstrap-slider';
-import { Model } from '../types';
+import { Model } from './types';
 import _ from 'lodash'
 
 type Props = {

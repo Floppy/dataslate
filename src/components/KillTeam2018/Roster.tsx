@@ -1,6 +1,6 @@
 import React, { MouseEvent } from 'react';
 import { Col } from 'react-bootstrap';
-import { Model, Ability } from '../types';
+import { Model, Ability } from './types';
 import Phase from './Phase';
 import AbilityList from './AbilityList';
 import { NoPhaseDetails } from './NoPhaseDetails';
@@ -12,7 +12,7 @@ import { PsychicPhaseDetails, hasPsychicPhase } from './PsychicPhaseDetails';
 import { ShootingPhaseDetails } from './ShootingPhaseDetails';
 import { FightPhaseDetails } from './FightPhaseDetails';
 import { MoralePhaseDetails } from './MoralePhaseDetails';
-import { CloseButton } from './CloseButton';
+import { CloseButton } from '../CloseButton';
 import _ from 'lodash'
 
 type Props = {

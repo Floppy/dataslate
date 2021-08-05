@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import Homepage from './components/Homepage'
-import { Roster } from './components/Roster'
+import { Roster } from './components/KillTeam2018/Roster'
 import { Container } from 'react-bootstrap'
 import { loadFiles } from './FileLoader'
-import { Model, Ability } from './types'
+import { Model, Ability } from './components/KillTeam2018/types'
 
 export function App() {
 

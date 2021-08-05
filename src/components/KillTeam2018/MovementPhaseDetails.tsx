@@ -1,24 +1,24 @@
 import React from 'react';
-import StatBadge from './StatBadge';
 import AbilityList from './AbilityList';
+import StatBadge from './StatBadge';
 import { Row, Col } from 'react-bootstrap'
 import { ModelTitle } from './ModelTitle';
 
-import { Model } from '../types';
+import { Model } from './types';
 
 type Props = {
   model: Model
 };
 
-export function MoralePhaseDetails(props: Props) {
+export function MovementPhaseDetails(props: Props) {
   return (
     <Row>
       <Col>
         <ModelTitle model={props.model}/>
-        <AbilityList abilities={props.model.abilities} phase='morale'/>
+        <AbilityList abilities={props.model.abilities} phase='movement'/>
       </Col>
       <Col sm='auto'>
-        <StatBadge name="Ld" value={`${props.model.stats.leadership}`}/>
+        <StatBadge name="M" value={`${props.model.stats.movement}`}/>
       </Col>
     </Row>
   );

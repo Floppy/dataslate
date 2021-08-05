@@ -5,7 +5,7 @@ import WeaponList from './WeaponList';
 import { Row, Col } from 'react-bootstrap'
 import { ModelTitle } from './ModelTitle';
 
-import { Model } from '../types';
+import { Model } from './types';
 
 type Props = {
   model: Model

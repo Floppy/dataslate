@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import { Ability } from '../../types'
+import { Ability } from '../../components/KillTeam2018/types'
 
 const phasePatterns = {
   scouting: [
