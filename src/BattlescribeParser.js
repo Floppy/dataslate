@@ -3,7 +3,7 @@ import { DOMParser } from 'xmldom'
 import _ from 'lodash'
 import hash from 'node-object-hash'
 import * as XPath from 'xpath-ts'
-import { parseAdditionalAttacks, calculatePhases, invulnerableSave } from './parsers/killteam/Abilities'
+import { parseAdditionalAttacks, calculatePhases, invulnerableSave } from './parsers/killteam18/Abilities'
 
 // useNamespaces is NOT a React hook, so:
 // eslint-disable-next-line
