@@ -1,5 +1,4 @@
 import { v4 as uuidv4 } from 'uuid'
-import { DOMParser } from 'xmldom'
 import _ from 'lodash'
 import hash from 'node-object-hash'
 import * as XPath from 'xpath-ts'
@@ -152,9 +151,8 @@ const parseModel = (model) => {
   return { ...details, hash: hash([]).hash(details) }
 }
 
-export const parseBattlescribeXML = (xml) => {
+export const parseBattlescribeXML = (doc) => {
   const models = []
-  const doc = new DOMParser().parseFromString(xml)
   const name = xpath('/roster:roster', doc)[0].getAttribute('name')
   const forceRules = xpath('//roster:force/roster:rules/roster:rule', doc).map(parseForceRule)
   for (const category of xpath('//roster:force/roster:categories/roster:category', doc)) {
