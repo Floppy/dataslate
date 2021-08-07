@@ -22,13 +22,13 @@ const parseFile = async (file) => {
   const xml = await unzip(file)
   const doc = new DOMParser().parseFromString(xml)
   const gameSystemId = xpath('/roster:roster', doc)[0].getAttribute('gameSystemId')
-  switch(gameSystemId) {
-    case "a467-5f42-d24c-6e5b":
-      return parseKillTeam2018(doc);
-    case "3b7e-7dab-f79f-2e74":
-      return parseKillTeam2021(doc);
+  switch (gameSystemId) {
+    case 'a467-5f42-d24c-6e5b':
+      return parseKillTeam2018(doc)
+    case '3b7e-7dab-f79f-2e74':
+      return parseKillTeam2021(doc)
     default:
-      console.log("Unsupported game system!");
+      console.log('Unsupported game system!')
   }
 }
 

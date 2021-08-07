@@ -1,5 +1,3 @@
-import { v4 as uuidv4 } from 'uuid'
-import _ from 'lodash'
 import * as XPath from 'xpath-ts'
 
 import hash from 'node-object-hash'
@@ -27,10 +25,10 @@ const parseModel = (model) => {
 }
 
 export const parseBattlescribeXML = (doc) => {
-  console.log("KT2021 roster detected! Support coming soon, but nothing yet, sorry!");
+  console.log('KT2021 roster detected! Support coming soon, but nothing yet, sorry!')
   const models = []
   const name = xpath('/roster:roster', doc)[0].getAttribute('name')
-  for (const model of xpath(`//roster:selection[@type='model']`, doc)) {
+  for (const model of xpath('//roster:selection[@type=\'model\']', doc)) {
     models.push(parseModel(model))
   }
   return {
