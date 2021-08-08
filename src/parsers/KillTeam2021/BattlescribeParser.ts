@@ -9,8 +9,8 @@ const xpSelect = XPath.useNamespaces({ bs: 'http://www.battlescribe.net/schema/r
 
 const parseModel = (model : Element) : Model => {
   const details = {
-    name: model.getAttribute('customName') as string,
-    type: model.getAttribute('name') as string,
+    name: xpSelect('string(@customName)', model, true).toString(),
+    type: xpSelect('string(@name)', model, true).toString(),
     category: '',
     stats: {
       movement: 0,
@@ -44,7 +44,7 @@ const parseModel = (model : Element) : Model => {
 export const parseBattlescribeXML = (doc : Document) : Roster => {
   console.log('KT2021 roster detected! Support coming soon, but nothing yet, sorry!')
   const models = []
-  const name = xpSelect('/bs:roster/@name', doc, true) as string
+  const name = xpSelect('string(/bs:roster/@name)', doc, true).toString()
   for (const model of xpSelect('//bs:selection[@type=\'model\']', doc) as Element[]) {
     models.push(parseModel(model))
   }
