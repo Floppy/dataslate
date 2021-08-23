@@ -3,7 +3,8 @@ import { parseBattlescribeXML as parseKillTeam2021 } from './parsers/KillTeam202
 import JSZip from 'jszip'
 import { DOMParserImpl } from 'xmldom-ts'
 import * as XPath from 'xpath-ts'
-import { Roster } from './components/KillTeam2018/types';
+import { Roster as Roster2018 } from './components/KillTeam2018/types';
+import { Roster as Roster2021 } from './components/KillTeam2021/types';
 
 // useNamespaces is NOT a React hook, so:
 // eslint-disable-next-line
@@ -19,12 +20,12 @@ const unzip = async (file: string) : Promise<string> => {
   }
 }
 
-const parseFile = (file: string) : Roster => {
+const parseFile = (file: string) : Roster2018 | Roster2021 => {
   const doc = new DOMParserImpl().parseFromString(file)
   const gameSystemId = (xpSelect('/bs:roster/@gameSystemId', doc, true) as Node).nodeValue
   switch (gameSystemId) {
     case 'a467-5f42-d24c-6e5b':
-      return parseKillTeam2018(doc) as Roster
+      return parseKillTeam2018(doc) as Roster2018
     case '3b7e-7dab-f79f-2e74':
       return parseKillTeam2021(doc)
     default:
@@ -32,7 +33,7 @@ const parseFile = (file: string) : Roster => {
   }
 }
 
-export const loadFile = async (file: File) : Promise<Roster> => {
+export const loadFile = async (file: File) : Promise<Roster2018 | Roster2021> => {
   const reader = new FileReader()
   return new Promise((resolve, reject) => {
     reader.onerror = () => {
@@ -48,6 +49,6 @@ export const loadFile = async (file: File) : Promise<Roster> => {
   })
 }
 
-export const loadFiles = (files: File[]) : Promise<Roster> => {
+export const loadFiles = (files: File[]) : Promise<Roster2018 | Roster2021> => {
   return loadFile(files[0])
 }
