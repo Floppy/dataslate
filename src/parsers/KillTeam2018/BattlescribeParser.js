@@ -163,6 +163,7 @@ export const parseBattlescribeXML = (doc) => {
   }
   const uniqueModels = _.groupBy(models, (m) => m.hash)
   return {
+    system: "KillTeam2018",
     name,
     forceRules,
     models: _.map(uniqueModels, (model) => ({

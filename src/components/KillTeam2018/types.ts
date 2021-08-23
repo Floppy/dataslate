@@ -60,6 +60,7 @@ export type Model = {
 };
 
 export type Roster = {
+  system: string,
   name: string,
   models: Model[],
   forceRules: Ability[],
