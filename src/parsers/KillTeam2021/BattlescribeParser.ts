@@ -1,7 +1,7 @@
 import * as XPath from 'xpath-ts'
 
 import hash from 'node-object-hash'
-import { Roster, Model } from '../../components/KillTeam2018/types';
+import { Roster, Model } from '../../components/KillTeam2021/types';
 
 // useNamespaces is NOT a React hook, so:
 // eslint-disable-next-line
@@ -11,29 +11,17 @@ const parseModel = (model : Element) : Model => {
   const details = {
     name: xpSelect('string(@customName)', model, true).toString(),
     type: xpSelect('string(@name)', model, true).toString(),
-    category: '',
     stats: {
-      movement: 0,
-      weapon_skill: 0,
-      ballistic_skill: 0,
-      strength: 0,
-      toughness: 0,
-      wounds: 0,
-      attacks: 0,
-      leadership: 0,
-      save: 0,
-      invulnerable_save: 0,
-      additional_attacks: 0
+      movement: "3",
+      actionPointLimit: 2,
+      groupActivation: 1,
+      defence: 3,
+      save: 5,
+      invulnerable_save: null,
+      wounds: 6,
     },
-    abilities: [],
-    weapons: [],
-    wargear: [],
-    psychicPowers: [],
-    specialism: '',
     faction: '',
     keywords: [],
-    points: 0,
-    additional_attacks: 0,
     uuid: '',
     count: 1,
     selected: 1,
@@ -49,8 +37,8 @@ export const parseBattlescribeXML = (doc : Document) : Roster => {
     models.push(parseModel(model))
   }
   return {
+    system: "KillTeam2021",
     name,
-    forceRules: [],
     models
   }
 }
