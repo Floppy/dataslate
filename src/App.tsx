@@ -1,45 +1,46 @@
 import React, { useState } from 'react'
 import Homepage from './components/Homepage'
-import { Roster } from './components/KillTeam2018/Roster'
+import { Roster as RosterView2018 } from './components/KillTeam2018/Roster'
+import { Roster as RosterView2021 } from './components/KillTeam2021/Roster'
 import { Container } from 'react-bootstrap'
 import { loadFiles } from './FileLoader'
-import { Model, Ability } from './components/KillTeam2018/types'
+import { Roster as Roster2018 } from './components/KillTeam2018/types'
+import { Roster as Roster2021 } from './components/KillTeam2021/types'
 
 export function App() {
 
-  const [name, setName] = useState<string>("")
-  const [models, setModels] = useState<Model[]>([])
-  const [forceRules, setForceRules] = useState<Ability[]>([])
+  const [roster, setRoster] = useState<Roster2018|Roster2021|null>(null)
 
   const handleUpload = async (acceptedFiles: File[]) => {
-    const roster = await loadFiles(acceptedFiles);
-    setName(roster.name)
-    setForceRules(roster.forceRules)
-    setModels(roster.models)
+    const r = await loadFiles(acceptedFiles);
+    setRoster(r)
   }
 
   const handleClose = () => {
-    setForceRules([])
-    setModels([])
-    setName("")
+    setRoster(null)
   }
 
-  const handleSelectionChanged = (uuid: string, selectedCount: number) => (
-    setModels(models.map((model: Model) => (
-      model.uuid !== uuid
-        ? model
-        : {
-            ...model,
-            selected: selectedCount
-          }
-    )))
-  )
+  const handleSelectionChanged = (uuid: string, selectedCount: number) => {
+    if (roster && isRosterKT18(roster)) {
+      setRoster(Object.assign({models: roster.models.map((model) => (
+        model.uuid !== uuid
+          ? model
+          : Object.assign(
+              model,
+              { selected: selectedCount }
+            )
+      ))}, roster))
+    }
+  }
+
+  const isRosterKT18 = (roster: any): roster is Roster2018 => (roster.system === "KillTeam2018")
+  const isRosterKT21 = (roster: any): roster is Roster2021 => (roster.system === "KillTeam2021")
 
   return (
     <Container fluid='lg'>
-      {models.length === 0
-        ? <Homepage onUpload={handleUpload} />
-        : <Roster name={name} models={models} onClose={handleClose} forceRules={forceRules} onSelectionChanged={handleSelectionChanged} />}
+      {roster === null ? <Homepage onUpload={handleUpload} /> : <></>}
+      {roster && isRosterKT18(roster) ? <RosterView2018 name={roster.name} models={roster.models} onClose={handleClose} forceRules={roster.forceRules} onSelectionChanged={handleSelectionChanged} /> : <></>}
+      {roster && isRosterKT21(roster) ? <RosterView2021 name={roster.name} onClose={handleClose} /> : <></>}
     </Container>
   )
 }
