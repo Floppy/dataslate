@@ -3,6 +3,7 @@ import { Badge } from 'react-bootstrap'
 import { Row, Col } from 'react-bootstrap'
 import { Model } from './types';
 import { StatsTable } from './StatsTable'
+import { ModelTitle } from './ModelTitle'
 
 type Props = {
   model: Model
@@ -12,7 +13,7 @@ export function Datasheet(props: Props) {
   return (
     <Row className={props.model.selected > 0 ? "included" : "excluded"}>
       <Col>
-        <h2>{ props.model.name } { props.model.type }</h2>
+        <ModelTitle model={props.model} />
         <StatsTable {...props.model.stats} />
       </Col>
       <Col sm='auto'>
