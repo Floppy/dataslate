@@ -40,7 +40,7 @@ export function App() {
     <Container fluid='lg'>
       {roster === null ? <Homepage onUpload={handleUpload} /> : <></>}
       {roster && isRosterKT18(roster) ? <RosterView2018 name={roster.name} models={roster.models} onClose={handleClose} forceRules={roster.forceRules} onSelectionChanged={handleSelectionChanged} /> : <></>}
-      {roster && isRosterKT21(roster) ? <RosterView2021 name={roster.name} onClose={handleClose} /> : <></>}
+      {roster && isRosterKT21(roster) ? <RosterView2021 name={roster.name} models={roster.models} onClose={handleClose} /> : <></>}
     </Container>
   )
 }

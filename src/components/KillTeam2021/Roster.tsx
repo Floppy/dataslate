@@ -1,9 +1,12 @@
 import React, { MouseEvent } from 'react';
 import { Col } from 'react-bootstrap';
 import { CloseButton } from '../CloseButton';
+import { Model } from './types';
+import { Datasheet } from './Datasheet';
 
 type Props = {
   name: string,
+  models: Model[],
   onClose: (event: MouseEvent<HTMLButtonElement>) => void,
 };
 
@@ -24,8 +27,8 @@ export function Roster(props: Props) {
         <CloseButton onClose={props.onClose}/>
       </Col>
     </h1>
-    <p>
-      Kill Team 2021 support coming very soon...!
-    </p>
+    {props.models.map((model: Model) => (
+        <Datasheet model={model}/>
+    ))}
   </>
 }
