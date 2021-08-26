@@ -6,11 +6,11 @@ import { Roster, Model } from '../../components/KillTeam2021/types';
 // eslint-disable-next-line
 const xpSelect = XPath.useNamespaces({ bs: 'http://www.battlescribe.net/schema/rosterSchema' })
 
-const stat = (name: string, model: Element) : number | null => {
-  const node = xpSelect(`bs:profiles/bs:profile[@typeName='Operative']//bs:characteristic[@name='M']/text()`, model, true)
+const stat = (name: string, model: Element) : number => {
+  const node = xpSelect(`bs:profiles/bs:profile[@typeName='Operative']//bs:characteristic[@name='${name}']/text()`, model, true)
   if (node) {
     return parseInt(node.toString())
-  } else { return null }
+  } else { return 0 }
 }
 
 
@@ -20,12 +20,12 @@ const parseModel = (model : Element) : Model => {
     type: xpSelect('string(@name)', model, true).toString(),
     stats: {
       movement: stat("M", model) + "⬤",
-      actionPointLimit: parseInt(xpSelect(`bs:profiles/bs:profile[@typeName='Operative']//bs:characteristic[@name='APL']/ text()`, model, true).toString()),
-      groupActivation: parseInt(xpSelect(`bs:profiles/bs:profile[@typeName='Operative']//bs:characteristic[@name='GA']/ text()`, model, true).toString()),
-      defence: parseInt(xpSelect(`bs:profiles/bs:profile[@typeName='Operative']//bs:characteristic[@name='DF']/ text()`, model, true).toString()),
-      save: parseInt(xpSelect(`bs:profiles/bs:profile[@typeName='Operative']//bs:characteristic[@name='SV']/ text()`, model, true).toString()),
+      actionPointLimit: stat("APL", model),
+      groupActivation: stat("GA", model),
+      defence: stat("DF", model),
+      save: stat("SV", model),
       invulnerable_save: null,
-      wounds: parseInt(xpSelect(`bs:profiles/bs:profile[@typeName='Operative']//bs:characteristic[@name='W']/ text()`, model, true).toString()),
+      wounds: stat("W", model),
     },
     keywords: (xpSelect("bs:categories/bs:category[@primary='false']/@name", model) as Node[]).map((x) => x.toString()),
     uuid: xpSelect('string(@id)', model, true).toString(),
