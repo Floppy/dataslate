@@ -1,7 +1,7 @@
 import React from 'react';
 import { Badge } from 'react-bootstrap'
 import { Row, Col } from 'react-bootstrap'
-import { Model } from './types';
+import { Model, Weapon } from './types';
 import { StatsTable } from './StatsTable'
 import { ModelTitle } from './ModelTitle'
 
@@ -15,6 +15,9 @@ export function Datasheet(props: Props) {
       <Col>
         <ModelTitle model={props.model} />
         <StatsTable {...props.model.stats} />
+        {props.model.weapons.map((weapon: Weapon) => (
+          <p>{weapon.name}, {weapon.attacks}, {weapon.hit}+, {weapon.damage}, {weapon.criticalDamage}, {weapon.specialRules}, {weapon.criticalRules}</p>
+        ))}
       </Col>
       <Col sm='auto'>
         <div>

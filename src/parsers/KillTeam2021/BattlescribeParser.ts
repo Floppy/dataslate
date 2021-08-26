@@ -1,6 +1,6 @@
 import * as XPath from 'xpath-ts'
 import hash from 'node-object-hash'
-import { Roster, Model } from '../../components/KillTeam2021/types';
+import { Roster, Model, Weapon } from '../../components/KillTeam2021/types';
 
 // useNamespaces is NOT a React hook, so:
 // eslint-disable-next-line
@@ -13,6 +13,18 @@ const stat = (name: string, model: Element) : number => {
   } else { return 0 }
 }
 
+const parseWeapon = (weapon : Node) : Weapon => {
+  return {
+    name: xpSelect('string(@name)', weapon, true).toString(),
+    melee: true,
+    attacks: parseInt(xpSelect(".//bs:characteristic[@name='A']/text()", weapon, true).toString()),
+    hit: parseInt(xpSelect(".//bs:characteristic[@name='WS/BS']/text()", weapon, true).toString()),
+    damage: parseInt(xpSelect(".//bs:characteristic[@name='D']/text()", weapon, true).toString().split('/')[0]),
+    specialRules: xpSelect(".//bs:characteristic[@name='SR']/text()", weapon, true).toString(),
+    criticalDamage: parseInt(xpSelect(".//bs:characteristic[@name='D']/text()", weapon, true).toString().split('/')[1]),
+    criticalRules: xpSelect(".//bs:characteristic[@name='!']/text()", weapon, true).toString(),
+  }
+}
 
 const parseModel = (model : Element) : Model => {
   const details = {
@@ -27,6 +39,7 @@ const parseModel = (model : Element) : Model => {
       invulnerable_save: null,
       wounds: stat("W", model),
     },
+    weapons: (xpSelect(".//bs:profile[@typeName='Weapons']", model) as Node[]).map(parseWeapon),
     keywords: (xpSelect("bs:categories/bs:category[@primary='false']/@name", model) as Node[]).map((x) => x.toString()),
     uuid: xpSelect('string(@id)', model, true).toString(),
     count: parseInt(xpSelect('string(@number)', model, true).toString()),

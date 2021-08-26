@@ -8,11 +8,23 @@ export type ModelStats = {
   wounds: number,
 }
 
+export type Weapon = {
+  name: string,
+  melee: boolean,
+  attacks: number,
+  hit: number,
+  damage: number,
+  specialRules: string,
+  criticalDamage: number,
+  criticalRules: string,
+};
+
 export type Model = {
   uuid: string,
   type: string,
   name: string,
   stats: ModelStats,
+  weapons: Weapon[],
   keywords: string[],
   hash: string,
   count: number,
