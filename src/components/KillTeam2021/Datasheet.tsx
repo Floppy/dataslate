@@ -1,9 +1,10 @@
 import React from 'react';
 import { Badge } from 'react-bootstrap'
 import { Row, Col } from 'react-bootstrap'
-import { Model, Weapon } from './types';
+import { Model } from './types';
 import { StatsTable } from './StatsTable'
 import { ModelTitle } from './ModelTitle'
+import { WeaponList } from './WeaponList'
 
 type Props = {
   model: Model
@@ -15,9 +16,7 @@ export function Datasheet(props: Props) {
       <Col>
         <ModelTitle model={props.model} />
         <StatsTable {...props.model.stats} />
-        {props.model.weapons.map((weapon: Weapon) => (
-          <p>{weapon.name}, {weapon.attacks}, {weapon.hit}+, {weapon.damage}, {weapon.criticalDamage}, {weapon.specialRules}, {weapon.criticalRules}</p>
-        ))}
+        <WeaponList weapons={props.model.weapons} />
       </Col>
       <Col sm='auto'>
         <div>
