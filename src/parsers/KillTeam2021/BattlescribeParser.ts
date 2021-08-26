@@ -16,7 +16,7 @@ const stat = (name: string, model: Element) : number => {
 const parseWeapon = (weapon : Node) : Weapon => {
   return {
     name: xpSelect('string(@name)', weapon, true).toString(),
-    melee: true,
+    melee: xpSelect('string(@name)', weapon, true).toString().startsWith("⚔"),
     attacks: parseInt(xpSelect(".//bs:characteristic[@name='A']/text()", weapon, true).toString()),
     hit: parseInt(xpSelect(".//bs:characteristic[@name='WS/BS']/text()", weapon, true).toString()),
     damage: parseInt(xpSelect(".//bs:characteristic[@name='D']/text()", weapon, true).toString().split('/')[0]),
@@ -40,7 +40,7 @@ const parseModel = (model : Element) : Model => {
       wounds: stat("W", model),
     },
     weapons: (xpSelect(".//bs:profile[@typeName='Weapons']", model) as Node[]).map(parseWeapon),
-    keywords: (xpSelect("bs:categories/bs:category[@primary='false']/@name", model) as Node[]).map((x) => x.toString()),
+    keywords: (xpSelect("bs:categories/bs:category[@primary='false']/@name", model) as Node[]).map((x) => x.textContent || ''),
     uuid: xpSelect('string(@id)', model, true).toString(),
     count: parseInt(xpSelect('string(@number)', model, true).toString()),
     selected: 1,
