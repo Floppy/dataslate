@@ -18,7 +18,7 @@ export function StatsTable(props: ModelStats) {
       <tbody>
         <tr>
           <td>{props.movement}</td>
-          <td>{props.actionPointLimit}+</td>
+          <td>{props.actionPointLimit}</td>
           <td>{props.groupActivation}</td>
           <td>{props.defence}</td>
           <td>{props.save}+
