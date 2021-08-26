@@ -10,8 +10,8 @@ export function StatsTable(props: ModelStats) {
           <th>M</th>
           <th>APL</th>
           <th>GA</th>
-          <th>D</th>
-          <th>S</th>
+          <th>DF</th>
+          <th>SV</th>
           <th>W</th>
         </tr>
       </thead>
