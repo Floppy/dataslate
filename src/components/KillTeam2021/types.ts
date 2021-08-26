@@ -13,7 +13,6 @@ export type Model = {
   type: string,
   name: string,
   stats: ModelStats,
-  faction: string,
   keywords: string[],
   hash: string,
   count: number,
