@@ -57,7 +57,7 @@
     "@types/react-test-renderer": "^17.0.1",
     "@types/uuid": "^8.3.1",
     "@types/xmldom": "^0.1.31",
-    "csv-parse": "^4.16.0",
+    "csv-parse": "^4.16.2",
     "react-scripts": "^4.0.3",
     "react-test-renderer": "^16.13.1",
     "standard": "^16.0.3"
