@@ -13,12 +13,12 @@ export function WeaponList(props: Props) {
         <thead>
           <tr>
             <th>Weapon</th>
-            <th>A</th>
+            <th>Attacks</th>
             <th>Hit</th>
-            <th>D</th>
-            <th>Special Rules</th>
-            <th>Critical D</th>
-            <th>Critical Rules</th>
+            <th>Damage</th>
+            <th>Critical</th>
+            <th>Rules</th>
+            <th>Critical</th>
           </tr>
         </thead>
         <tbody>
@@ -28,8 +28,8 @@ export function WeaponList(props: Props) {
               <td>{x.attacks}</td>
               <td>{x.hit}</td>
               <td>{x.damage}</td>
-              <td>{x.specialRules}</td>
               <td>{x.criticalDamage}</td>
+              <td>{x.specialRules}</td>
               <td>{x.criticalRules}</td>
             </tr>
           ))}
