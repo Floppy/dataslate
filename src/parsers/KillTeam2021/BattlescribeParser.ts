@@ -20,9 +20,9 @@ const parseWeapon = (weapon : Node) : Weapon => {
     attacks: parseInt(xpSelect(".//bs:characteristic[@name='A']/text()", weapon, true).toString()),
     hit: parseInt(xpSelect(".//bs:characteristic[@name='WS/BS']/text()", weapon, true).toString()),
     damage: parseInt(xpSelect(".//bs:characteristic[@name='D']/text()", weapon, true).toString().split('/')[0]),
-    specialRules: xpSelect(".//bs:characteristic[@name='SR']/text()", weapon, true).toString(),
+    specialRules: (xpSelect(".//bs:characteristic[@name='SR']/text()", weapon, true) || "-").toString(),
     criticalDamage: parseInt(xpSelect(".//bs:characteristic[@name='D']/text()", weapon, true).toString().split('/')[1]),
-    criticalRules: xpSelect(".//bs:characteristic[@name='!']/text()", weapon, true).toString(),
+    criticalRules: (xpSelect(".//bs:characteristic[@name='!']/text()", weapon, true) || "-").toString(),
   }
 }
 
