@@ -26,7 +26,7 @@ export function WeaponList(props: Props) {
             <tr>
               <td style={{"whiteSpace": "nowrap"}}>{x.name}</td>
               <td>{x.attacks}</td>
-              <td>{x.hit}</td>
+              <td>{x.hit}+</td>
               <td>{x.damage}</td>
               <td>{x.criticalDamage}</td>
               <td>{x.specialRules}</td>
