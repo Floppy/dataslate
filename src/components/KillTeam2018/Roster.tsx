@@ -2,7 +2,7 @@ import React, { MouseEvent } from 'react';
 import { Col } from 'react-bootstrap';
 import { Model, Ability } from '../../types/KillTeam2018';
 import Phase from './Phase';
-import AbilityList from './AbilityList';
+import AbilityList from '../AbilityList';
 import { NoPhaseDetails } from './NoPhaseDetails';
 import { MovementPhaseDetails } from './MovementPhaseDetails';
 import { ScoutingPhaseDetails, hasScoutingPhase } from './ScoutingPhaseDetails';

@@ -1,6 +1,6 @@
 import React from 'react';
 import StatBadge from './StatBadge';
-import AbilityList from './AbilityList';
+import AbilityList from '../AbilityList';
 import { Row, Col } from 'react-bootstrap'
 import { ModelTitle } from '../ModelTitle';
 
