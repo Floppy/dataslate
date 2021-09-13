@@ -32,7 +32,7 @@ export function ModelTitle(props: Props) {
     (props.category === "Specialist" || props.category === "Specialist Retainer"
       ? props.specialism
       : props.category)
-  ],null, "");
+  ],null, undefined, "");
   return (
     <h2 style={headingStyle}>
       <Col>
