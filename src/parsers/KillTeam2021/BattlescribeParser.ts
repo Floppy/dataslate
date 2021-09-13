@@ -37,6 +37,14 @@ const parseAbility = (ability : Node) : Ability => {
   }
 }
 
+const parseRule = (rule : Node) : Ability => {
+  return {
+    name: xpSelect('string(@name)', rule, true).toString(),
+    description: (xpSelect(".//bs:description/text()", rule, true) || "-").toString(),
+    phases: []
+  }
+}
+
 const parseModel = (model : Element) : Model => {
   const details = {
     name: xpSelect('string(@customName)', model, true).toString(),
@@ -52,6 +60,7 @@ const parseModel = (model : Element) : Model => {
     },
     weapons: (xpSelect(".//bs:profile[@typeName='Weapons']", model) as Node[]).map(parseWeapon),
     abilities: (xpSelect(".//bs:profile[@typeName='Abilities']", model) as Node[]).map(parseAbility),
+    rules: (xpSelect(".//bs:rules/bs:rule", model) as Node[]).map(parseRule),
     keywords: (xpSelect("bs:categories/bs:category[@primary='false']/@name", model) as Node[]).map((x) => x.textContent || ''),
     uuid: "",
     count: 0,

@@ -19,6 +19,7 @@ export function Datasheet(props: Props) {
         <StatsTable {...props.model.stats} />
         <WeaponList weapons={props.model.weapons} />
         <AbilityList abilities={props.model.abilities} phase="" />
+        <AbilityList abilities={props.model.rules} phase="" />
       </Col>
       <Col sm='auto'>
         <div>

@@ -28,6 +28,7 @@ export type Model = {
   stats: ModelStats,
   weapons: Weapon[],
   abilities: Ability[],
+  rules: Ability[],
   keywords: string[],
   hash: string,
   count: number,
