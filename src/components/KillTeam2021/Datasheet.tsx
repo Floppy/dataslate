@@ -1,6 +1,7 @@
 import React from 'react';
 import { Badge } from 'react-bootstrap'
 import { Row, Col } from 'react-bootstrap'
+import { Card } from 'react-bootstrap'
 import { Model } from '../../types/KillTeam2021';
 import { StatsTable } from './StatsTable'
 import { ModelTitle } from '../ModelTitle'
@@ -21,7 +22,7 @@ export function Datasheet(props: Props) {
         <AbilityList abilities={props.model.abilities} phase="" />
         <AbilityList abilities={props.model.rules} phase="" />
       </Col>
-      <Col sm='auto'>
+      <Col sm='2'>
         <div>
           {props.model.keywords.map((keyword: string) => (
             <Badge pill variant="secondary" className="mb-2" style={{
@@ -33,6 +34,14 @@ export function Datasheet(props: Props) {
             </Badge>
           ))}
         </div>
+        <Card>
+          <Card.Header>
+            Wound Track
+          </Card.Header>
+          <Card.Body>
+            {"🩸 ".repeat(props.model.stats.wounds)}
+          </Card.Body>
+        </Card>
       </Col>
     </Row>
   );
