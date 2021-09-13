@@ -1,5 +1,7 @@
-import * as XPath from 'xpath-ts'
+import { v4 as uuidv4 } from 'uuid'
+import _ from 'lodash'
 import hash from 'node-object-hash'
+import * as XPath from 'xpath-ts'
 import { Roster, Model, Weapon } from '../../components/KillTeam2021/types';
 
 // useNamespaces is NOT a React hook, so:
@@ -41,9 +43,9 @@ const parseModel = (model : Element) : Model => {
     },
     weapons: (xpSelect(".//bs:profile[@typeName='Weapons']", model) as Node[]).map(parseWeapon),
     keywords: (xpSelect("bs:categories/bs:category[@primary='false']/@name", model) as Node[]).map((x) => x.textContent || ''),
-    uuid: xpSelect('string(@id)', model, true).toString(),
-    count: parseInt(xpSelect('string(@number)', model, true).toString()),
-    selected: 1,
+    uuid: "",
+    count: 0,
+    selected: 0,
   };
   return { ...details, hash: hash().hash(details) }
 }
@@ -54,9 +56,15 @@ export const parseBattlescribeXML = (doc : Document) : Roster => {
   for (const model of xpSelect('//bs:selection[@type=\'model\']', doc) as Element[]) {
     models.push(parseModel(model))
   }
+  const uniqueModels = _.groupBy(models, (m) => m.hash)
   return {
     system: "KillTeam2021",
     name,
-    models
+    models: _.map(uniqueModels, (model) => ({
+      ...model[0],
+      uuid: uuidv4(),
+      count: model.length,
+      selected: model.length
+    }))
   }
 }

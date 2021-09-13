@@ -23,6 +23,9 @@ export function ModelTitle(props: Props) {
   return (
     <h2 style={headingStyle}>
       <Col>
+        {props.model.selected > 1 && (
+          <small>{props.model.selected} x </small>
+        )}
         <strong>{titleComponents[0]} </strong>
         <small>{_.join(_.slice(titleComponents,1), ", ")}</small>
       </Col>
