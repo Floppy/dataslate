@@ -1,3 +1,5 @@
+import { Ability } from './Ability';
+
 export type ModelStats = {
   movement: string,
   actionPointLimit: number,
@@ -25,6 +27,7 @@ export type Model = {
   name: string,
   stats: ModelStats,
   weapons: Weapon[],
+  abilities: Ability[],
   keywords: string[],
   hash: string,
   count: number,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Ability } from '../types/KillTeam2018';
+import { Ability } from '../types/Ability';
 import { Table } from 'react-bootstrap';
 import _ from 'lodash'
 
@@ -11,8 +11,8 @@ type Props = {
 
 function AbilityList(props: Props) {
   const abilities = props.phase ?
-    props.abilities.filter((x) => (x.phases.indexOf(props.phase) >= 0)) :
-    props.abilities.filter((x) => (x.phases.length === 0))
+    props.abilities.filter((x) => (x.phases && x.phases.indexOf(props.phase) >= 0)) :
+    props.abilities.filter((x) => (x.phases && x.phases.length === 0))
   const variant = props.highlight ? "primary" : "";
 
   return abilities.length === 0 ? <></> : (

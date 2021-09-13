@@ -22,5 +22,5 @@ export function PsychicPhaseDetails(props: Props) {
 }
 
 export function hasPsychicPhase(model: Model) {
-  return (model.psychicPowers.length > 0 || (model.abilities.filter((x) => (x.phases.indexOf("psychic") >= 0))).length > 0)
+  return (model.psychicPowers.length > 0 || (model.abilities.filter((x) => (x.phases && x.phases.indexOf("psychic") >= 0))).length > 0)
 }

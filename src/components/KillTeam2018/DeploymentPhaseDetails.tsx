@@ -20,5 +20,5 @@ export function DeploymentPhaseDetails(props: Props) {
 }
 
 export function hasDeploymentPhase(model: Model) {
-  return ((model.abilities.filter((x) => (x.phases.indexOf("deployment") >= 0))).length > 0)
+  return ((model.abilities.filter((x) => (x.phases && x.phases.indexOf("deployment") >= 0))).length > 0)
 }

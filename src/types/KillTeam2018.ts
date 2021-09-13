@@ -1,8 +1,4 @@
-export type Ability = {
-  name: string,
-  description: string,
-  phases: string[],
-}
+import { Ability } from './Ability';
 
 export type PsychicPower = {
   name: string,

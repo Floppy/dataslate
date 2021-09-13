@@ -20,5 +20,5 @@ export function ScoutingPhaseDetails(props: Props) {
 }
 
 export function hasScoutingPhase(model: Model) {
-  return ((model.abilities.filter((x) => (x.phases.indexOf("scouting") >= 0))).length > 0)
+  return ((model.abilities.filter((x) => (x.phases && x.phases.indexOf("scouting") >= 0))).length > 0)
 }

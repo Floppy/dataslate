@@ -20,5 +20,5 @@ export function InitiativePhaseDetails(props: Props) {
 }
 
 export function hasInitiativePhase(model: Model) {
-  return ((model.abilities.filter((x) => (x.phases.indexOf("initiative") >= 0))).length > 0)
+  return ((model.abilities.filter((x) => (x.phases && x.phases.indexOf("initiative") >= 0))).length > 0)
 }
