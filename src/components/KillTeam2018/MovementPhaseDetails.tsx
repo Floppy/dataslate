@@ -2,7 +2,7 @@ import React from 'react';
 import AbilityList from './AbilityList';
 import StatBadge from './StatBadge';
 import { Row, Col } from 'react-bootstrap'
-import { ModelTitle } from './ModelTitle';
+import { ModelTitle } from '../ModelTitle';
 
 import { Model } from './types';
 
@@ -14,7 +14,7 @@ export function MovementPhaseDetails(props: Props) {
   return (
     <Row>
       <Col>
-        <ModelTitle model={props.model}/>
+        <ModelTitle {...props.model}/>
         <AbilityList abilities={props.model.abilities} phase='movement'/>
       </Col>
       <Col sm='auto'>

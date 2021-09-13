@@ -3,7 +3,7 @@ import { Badge } from 'react-bootstrap'
 import { Row, Col } from 'react-bootstrap'
 import { Model } from './types';
 import { StatsTable } from './StatsTable'
-import { ModelTitle } from './ModelTitle'
+import { ModelTitle } from '../ModelTitle'
 import { WeaponList } from './WeaponList'
 
 type Props = {
@@ -14,7 +14,7 @@ export function Datasheet(props: Props) {
   return (
     <Row className={props.model.selected > 0 ? "included" : "excluded"}>
       <Col>
-        <ModelTitle model={props.model} />
+        <ModelTitle {...props.model} />
         <StatsTable {...props.model.stats} />
         <WeaponList weapons={props.model.weapons} />
       </Col>

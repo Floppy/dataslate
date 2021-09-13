@@ -3,7 +3,7 @@ import StatBadge from './StatBadge';
 import AbilityList from './AbilityList';
 import WeaponList from './WeaponList';
 import { Row, Col } from 'react-bootstrap'
-import { ModelTitle } from './ModelTitle';
+import { ModelTitle } from '../ModelTitle';
 
 import { Model } from './types';
 
@@ -15,7 +15,7 @@ export function ShootingPhaseDetails(props: Props) {
   return (
     <Row>
       <Col>
-        <ModelTitle model={props.model}/>
+        <ModelTitle {...props.model}/>
         {hasRangedWeapons(props.model) && <WeaponList weapons={props.model.weapons} phase='shooting' userStrength={props.model.stats.strength}/>}
         <AbilityList abilities={props.model.abilities} phase='shooting'/>
       </Col>

@@ -3,7 +3,7 @@ import StatsTable from './StatsTable';
 import AbilityList from './AbilityList';
 import { Badge } from 'react-bootstrap'
 import { Row, Col } from 'react-bootstrap'
-import { ModelTitle } from './ModelTitle';
+import { ModelTitle } from '../ModelTitle';
 import { Model } from './types';
 
 type Props = {
@@ -15,7 +15,7 @@ export function NoPhaseDetails(props: Props) {
   return (
     <Row className={props.model.selected > 0 ? "included" : "excluded"}>
       <Col>
-        <ModelTitle model={props.model} showSelector onSelectionChanged={props.onSelectionChanged} />
+        <ModelTitle {...props.model} showSelector onSelectionChanged={props.onSelectionChanged} />
         {props.model.category === "Commander" && <div>Commander specialism: <strong>{props.model.specialism}</strong></div>}
         <p>{props.model.weapons.map((w) => (w.name)).concat(props.model.wargear.map((w) => (w.name))).join(", ")}</p>
         <StatsTable {...props.model.stats} points={props.model.points} />
