@@ -3,8 +3,8 @@ import { parseBattlescribeXML as parseKillTeam2021 } from './parsers/KillTeam202
 import JSZip from 'jszip'
 import { DOMParserImpl } from 'xmldom-ts'
 import * as XPath from 'xpath-ts'
-import { Roster as Roster2018 } from './components/KillTeam2018/types';
-import { Roster as Roster2021 } from './components/KillTeam2021/types';
+import { Roster as Roster2018 } from './types/KillTeam2018';
+import { Roster as Roster2021 } from './types/KillTeam2021';
 
 // useNamespaces is NOT a React hook, so:
 // eslint-disable-next-line

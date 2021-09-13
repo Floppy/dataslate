@@ -1,5 +1,5 @@
 import React from 'react';
-import { Weapon } from './types';
+import { Weapon } from '../../types/KillTeam2021';
 import { Table } from 'react-bootstrap';
 
 type Props = {

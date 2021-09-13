@@ -1,7 +1,7 @@
 import React from 'react';
 import { Badge } from 'react-bootstrap'
 import { Row, Col } from 'react-bootstrap'
-import { Model } from './types';
+import { Model } from '../../types/KillTeam2021';
 import { StatsTable } from './StatsTable'
 import { ModelTitle } from '../ModelTitle'
 import { WeaponList } from './WeaponList'

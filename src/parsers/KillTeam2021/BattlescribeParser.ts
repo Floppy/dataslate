@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid'
 import _ from 'lodash'
 import hash from 'node-object-hash'
 import * as XPath from 'xpath-ts'
-import { Roster, Model, Weapon } from '../../components/KillTeam2021/types';
+import { Roster, Model, Weapon } from '../../types/KillTeam2021';
 
 // useNamespaces is NOT a React hook, so:
 // eslint-disable-next-line

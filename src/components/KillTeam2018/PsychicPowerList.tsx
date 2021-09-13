@@ -1,5 +1,5 @@
 import React from 'react';
-import { PsychicPower } from './types';
+import { PsychicPower } from '../../types/KillTeam2018';
 import { Table } from 'react-bootstrap';
 import _ from 'lodash'
 

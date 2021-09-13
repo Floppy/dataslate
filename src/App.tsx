@@ -4,8 +4,8 @@ import { Roster as RosterView2018 } from './components/KillTeam2018/Roster'
 import { Roster as RosterView2021 } from './components/KillTeam2021/Roster'
 import { Container } from 'react-bootstrap'
 import { loadFiles } from './FileLoader'
-import { Roster as Roster2018 } from './components/KillTeam2018/types'
-import { Roster as Roster2021 } from './components/KillTeam2021/types'
+import { Roster as Roster2018 } from './types/KillTeam2018'
+import { Roster as Roster2021 } from './types/KillTeam2021'
 
 export function App() {
 

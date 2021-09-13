@@ -1,6 +1,6 @@
 import React from 'react'
 import { Table } from 'react-bootstrap'
-import { ModelStats } from './types'
+import { ModelStats } from '../../types/KillTeam2021'
 
 export function StatsTable(props: ModelStats) {
   return (

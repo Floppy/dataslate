@@ -1,7 +1,7 @@
 import React, { MouseEvent } from 'react';
 import { Col } from 'react-bootstrap';
 import { CloseButton } from '../CloseButton';
-import { Model } from './types';
+import { Model } from '../../types/KillTeam2021';
 import { Datasheet } from './Datasheet';
 
 type Props = {
