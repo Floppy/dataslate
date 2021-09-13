@@ -5,6 +5,7 @@ import { Model } from '../../types/KillTeam2021';
 import { StatsTable } from './StatsTable'
 import { ModelTitle } from '../ModelTitle'
 import { WeaponList } from './WeaponList'
+import AbilityList from '../AbilityList';
 
 type Props = {
   model: Model
@@ -17,6 +18,7 @@ export function Datasheet(props: Props) {
         <ModelTitle {...props.model} />
         <StatsTable {...props.model.stats} />
         <WeaponList weapons={props.model.weapons} />
+        <AbilityList abilities={props.model.abilities} phase="" />
       </Col>
       <Col sm='auto'>
         <div>

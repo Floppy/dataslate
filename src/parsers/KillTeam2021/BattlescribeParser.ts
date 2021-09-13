@@ -3,6 +3,7 @@ import _ from 'lodash'
 import hash from 'node-object-hash'
 import * as XPath from 'xpath-ts'
 import { Roster, Model, Weapon } from '../../types/KillTeam2021';
+import { Ability } from '../../types/Ability';
 
 // useNamespaces is NOT a React hook, so:
 // eslint-disable-next-line
@@ -28,6 +29,14 @@ const parseWeapon = (weapon : Node) : Weapon => {
   }
 }
 
+const parseAbility = (ability : Node) : Ability => {
+  return {
+    name: xpSelect('string(@name)', ability, true).toString(),
+    description: (xpSelect(".//bs:characteristic[@name='Ability']/text()", ability, true) || "-").toString(),
+    phases: []
+  }
+}
+
 const parseModel = (model : Element) : Model => {
   const details = {
     name: xpSelect('string(@customName)', model, true).toString(),
@@ -42,6 +51,7 @@ const parseModel = (model : Element) : Model => {
       wounds: stat("W", model),
     },
     weapons: (xpSelect(".//bs:profile[@typeName='Weapons']", model) as Node[]).map(parseWeapon),
+    abilities: (xpSelect(".//bs:profile[@typeName='Abilities']", model) as Node[]).map(parseAbility),
     keywords: (xpSelect("bs:categories/bs:category[@primary='false']/@name", model) as Node[]).map((x) => x.textContent || ''),
     uuid: "",
     count: 0,
