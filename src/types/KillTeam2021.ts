@@ -30,6 +30,7 @@ export type Model = {
   abilities: Ability[],
   rules: Ability[],
   keywords: string[],
+  faction: string | null,
   hash: string,
   count: number,
   selected: number,

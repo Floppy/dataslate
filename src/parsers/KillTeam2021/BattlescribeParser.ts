@@ -45,7 +45,35 @@ const parseRule = (rule : Node) : Ability => {
   }
 }
 
+const factionKeywords = [
+  "Brood Coven",
+  "Cadre Mercenary",
+  "Chaos Daemons",
+  "Commorrite",
+  "Craftworld",
+  "Death Guard",
+  "Ecclesiarchy",
+  "Forge World",
+  "Greenskin",
+  "Grey Knight",
+  "Hive Fleet",
+  "Hunter Cadre",
+  "Hunter Clade",
+  "Imperial Guard",
+  "Kommando",
+  "Space Marine",
+  "Talons of the Emperor",
+  "Thousand Sons",
+  "Tomb World",
+  "Traitor Space Marine",
+  "Troupe",
+  "Veteran Guardsmen",
+];
+
 const parseModel = (model : Element) : Model => {
+  const allKeywords = (xpSelect("bs:categories/bs:category[@primary='false']/@name", model) as Node[]).map((x) => (x.textContent || '').replace("💀",""));
+  const faction = _.intersection(allKeywords, factionKeywords).pop() || null;
+  const keywords = _.remove(allKeywords, (x) => (x !== faction));
   const details = {
     name: xpSelect('string(@customName)', model, true).toString(),
     type: xpSelect('string(@name)', model, true).toString(),
@@ -61,7 +89,8 @@ const parseModel = (model : Element) : Model => {
     weapons: (xpSelect(".//bs:profile[@typeName='Weapons']", model) as Node[]).map(parseWeapon),
     abilities: (xpSelect(".//bs:profile[@typeName='Abilities']", model) as Node[]).map(parseAbility),
     rules: (xpSelect(".//bs:rules/bs:rule", model) as Node[]).map(parseRule),
-    keywords: (xpSelect("bs:categories/bs:category[@primary='false']/@name", model) as Node[]).map((x) => x.textContent || ''),
+    keywords,
+    faction,
     uuid: "",
     count: 0,
     selected: 0,
