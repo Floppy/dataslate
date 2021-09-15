@@ -37,6 +37,14 @@ const parseAbility = (ability : Node) : Ability => {
   }
 }
 
+const parseAction = (ability : Node) : Ability => {
+  return {
+    name: xpSelect('string(@name)', ability, true).toString(),
+    description: (xpSelect(".//bs:characteristic[@name='Unique Action']/text()", ability, true) || "-").toString(),
+    phases: []
+  }
+}
+
 const parseRule = (rule : Node) : Ability => {
   return {
     name: xpSelect('string(@name)', rule, true).toString(),
@@ -88,6 +96,7 @@ const parseModel = (model : Element) : Model => {
     },
     weapons: (xpSelect(".//bs:profile[@typeName='Weapons']", model) as Node[]).map(parseWeapon),
     abilities: (xpSelect(".//bs:profile[@typeName='Abilities']", model) as Node[]).map(parseAbility),
+    actions: (xpSelect(".//bs:profile[@typeName='Unique Actions']", model) as Node[]).map(parseAction),
     rules: (xpSelect(".//bs:rules/bs:rule", model) as Node[]).map(parseRule),
     keywords,
     faction,
