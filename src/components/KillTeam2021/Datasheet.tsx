@@ -7,6 +7,7 @@ import { StatsTable } from './StatsTable'
 import { ModelTitle } from '../ModelTitle'
 import { WeaponList } from './WeaponList'
 import AbilityList from '../AbilityList';
+import _ from 'lodash'
 
 type Props = {
   model: Model
@@ -40,14 +41,17 @@ export function Datasheet(props: Props) {
             </Badge>
           ))}
         </div>
-        <Card>
-          <Card.Header>
-            Wound Track
-          </Card.Header>
-          <Card.Body>
-            {"🩸 ".repeat(props.model.stats.wounds)}
-          </Card.Body>
-        </Card>
+
+        {_.range(1,props.model.selected+1).map((i) => (
+          <Card>
+            <Card.Header>
+              Wound Track {props.model.selected > 1 ? i : ''}
+            </Card.Header>
+            <Card.Body>
+              {"🩸 ".repeat(props.model.stats.wounds)}
+            </Card.Body>
+          </Card>
+        ))}
       </Col>
     </Row>
   );
