@@ -1,13 +1,13 @@
 import React from 'react';
 import { Badge } from 'react-bootstrap'
 import { Row, Col } from 'react-bootstrap'
-import { Card } from 'react-bootstrap'
 import { Model } from '../../types/KillTeam2021';
 import { StatsTable } from './StatsTable'
 import { ModelTitle } from '../ModelTitle'
 import { WeaponList } from './WeaponList'
 import { EquipmentList } from './EquipmentList'
 import { ActionList } from './ActionList'
+import { WoundTrack } from './WoundTrack'
 import AbilityList from '../AbilityList';
 import _ from 'lodash'
 
@@ -48,14 +48,7 @@ export function Datasheet(props: Props) {
         </div>
 
         {_.range(1,props.model.selected+1).map((i) => (
-          <Card>
-            <Card.Header>
-              Wound Track {props.model.selected > 1 ? i : ''}
-            </Card.Header>
-            <Card.Body>
-              {"🩸 ".repeat(props.model.stats.wounds)}
-            </Card.Body>
-          </Card>
+          <WoundTrack wounds={props.model.stats.wounds} title={`Wound Track ${props.model.selected > 1 ? i : ''}`} />
         ))}
       </Col>
     </Row>
