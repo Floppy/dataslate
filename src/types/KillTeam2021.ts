@@ -1,5 +1,11 @@
 import { Ability } from './Ability';
 
+export type Action = {
+  name: string,
+  cost: number,
+  description: string,
+}
+
 export type ModelStats = {
   movement: string,
   actionPointLimit: number,
@@ -21,14 +27,21 @@ export type Weapon = {
   criticalRules: string,
 };
 
+export type Equipment = {
+  name: string,
+  cost: number,
+  description: string,
+}
+
 export type Model = {
   uuid: string,
   type: string,
   name: string,
   stats: ModelStats,
   weapons: Weapon[],
+  equipment: Equipment[],
   abilities: Ability[],
-  actions: Ability[],
+  actions: Action[],
   rules: Ability[],
   keywords: string[],
   faction: string | null,

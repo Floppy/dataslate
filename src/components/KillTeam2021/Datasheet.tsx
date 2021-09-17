@@ -6,6 +6,8 @@ import { Model } from '../../types/KillTeam2021';
 import { StatsTable } from './StatsTable'
 import { ModelTitle } from '../ModelTitle'
 import { WeaponList } from './WeaponList'
+import { EquipmentList } from './EquipmentList'
+import { ActionList } from './ActionList'
 import AbilityList from '../AbilityList';
 import _ from 'lodash'
 
@@ -20,8 +22,10 @@ export function Datasheet(props: Props) {
         <ModelTitle {...props.model} />
         <StatsTable {...props.model.stats} />
         <WeaponList weapons={props.model.weapons} />
+        <EquipmentList equipment={props.model.equipment} />
         <AbilityList abilities={props.model.abilities} phase="" />
-        <AbilityList abilities={props.model.actions} phase="" />
+        <ActionList actions={props.model.actions} />
+
       </Col>
       <Col sm='2'>
         <div>

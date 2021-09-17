@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid'
 import _ from 'lodash'
 import hash from 'node-object-hash'
 import * as XPath from 'xpath-ts'
-import { Roster, Model, Weapon } from '../../types/KillTeam2021';
+import { Roster, Model, Weapon, Equipment, Action } from '../../types/KillTeam2021';
 import { Ability } from '../../types/Ability';
 
 // useNamespaces is NOT a React hook, so:
@@ -37,11 +37,19 @@ const parseAbility = (ability : Node) : Ability => {
   }
 }
 
-const parseAction = (ability : Node) : Ability => {
+const parseAction = (action : Node) : Action => {
   return {
-    name: xpSelect('string(@name)', ability, true).toString(),
-    description: (xpSelect(".//bs:characteristic[@name='Unique Action']/text()", ability, true) || "-").toString(),
-    phases: []
+    name: xpSelect('string(@name)', action, true).toString(),
+    description: (xpSelect(".//bs:characteristic[@name='Unique Action']/text()", action, true) || "-").toString(),
+    cost: 1,
+  }
+}
+
+const parseEquipment = (equipment : Node) : Equipment => {
+  return {
+    name: xpSelect('string(@name)', equipment, true).toString(),
+    cost: parseInt(xpSelect("string(.//bs:cost/@value)", equipment, true).toString()),
+    description: (xpSelect(".//bs:characteristic[@name='Equipment']/text()", equipment, true) || "-").toString(),
   }
 }
 
@@ -95,6 +103,7 @@ const parseModel = (model : Element) : Model => {
       wounds: stat("W", model),
     },
     weapons: (xpSelect(".//bs:profile[@typeName='Weapons']", model) as Node[]).map(parseWeapon),
+    equipment: (xpSelect(".//bs:selection[(@type='upgrade') and (//bs:cost/@value!='0.0')]", model) as Node[]).map(parseEquipment),
     abilities: (xpSelect(".//bs:profile[@typeName='Abilities']", model) as Node[]).map(parseAbility),
     actions: (xpSelect(".//bs:profile[@typeName='Unique Actions']", model) as Node[]).map(parseAction),
     rules: (xpSelect(".//bs:rules/bs:rule", model) as Node[]).map(parseRule),

@@ -3,7 +3,7 @@ import { Col } from 'react-bootstrap';
 import { CloseButton } from '../CloseButton';
 import { Model } from '../../types/KillTeam2021';
 import { Datasheet } from './Datasheet';
-import AbilityList from '../AbilityList';
+import { RuleList } from './RuleList';
 import _ from 'lodash'
 
 type Props = {
@@ -33,6 +33,6 @@ export function Roster(props: Props) {
         <Datasheet model={model}/>
     ))}
     <h2 style={headingStyle}>Rules</h2>
-    <AbilityList abilities={_.uniqBy(_.flatten(props.models.map((m) => (m.rules))), 'name')} phase="" />
+    <RuleList rules={_.uniqBy(_.flatten(props.models.map((m) => (m.rules))), 'name')}/>
   </>
 }
