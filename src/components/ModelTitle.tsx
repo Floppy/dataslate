@@ -27,7 +27,6 @@ export function ModelTitle(props: Props) {
     justifyContent: 'space-between',
   }
   const titleComponents = _.without([
-    props.name,
     props.type,
     (props.category === "Specialist" || props.category === "Specialist Retainer"
       ? props.specialism
