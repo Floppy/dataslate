@@ -25,7 +25,9 @@ export function Datasheet(props: Props) {
         <EquipmentList equipment={props.model.equipment} />
         <AbilityList abilities={props.model.abilities} phase="" />
         <ActionList actions={props.model.actions} />
-
+        {_.range(1,props.model.selected+1).map((i) => (
+          <WoundTrack wounds={props.model.stats.wounds} title={props.model.name || `${props.model.type} ${(props.model.selected > 1 ? i : '')}`} />
+        ))}
       </Col>
       <Col sm='2'>
         <div>
@@ -46,10 +48,6 @@ export function Datasheet(props: Props) {
             </Badge>
           ))}
         </div>
-
-        {_.range(1,props.model.selected+1).map((i) => (
-          <WoundTrack wounds={props.model.stats.wounds} title={`Wound Track ${props.model.selected > 1 ? i : ''}`} />
-        ))}
       </Col>
     </Row>
   );

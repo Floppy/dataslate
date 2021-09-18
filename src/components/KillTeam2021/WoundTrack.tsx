@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from 'react-bootstrap'
+import { Table } from 'react-bootstrap'
 
 type Props = {
   wounds: number,
@@ -7,12 +7,10 @@ type Props = {
 };
 
 export function WoundTrack(props: Props) {
-  return <Card>
-    <Card.Header>
-      {props.title}
-    </Card.Header>
-    <Card.Body>
-      {"🩸 ".repeat(props.wounds)}
-    </Card.Body>
-  </Card>
+  return <Table striped bordered size="sm">
+    <tr>
+      <td>{props.title}</td>
+      <td>{"🩸 ".repeat(props.wounds)}</td>
+    </tr>
+  </Table>
 }
