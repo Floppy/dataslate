@@ -18,15 +18,16 @@ export function StatBadge (props: Props) {
     display: 'flex',
     flexDirection: 'column',
     textAlign: 'center',
-    borderRadius: '50%',
+    borderRadius: '25%',
   };
   const nameStyle: CSS.Properties = {
     fontSize: '1vw',
     fontWeight: 'bold',
     lineHeight: '1vw',
+    color: '#FF6F2D',
   };
   const valueStyle: CSS.Properties = {
-    fontSize: '3vw',
+    fontSize: '2.5vw',
     lineHeight: '3vw',
     fontWeight: 'bold'
   }
