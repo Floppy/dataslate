@@ -113,7 +113,7 @@ const parseModel = (model : Element) : Model => {
     count: 0,
     selected: 0,
   };
-  return { ...details, hash: hash().hash(details) }
+  return { ...details, hash: hash().hash({type: details.type, weapons: details.weapons, equipment: details.equipment}) }
 }
 
 export const parseBattlescribeXML = (doc : Document) : Roster => {
