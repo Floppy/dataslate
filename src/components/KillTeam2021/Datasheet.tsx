@@ -8,7 +8,7 @@ import { StatBadge } from '../StatBadge'
 import { EquipmentList } from './EquipmentList'
 import { ActionList } from './ActionList'
 import { WoundTrack } from './WoundTrack'
-import AbilityList from '../AbilityList';
+import AbilityList from './AbilityList';
 import _ from 'lodash'
 
 type Props = {
@@ -20,13 +20,19 @@ export function Datasheet(props: Props) {
     <Row className={props.model.selected > 0 ? "included" : "excluded"}>
       <Col>
         <ModelTitle {...props.model} />
-        <WeaponList weapons={props.model.weapons} />
-        <EquipmentList equipment={props.model.equipment} />
-        <AbilityList abilities={props.model.abilities} phase="" />
-        <ActionList actions={props.model.actions} />
         {_.range(1,props.model.selected+1).map((i) => (
           <WoundTrack wounds={props.model.stats.wounds} title={props.model.name || `${props.model.type} ${(props.model.selected > 1 ? i : '')}`} />
         ))}
+        <WeaponList weapons={props.model.weapons} />
+        <Row>
+          <Col>
+            <EquipmentList equipment={props.model.equipment} />
+            <AbilityList abilities={props.model.abilities} />
+          </Col>
+          <Col>
+            <ActionList actions={props.model.actions} />
+          </Col>
+        </Row>
       </Col>
       <Col sm='auto'>
         <div>
