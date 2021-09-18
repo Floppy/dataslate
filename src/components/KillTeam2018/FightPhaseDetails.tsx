@@ -1,5 +1,5 @@
 import React from 'react';
-import StatBadge from './StatBadge';
+import { StatBadge } from '../StatBadge';
 import AbilityList from '../AbilityList';
 import WeaponList from './WeaponList';
 import { Row, Col } from 'react-bootstrap'

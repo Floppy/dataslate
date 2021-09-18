@@ -7,7 +7,7 @@ type Props = {
   secondaryValue?: string | null,
 }
 
-function StatBadge (props: Props) {
+export function StatBadge (props: Props) {
   const badgeStyle: CSS.Properties = {
     paddingTop: '.2vw',
     border: '1px solid black',
@@ -43,5 +43,3 @@ function StatBadge (props: Props) {
     </div>
   )
 }
-
-export default StatBadge
