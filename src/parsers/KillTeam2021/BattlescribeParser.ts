@@ -94,7 +94,7 @@ const parseModel = (model : Element) : Model => {
     name: xpSelect('string(@customName)', model, true).toString(),
     type: xpSelect('string(@name)', model, true).toString(),
     stats: {
-      movement: stat("M", model) + "⬤",
+      movement: stat("M", model),
       actionPointLimit: stat("APL", model),
       groupActivation: stat("GA", model),
       defence: stat("DF", model),

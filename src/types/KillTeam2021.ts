@@ -7,7 +7,7 @@ export type Action = {
 }
 
 export type ModelStats = {
-  movement: string,
+  movement: number,
   actionPointLimit: number,
   groupActivation: number,
   defence: number,
