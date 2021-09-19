@@ -1,5 +1,5 @@
 import React from 'react';
-import { Badge, Card } from 'react-bootstrap'
+import { Card } from 'react-bootstrap'
 import { Row, Col } from 'react-bootstrap'
 import { Model } from '../../types/KillTeam2021';
 import { ModelTitle } from '../ModelTitle'
@@ -7,6 +7,7 @@ import { WeaponList } from './WeaponList'
 import { StatBadge } from '../StatBadge'
 import { EquipmentList } from './EquipmentList'
 import { ActionList } from './ActionList'
+import { KeywordList } from './KeywordList'
 import { WoundTrack } from './WoundTrack'
 import AbilityList from './AbilityList';
 import _ from 'lodash'
@@ -17,7 +18,7 @@ type Props = {
 
 export function Datasheet(props: Props) {
   return (
-    <Card>
+    <Card style={{marginBottom: "20px"}}>
       <ModelTitle {...props.model} />
       <Row className={props.model.selected > 0 ? "included" : "excluded"}>
         <Col>
@@ -48,24 +49,9 @@ export function Datasheet(props: Props) {
             <StatBadge name="DF" value={`${props.model.stats.defence}`}/>
             <StatBadge name="Sv" value={`${props.model.stats.save}+`}/>
           </Row>
-          <Badge pill variant="primary" className="mb-2" style={{
-            textTransform: "uppercase",
-            marginRight: "10px",
-            display: "block",
-          }}>
-            {props.model.faction} 💀
-          </Badge>
-          {props.model.keywords.map((keyword: string) => (
-            <Badge pill variant="secondary" className="mb-2" style={{
-              textTransform: "uppercase",
-              marginRight: "10px",
-              display: "block",
-            }}>
-              {keyword}
-            </Badge>
-          ))}
         </Col>
       </Row>
+      <KeywordList faction={props.model.faction} keywords={props.model.keywords} />
     </Card>
   );
 }
