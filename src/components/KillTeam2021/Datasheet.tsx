@@ -18,11 +18,11 @@ type Props = {
 
 export function Datasheet(props: Props) {
   return (
-    <Card style={{marginBottom: "20px"}}>
+    <Card style={{marginBottom: "20px"}} className={props.model.selected > 0 ? "included" : "excluded"}>
       <ModelTitle {...props.model} />
       <Card.Body>
-        <Row className={props.model.selected > 0 ? "included" : "excluded"}>
-          <Col>
+        <Row>
+          <Col sm="10">
             {_.range(1,props.model.selected+1).map((i) => (
               <WoundTrack wounds={props.model.stats.wounds} title={props.model.name || `${props.model.type} ${(props.model.selected > 1 ? i : '')}`} />
             ))}
@@ -37,19 +37,15 @@ export function Datasheet(props: Props) {
               </Col>
             </Row>
           </Col>
-          <Col sm='auto'>
-            <Row>
-              <StatBadge name="M" value={`${props.model.stats.movement}●`}/>
-              <StatBadge name="W" value={`${props.model.stats.wounds}`}/>
-            </Row>
-            <Row>
-              <StatBadge name="APL" value={`${props.model.stats.actionPointLimit}`}/>
-              <StatBadge name="GA" value={`${props.model.stats.groupActivation}`}/>
-            </Row>
-            <Row>
-              <StatBadge name="DF" value={`${props.model.stats.defence}`}/>
-              <StatBadge name="Sv" value={`${props.model.stats.save}+`}/>
-            </Row>
+          <Col sm="1">
+            <StatBadge name="M" value={`${props.model.stats.movement}●`}/>
+            <StatBadge name="GA" value={`${props.model.stats.groupActivation}`}/>
+            <StatBadge name="DF" value={`${props.model.stats.defence}`}/>
+          </Col>
+          <Col sm="1">
+            <StatBadge name="W" value={`${props.model.stats.wounds}`}/>
+            <StatBadge name="APL" value={`${props.model.stats.actionPointLimit}`}/>
+            <StatBadge name="Sv" value={`${props.model.stats.save}+`}/>
           </Col>
         </Row>
       </Card.Body>

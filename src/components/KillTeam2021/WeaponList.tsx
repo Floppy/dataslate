@@ -24,7 +24,7 @@ export function WeaponList(props: Props) {
         <tbody>
           {props.weapons.map((x: Weapon) => (
             <tr>
-              <td style={{"whiteSpace": "nowrap"}}>{x.name}</td>
+              <td>{x.name}</td>
               <td>{x.attacks}</td>
               <td>{x.hit}+</td>
               <td>{x.damage}</td>
