@@ -21,7 +21,7 @@ export function NoPhaseDetails(props: Props) {
         <StatsTable {...props.model.stats} points={props.model.points} />
         <AbilityList abilities={props.model.abilities} phase=''/>
       </Card.Body>
-      <KeywordList faction={`${props.model.faction} 💀`} keywords={props.model.keywords} />
+      <KeywordList faction={props.model.faction} keywords={props.model.keywords} />
     </Card>
   );
 }

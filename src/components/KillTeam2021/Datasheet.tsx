@@ -49,7 +49,7 @@ export function Datasheet(props: Props) {
           </Col>
         </Row>
       </Card.Body>
-      <KeywordList faction={`${props.model.faction} 💀`} keywords={props.model.keywords} />
+      <KeywordList faction={props.model.faction ? `${props.model.faction} 💀` : null} keywords={props.model.keywords} />
     </Card>
   );
 }
