@@ -3,7 +3,7 @@ import { Col } from 'react-bootstrap';
 import { Model } from '../../types/KillTeam2018';
 import { Ability } from '../../types/Ability';
 import Phase from './Phase';
-import AbilityList from '../AbilityList';
+import AbilityList from './AbilityList';
 import { NoPhaseDetails } from './NoPhaseDetails';
 import { MovementPhaseDetails } from './MovementPhaseDetails';
 import { ScoutingPhaseDetails, hasScoutingPhase } from './ScoutingPhaseDetails';

@@ -1,6 +1,6 @@
 import React from 'react';
 import StatsTable from './StatsTable';
-import AbilityList from '../AbilityList';
+import AbilityList from './AbilityList';
 import { Card } from 'react-bootstrap'
 import { ModelTitle } from '../ModelTitle';
 import { KeywordList } from '../KeywordList';

@@ -1,5 +1,5 @@
 import React from 'react';
-import AbilityList from '../AbilityList';
+import AbilityList from './AbilityList';
 import PsychicPowerList from './PsychicPowerList';
 import { Row, Col } from 'react-bootstrap'
 import { ModelTitle } from '../ModelTitle';

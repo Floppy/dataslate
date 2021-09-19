@@ -1,5 +1,5 @@
 import React from 'react';
-import { Ability } from '../types/Ability';
+import { Ability } from '../../types/Ability';
 import { Table } from 'react-bootstrap';
 import _ from 'lodash'
 
