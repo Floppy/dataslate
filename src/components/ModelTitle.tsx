@@ -38,7 +38,7 @@ export function ModelTitle(props: Props) {
         {props.category && props.specialism && (props.category === "Specialist" || props.category === "Specialist Retainer") && <SpecialistIcon specialism={props.specialism} />}
         {props.category && <CategoryIcon category={props.category} />}
         {props.selected > 1 && (
-          <small>{props.selected} x </small>
+          <small>{props.selected} × </small>
         )}
         <strong>{titleComponents[0]} </strong>
         <small>{_.join(_.slice(titleComponents,1), ", ")}</small>
