@@ -16,7 +16,6 @@ export function WeaponList(props: Props) {
             <th>Attacks</th>
             <th>Hit</th>
             <th>Damage</th>
-            <th>Critical</th>
             <th>Rules</th>
             <th>Critical</th>
           </tr>
@@ -27,8 +26,7 @@ export function WeaponList(props: Props) {
               <td>{x.name}</td>
               <td>{x.attacks}</td>
               <td>{x.hit}+</td>
-              <td>{x.damage}</td>
-              <td>{x.criticalDamage}</td>
+              <td>{x.damage} / {x.criticalDamage}</td>
               <td>{x.specialRules}</td>
               <td>{x.criticalRules}</td>
             </tr>
