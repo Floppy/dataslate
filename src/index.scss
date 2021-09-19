@@ -4,6 +4,8 @@ $theme-colors: (
   "primary": $primary,
 );
 
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@500&display=swap');
+
 @import "~bootstrap/scss/bootstrap";
 
 body {
@@ -18,6 +20,11 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Teko', sans-serif;
+  text-transform: uppercase;
 }
 
 @import "~bootstrap-slider/dist/css/bootstrap-slider.css";
