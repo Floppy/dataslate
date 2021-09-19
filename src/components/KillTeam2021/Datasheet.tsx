@@ -17,25 +17,37 @@ type Props = {
 
 export function Datasheet(props: Props) {
   return (
-    <Row className={props.model.selected > 0 ? "included" : "excluded"}>
-      <Col>
-        <ModelTitle {...props.model} />
-        {_.range(1,props.model.selected+1).map((i) => (
-          <WoundTrack wounds={props.model.stats.wounds} title={props.model.name || `${props.model.type} ${(props.model.selected > 1 ? i : '')}`} />
-        ))}
-        <WeaponList weapons={props.model.weapons} />
-        <Row>
-          <Col>
-            <EquipmentList equipment={props.model.equipment} />
-            <AbilityList abilities={props.model.abilities} />
-          </Col>
-          <Col>
-            <ActionList actions={props.model.actions} />
-          </Col>
-        </Row>
-      </Col>
-      <Col sm='auto'>
-        <div>
+    <>
+      <ModelTitle {...props.model} />
+      <Row className={props.model.selected > 0 ? "included" : "excluded"}>
+        <Col>
+          {_.range(1,props.model.selected+1).map((i) => (
+            <WoundTrack wounds={props.model.stats.wounds} title={props.model.name || `${props.model.type} ${(props.model.selected > 1 ? i : '')}`} />
+          ))}
+          <WeaponList weapons={props.model.weapons} />
+          <Row>
+            <Col>
+              <EquipmentList equipment={props.model.equipment} />
+              <AbilityList abilities={props.model.abilities} />
+            </Col>
+            <Col>
+              <ActionList actions={props.model.actions} />
+            </Col>
+          </Row>
+        </Col>
+        <Col sm='auto'>
+          <Row>
+            <StatBadge name="M" value={`${props.model.stats.movement}●`}/>
+            <StatBadge name="W" value={`${props.model.stats.wounds}`}/>
+          </Row>
+          <Row>
+            <StatBadge name="APL" value={`${props.model.stats.actionPointLimit}`}/>
+            <StatBadge name="GA" value={`${props.model.stats.groupActivation}`}/>
+          </Row>
+          <Row>
+            <StatBadge name="DF" value={`${props.model.stats.defence}`}/>
+            <StatBadge name="Sv" value={`${props.model.stats.save}+`}/>
+          </Row>
           <Badge pill variant="primary" className="mb-2" style={{
             textTransform: "uppercase",
             marginRight: "10px",
@@ -52,32 +64,8 @@ export function Datasheet(props: Props) {
               {keyword}
             </Badge>
           ))}
-        </div>
-        <Row>
-          <Col sm='auto'>
-            <StatBadge name="M" value={`${props.model.stats.movement}●`}/>
-          </Col>
-          <Col sm='auto'>
-            <StatBadge name="W" value={`${props.model.stats.wounds}`}/>
-          </Col>
-        </Row>
-        <Row>
-          <Col sm='auto'>
-            <StatBadge name="APL" value={`${props.model.stats.actionPointLimit}`}/>
-          </Col>
-          <Col sm='auto'>
-            <StatBadge name="GA" value={`${props.model.stats.groupActivation}`}/>
-          </Col>
-        </Row>
-        <Row>
-          <Col sm='auto'>
-            <StatBadge name="DF" value={`${props.model.stats.defence}`}/>
-          </Col>
-          <Col sm='auto'>
-            <StatBadge name="Sv" value={`${props.model.stats.save}+`}/>
-          </Col>
-        </Row>
-      </Col>
-    </Row>
+        </Col>
+      </Row>
+    </>
   );
 }
