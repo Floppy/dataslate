@@ -18,7 +18,7 @@ type Props = {
 
 export function Datasheet(props: Props) {
   return (
-    <Card style={{marginBottom: "20px", breakInside: "avoid"}} className={props.model.selected > 0 ? "included" : "excluded"}>
+    <Card className={props.model.selected > 0 ? "included" : "excluded"}>
       <ModelTitle {...props.model} />
       <Card.Body>
         <Row>
@@ -29,8 +29,8 @@ export function Datasheet(props: Props) {
             <WeaponList weapons={props.model.weapons} />
             <Row>
               <Col>
-                <EquipmentList equipment={props.model.equipment} />
                 <AbilityList abilities={props.model.abilities} />
+                <EquipmentList equipment={props.model.equipment} />
               </Col>
               <Col>
                 <ActionList actions={props.model.actions} />

@@ -7,7 +7,7 @@ type Props = {
 };
 
 export function KeywordList(props: Props) {
-  return <div style={{background: "rgba(0, 0, 0, 0.125)", padding: "5px 10px 0px 10px", marginTop: "10px"}}>
+  return <div style={{background: "rgba(0, 0, 0, 0.125)", padding: "5px 10px 0px 10px"}}>
     { props.faction ?
       <Badge pill variant="primary" className="mb-2" style={{
         textTransform: "uppercase",

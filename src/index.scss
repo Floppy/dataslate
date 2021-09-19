@@ -40,3 +40,8 @@ h1, h2, h3, h4, h5 {
     display: none;
   }
 }
+
+.card {
+  margin-bottom: 1em;
+  break-inside: avoid;
+}
