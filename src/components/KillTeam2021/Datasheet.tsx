@@ -18,7 +18,7 @@ type Props = {
 
 export function Datasheet(props: Props) {
   return (
-    <Card style={{marginBottom: "20px"}} className={props.model.selected > 0 ? "included" : "excluded"}>
+    <Card style={{marginBottom: "20px", breakInside: "avoid"}} className={props.model.selected > 0 ? "included" : "excluded"}>
       <ModelTitle {...props.model} />
       <Card.Body>
         <Row>

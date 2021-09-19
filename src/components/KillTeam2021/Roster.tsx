@@ -32,7 +32,7 @@ export function Roster(props: Props) {
     {props.models.map((model: Model) => (
         <Datasheet model={model}/>
     ))}
-    <h2 style={headingStyle}>Rules</h2>
+    <h2 style={{...headingStyle, breakBefore: 'always'}}>Rules</h2>
     <RuleList rules={_.uniqBy(_.flatten(props.models.map((m) => (m.rules))), 'name')}/>
   </>
 }
