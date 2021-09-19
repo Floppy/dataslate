@@ -14,8 +14,8 @@ type Props = {
 
 export function Roster(props: Props) {
   const headingStyle = {
-    background: 'black',
-    color: 'white',
+    background: '#FF6F2D',
+    color: 'black',
     padding: '10px',
     width: '100%',
     display: 'flex',

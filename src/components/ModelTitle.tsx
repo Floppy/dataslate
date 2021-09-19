@@ -19,8 +19,8 @@ type Props = {
 
 export function ModelTitle(props: Props) {
   const headingStyle = {
-    background: 'lightgrey',
-    color: 'black',
+    background: 'black',
+    color: 'white',
     padding: '5px',
     display: 'flex',
     width: '100%',
