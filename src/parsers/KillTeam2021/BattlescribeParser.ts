@@ -46,10 +46,11 @@ const parseAction = (action : Node) : Action => {
 }
 
 const parseEquipment = (equipment : Node) : Equipment => {
+  const description = xpSelect(".//bs:characteristic[@name='Equipment']/text()", equipment, true)
   return {
     name: xpSelect('string(@name)', equipment, true).toString(),
     cost: parseInt(xpSelect("string(.//bs:cost/@value)", equipment, true).toString()),
-    description: (xpSelect(".//bs:characteristic[@name='Equipment']/text()", equipment, true) || "-").toString(),
+    description: description ? description.toString() : null,
   }
 }
 

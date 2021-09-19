@@ -15,8 +15,11 @@ export function EquipmentList(props: Props) {
       <Card.Body>
         {props.equipment.map((x: Equipment) => (
           <p>
-            <strong>{x.name} ({x.cost} EP): </strong>
-            {x.description}
+            <strong>{x.name} ({x.cost} EP)</strong>
+            {x.description
+              ? <><strong>: </strong>{x.description}</>
+              : <></>
+            }
           </p>
         ))}
       </Card.Body>

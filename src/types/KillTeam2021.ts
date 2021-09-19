@@ -30,7 +30,7 @@ export type Weapon = {
 export type Equipment = {
   name: string,
   cost: number,
-  description: string,
+  description: string | null,
 }
 
 export type Model = {
