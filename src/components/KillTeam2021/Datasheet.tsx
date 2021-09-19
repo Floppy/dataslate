@@ -24,7 +24,7 @@ export function Datasheet(props: Props) {
         <Row>
           <Col sm="10">
             {_.range(1,props.model.selected+1).map((i) => (
-              <WoundTrack wounds={props.model.stats.wounds} title={props.model.name || `${props.model.type} ${(props.model.selected > 1 ? i : '')}`} />
+              <WoundTrack wounds={props.model.stats.wounds} title={props.model.name} />
             ))}
             <WeaponList weapons={props.model.weapons} />
             <Row>

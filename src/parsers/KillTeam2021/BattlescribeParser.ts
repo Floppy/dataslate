@@ -88,12 +88,13 @@ const factionKeywords = [
 ];
 
 const parseModel = (model : Element) : Model => {
+  const type = xpSelect('string(@name)', model, true).toString()
   const allKeywords = (xpSelect("bs:categories/bs:category[@primary='false']/@name", model) as Node[]).map((x) => (x.textContent || '').replace("💀",""));
   const faction = _.intersection(allKeywords, factionKeywords).pop() || null;
   const keywords = _.remove(allKeywords, (x) => (x !== faction));
   const details = {
-    name: xpSelect('string(@customName)', model, true).toString(),
-    type: xpSelect('string(@name)', model, true).toString(),
+    name: xpSelect('string(@customName)', model, true).toString() || type,
+    type,
     stats: {
       movement: stat("M", model),
       actionPointLimit: stat("APL", model),
@@ -114,6 +115,7 @@ const parseModel = (model : Element) : Model => {
     count: 0,
     selected: 0,
   };
+  details.name = details.name ? details.name : details.type
   return { ...details, hash: hash().hash({type: details.type, weapons: details.weapons, equipment: details.equipment}) }
 }
 
