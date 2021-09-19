@@ -13,7 +13,7 @@ export function KeywordList(props: Props) {
         textTransform: "uppercase",
         marginRight: "10px",
       }}>
-        {props.faction} 💀
+        {props.faction}
       </Badge> : <></>
     }
     {props.keywords.map((keyword: string) => (
