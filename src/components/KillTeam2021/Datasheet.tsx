@@ -1,5 +1,5 @@
 import React from 'react';
-import { Badge } from 'react-bootstrap'
+import { Badge, Card } from 'react-bootstrap'
 import { Row, Col } from 'react-bootstrap'
 import { Model } from '../../types/KillTeam2021';
 import { ModelTitle } from '../ModelTitle'
@@ -17,7 +17,7 @@ type Props = {
 
 export function Datasheet(props: Props) {
   return (
-    <>
+    <Card>
       <ModelTitle {...props.model} />
       <Row className={props.model.selected > 0 ? "included" : "excluded"}>
         <Col>
@@ -66,6 +66,6 @@ export function Datasheet(props: Props) {
           ))}
         </Col>
       </Row>
-    </>
+    </Card>
   );
 }
