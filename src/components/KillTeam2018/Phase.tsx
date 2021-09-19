@@ -11,7 +11,7 @@ function Phase(props: Props) {
   return <div style={{
     pageBreakAfter: 'always',
   }}>
-    <h1 style={{
+    <h2 style={{
       background: '#FF6F2D',
       color: 'white',
       padding: '10px',
@@ -26,7 +26,7 @@ function Phase(props: Props) {
           <small>{props.note}</small>
         )}
       </Col>
-    </h1>
+    </h2>
     {props.children}
   </div>
 }

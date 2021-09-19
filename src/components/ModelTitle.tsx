@@ -33,7 +33,7 @@ export function ModelTitle(props: Props) {
       : props.category)
   ],null, undefined, "");
   return (
-    <h2 style={headingStyle}>
+    <h3 style={headingStyle}>
       <Col>
         {props.category && props.specialism && (props.category === "Specialist" || props.category === "Specialist Retainer") && <SpecialistIcon specialism={props.specialism} />}
         {props.category && <CategoryIcon category={props.category} />}
@@ -53,6 +53,6 @@ export function ModelTitle(props: Props) {
             min={0} />
         </Col>
       )}
-    </h2>
+    </h3>
   );
 }

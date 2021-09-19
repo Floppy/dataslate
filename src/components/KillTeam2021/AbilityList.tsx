@@ -10,7 +10,7 @@ type Props = {
 function AbilityList(props: Props) {
   return props.abilities.length === 0 ? <></> : (
     <Card border="secondary" bg="light">
-      <Card.Header style={{ background: "rgba(0, 0, 0, 0.05)", fontWeight: "bold"}}>
+      <Card.Header style={{ background: "rgba(0, 0, 0, 0.05)"}} as="h4">
         Abilities
       </Card.Header>
       <Card.Body>
