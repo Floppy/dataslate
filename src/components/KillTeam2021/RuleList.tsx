@@ -9,17 +9,11 @@ type Props = {
 
 export function RuleList(props: Props) {
   return props.rules.length === 0 ? <></> : (
-    <Table striped bordered size="sm">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Description</th>
-        </tr>
-      </thead>
+    <Table striped bordered>
       <tbody>
         {_.sortBy(props.rules, ['name']).map((x: Ability) => (
           <tr>
-            <td>{x.name}</td>
+            <td><strong>{x.name}</strong></td>
             <td>{x.description}</td>
           </tr>
         ))}
