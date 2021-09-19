@@ -12,11 +12,10 @@ function Phase(props: Props) {
     pageBreakAfter: 'always',
   }}>
     <h1 style={{
-      background: 'black',
+      background: '#FF6F2D',
       color: 'white',
       padding: '10px',
       width: '100%',
-      textTransform: 'capitalize',
       display: 'flex',
     }}>
       <Col>

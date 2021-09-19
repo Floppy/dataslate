@@ -31,11 +31,10 @@ export function Roster(props: Props) {
   const selectedModels = _.filter(sortedModels, (x: Model) => (x.selected > 0))
   return <>
     <h1 style={{
-      background: 'black',
+      background: '#FF6F2D',
       color: 'white',
       padding: '10px',
       width: '100%',
-      textTransform: 'capitalize',
       display: 'flex',
     }}>
       <Col>
