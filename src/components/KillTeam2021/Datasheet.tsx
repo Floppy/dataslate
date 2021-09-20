@@ -30,10 +30,16 @@ export function Datasheet(props: Props) {
             <Row>
               <Col>
                 <AbilityList abilities={props.model.abilities} />
-                <EquipmentList equipment={props.model.equipment} />
+                {props.model.actions.length === 0
+                  ? <></>
+                  : <EquipmentList equipment={props.model.equipment} />
+                }
               </Col>
               <Col>
-                <ActionList actions={props.model.actions} />
+                {props.model.actions.length === 0
+                  ? <EquipmentList equipment={props.model.equipment} />
+                  : <ActionList actions={props.model.actions} />
+                }
               </Col>
             </Row>
           </Col>
