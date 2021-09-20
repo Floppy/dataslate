@@ -84,7 +84,7 @@ const factionKeywords = [
   "Tomb World",
   "Traitor Space Marine",
   "Troupe",
-  "Veteran Guardsmen",
+  "Veteran Guardsman",
 ];
 
 const parseModel = (model : Element) : Model => {
