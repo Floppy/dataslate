@@ -42,6 +42,7 @@ export type Operative = {
   abilities: Ability[],
   actions: Action[],
   rules: Ability[],
+  leader: boolean,
   keywords: string[],
   faction: string | null
 };
@@ -56,6 +57,7 @@ export type Datacard = {
   abilities: Ability[],
   actions: Action[],
   rules: Ability[],
+  leader: boolean,
   keywords: string[],
   faction: string | null
 };

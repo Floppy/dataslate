@@ -86,7 +86,7 @@ const factionKeywords = [
 ];
 
 const parseOperative = (model : Element) : Operative => {
-  const allKeywords = (xpSelect("bs:categories/bs:category[@primary='false']/@name", model) as Node[]).map((x) => (x.textContent || '').replace("💀",""));
+  const allKeywords = (xpSelect(".//bs:categories/bs:category[@primary='false']/@name", model) as Node[]).map((x) => (x.textContent || '').replace("💀",""));
   const faction = _.intersection(allKeywords, factionKeywords).pop() || null;
   const keywords = _.remove(allKeywords, (x) => (x !== faction));
   const details = {
@@ -106,6 +106,7 @@ const parseOperative = (model : Element) : Operative => {
     abilities: (xpSelect(".//bs:profile[@typeName='Abilities']", model) as Node[]).map(parseAbility),
     actions: (xpSelect(".//bs:profile[@typeName='Unique Actions']", model) as Node[]).map(parseAction),
     rules: (xpSelect(".//bs:rules/bs:rule", model) as Node[]).map(parseRule),
+    leader: (xpSelect("string(.//bs:categories/bs:category[@primary='true']/@name)", model, true).toString() === "Leader"),
     keywords,
     faction,
   };
@@ -134,6 +135,7 @@ export const parseBattlescribeXML = (doc : Document) : Roster => {
       o.name = o.datacard + " " + romanNumerals[counts[o.datacard]++]
     }
   }
+  console.log(operatives)
   return {
     system: "KillTeam2021",
     name,
