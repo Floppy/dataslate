@@ -1,8 +1,6 @@
-import { v4 as uuidv4 } from 'uuid'
 import _ from 'lodash'
-import hash from 'node-object-hash'
 import * as XPath from 'xpath-ts'
-import { Roster, Model, Weapon, Equipment, Action } from '../../types/KillTeam2021';
+import { Roster, Operative, Weapon, Equipment, Action } from '../../types/KillTeam2021';
 import { Ability } from '../../types/Ability';
 
 // useNamespaces is NOT a React hook, so:
@@ -87,14 +85,13 @@ const factionKeywords = [
   "Veteran Guardsman",
 ];
 
-const parseModel = (model : Element) : Model => {
-  const type = xpSelect('string(@name)', model, true).toString()
+const parseOperative = (model : Element) : Operative => {
   const allKeywords = (xpSelect("bs:categories/bs:category[@primary='false']/@name", model) as Node[]).map((x) => (x.textContent || '').replace("💀",""));
   const faction = _.intersection(allKeywords, factionKeywords).pop() || null;
   const keywords = _.remove(allKeywords, (x) => (x !== faction));
   const details = {
-    name: xpSelect('string(@customName)', model, true).toString() || type,
-    type,
+    datacard: xpSelect('string(@name)', model, true).toString(),
+    name: xpSelect('string(@customName)', model, true).toString(),
     stats: {
       movement: stat("M", model),
       actionPointLimit: stat("APL", model),
@@ -111,29 +108,35 @@ const parseModel = (model : Element) : Model => {
     rules: (xpSelect(".//bs:rules/bs:rule", model) as Node[]).map(parseRule),
     keywords,
     faction,
-    uuid: "",
-    count: 0,
-    selected: 0,
   };
-  details.name = details.name ? details.name : details.type
-  return { ...details, hash: hash().hash({type: details.type, weapons: details.weapons, equipment: details.equipment}) }
+  return details
 }
 
 export const parseBattlescribeXML = (doc : Document) : Roster => {
-  const models = []
+  const operatives = []
   const name = xpSelect('string(/bs:roster/@name)', doc, true).toString()
   for (const model of xpSelect('//bs:selection[@type=\'model\']', doc) as Element[]) {
-    models.push(parseModel(model))
+    operatives.push(parseOperative(model))
   }
-  const uniqueModels = _.groupBy(models, (m) => m.hash)
+  // Assign unique operative names if they don't have them
+  const romanNumerals = [
+    "", "Ⅱ", "Ⅲ", "Ⅳ", "Ⅴ",
+    "Ⅵ", "Ⅶ", "Ⅷ", "Ⅸ", "Ⅹ",
+    "ⅩⅠ", "ⅩⅡ", "ⅩⅢ", "ⅩⅣ", "ⅩⅤ",
+    "ⅩⅥ", "ⅩⅦ", "ⅩⅧ", "ⅩⅨ", "ⅩⅩ"
+  ];
+  const counts: { [key: string]: number } = {}
+  for (const o of operatives) {
+    if (o.name === "") {
+      if (!counts[o.datacard]) {
+        counts[o.datacard] = 0
+      }
+      o.name = o.datacard + " " + romanNumerals[counts[o.datacard]++]
+    }
+  }
   return {
     system: "KillTeam2021",
     name,
-    models: _.map(uniqueModels, (model) => ({
-      ...model[0],
-      uuid: uuidv4(),
-      count: model.length,
-      selected: model.length
-    }))
+    operatives
   }
 }

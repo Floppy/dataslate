@@ -6,7 +6,7 @@ export type Action = {
   description: string,
 }
 
-export type ModelStats = {
+export type Stats = {
   movement: number,
   actionPointLimit: number,
   groupActivation: number,
@@ -33,25 +33,35 @@ export type Equipment = {
   description: string | null,
 }
 
-export type Model = {
-  uuid: string,
-  type: string,
+export type Operative = {
+  datacard: string,
   name: string,
-  stats: ModelStats,
+  stats: Stats,
   weapons: Weapon[],
   equipment: Equipment[],
   abilities: Ability[],
   actions: Action[],
   rules: Ability[],
   keywords: string[],
-  faction: string | null,
-  hash: string,
-  count: number,
-  selected: number,
+  faction: string | null
+};
+
+// Datacards are a collection of grouped Operatives
+export type Datacard = {
+  name: string,
+  operativeNames: string[],
+  stats: Stats,
+  weapons: Weapon[],
+  equipment: Equipment[],
+  abilities: Ability[],
+  actions: Action[],
+  rules: Ability[],
+  keywords: string[],
+  faction: string | null
 };
 
 export type Roster = {
   system: string,
   name: string,
-  models: Model[],
+  operatives: Operative[],
 };

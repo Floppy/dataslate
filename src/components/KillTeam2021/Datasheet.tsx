@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card } from 'react-bootstrap'
 import { Row, Col } from 'react-bootstrap'
-import { Model } from '../../types/KillTeam2021';
+import { Datacard } from '../../types/KillTeam2021';
 import { ModelTitle } from '../ModelTitle'
 import { WeaponList } from './WeaponList'
 import { StatBadge } from '../StatBadge'
@@ -10,52 +10,57 @@ import { ActionList } from './ActionList'
 import { KeywordList } from '../KeywordList'
 import { WoundTrack } from './WoundTrack'
 import AbilityList from './AbilityList';
-import _ from 'lodash'
+import { v4 as uuidv4 } from 'uuid'
+
 
 type Props = {
-  model: Model
+  datacard: Datacard
 };
 
 export function Datasheet(props: Props) {
   return (
-    <Card className={props.model.selected > 0 ? "included" : "excluded"}>
-      <ModelTitle {...props.model} />
+    <Card className={props.datacard.operativeNames.length > 0 ? "included" : "excluded"}>
+      <ModelTitle name=""
+        type={props.datacard.name}
+        selected={props.datacard.operativeNames.length}
+        count={props.datacard.operativeNames.length} uuid={uuidv4()}
+      />
       <Card.Body>
         <Row>
           <Col sm="10">
-            {_.range(1,props.model.selected+1).map((i) => (
-              <WoundTrack wounds={props.model.stats.wounds} title={props.model.name} />
+            {props.datacard.operativeNames.map((name) => (
+              <WoundTrack wounds={props.datacard.stats.wounds} title={name} />
             ))}
-            <WeaponList weapons={props.model.weapons} />
+            <WeaponList weapons={props.datacard.weapons} />
             <Row>
               <Col>
-                <AbilityList abilities={props.model.abilities} />
-                {props.model.actions.length === 0
+                <AbilityList abilities={props.datacard.abilities} />
+                {props.datacard.actions.length === 0
                   ? <></>
-                  : <EquipmentList equipment={props.model.equipment} />
+                  : <EquipmentList equipment={props.datacard.equipment} />
                 }
               </Col>
               <Col>
-                {props.model.actions.length === 0
-                  ? <EquipmentList equipment={props.model.equipment} />
-                  : <ActionList actions={props.model.actions} />
+                {props.datacard.actions.length === 0
+                  ? <EquipmentList equipment={props.datacard.equipment} />
+                  : <ActionList actions={props.datacard.actions} />
                 }
               </Col>
             </Row>
           </Col>
           <Col sm="1">
-            <StatBadge name="M" value={`${props.model.stats.movement}●`}/>
-            <StatBadge name="GA" value={`${props.model.stats.groupActivation}`}/>
-            <StatBadge name="DF" value={`${props.model.stats.defence}`}/>
+            <StatBadge name="M" value={`${props.datacard.stats.movement}●`}/>
+            <StatBadge name="GA" value={`${props.datacard.stats.groupActivation}`}/>
+            <StatBadge name="DF" value={`${props.datacard.stats.defence}`}/>
           </Col>
           <Col sm="1">
-            <StatBadge name="W" value={`${props.model.stats.wounds}`}/>
-            <StatBadge name="APL" value={`${props.model.stats.actionPointLimit}`}/>
-            <StatBadge name="Sv" value={`${props.model.stats.save}+`}/>
+            <StatBadge name="W" value={`${props.datacard.stats.wounds}`}/>
+            <StatBadge name="APL" value={`${props.datacard.stats.actionPointLimit}`}/>
+            <StatBadge name="Sv" value={`${props.datacard.stats.save}+`}/>
           </Col>
         </Row>
       </Card.Body>
-      <KeywordList faction={props.model.faction ? `${props.model.faction} 💀` : null} keywords={props.model.keywords} />
+      <KeywordList faction={props.datacard.faction ? `${props.datacard.faction} 💀` : null} keywords={props.datacard.keywords} />
     </Card>
   );
 }
