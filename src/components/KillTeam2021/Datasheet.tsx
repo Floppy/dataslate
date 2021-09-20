@@ -8,7 +8,7 @@ import { StatBadge } from '../StatBadge'
 import { EquipmentList } from './EquipmentList'
 import { ActionList } from './ActionList'
 import { KeywordList } from '../KeywordList'
-import { WoundTrack } from './WoundTrack'
+import { WoundTracks } from './WoundTracks'
 import AbilityList from './AbilityList';
 import { v4 as uuidv4 } from 'uuid'
 
@@ -28,9 +28,7 @@ export function Datasheet(props: Props) {
       <Card.Body>
         <Row>
           <Col sm="10">
-            {props.datacard.operativeNames.map((name) => (
-              <WoundTrack wounds={props.datacard.stats.wounds} title={name} />
-            ))}
+            <WoundTracks wounds={props.datacard.stats.wounds} names={props.datacard.operativeNames} />
             <WeaponList weapons={props.datacard.weapons} />
             <Row>
               <Col>
