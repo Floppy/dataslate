@@ -40,7 +40,7 @@ export function Roster(props: Props) {
         <CloseButton onClose={props.onClose}/>
       </Col>
     </h1>
-    {datacards.map((datacard: Datacard) => (
+    {_.orderBy(datacards, ['leader', 'name'], ['desc', 'asc']).map((datacard: Datacard) => (
         <Datasheet datacard={datacard}/>
     ))}
     <h2 style={{...headingStyle, breakBefore: 'always'}}>Rules</h2>
