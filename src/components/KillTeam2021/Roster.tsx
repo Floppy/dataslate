@@ -1,5 +1,5 @@
 import React, { MouseEvent } from 'react';
-import { Col } from 'react-bootstrap';
+import { Col, Card } from 'react-bootstrap';
 import { CloseButton } from '../CloseButton';
 import { Operative, Datacard } from '../../types/KillTeam2021';
 import { Datasheet } from './Datasheet';
@@ -43,7 +43,9 @@ export function Roster(props: Props) {
     {_.orderBy(datacards, ['leader', 'name'], ['desc', 'asc']).map((datacard: Datacard) => (
         <Datasheet datacard={datacard}/>
     ))}
-    <h2 style={{...headingStyle, breakBefore: 'always'}}>Rules</h2>
-    <RuleList rules={_.uniqBy(_.flatten(datacards.map((m) => (m.rules))), 'name')}/>
+    <Card>
+      <h2 style={{...headingStyle, breakBefore: 'always'}}>Rules</h2>
+      <RuleList rules={_.uniqBy(_.flatten(datacards.map((m) => (m.rules))), 'name')}/>
+    </Card>
   </>
 }
