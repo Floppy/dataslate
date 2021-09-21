@@ -7,7 +7,7 @@
     "@sentry/tracing": "^6.13.1",
     "@types/jest": "^27.0.1",
     "@types/lodash": "^4.14.173",
-    "@types/node": "^16.9.2",
+    "@types/node": "^16.9.5",
     "@types/react": "^17.0.22",
     "@types/react-dom": "^17.0.9",
     "bootstrap": "^4.6.0",
