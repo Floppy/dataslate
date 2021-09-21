@@ -21,7 +21,11 @@ function Homepage(props: Props) {
               <a href='https://battlescribe.net/'>Battlescribe</a>.
             </Card.Text>
             <Card.Text>
-              Currently only Kill Team rosters are supported.
+              Supported systems:
+              <ul>
+                <li>Kill Team 2018</li>
+                <li>Kill Team 2021</li>
+              </ul>
             </Card.Text>
           </Card.Body>
         </Card>
