@@ -1,6 +1,7 @@
 import React from 'react';
 import { Weapon } from '../../types/KillTeam2021';
 import { Table } from 'react-bootstrap';
+import { HighlightedText } from './HighlightedText'
 
 type Props = {
   weapons: Weapon[],
@@ -27,8 +28,8 @@ export function WeaponList(props: Props) {
               <td>{x.attacks}</td>
               <td>{x.hit}+</td>
               <td>{x.damage} / {x.criticalDamage}</td>
-              <td>{x.specialRules}</td>
-              <td>{x.criticalRules}</td>
+              <td><HighlightedText>{x.specialRules}</HighlightedText></td>
+              <td><HighlightedText>{x.criticalRules}</HighlightedText></td>
             </tr>
           ))}
         </tbody>

@@ -2,6 +2,7 @@ import React from 'react';
 import { Ability } from '../../types/Ability';
 import { Card } from 'react-bootstrap';
 import _ from 'lodash'
+import { HighlightedText } from './HighlightedText'
 
 type Props = {
   abilities: Ability[],
@@ -17,7 +18,7 @@ function AbilityList(props: Props) {
         {_.sortBy(props.abilities, ['name']).map((x: Ability) => (
           <p>
             <strong>{x.name}: </strong>
-            {x.description}
+            <HighlightedText>{x.description}</HighlightedText>
           </p>
         ))}
       </Card.Body>

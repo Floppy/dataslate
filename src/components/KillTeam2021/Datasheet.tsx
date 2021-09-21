@@ -23,7 +23,10 @@ export function Datasheet(props: Props) {
       <ModelTitle name=""
         type={props.datacard.name}
         selected={props.datacard.operativeNames.length}
-        count={props.datacard.operativeNames.length} uuid={uuidv4()}
+        count={props.datacard.operativeNames.length}
+        uuid={uuidv4()}
+        category={props.datacard.leader ? "Specialist" : ""}
+        specialism={props.datacard.leader ? "Leader" : ""}
       />
       <Card.Body>
         <Row>

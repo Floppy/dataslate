@@ -2,6 +2,7 @@ import React from 'react';
 import { Action } from '../../types/KillTeam2021';
 import { Card } from 'react-bootstrap';
 import _ from 'lodash'
+import { HighlightedText } from './HighlightedText'
 
 type Props = {
   actions: Action[]
@@ -15,7 +16,7 @@ export function ActionList(props: Props) {
           {x.name}
         </Card.Header>
         <Card.Body>
-          {x.description}
+          <HighlightedText>{x.description}</HighlightedText>
         </Card.Body>
       </Card>
     ))}

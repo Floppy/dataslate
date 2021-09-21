@@ -1,6 +1,7 @@
 import React from 'react';
 import { Equipment } from '../../types/KillTeam2021';
 import { Card } from 'react-bootstrap';
+import { HighlightedText } from './HighlightedText'
 
 type Props = {
   equipment: Equipment[],
@@ -17,7 +18,7 @@ export function EquipmentList(props: Props) {
           <p>
             <strong>{x.name} ({x.cost} EP)</strong>
             {x.description
-              ? <><strong>: </strong>{x.description}</>
+              ? <><strong>: </strong><HighlightedText>{x.description}</HighlightedText></>
               : <></>
             }
           </p>

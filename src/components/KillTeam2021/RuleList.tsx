@@ -2,6 +2,7 @@ import React from 'react';
 import { Ability } from '../../types/Ability';
 import { Table } from 'react-bootstrap';
 import _ from 'lodash'
+import { HighlightedText } from './HighlightedText'
 
 type Props = {
   rules: Ability[]
@@ -14,7 +15,7 @@ export function RuleList(props: Props) {
         {_.sortBy(props.rules, ['name']).map((x: Ability) => (
           <tr>
             <td><strong>{x.name}</strong></td>
-            <td>{x.description}</td>
+            <td><HighlightedText>{x.description}</HighlightedText></td>
           </tr>
         ))}
       </tbody>
