@@ -13,11 +13,11 @@ type Props = {
 export function MovementPhaseDetails(props: Props) {
   return (
     <Row>
-      <Col>
+      <Col sm="11">
         <ModelTitle {...props.model}/>
         <AbilityList abilities={props.model.abilities} phase='movement'/>
       </Col>
-      <Col sm='auto'>
+      <Col sm="1" className="px-1">
         <StatBadge name="M" value={`${props.model.stats.movement}`}/>
       </Col>
     </Row>

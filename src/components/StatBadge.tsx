@@ -1,5 +1,5 @@
 import React from 'react'
-import CSS from 'csstype'
+import { Badge } from 'react-bootstrap'
 
 type Props = {
   name: string,
@@ -8,39 +8,17 @@ type Props = {
 }
 
 export function StatBadge (props: Props) {
-  const badgeStyle: CSS.Properties = {
-    paddingTop: '.2vw',
-    border: '1px solid black',
-    width: '5vw',
-    height: '5vw',
-    background: 'black',
-    color: 'white',
-    display: 'flex',
-    flexDirection: 'column',
-    textAlign: 'center',
-    borderRadius: '25%',
-  };
-  const nameStyle: CSS.Properties = {
-    fontSize: '1vw',
-    fontWeight: 'bold',
-    lineHeight: '1vw',
-    color: '#FF6F2D',
-  };
-  const valueStyle: CSS.Properties = {
-    fontSize: '2.5vw',
-    lineHeight: '3vw',
-    fontWeight: 'bold'
-  }
+
   return (
-    <div className='statbadge mb-4' style={badgeStyle}>
-      <div className='name' style={nameStyle}>{props.name}</div>
-      <div className='value' style={valueStyle}>
+    <Badge pill variant="dark" className="w-100 mb-2 px-0">
+      <div className="text-light">{props.name}</div>
+      <div className="h1">
         { props.value }
         { props.secondaryValue
           ? <small>{props.secondaryValue}</small>
           : <></>
         }
       </div>
-    </div>
+    </Badge>
   )
 }

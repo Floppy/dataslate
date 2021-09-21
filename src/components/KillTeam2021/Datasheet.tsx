@@ -49,12 +49,12 @@ export function Datasheet(props: Props) {
               </Col>
             </Row>
           </Col>
-          <Col sm="1">
+          <Col sm="1" className="px-1">
             <StatBadge name="M" value={`${props.datacard.stats.movement}●`}/>
             <StatBadge name="GA" value={`${props.datacard.stats.groupActivation}`}/>
             <StatBadge name="DF" value={`${props.datacard.stats.defence}`}/>
           </Col>
-          <Col sm="1">
+          <Col sm="1" className="px-1">
             <StatBadge name="W" value={`${props.datacard.stats.wounds}`}/>
             <StatBadge name="APL" value={`${props.datacard.stats.actionPointLimit}`}/>
             <StatBadge name="Sv" value={`${props.datacard.stats.save}+`}/>

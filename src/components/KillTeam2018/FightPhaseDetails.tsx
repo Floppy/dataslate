@@ -14,16 +14,16 @@ type Props = {
 export function FightPhaseDetails(props: Props) {
   return (
     <Row>
-      <Col>
+      <Col sm="10">
         <ModelTitle {...props.model}/>
         <WeaponList weapons={props.model.weapons} phase='fight' userStrength={props.model.stats.strength}/>
         <AbilityList abilities={props.model.abilities} phase='fight'/>
       </Col>
-      <Col sm='auto'>
+      <Col sm="1" className="px-1">
         <StatBadge name="A" value={`${props.model.stats.attacks}`} secondaryValue={ props.model.stats.additional_attacks ? `+${props.model.stats.additional_attacks}` : null}/>
         <StatBadge name="T" value={`${props.model.stats.toughness}`}/>
       </Col>
-      <Col sm='auto'>
+      <Col sm="1" className="px-1">
         <StatBadge name="WS" value={`${props.model.stats.weapon_skill}`} secondaryValue="+"/>
         <StatBadge name="Sv" value={`${props.model.stats.save}`} secondaryValue="+"/>
         { props.model.stats.invulnerable_save
