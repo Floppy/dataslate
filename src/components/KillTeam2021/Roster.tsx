@@ -44,8 +44,10 @@ export function Roster(props: Props) {
         <Datasheet datacard={datacard}/>
     ))}
     <Card>
-      <h2 style={{...headingStyle, breakBefore: 'always'}}>Rules</h2>
-      <RuleList rules={_.uniqBy(_.flatten(datacards.map((m) => (m.rules))), 'name')}/>
+      <Card.Header style={{...headingStyle, breakBefore: 'always'}} as="h2">Rules</Card.Header>
+      <Card.Body>
+        <RuleList rules={_.uniqBy(_.flatten(datacards.map((m) => (m.rules))), 'name')}/>
+      </Card.Body>
     </Card>
   </>
 }
