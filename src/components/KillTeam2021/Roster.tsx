@@ -2,14 +2,17 @@ import React, { MouseEvent } from 'react';
 import { Col, Card } from 'react-bootstrap';
 import { CloseButton } from '../CloseButton';
 import { Operative, Datacard } from '../../types/KillTeam2021';
+import { Ability } from '../../types/Ability';
 import { Datasheet } from './Datasheet';
 import { RuleList } from './RuleList';
+import { PowerList } from './PowerList';
 import hash from 'node-object-hash'
 import _ from 'lodash'
 
 type Props = {
   name: string,
   operatives: Operative[],
+  psychicPowers: Ability[],
   onClose: (event: MouseEvent<HTMLButtonElement>) => void,
 };
 
@@ -49,5 +52,11 @@ export function Roster(props: Props) {
         <RuleList rules={_.uniqBy(_.flatten(datacards.map((m) => (m.rules))), 'name')}/>
       </Card.Body>
     </Card>
+    {props.psychicPowers.length > 0 && <Card>
+      <Card.Header style={{...headingStyle}} as="h2">Psychic Powers</Card.Header>
+      <Card.Body>
+        <PowerList powers={props.psychicPowers}/>
+      </Card.Body>
+    </Card>}
   </>
 }

@@ -66,4 +66,5 @@ export type Roster = {
   system: string,
   name: string,
   operatives: Operative[],
+  psychicPowers: Ability[],
 };

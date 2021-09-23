@@ -35,6 +35,14 @@ const parseAbility = (ability : Node) : Ability => {
   }
 }
 
+const parsePsychicPower = (power : Node) : Ability => {
+  return {
+    name: xpSelect('string(@name)', power, true).toString(),
+    description: (xpSelect(".//bs:characteristic[@name='Effect']/text()", power, true) || "-").toString(),
+    phases: []
+  }
+}
+
 const parseAction = (action : Node) : Action => {
   return {
     name: xpSelect('string(@name)', action, true).toString(),
@@ -119,6 +127,7 @@ export const parseBattlescribeXML = (doc : Document) : Roster => {
   for (const model of xpSelect('//bs:selection[@type=\'model\']', doc) as Element[]) {
     operatives.push(parseOperative(model))
   }
+  const psychicPowers = (xpSelect(".//bs:profile[@typeName='Psychic Power']", doc) as Node[]).map(parsePsychicPower)
   // Assign unique operative names if they don't have them
   const romanNumerals = [
     "", "Ⅱ", "Ⅲ", "Ⅳ", "Ⅴ",
@@ -139,6 +148,7 @@ export const parseBattlescribeXML = (doc : Document) : Roster => {
   return {
     system: "KillTeam2021",
     name,
-    operatives
+    operatives,
+    psychicPowers
   }
 }
