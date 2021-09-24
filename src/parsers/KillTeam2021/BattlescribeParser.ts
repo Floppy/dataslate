@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import * as XPath from 'xpath-ts'
-import { Roster, Operative, Weapon, Equipment, Action } from '../../types/KillTeam2021';
+import { Roster, Operative, Weapon, Equipment, Action, PsychicPower } from '../../types/KillTeam2021';
 import { Ability } from '../../types/Ability';
 
 // useNamespaces is NOT a React hook, so:
@@ -35,11 +35,11 @@ const parseAbility = (ability : Node) : Ability => {
   }
 }
 
-const parsePsychicPower = (power : Node) : Ability => {
+const parsePsychicPower = (power : Node) : PsychicPower => {
   return {
     name: xpSelect('string(@name)', power, true).toString(),
     description: (xpSelect(".//bs:characteristic[@name='Effect']/text()", power, true) || "-").toString(),
-    phases: []
+    weapon: null,
   }
 }
 

@@ -27,6 +27,12 @@ export type Weapon = {
   criticalRules: string,
 };
 
+export type PsychicPower = {
+  name: string;
+  description: string;
+  weapon: Weapon | null;
+}
+
 export type Equipment = {
   name: string,
   cost: number,
@@ -66,5 +72,5 @@ export type Roster = {
   system: string,
   name: string,
   operatives: Operative[],
-  psychicPowers: Ability[],
+  psychicPowers: PsychicPower[],
 };

@@ -1,8 +1,7 @@
 import React, { MouseEvent } from 'react';
 import { Col, Card } from 'react-bootstrap';
 import { CloseButton } from '../CloseButton';
-import { Operative, Datacard } from '../../types/KillTeam2021';
-import { Ability } from '../../types/Ability';
+import { Operative, Datacard, PsychicPower } from '../../types/KillTeam2021';
 import { Datasheet } from './Datasheet';
 import { RuleList } from './RuleList';
 import { PowerList } from './PowerList';
@@ -12,7 +11,7 @@ import _ from 'lodash'
 type Props = {
   name: string,
   operatives: Operative[],
-  psychicPowers: Ability[],
+  psychicPowers: PsychicPower[],
   onClose: (event: MouseEvent<HTMLButtonElement>) => void,
 };
 
