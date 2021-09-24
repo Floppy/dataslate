@@ -52,3 +52,7 @@ span {
   &.square   { color: blue;}
   &.pentagon { color: red;}
 }
+
+.jumbotron {
+  background: linear-gradient(90deg, lightgray 50%, transparent), black url('images/background.jpeg') right/contain no-repeat;
+}
