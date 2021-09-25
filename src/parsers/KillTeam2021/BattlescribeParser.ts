@@ -36,10 +36,12 @@ const parseAbility = (ability : Node) : Ability => {
 }
 
 const parsePsychicPower = (power : Node) : PsychicPower => {
+  const name = xpSelect('string(@name)', power, true).toString()
+  const weap = xpSelect("..//bs:profile[@typeName='Weapons']", power, true) as Node
   return {
-    name: xpSelect('string(@name)', power, true).toString(),
+    name,
     description: (xpSelect(".//bs:characteristic[@name='Effect']/text()", power, true) || "-").toString(),
-    weapon: null,
+    weapon: weap ? parseWeapon(weap) : null,
   }
 }
 
@@ -144,7 +146,6 @@ export const parseBattlescribeXML = (doc : Document) : Roster => {
       o.name = o.datacard + " " + romanNumerals[counts[o.datacard]++]
     }
   }
-  console.log(operatives)
   return {
     system: "KillTeam2021",
     name,
