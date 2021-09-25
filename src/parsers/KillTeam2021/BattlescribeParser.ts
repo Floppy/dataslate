@@ -83,7 +83,6 @@ const factionKeywords = [
   "Grey Knight",
   "Hive Fleet",
   "Hunter Cadre",
-  "Hunter Clade",
   "Imperial Guard",
   "Kommando",
   "Space Marine",
@@ -97,7 +96,7 @@ const factionKeywords = [
 
 const parseOperative = (model : Element) : Operative => {
   const allKeywords = (xpSelect(".//bs:categories/bs:category[@primary='false']/@name", model) as Node[]).map((x) => (x.textContent || '').replace("💀",""));
-  const faction = _.intersection(allKeywords, factionKeywords).pop() || null;
+  const faction = _.intersection(allKeywords, factionKeywords).pop() || allKeywords.find((k) => (k === k.toUpperCase())) || null;
   const keywords = _.remove(allKeywords, (x) => (x !== faction));
   const details = {
     datacard: xpSelect('string(@name)', model, true).toString(),
