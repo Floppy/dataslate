@@ -5,11 +5,15 @@ import { Operative, Datacard, PsychicPower } from '../../types/KillTeam2021';
 import { Datasheet } from './Datasheet';
 import { RuleList } from './RuleList';
 import { PowerList } from './PowerList';
+import { PloysColumn } from './PloysColumn';
+import { TacOpsList } from './TacOpsList';
 import hash from 'node-object-hash'
 import _ from 'lodash'
+import getFactionSpecificData from './data'
 
 type Props = {
   name: string,
+  faction: string,
   operatives: Operative[],
   psychicPowers: PsychicPower[],
   onClose: (event: MouseEvent<HTMLButtonElement>) => void,
@@ -33,6 +37,8 @@ export function Roster(props: Props) {
     display: 'flex',
   };
   const datacards = groupByDatacard(props.operatives)
+  const factionSpecificData = getFactionSpecificData(props.faction)
+
   return <>
     <h1 style={headingStyle}>
       <Col>
@@ -57,5 +63,30 @@ export function Roster(props: Props) {
         <PowerList powers={props.psychicPowers}/>
       </Card.Body>
     </Card>}
+
+    {factionSpecificData &&
+      <div>
+        <div style={{display: "flex", justifyContent: "space-between", flexDirection: "row"}}>
+          <Card style={{width: "100%", marginRight: "5px"}}>
+            <Card.Header style={{...headingStyle}} as="h2">Strategic Ploys</Card.Header>
+            <Card.Body>
+              <PloysColumn ploys={factionSpecificData.strategicPloys} />
+            </Card.Body>
+          </Card>
+          <Card style={{width: "100%", marginLeft: "5px"}}>
+            <Card.Header style={{...headingStyle}} as="h2">Tactical Ploys</Card.Header>
+            <Card.Body>
+              <PloysColumn ploys={factionSpecificData.tacticalPloys} />
+            </Card.Body>
+          </Card>
+        </div>
+        <Card>
+          <Card.Header style={{...headingStyle}} as="h2">Tac Ops</Card.Header>
+          <Card.Body>
+            <TacOpsList tacOps={factionSpecificData.tacOps} />
+          </Card.Body>
+        </Card>
+      </div>
+    }
   </>
 }

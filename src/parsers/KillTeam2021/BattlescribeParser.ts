@@ -125,6 +125,7 @@ const parseOperative = (model : Element) : Operative => {
 export const parseBattlescribeXML = (doc : Document) : Roster => {
   const operatives = []
   const name = xpSelect('string(/bs:roster/@name)', doc, true).toString()
+  const faction = xpSelect('string(//bs:force/@catalogueName)', doc, true).toString()
   for (const model of xpSelect('//bs:selection[@type=\'model\']', doc) as Element[]) {
     operatives.push(parseOperative(model))
   }
@@ -148,6 +149,7 @@ export const parseBattlescribeXML = (doc : Document) : Roster => {
   return {
     system: "KillTeam2021",
     name,
+    faction,
     operatives,
     psychicPowers
   }
