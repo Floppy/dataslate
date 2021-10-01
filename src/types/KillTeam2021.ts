@@ -33,6 +33,21 @@ export type PsychicPower = {
   weapon: Weapon | null;
 }
 
+export type Ploy = {
+  name: string;
+  cost: number;
+  description: any;
+  weapon?: Weapon
+}
+
+export type TacOp = {
+  id: number;
+  name: string;
+  revealTime: string;
+  description: string[];
+  action?: Action;
+}
+
 export type Equipment = {
   name: string,
   cost: number,
@@ -71,6 +86,7 @@ export type Datacard = {
 export type Roster = {
   system: string,
   name: string,
+  faction: string,
   operatives: Operative[],
   psychicPowers: PsychicPower[],
 };
