@@ -38,6 +38,7 @@ export type Ploy = {
   cost: number;
   description: any;
   weapon?: Weapon
+  options?: string[]
 }
 
 export type TacOp = {

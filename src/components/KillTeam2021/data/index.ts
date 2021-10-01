@@ -1,5 +1,7 @@
-import veteranGuardsmen from "./veteranGuardsmen"
+import broodCoven from "./broodCoven"
+import hiveFleet from "./hiveFleet"
 import kommando from "./kommando"
+import veteranGuardsmen from "./veteranGuardsmen"
 
 const getFactionSpecificData = (factionName: string) => {
   switch (factionName) {
@@ -7,6 +9,10 @@ const getFactionSpecificData = (factionName: string) => {
       return veteranGuardsmen;
     case "Kommando":
       return kommando;
+    case "Brood Coven":
+      return broodCoven;
+    case "Hive Fleet":
+      return hiveFleet;
     default:
       return null;
   }

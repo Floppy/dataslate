@@ -80,12 +80,15 @@ export function Roster(props: Props) {
             </Card.Body>
           </Card>
         </div>
-        <Card>
-          <Card.Header style={{...headingStyle}} as="h2">Tac Ops</Card.Header>
-          <Card.Body>
-            <TacOpsList tacOps={factionSpecificData.tacOps} />
-          </Card.Body>
-        </Card>
+        {
+          factionSpecificData.tacOps &&
+            <Card>
+              <Card.Header style={{...headingStyle}} as="h2">Tac Ops</Card.Header>
+              <Card.Body>
+                <TacOpsList tacOps={factionSpecificData.tacOps} />
+              </Card.Body>
+            </Card>
+        }
       </div>
     }
   </>
