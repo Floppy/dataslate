@@ -7,17 +7,14 @@ type Props = {
 
 export function HighlightedText(props: Props) {
   let output = [props.children];
-  output = reactStringReplace(output, /[▲]/g, (match, i) => (
-    <><span className="triangle">▲</span>{match}</>
-  ))
-  output = reactStringReplace(output, /[●○⬤]/g, (match, i) => (
-    <><span className="circle">●</span>{match}</>
-  ))
-  output = reactStringReplace(output, /[⬛■]/g, (match, i) => (
-    <><span className="square">■</span>{match}</>
-  ))
-  output = reactStringReplace(output, /[⬟]/g, (match, i) => (
-    <><span className="pentagon">⬟</span>{match}</>
-  ))
+  output = reactStringReplace(output, '▲', () => <span className="triangle">▲</span>)
+  output = reactStringReplace(output, '●', () => <span className="circle">●</span>)
+  output = reactStringReplace(output, '○', () => <span className="circle">●</span>)
+  output = reactStringReplace(output, '⬤', () => <span className="circle">●</span>)
+  output = reactStringReplace(output, '⬛', () => <span className="square">■</span>)
+  output = reactStringReplace(output, '■', () => <span className="square">■</span>)
+  output = reactStringReplace(output, '⬟', () => <span className="pentagon">⬟</span>)
+  output = output.filter(el => el !== '')
+
   return <>{output}</>
 }
