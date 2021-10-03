@@ -7,12 +7,12 @@ const strategicPloys: Ploy[] = [
     description: `Until the end of the Turning Point, each time a friendly SPACE MARINE💀 operative (excluding a SCOUT operative) is activated, if it does not perform a Fight action 
                   during that activation, it can perform two Shoot actions during that activation if a bolt weapon is selected for each of those shooting attacks. A bolt weapon is a 
                   ranged weapon that includes 'bolt' in its name, e.g. boltgun, heavy bolter etc. In the case of the infernus heavy bolter, it must be the heavy bolter profile that 
-                  is selected`
+                  is selected.`
   }, {
     name: 'Shock Assault',
     cost: 1,
     description: `Until the end of the Turning Point, each time a friendly SPACE MARINE💀 operative (excluding a SCOUT operative) is activated, if it does not perform a Shoot action 
-                  during that activation, it can perform two Fight actions during that activation`
+                  during that activation, it can perform two Fight actions during that activation.`
   }, {
     name: 'Tactical Precision',
     cost: 1,
@@ -26,17 +26,17 @@ const tacticalPloys: Ploy[] = [
     name: 'Transhuman Physiology',
     cost: 1,
     description: `Use this Tactical Ploy in the Roll Defence Dice step of a shooting attack, after rolling defence dice for a friendly PRIMARIS operative. You can change one of your 
-                  retained normal saves to a critical save`
+                  retained normal saves to a critical save.`
   },{
     name: 'Only in death does duty end',
     cost: 1,
     description: `Use this Tactical Ploy when a ready friendly SPACE MARINE💀 operative is incapacitated. That operative is not removed from the killzone until the end of your next
-                  activation and does not count as being injured`
+                  activation and does not count as being injured.`
   },{
     name: 'And they shall know no fear',
     cost: 1,
     description: `Use this Tactical Ploy when a friendly SPACE MARINE💀 operative is activated. Until the end of that operative's activation, you can ignore any or all modifiers to 
-                its APL characteristic and it is not injured`
+                its APL characteristic and it is not injured.`
   },{
     name: 'Omni-Scrambler',
     cost: 1,
