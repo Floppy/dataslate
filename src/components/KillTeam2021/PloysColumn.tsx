@@ -48,6 +48,12 @@ export function PloysColumn(props: Props) {
                   {x.options.map(line => <li><HighlightedText>{line}</HighlightedText></li>)}
                 </ul>
             }
+            {
+              x.postOptionText &&
+                  <p>
+                    <HighlightedText>{x.postOptionText}</HighlightedText>
+                  </p>
+            }
           </Card.Body>
         </Card>
     ))}
