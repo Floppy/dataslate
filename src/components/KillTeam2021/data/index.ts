@@ -2,6 +2,7 @@ import broodCoven from "./broodCoven"
 import hiveFleet from "./hiveFleet"
 import kommando from "./kommando"
 import veteranGuardsmen from "./veteranGuardsmen"
+import spaceMarine from "./spaceMarine"
 
 const getFactionSpecificData = (factionName: string) => {
   switch (factionName) {
@@ -13,6 +14,8 @@ const getFactionSpecificData = (factionName: string) => {
       return broodCoven;
     case "Hive Fleet":
       return hiveFleet;
+    case "Space Marine":
+      return spaceMarine;
     default:
       return null;
   }

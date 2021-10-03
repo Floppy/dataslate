@@ -25,3 +25,5 @@ yarn-error.log*
 /build
 
 .eslintcache
+.idea
+
