@@ -11,6 +11,8 @@ import talonsOfTheEmporer from "./talonsOfTheEmporer";
 import traitorSpaceMarine from "./traitorSpaceMarine";
 import deathGuard from "./deathGuard";
 import thousandSons from "./thousandSons";
+import hunterCadre from "./hunterCadre";
+import hunterClade from "./hunterClade";
 
 const getFactionSpecificData = (factionName: string) => {
   switch (factionName) {
@@ -40,6 +42,10 @@ const getFactionSpecificData = (factionName: string) => {
       return deathGuard;
     case "Thousand Sons":
       return thousandSons;
+    case "Hunter Cadre":
+      return hunterCadre;
+    case "Hunter Clade":
+      return hunterClade;
     default:
       return null;
   }
