@@ -1,4 +1,4 @@
-import { Ploy } from '../../../types/KillTeam2021';
+import {Ploy, TacOp} from '../../../types/KillTeam2021';
 
 const strategicPloys: Ploy[] = [
   {
@@ -62,6 +62,37 @@ const tacticalPloys: Ploy[] = [
   },
 ]
 
-const data = { strategicPloys, tacticalPloys, tacOps: null }
+
+const tacOps: TacOp[] = [
+  {
+    id: 1,
+    name: 'Relentless Pursuit',
+    revealTime: `You can reveal this Tac Op in the Target Reveal step of any Turning Point.`,
+    description: [
+        'At the end of any Turning Point, if there are no enemy operatives in the killzone more than ⬟ from friendly operatives, you score 1VP.',
+        'If you achieve the first condition in any subsequent Turning Points, you score 1VP.'
+    ],
+  }, {
+    id: 2,
+    name: 'Calculated Eradication',
+    revealTime: 'Reveal this TacOp when a Doctrina Imperative first becomes active for your kill team.',
+    description: [
+      `At the end of any Turning Point, if an Imperative is active for your kill team, and the total wounds lost by enemy operatives during that Turning Point is greater than
+      that lost by friendly operatives, you score 1VP`,
+      `At the end of any Turning Point, if a different Imperative is active for your kill team, and the total wounds lost by enemy operatives during that Turning Point is 
+      greater than that lost by friendly operatives, you score 1VP`
+    ]
+  }, {
+    id: 3,
+    name: 'Assassination Order',
+    revealTime: 'Reveal this Tac Op in the Target Reveal step of the first Turning Point. Your opponent selects one of their operatives.',
+    description: [
+      'If that enemy operative is incapacitated before the fourth Turning Point, you score 1VP.',
+      'If the first condition is achieved by a friendly HUNTER CLADE💀 operative within ■ of that enemy operative, you score 1VP.'
+    ]
+  }
+]
+
+const data = { strategicPloys, tacticalPloys, tacOps }
 
 export default data
