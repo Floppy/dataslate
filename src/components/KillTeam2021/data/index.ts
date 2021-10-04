@@ -6,6 +6,7 @@ import spaceMarine from "./spaceMarine"
 import greyKnights from "./greyKnights"
 import imperialGuard from "./imperialGuard"
 import forgeWorld from "./forgeWorld"
+import ecclesiarchy from "./ecclesiarchy";
 
 const getFactionSpecificData = (factionName: string) => {
   switch (factionName) {
@@ -25,6 +26,8 @@ const getFactionSpecificData = (factionName: string) => {
       return imperialGuard;
     case "Forge World":
       return forgeWorld;
+    case "Ecclesiarchy":
+      return ecclesiarchy;
     default:
       return null;
   }
