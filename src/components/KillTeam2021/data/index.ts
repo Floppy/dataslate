@@ -13,6 +13,9 @@ import deathGuard from "./deathGuard";
 import thousandSons from "./thousandSons";
 import hunterCadre from "./hunterCadre";
 import hunterClade from "./hunterClade";
+import cadreMercenary from "./cadreMercenary";
+import greenskin from "./greenskin"
+import troupe from "./troupe"
 
 const getFactionSpecificData = (factionName: string) => {
   switch (factionName) {
@@ -46,6 +49,12 @@ const getFactionSpecificData = (factionName: string) => {
       return hunterCadre;
     case "Hunter Clade":
       return hunterClade;
+    case "Cadre Mercenary":
+      return cadreMercenary;
+    case "Greenskin":
+      return greenskin;
+    case "Troupe":
+      return troupe;
     default:
       return null;
   }
