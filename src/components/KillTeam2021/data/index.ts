@@ -8,6 +8,7 @@ import imperialGuard from "./imperialGuard"
 import forgeWorld from "./forgeWorld"
 import ecclesiarchy from "./ecclesiarchy";
 import talonsOfTheEmporer from "./talonsOfTheEmporer";
+import traitorSpaceMarine from "./traitorSpaceMarine";
 
 const getFactionSpecificData = (factionName: string) => {
   switch (factionName) {
@@ -31,6 +32,8 @@ const getFactionSpecificData = (factionName: string) => {
       return ecclesiarchy;
     case "Talons of the Emperor":
       return talonsOfTheEmporer;
+    case "Traitor Space Marine":
+      return traitorSpaceMarine;
     default:
       return null;
   }
