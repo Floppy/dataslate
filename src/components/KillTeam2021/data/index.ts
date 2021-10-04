@@ -10,6 +10,7 @@ import ecclesiarchy from "./ecclesiarchy";
 import talonsOfTheEmporer from "./talonsOfTheEmporer";
 import traitorSpaceMarine from "./traitorSpaceMarine";
 import deathGuard from "./deathGuard";
+import thousandSons from "./thousandSons";
 
 const getFactionSpecificData = (factionName: string) => {
   switch (factionName) {
@@ -37,6 +38,8 @@ const getFactionSpecificData = (factionName: string) => {
       return traitorSpaceMarine;
     case "Death Guard":
       return deathGuard;
+    case "Thousand Sons":
+      return thousandSons;
     default:
       return null;
   }
