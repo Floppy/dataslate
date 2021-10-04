@@ -54,6 +54,20 @@ export function PloysColumn(props: Props) {
                     <HighlightedText>{x.postOptionText}</HighlightedText>
                   </p>
             }
+            {
+              x.action &&
+              <p>
+                <Card border="primary" bg="light">
+                  <Card.Header style={{ background: "#FF6F2D", color: "white", display: "flex", justifyContent: "space-between"}} as="h4">
+                    <span>{x.action.name}</span>
+                    <span>{x.action.cost}AP</span>
+                  </Card.Header>
+                  <Card.Body>
+                    <HighlightedText>{x.action.description}</HighlightedText>
+                  </Card.Body>
+                </Card>
+              </p>
+            }
           </Card.Body>
         </Card>
     ))}

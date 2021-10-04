@@ -37,9 +37,10 @@ export type Ploy = {
   name: string;
   cost: number;
   description: any;
-  weapon?: Weapon
-  options?: string[]
-  postOptionText?: string
+  weapon?: Weapon;
+  options?: string[];
+  postOptionText?: string;
+  action?: Action;
 }
 
 export type TacOp = {
