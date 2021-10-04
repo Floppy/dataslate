@@ -6,6 +6,11 @@ import spaceMarine from "./spaceMarine"
 import greyKnights from "./greyKnights"
 import imperialGuard from "./imperialGuard"
 import forgeWorld from "./forgeWorld"
+import ecclesiarchy from "./ecclesiarchy";
+import talonsOfTheEmporer from "./talonsOfTheEmporer";
+import traitorSpaceMarine from "./traitorSpaceMarine";
+import deathGuard from "./deathGuard";
+import thousandSons from "./thousandSons";
 
 const getFactionSpecificData = (factionName: string) => {
   switch (factionName) {
@@ -25,6 +30,16 @@ const getFactionSpecificData = (factionName: string) => {
       return imperialGuard;
     case "Forge World":
       return forgeWorld;
+    case "Ecclesiarchy":
+      return ecclesiarchy;
+    case "Talons of the Emperor":
+      return talonsOfTheEmporer;
+    case "Traitor Space Marine":
+      return traitorSpaceMarine;
+    case "Death Guard":
+      return deathGuard;
+    case "Thousand Sons":
+      return thousandSons;
     default:
       return null;
   }

@@ -45,7 +45,7 @@ const tacticalPloys: Ploy[] = [
   }, {
     name: 'Combined arms',
     cost: 1,
-    description: `Use this Tactival Ploy after rolling your attack dice for a shooting attack made by a friendly VETERAN GUARDSMAN💀 operative.
+    description: `Use this Tactical Ploy after rolling your attack dice for a shooting attack made by a friendly VETERAN GUARDSMAN💀 operative.
                   If the target of that attack is an enemy operative that was targeted by another friendly VETERAN GUARDSMAN💀 operative with a
                   shooting attack during that Turning point, you can re-roll any or all of your attack dice for that shooting attack.`,
   }
