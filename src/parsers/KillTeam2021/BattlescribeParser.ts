@@ -129,6 +129,9 @@ export const parseBattlescribeXML = (doc : Document) : Roster => {
   for (const model of xpSelect('//bs:selection[@type=\'model\']', doc) as Element[]) {
     operatives.push(parseOperative(model))
   }
+
+  const fireteams = (xpSelect('//bs:force/@name', doc) as Node[]).map( (node) => { return node.nodeValue}) as string[]
+
   const psychicPowers = (xpSelect(".//bs:profile[@typeName='Psychic Power']", doc) as Node[]).map(parsePsychicPower)
   // Assign unique operative names if they don't have them
   const romanNumerals = [
@@ -151,6 +154,7 @@ export const parseBattlescribeXML = (doc : Document) : Roster => {
     name,
     faction,
     operatives,
-    psychicPowers
+    psychicPowers,
+    fireteams
   }
 }
