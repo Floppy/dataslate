@@ -3,24 +3,24 @@ import { parseBattlescribeXML as parseKillTeam2021 } from './parsers/KillTeam202
 import JSZip from 'jszip'
 import { DOMParserImpl } from 'xmldom-ts'
 import * as XPath from 'xpath-ts'
-import { Roster as Roster2018 } from './types/KillTeam2018';
-import { Roster as Roster2021 } from './types/KillTeam2021';
+import { Roster as Roster2018 } from './types/KillTeam2018'
+import { Roster as Roster2021 } from './types/KillTeam2021'
 
 // useNamespaces is NOT a React hook, so:
 // eslint-disable-next-line
 const xpSelect = XPath.useNamespaces({ bs: 'http://www.battlescribe.net/schema/rosterSchema' })
 
-const unzip = async (file: string) : Promise<string> => {
+const unzip = async (file: string): Promise<string> => {
   if (file.charAt(0) !== 'P') {
     return file
   } else {
     const jszip = new JSZip()
     const zip = await jszip.loadAsync(file)
-    return zip.file(/[^/]+\.ros/)[0].async('string') // Get roster files that are in the root
+    return await zip.file(/[^/]+\.ros/)[0].async('string') // Get roster files that are in the root
   }
 }
 
-const parseFile = (file: string) : Roster2018 | Roster2021 => {
+const parseFile = (file: string): Roster2018 | Roster2021 => {
   const doc = new DOMParserImpl().parseFromString(file)
   const gameSystemId = (xpSelect('/bs:roster/@gameSystemId', doc, true) as Node).nodeValue
   switch (gameSystemId) {
@@ -33,9 +33,9 @@ const parseFile = (file: string) : Roster2018 | Roster2021 => {
   }
 }
 
-export const loadFile = async (file: File) : Promise<Roster2018 | Roster2021> => {
+export const loadFile = async (file: File): Promise<Roster2018 | Roster2021> => {
   const reader = new FileReader()
-  return new Promise((resolve, reject) => {
+  return await new Promise((resolve, reject) => {
     reader.onerror = () => {
       reader.abort()
       reject(new DOMException('Problem parsing input file.'))
@@ -49,6 +49,6 @@ export const loadFile = async (file: File) : Promise<Roster2018 | Roster2021> =>
   })
 }
 
-export const loadFiles = (files: File[]) : Promise<Roster2018 | Roster2021> => {
-  return loadFile(files[0])
+export const loadFiles = async (files: File[]): Promise<Roster2018 | Roster2021> => {
+  return await loadFile(files[0])
 }

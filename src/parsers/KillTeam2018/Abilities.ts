@@ -154,7 +154,7 @@ const antiPatterns = {
 
 export const calculatePhases = (description: string) => {
   const minDesc = ' ' + description.toLowerCase().replace(/[.,)(]/g, '') + ' '
-  const phases : string[] = []
+  const phases: string[] = []
   _.forIn(phasePatterns, (patterns, phase) => {
     if (_.some(patterns, (re) => (re.test(minDesc)))) {
       phases.push(phase)
@@ -189,7 +189,7 @@ export const parseAdditionalAttacks = (description: string) => {
   ]
   return _.sum(_.map(patterns, (pattern) => {
     const match = description.match(pattern)
-    if (match) {
+    if (match != null) {
       if (_.some(antiPatterns, (re) => (re.test(description)))) {
         return 0
       }
@@ -210,7 +210,7 @@ export const invulnerableSave = (abilities: Ability[]) => {
   const saves = _.map(abilities, (a) => {
     return _.min(_.map(patterns, (pattern) => {
       const match = a.description.match(pattern)
-      if (match) {
+      if (match != null) {
         return parseInt(match[1])
       }
       return null

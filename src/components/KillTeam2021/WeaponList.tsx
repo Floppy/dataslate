@@ -1,16 +1,16 @@
-import React from 'react';
-import { Weapon } from '../../types/KillTeam2021';
-import { Table } from 'react-bootstrap';
+import React from 'react'
+import { Weapon } from '../../types/KillTeam2021'
+import { Table } from 'react-bootstrap'
 import { HighlightedText } from './HighlightedText'
 
-type Props = {
-  weapons: Weapon[],
-};
+interface Props {
+  weapons: Weapon[]
+}
 
-export function WeaponList(props: Props) {
+export function WeaponList (props: Props) {
   return (
     <>
-      <Table striped bordered size="sm">
+      <Table striped bordered size='sm'>
         <thead>
           <tr>
             <th>Weapon</th>
@@ -35,5 +35,5 @@ export function WeaponList(props: Props) {
         </tbody>
       </Table>
     </>
-  );
+  )
 }

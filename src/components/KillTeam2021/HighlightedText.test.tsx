@@ -4,10 +4,10 @@ import { HighlightedText } from './HighlightedText'
 
 describe('triangle', () => {
   it('translates ▲ correctly', () => {
-    const text = "There is a ▲ in the text"
+    const text = 'There is a ▲ in the text'
     const component = TestRenderer.create(
       <HighlightedText>{text}</HighlightedText>
-    );
+    )
 
     const expected = [
       'There is a ',
@@ -25,7 +25,7 @@ describe('circle', () => {
       const text = `There is a ${circleSymbol} in the text`
       const component = TestRenderer.create(
         <HighlightedText>{text}</HighlightedText>
-      );
+      )
 
       const expected = [
         'There is a ',
@@ -44,7 +44,7 @@ describe('square', () => {
       const text = `There is a ${squareSymbol} in the text`
       const component = TestRenderer.create(
         <HighlightedText>{text}</HighlightedText>
-      );
+      )
 
       const expected = [
         'There is a ',
@@ -59,10 +59,10 @@ describe('square', () => {
 
 describe('pentagon', () => {
   it('translates ⬟ correctly', () => {
-    const text = "There is a ⬟ in the text"
+    const text = 'There is a ⬟ in the text'
     const component = TestRenderer.create(
       <HighlightedText>{text}</HighlightedText>
-    );
+    )
 
     const expected = [
       'There is a ',
@@ -75,27 +75,27 @@ describe('pentagon', () => {
 })
 
 it('works correctly if text contains the same symbol twice', () => {
-  const text = "First there is a ⬟, and then there is a second ⬟."
+  const text = 'First there is a ⬟, and then there is a second ⬟.'
   const component = TestRenderer.create(
     <HighlightedText>{text}</HighlightedText>
-  );
+  )
 
   const expected = [
     'First there is a ',
     { type: 'span', props: { className: 'pentagon' }, children: ['⬟'] },
     ', and then there is a second ',
     { type: 'span', props: { className: 'pentagon' }, children: ['⬟'] },
-    "."
+    '.'
   ]
 
   expect(component.toJSON()).toEqual(expected)
 })
 
 it('works correctly if text contains multiple various symbols', () => {
-  const text = "▲●○⬤⬛■⬟"
+  const text = '▲●○⬤⬛■⬟'
   const component = TestRenderer.create(
     <HighlightedText>{text}</HighlightedText>
-  );
+  )
 
   const expected = [
     { type: 'span', props: { className: 'triangle' }, children: ['▲'] },
@@ -104,7 +104,7 @@ it('works correctly if text contains multiple various symbols', () => {
     { type: 'span', props: { className: 'circle' }, children: ['●'] },
     { type: 'span', props: { className: 'square' }, children: ['■'] },
     { type: 'span', props: { className: 'square' }, children: ['■'] },
-    { type: 'span', props: { className: 'pentagon' }, children: ['⬟'] },
+    { type: 'span', props: { className: 'pentagon' }, children: ['⬟'] }
   ]
 
   expect(component.toJSON()).toEqual(expected)

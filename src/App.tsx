@@ -7,12 +7,11 @@ import { loadFiles } from './FileLoader'
 import { Roster as Roster2018 } from './types/KillTeam2018'
 import { Roster as Roster2021 } from './types/KillTeam2021'
 
-export function App() {
-
+export function App () {
   const [roster, setRoster] = useState<Roster2018|Roster2021|null>(null)
 
   const handleUpload = async (acceptedFiles: File[]) => {
-    const r = await loadFiles(acceptedFiles);
+    const r = await loadFiles(acceptedFiles)
     setRoster(r)
   }
 
@@ -21,26 +20,28 @@ export function App() {
   }
 
   const handleSelectionChanged = (uuid: string, selectedCount: number) => {
-    if (roster && isRosterKT18(roster)) {
-      setRoster(Object.assign({models: roster.models.map((model) => (
-        model.uuid !== uuid
-          ? model
-          : Object.assign(
+    if ((roster != null) && isRosterKT18(roster)) {
+      setRoster(Object.assign({
+        models: roster.models.map((model) => (
+          model.uuid !== uuid
+            ? model
+            : Object.assign(
               model,
               { selected: selectedCount }
             )
-      ))}, roster))
+        ))
+      }, roster))
     }
   }
 
-  const isRosterKT18 = (roster: any): roster is Roster2018 => (roster.system === "KillTeam2018")
-  const isRosterKT21 = (roster: any): roster is Roster2021 => (roster.system === "KillTeam2021")
+  const isRosterKT18 = (roster: any): roster is Roster2018 => (roster.system === 'KillTeam2018')
+  const isRosterKT21 = (roster: any): roster is Roster2021 => (roster.system === 'KillTeam2021')
 
   return (
     <Container fluid='lg'>
       {roster === null ? <Homepage onUpload={handleUpload} /> : <></>}
-      {roster && isRosterKT18(roster) ? <RosterView2018 name={roster.name} models={roster.models} onClose={handleClose} forceRules={roster.forceRules} onSelectionChanged={handleSelectionChanged} /> : <></>}
-      {roster && isRosterKT21(roster) ? <RosterView2021 name={roster.name} operatives={roster.operatives} psychicPowers={roster.psychicPowers} faction={roster.faction} fireteams={roster.fireteams} onClose={handleClose} /> : <></>}
+      {(roster != null) && isRosterKT18(roster) ? <RosterView2018 name={roster.name} models={roster.models} onClose={handleClose} forceRules={roster.forceRules} onSelectionChanged={handleSelectionChanged} /> : <></>}
+      {(roster != null) && isRosterKT21(roster) ? <RosterView2021 name={roster.name} operatives={roster.operatives} psychicPowers={roster.psychicPowers} faction={roster.faction} fireteams={roster.fireteams} onClose={handleClose} /> : <></>}
     </Container>
   )
 }

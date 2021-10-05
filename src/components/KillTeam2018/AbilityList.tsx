@@ -1,22 +1,22 @@
-import React from 'react';
-import { Ability } from '../../types/Ability';
-import { Table } from 'react-bootstrap';
+import React from 'react'
+import { Ability } from '../../types/Ability'
+import { Table } from 'react-bootstrap'
 import _ from 'lodash'
 
-type Props = {
-  abilities: Ability[],
-  phase: string,
-  highlight?: boolean,
-};
+interface Props {
+  abilities: Ability[]
+  phase: string
+  highlight?: boolean
+}
 
-function AbilityList(props: Props) {
-  const abilities = props.phase ?
-    props.abilities.filter((x) => (x.phases && x.phases.indexOf(props.phase) >= 0)) :
-    props.abilities.filter((x) => (x.phases && x.phases.length === 0))
-  const variant = props.highlight ? "primary" : "";
+function AbilityList (props: Props) {
+  const abilities = props.phase
+    ? props.abilities.filter((x) => ((x.phases != null) && x.phases.includes(props.phase)))
+    : props.abilities.filter((x) => ((x.phases != null) && x.phases.length === 0))
+  const variant = props.highlight ? 'primary' : ''
 
   return abilities.length === 0 ? <></> : (
-    <Table striped bordered size="sm" variant={variant}>
+    <Table striped bordered size='sm' variant={variant}>
       <thead>
         <tr>
           <th>Ability</th>
@@ -32,7 +32,7 @@ function AbilityList(props: Props) {
         ))}
       </tbody>
     </Table>
-  );
+  )
 }
 
-export default AbilityList;
+export default AbilityList

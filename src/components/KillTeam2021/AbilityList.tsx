@@ -1,17 +1,17 @@
-import React from 'react';
-import { Ability } from '../../types/Ability';
-import { Card } from 'react-bootstrap';
+import React from 'react'
+import { Ability } from '../../types/Ability'
+import { Card } from 'react-bootstrap'
 import _ from 'lodash'
 import { HighlightedText } from './HighlightedText'
 
-type Props = {
-  abilities: Ability[],
-};
+interface Props {
+  abilities: Ability[]
+}
 
-function AbilityList(props: Props) {
+function AbilityList (props: Props) {
   return props.abilities.length === 0 ? <></> : (
-    <Card border="secondary" bg="light">
-      <Card.Header style={{ background: "rgba(0, 0, 0, 0.05)"}} as="h4">
+    <Card border='secondary' bg='light'>
+      <Card.Header style={{ background: 'rgba(0, 0, 0, 0.05)' }} as='h4'>
         Abilities
       </Card.Header>
       <Card.Body>
@@ -23,7 +23,7 @@ function AbilityList(props: Props) {
         ))}
       </Card.Body>
     </Card>
-  );
+  )
 }
 
-export default AbilityList;
+export default AbilityList

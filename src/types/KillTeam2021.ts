@@ -1,107 +1,107 @@
-import { Ability } from './Ability';
+import { Ability } from './Ability'
 
-export type Action = {
-  name: string,
-  cost: number,
-  description: string,
+export interface Action {
+  name: string
+  cost: number
+  description: string
 }
 
-export type Stats = {
-  movement: number,
-  actionPointLimit: number,
-  groupActivation: number,
-  defence: number,
-  save: number,
-  invulnerable_save: number | null,
-  wounds: number,
+export interface Stats {
+  movement: number
+  actionPointLimit: number
+  groupActivation: number
+  defence: number
+  save: number
+  invulnerable_save: number | null
+  wounds: number
 }
 
-export type Weapon = {
-  name: string,
-  melee: boolean,
-  attacks: number,
-  hit: number,
-  damage: number,
-  specialRules: string,
-  criticalDamage: number,
-  criticalRules: string,
-};
-
-export type PsychicPower = {
-  name: string;
-  description: string;
-  weapon: Weapon | null;
+export interface Weapon {
+  name: string
+  melee: boolean
+  attacks: number
+  hit: number
+  damage: number
+  specialRules: string
+  criticalDamage: number
+  criticalRules: string
 }
 
-export type Ploy = {
-  name: string;
-  cost: number;
-  description: any;
-  weapon?: Weapon;
-  options?: string[];
-  postOptionText?: string;
-  action?: Action;
+export interface PsychicPower {
+  name: string
+  description: string
+  weapon: Weapon | null
 }
 
-export type TacOp = {
-  id: number;
-  name: string;
-  revealTime: string;
-  description: string[];
-  action?: Action;
+export interface Ploy {
+  name: string
+  cost: number
+  description: any
+  weapon?: Weapon
+  options?: string[]
+  postOptionText?: string
+  action?: Action
 }
 
-export type Equipment = {
-  name: string,
-  cost: number,
-  description: string | null,
+export interface TacOp {
+  id: number
+  name: string
+  revealTime: string
+  description: string[]
+  action?: Action
 }
 
-export type Operative = {
-  datacard: string,
-  name: string,
-  stats: Stats,
-  weapons: Weapon[],
-  equipment: Equipment[],
-  abilities: Ability[],
-  actions: Action[],
-  rules: Ability[],
-  leader: boolean,
-  keywords: string[],
+export interface Equipment {
+  name: string
+  cost: number
+  description: string | null
+}
+
+export interface Operative {
+  datacard: string
+  name: string
+  stats: Stats
+  weapons: Weapon[]
+  equipment: Equipment[]
+  abilities: Ability[]
+  actions: Action[]
+  rules: Ability[]
+  leader: boolean
+  keywords: string[]
   faction: string | null
-};
+}
 
 // Datacards are a collection of grouped Operatives
-export type Datacard = {
-  name: string,
-  operativeNames: string[],
-  stats: Stats,
-  weapons: Weapon[],
-  equipment: Equipment[],
-  abilities: Ability[],
-  actions: Action[],
-  rules: Ability[],
-  leader: boolean,
-  keywords: string[],
+export interface Datacard {
+  name: string
+  operativeNames: string[]
+  stats: Stats
+  weapons: Weapon[]
+  equipment: Equipment[]
+  abilities: Ability[]
+  actions: Action[]
+  rules: Ability[]
+  leader: boolean
+  keywords: string[]
   faction: string | null
-};
-
-export type Roster = {
-  system: string,
-  name: string,
-  faction: string,
-  operatives: Operative[],
-  psychicPowers: PsychicPower[],
-  fireteams: string[]
-};
-
-export enum Archetype {
-  SEEK_AND_DESTROY = "SEEK AND DESTROY",
-  SECURITY = "SECURITY",
-  INFILTRATION = "INFILTRATION",
-  RECON = "RECON"
 }
 
-export type FireteamArchetypes = {
+export interface Roster {
+  system: string
+  name: string
+  faction: string
+  operatives: Operative[]
+  psychicPowers: PsychicPower[]
+  fireteams: string[]
+}
+
+export enum Archetype {
+  SEEK_AND_DESTROY = 'SEEK AND DESTROY',
+  SECURITY = 'SECURITY',
+  INFILTRATION = 'INFILTRATION',
+  RECON = 'RECON'
+}
+
+export interface FireteamArchetypes {
   [key: string]: Archetype[]
 }
