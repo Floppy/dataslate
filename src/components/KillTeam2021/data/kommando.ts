@@ -74,6 +74,6 @@ const tacOps: TacOp[] = [
   }
 ]
 
-const data = { strategicPloys, tacticalPloys, tacOps }
+const data = { strategicPloys, tacticalPloys, fireteamArchetypeMap: null, tacOps }
 
 export default data

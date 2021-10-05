@@ -39,6 +39,6 @@ const tacticalPloys: Ploy[] = [
 
 ]
 
-const data = { strategicPloys, tacticalPloys, tacOps: null }
+const data = { strategicPloys, tacticalPloys, fireteamArchetypeMap: null, tacOps: null }
 
 export default data

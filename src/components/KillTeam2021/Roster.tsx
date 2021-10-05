@@ -16,6 +16,7 @@ type Props = {
   faction: string,
   operatives: Operative[],
   psychicPowers: PsychicPower[],
+  fireteams: string[],
   onClose: (event: MouseEvent<HTMLButtonElement>) => void,
 };
 
@@ -38,6 +39,20 @@ export function Roster(props: Props) {
   };
   const datacards = groupByDatacard(props.operatives)
   const factionSpecificData = getFactionSpecificData(props.faction)
+
+  let archetypes = props.fireteams.map( (fireteam) => {
+    if (factionSpecificData !== null && factionSpecificData.fireteamArchetypeMap !== null) {
+      return (factionSpecificData.fireteamArchetypeMap[fireteam] as string[])
+    } else {
+      return null
+    }
+  }).filter( val =>  val !== null ).flat(1)
+
+  // Now remove duplicates
+  archetypes = (archetypes.filter( (item,index) => archetypes.indexOf(item) === index))
+  console.log(archetypes)
+
+
 
   return <>
     <h1 style={headingStyle}>
