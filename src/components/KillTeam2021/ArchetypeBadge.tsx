@@ -1,8 +1,9 @@
 import React from 'react'
 import { Badge } from 'react-bootstrap'
+import {Archetype} from "../../types/KillTeam2021";
 
 type Props = {
-    archetype: string|null,
+    archetype: Archetype,
 }
 
 export function ArchetypeBadge (props: Props) {

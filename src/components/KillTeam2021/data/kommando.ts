@@ -1,6 +1,6 @@
 import {Archetype, FireteamArchetypes, Ploy, TacOp} from '../../../types/KillTeam2021';
 
-const fireteamArchetypeMap: FireteamArchetypes = {
+const archetypes: FireteamArchetypes = {
   "Kommando Kill Team": [Archetype.SEEK_AND_DESTROY, Archetype.INFILTRATION],
 }
 
@@ -78,6 +78,6 @@ const tacOps: TacOp[] = [
   }
 ]
 
-const data = { strategicPloys, tacticalPloys, fireteamArchetypeMap, tacOps }
+const data = { strategicPloys, tacticalPloys, archetypes, tacOps }
 
 export default data

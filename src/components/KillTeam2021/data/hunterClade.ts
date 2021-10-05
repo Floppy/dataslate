@@ -1,6 +1,6 @@
 import {Archetype, FireteamArchetypes, Ploy, TacOp} from '../../../types/KillTeam2021';
 
-const fireteamArchetypeMap: FireteamArchetypes = {
+const archetypes: FireteamArchetypes = {
   // 05/09/2021 - BattleScribe data currently has Fire Team, where it should probably be Kill Team - have submitted PR to BSData but also coding around it for now below
   "Hunter Clade Kill Team": [Archetype.RECON, Archetype.SEEK_AND_DESTROY],
   "Hunter Clade Fire Team": [Archetype.RECON, Archetype.SEEK_AND_DESTROY],
@@ -99,6 +99,6 @@ const tacOps: TacOp[] = [
   }
 ]
 
-const data = { strategicPloys, tacticalPloys, fireteamArchetypeMap,  tacOps }
+const data = { strategicPloys, tacticalPloys, archetypes,  tacOps }
 
 export default data
