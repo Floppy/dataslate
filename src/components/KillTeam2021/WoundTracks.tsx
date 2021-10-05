@@ -6,7 +6,7 @@ interface Props {
   names: string[]
 }
 
-export function WoundTracks (props: Props) {
+export function WoundTracks (props: Props): JSX.Element {
   return (
     <Table striped bordered size='sm'>
       <thead>

@@ -27,9 +27,8 @@ function fileDropZone (props: Props) {
   )
 }
 
-function Homepage (props: Props) {
+function Homepage (props: Props): JSX.Element {
   const [showSettings, setShowSettings] = useState(false)
-
   return (
     <>
       <Intro />

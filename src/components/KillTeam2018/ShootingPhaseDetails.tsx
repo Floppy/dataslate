@@ -11,7 +11,7 @@ interface Props {
   model: Model
 }
 
-export function ShootingPhaseDetails (props: Props) {
+export function ShootingPhaseDetails (props: Props): JSX.Element {
   return (
     <Row>
       <Col sm='10'>

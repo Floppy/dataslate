@@ -9,7 +9,7 @@ interface Props {
   highlight?: boolean
 }
 
-function AbilityList (props: Props) {
+function AbilityList (props: Props): JSX.Element {
   const abilities = props.phase
     ? props.abilities.filter((x) => ((x.phases != null) && x.phases.includes(props.phase)))
     : props.abilities.filter((x) => ((x.phases != null) && x.phases.length === 0))

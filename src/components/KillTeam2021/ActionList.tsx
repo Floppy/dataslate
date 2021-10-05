@@ -8,7 +8,7 @@ interface Props {
   actions: Action[]
 }
 
-export function ActionList (props: Props) {
+export function ActionList (props: Props): JSX.Element {
   return (
     <>
       {_.sortBy(props.actions, ['name']).map((x: Action) => (

@@ -10,7 +10,7 @@ interface Props {
   model: Model
 }
 
-export function MoralePhaseDetails (props: Props) {
+export function MoralePhaseDetails (props: Props): JSX.Element {
   return (
     <Row>
       <Col sm='11'>

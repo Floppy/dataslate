@@ -11,7 +11,7 @@ import { Roster as Roster2021 } from './types/KillTeam2021'
 import { DataDevPage } from './components/KillTeam2021/DataDevPage'
 import { Settings } from './types/Settings'
 
-export function App () {
+export function App (): JSX.Element {
   const [roster, setRoster] = useState<Roster2018|Roster2021|null>(null)
 
   const [settings, setSettings] = useState({ showWoundTrack: true })

@@ -17,7 +17,7 @@ interface Props {
   specialism?: string
 }
 
-export function ModelTitle (props: Props) {
+export function ModelTitle (props: Props): JSX.Element {
   const headingStyle = {
     background: 'black',
     color: 'white',

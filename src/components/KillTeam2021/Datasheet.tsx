@@ -16,7 +16,7 @@ interface Props {
   showWoundTrack: boolean
 }
 
-export function Datasheet (props: Props) {
+export function Datasheet (props: Props): JSX.Element {
   return (
     <Card className={props.datacard.operativeNames.length > 0 ? 'included' : 'excluded'}>
       <ModelTitle

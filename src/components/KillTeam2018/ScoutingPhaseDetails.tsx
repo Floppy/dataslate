@@ -8,7 +8,7 @@ interface Props {
   model: Model
 }
 
-export function ScoutingPhaseDetails (props: Props) {
+export function ScoutingPhaseDetails (props: Props): JSX.Element {
   return (
     <Row>
       <Col>

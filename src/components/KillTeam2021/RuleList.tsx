@@ -8,7 +8,7 @@ interface Props {
   rules: Ability[]
 }
 
-export function RuleList (props: Props) {
+export function RuleList (props: Props): JSX.Element {
   return props.rules.length === 0 ? <></> : (
     <Table striped bordered>
       <tbody>
