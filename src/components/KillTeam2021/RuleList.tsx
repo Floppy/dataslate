@@ -1,14 +1,14 @@
-import React from 'react';
-import { Ability } from '../../types/Ability';
-import { Table } from 'react-bootstrap';
+import React from 'react'
+import { Ability } from '../../types/Ability'
+import { Table } from 'react-bootstrap'
 import _ from 'lodash'
 import { HighlightedText } from './HighlightedText'
 
-type Props = {
+interface Props {
   rules: Ability[]
-};
+}
 
-export function RuleList(props: Props) {
+export function RuleList (props: Props) {
   return props.rules.length === 0 ? <></> : (
     <Table striped bordered>
       <tbody>
@@ -20,5 +20,5 @@ export function RuleList(props: Props) {
         ))}
       </tbody>
     </Table>
-  );
+  )
 }

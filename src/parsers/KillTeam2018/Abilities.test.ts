@@ -3,7 +3,7 @@ import _ from 'lodash'
 import parse from 'csv-parse/lib/sync'
 import fs from 'fs'
 
-const abilities = parse(fs.readFileSync("abilities.csv"), {
+const abilities = parse(fs.readFileSync('abilities.csv'), {
   columns: true,
   skip_empty_lines: true
 })
@@ -21,24 +21,23 @@ _.forEach(abilities, (a) => {
         shooting: a.shooting === 'Y',
         fight: a.fight === 'Y',
         morale: a.morale === 'Y'
-      },(value, key) => {
-        if (value)
-          expectedPhases.push(key)
-      });
-      expect(phases.sort()).toEqual(expectedPhases.sort());
-    });
+      }, (value, key) => {
+        if (value) { expectedPhases.push(key) }
+      })
+      expect(phases.sort()).toEqual(expectedPhases.sort())
+    })
 
-    it(`works out correct additional attacks`, () => {
-      expect(parseAdditionalAttacks(a['ability'])).toEqual(parseInt(a['A']) || 0);
-    });
+    it('works out correct additional attacks', () => {
+      expect(parseAdditionalAttacks(a.ability)).toEqual(parseInt(a.A) || 0)
+    })
 
-    it(`works out correct invulnerable save`, () => {
-      expect(invulnerableSave([{description: a['ability']}])).toEqual(parseInt(a['Inv']) || undefined);
-    });
-  });
-});
+    it('works out correct invulnerable save', () => {
+      expect(invulnerableSave([{ description: a.ability }])).toEqual(parseInt(a.Inv) || undefined)
+    })
+  })
+})
 
-const rules = parse(fs.readFileSync("rules.csv"), {
+const rules = parse(fs.readFileSync('rules.csv'), {
   columns: true,
   skip_empty_lines: true
 })
@@ -56,11 +55,10 @@ _.forEach(rules, (a) => {
         shooting: a.shooting === 'Y',
         fight: a.fight === 'Y',
         morale: a.morale === 'Y'
-      },(value, key) => {
-        if (value)
-          expectedPhases.push(key)
-      });
-      expect(phases.sort()).toEqual(expectedPhases.sort());
-    });
-  });
-});
+      }, (value, key) => {
+        if (value) { expectedPhases.push(key) }
+      })
+      expect(phases.sort()).toEqual(expectedPhases.sort())
+    })
+  })
+})

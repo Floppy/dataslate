@@ -1,25 +1,25 @@
-import React from 'react';
-import { StatBadge } from '../StatBadge';
-import AbilityList from './AbilityList';
+import React from 'react'
+import { StatBadge } from '../StatBadge'
+import AbilityList from './AbilityList'
 import { Row, Col } from 'react-bootstrap'
-import { ModelTitle } from '../ModelTitle';
+import { ModelTitle } from '../ModelTitle'
 
-import { Model } from '../../types/KillTeam2018';
+import { Model } from '../../types/KillTeam2018'
 
-type Props = {
+interface Props {
   model: Model
-};
+}
 
-export function MoralePhaseDetails(props: Props) {
+export function MoralePhaseDetails (props: Props) {
   return (
     <Row>
-      <Col sm="11">
-        <ModelTitle {...props.model}/>
-        <AbilityList abilities={props.model.abilities} phase='morale'/>
+      <Col sm='11'>
+        <ModelTitle {...props.model} />
+        <AbilityList abilities={props.model.abilities} phase='morale' />
       </Col>
-      <Col sm="1" className="px-1">
-        <StatBadge name="Ld" value={`${props.model.stats.leadership}`}/>
+      <Col sm='1' className='px-1'>
+        <StatBadge name='Ld' value={`${props.model.stats.leadership}`} />
       </Col>
     </Row>
-  );
+  )
 }

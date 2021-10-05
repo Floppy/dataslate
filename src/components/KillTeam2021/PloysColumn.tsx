@@ -1,17 +1,18 @@
-import React from 'react';
-import { Ploy } from '../../types/KillTeam2021';
-import { Card, Col, Table } from 'react-bootstrap';
+import React from 'react'
+import { Ploy } from '../../types/KillTeam2021'
+import { Card, Col, Table } from 'react-bootstrap'
 import { HighlightedText } from './HighlightedText'
 
-type Props = {
+interface Props {
   ploys: Ploy[]
-};
+}
 
-export function PloysColumn(props: Props) {
-  return <Col>
-    {props.ploys.map((x: Ploy) => (
-        <Card border="info" bg="light">
-          <Card.Header style={{ background: "#17a2b8", color: "white", display: "flex", justifyContent: "space-between" }} as="h4">
+export function PloysColumn (props: Props) {
+  return (
+    <Col>
+      {props.ploys.map((x: Ploy) => (
+        <Card border='info' bg='light'>
+          <Card.Header style={{ background: '#17a2b8', color: 'white', display: 'flex', justifyContent: 'space-between' }} as='h4'>
             <span>{x.name}</span>
             <span>{x.cost}CP</span>
           </Card.Header>
@@ -19,8 +20,8 @@ export function PloysColumn(props: Props) {
             <p>
               <HighlightedText>{x.description}</HighlightedText>
             </p>
-            {x.weapon
-              ? <Table striped bordered size="sm">
+            {(x.weapon != null)
+              ? <Table striped bordered size='sm'>
                 <thead>
                   <tr>
                     <th>A</th>
@@ -39,37 +40,37 @@ export function PloysColumn(props: Props) {
                     <td><HighlightedText>{x.weapon.criticalRules}</HighlightedText></td>
                   </tr>
                 </tbody>
-              </Table>
-              : <></>
-            }
+                </Table>
+              : <></>}
             {
-              x.options &&
+              (x.options != null) &&
                 <ul>
                   {x.options.map(line => <li><HighlightedText>{line}</HighlightedText></li>)}
                 </ul>
             }
             {
               x.postOptionText &&
-                  <p>
-                    <HighlightedText>{x.postOptionText}</HighlightedText>
-                  </p>
+                <p>
+                  <HighlightedText>{x.postOptionText}</HighlightedText>
+                </p>
             }
             {
-              x.action &&
-              <p>
-                <Card border="primary" bg="light">
-                  <Card.Header style={{ background: "#FF6F2D", color: "white", display: "flex", justifyContent: "space-between"}} as="h4">
-                    <span>{x.action.name}</span>
-                    <span>{x.action.cost}AP</span>
-                  </Card.Header>
-                  <Card.Body>
-                    <HighlightedText>{x.action.description}</HighlightedText>
-                  </Card.Body>
-                </Card>
-              </p>
+              (x.action != null) &&
+                <p>
+                  <Card border='primary' bg='light'>
+                    <Card.Header style={{ background: '#FF6F2D', color: 'white', display: 'flex', justifyContent: 'space-between' }} as='h4'>
+                      <span>{x.action.name}</span>
+                      <span>{x.action.cost}AP</span>
+                    </Card.Header>
+                    <Card.Body>
+                      <HighlightedText>{x.action.description}</HighlightedText>
+                    </Card.Body>
+                  </Card>
+                </p>
             }
           </Card.Body>
         </Card>
-    ))}
-  </Col>
+      ))}
+    </Col>
+  )
 }

@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 
-type Props = {
-  specialism: string;
-};
+interface Props {
+  specialism: string
+}
 
-export function SpecialistIcon(props: Props) {
+export function SpecialistIcon (props: Props) {
   return (props.specialism
-    ? <img className='specialism' style={{height: '1em', marginRight: '10px'}} alt={props.specialism} src={`/icons/${props.specialism.toLowerCase()}.svg`}/>
+    ? <img className='specialism' style={{ height: '1em', marginRight: '10px' }} alt={props.specialism} src={`/icons/${props.specialism.toLowerCase()}.svg`} />
     : <></>
-  );
+  )
 }

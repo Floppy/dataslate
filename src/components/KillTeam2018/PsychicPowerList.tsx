@@ -1,15 +1,15 @@
-import React from 'react';
-import { PsychicPower } from '../../types/KillTeam2018';
-import { Table } from 'react-bootstrap';
+import React from 'react'
+import { PsychicPower } from '../../types/KillTeam2018'
+import { Table } from 'react-bootstrap'
 import _ from 'lodash'
 
-type Props = {
-  powers: PsychicPower[],
-};
+interface Props {
+  powers: PsychicPower[]
+}
 
-function PsychicPowerList(props: Props) {
+function PsychicPowerList (props: Props) {
   return props.powers.length === 0 ? <></> : (
-    <Table striped bordered size="sm">
+    <Table striped bordered size='sm'>
       <thead>
         <tr>
           <th>Power</th>
@@ -27,7 +27,7 @@ function PsychicPowerList(props: Props) {
         ))}
       </tbody>
     </Table>
-  );
+  )
 }
 
-export default PsychicPowerList;
+export default PsychicPowerList
