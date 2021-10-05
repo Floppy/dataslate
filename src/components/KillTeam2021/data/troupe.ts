@@ -1,7 +1,7 @@
-import {Archetype, FireteamArchetypes, Ploy} from '../../../types/KillTeam2021';
+import { Archetype, FireteamArchetypes, Ploy } from '../../../types/KillTeam2021'
 
 const archetypes: FireteamArchetypes = {
-  "Troupe Kill Team": [Archetype.SEEK_AND_DESTROY, Archetype.INFILTRATION, Archetype.RECON],
+  'Troupe Kill Team': [Archetype.SEEK_AND_DESTROY, Archetype.INFILTRATION, Archetype.RECON]
 }
 
 const strategicPloys: Ploy[] = [

@@ -1,7 +1,7 @@
-import {Archetype, FireteamArchetypes, Ploy} from '../../../types/KillTeam2021';
+import { Archetype, FireteamArchetypes, Ploy } from '../../../types/KillTeam2021'
 
 const archetypes: FireteamArchetypes = {
-  "Grey Knight Kill Team": [Archetype.SEEK_AND_DESTROY, Archetype.SECURITY],
+  'Grey Knight Kill Team': [Archetype.SEEK_AND_DESTROY, Archetype.SECURITY]
 }
 
 const strategicPloys: Ploy[] = [
@@ -24,7 +24,7 @@ const strategicPloys: Ploy[] = [
   }, {
     name: 'Tide of Celerity',
     cost: 1,
-    description: `Until the end of the Turning Point, each time a friendly GREY KNIGHT💀 operative performs a Charge action, it can move an additional ▲ for that action.`
+    description: 'Until the end of the Turning Point, each time a friendly GREY KNIGHT💀 operative performs a Charge action, it can move an additional ▲ for that action.'
   }
 ]
 
@@ -34,7 +34,7 @@ const tacticalPloys: Ploy[] = [
     cost: 1,
     description: `Use this Tactical Ploy when a ready friendly GREY KNIGHT💀 operative is incapacitated. That operative is not removed from the killzone until the end of your next
                   activation and does not count as being injured.`
-  },{
+  }, {
     name: 'And they shall know no fear',
     cost: 1,
     description: `Use this Tactical Ploy when a friendly GREY KNIGHT💀 operative is activated. Until the end of that operative's activation, you can ignore any or all modifiers to 

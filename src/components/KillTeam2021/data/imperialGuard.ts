@@ -1,8 +1,8 @@
-import {Archetype, FireteamArchetypes, Ploy} from '../../../types/KillTeam2021';
+import { Archetype, FireteamArchetypes, Ploy } from '../../../types/KillTeam2021'
 
 const archetypes: FireteamArchetypes = {
-  "Guardsman Fire Team": [Archetype.SECURITY],
-  "Tempestus Scion Fire Team": [Archetype.SECURITY, Archetype.SEEK_AND_DESTROY, Archetype.INFILTRATION, Archetype.RECON],
+  'Guardsman Fire Team': [Archetype.SECURITY],
+  'Tempestus Scion Fire Team': [Archetype.SECURITY, Archetype.SEEK_AND_DESTROY, Archetype.INFILTRATION, Archetype.RECON]
 }
 
 const strategicPloys: Ploy[] = [
@@ -41,7 +41,7 @@ const tacticalPloys: Ploy[] = [
     description: `Use this Tactical Ploy after a friendly IMPERIAL GUARD💀 operative makes a shooting attack. Until the end of the Turning Point, each time another friendly IMPERIAL GUARD💀
                   operative makes a shooting attack against the target of that shooting attack, in the Roll Attack Dice step of that subsequent shooting attack, you can re-roll any or all 
                   of your attack dice.`
-  },
+  }
 
 ]
 
