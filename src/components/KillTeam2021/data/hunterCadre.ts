@@ -1,9 +1,9 @@
-import {Archetype, FireteamArchetypes, Ploy} from '../../../types/KillTeam2021';
+import { Archetype, FireteamArchetypes, Ploy } from '../../../types/KillTeam2021'
 
 const archetypes: FireteamArchetypes = {
-  "Fire Warrior Fire Team": [Archetype.SECURITY],
-  "Pathfinder Fire Team": [Archetype.RECON],
-  "Stealth Battlesuit Fire Team": [Archetype.INFILTRATION, Archetype.RECON],
+  'Fire Warrior Fire Team': [Archetype.SECURITY],
+  'Pathfinder Fire Team': [Archetype.RECON],
+  'Stealth Battlesuit Fire Team': [Archetype.INFILTRATION, Archetype.RECON]
 }
 
 const strategicPloys: Ploy[] = [
@@ -15,19 +15,19 @@ const strategicPloys: Ploy[] = [
   }, {
     name: 'Breach and Clear',
     cost: 1,
-    description: `Until the end of the Turning Point, each time a friendly FIRE WARRIOR operative makes a shooting attack with a pulse blaster as a result of a Shoot action:`,
+    description: 'Until the end of the Turning Point, each time a friendly FIRE WARRIOR operative makes a shooting attack with a pulse blaster as a result of a Shoot action:',
     options: [
-      `For that shooting attack, enemy operatives within ■ of it are not in Cover.`,
-      `In the Roll Attack Dice step of that shooting attack, if the target is within ■ of it, you can re-roll one of your attack dice.`
+      'For that shooting attack, enemy operatives within ■ of it are not in Cover.',
+      'In the Roll Attack Dice step of that shooting attack, if the target is within ■ of it, you can re-roll one of your attack dice.'
     ]
   }, {
     name: 'Camouflage Field Engagement',
     cost: 1,
-    description: `Until the end of the Turning Point, friendly STEALTH BATTLESUIT operatives can perform the following action:`,
+    description: 'Until the end of the Turning Point, friendly STEALTH BATTLESUIT operatives can perform the following action:',
     action: {
       name: 'Camouflage Field Engagement',
       cost: 1,
-      description: `Change this operative's order.`
+      description: 'Change this operative\'s order.'
     }
   }, {
     name: 'Recon Sweep',
@@ -48,11 +48,11 @@ const tacticalPloys: Ploy[] = [
   }, {
     name: 'Stand and Fire',
     cost: 1,
-    description: `Use this Tactical Ploy when a friendly HUNTER CADRE💀 operative (excluding a DRONE operative) is selected as the target for combat. For that combat:`,
+    description: 'Use this Tactical Ploy when a friendly HUNTER CADRE💀 operative (excluding a DRONE operative) is selected as the target for combat. For that combat:',
     options: [
-        `Select a ranged weapon to fight with.`,
-        `Treat that weapon's Ballistic Skill characteristic as a Weapon Skill characteristic.`,
-        `Ignore any special rules that weapon has.`
+      'Select a ranged weapon to fight with.',
+      'Treat that weapon\'s Ballistic Skill characteristic as a Weapon Skill characteristic.',
+      'Ignore any special rules that weapon has.'
     ]
   }
 ]

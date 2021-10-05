@@ -1,15 +1,15 @@
-import {Archetype, FireteamArchetypes, Ploy} from '../../../types/KillTeam2021';
+import { Archetype, FireteamArchetypes, Ploy } from '../../../types/KillTeam2021'
 
 const archetypes: FireteamArchetypes = {
-  "Intercessor Fire Team": [Archetype.SEEK_AND_DESTROY, Archetype.SECURITY],
-  "Assault Intercessor Fire Team" : [Archetype.SEEK_AND_DESTROY, Archetype.SECURITY],
-  "Incursor Fire Team" : [Archetype.SEEK_AND_DESTROY, Archetype.INFILTRATION, Archetype.RECON],
-  "Infiltrator Fire Team" : [Archetype.SEEK_AND_DESTROY, Archetype.INFILTRATION, Archetype.RECON],
-  "Reiver Fire Team" : [Archetype.SEEK_AND_DESTROY, Archetype.INFILTRATION, Archetype.RECON],
-  "Heavy Intercessor Fire Team" : [Archetype.SEEK_AND_DESTROY, Archetype.SECURITY],
-  "Tactical Marine Fire Team" : [Archetype.SEEK_AND_DESTROY, Archetype.SECURITY],
-  "Scout Fire Team" : [Archetype.SEEK_AND_DESTROY, Archetype.INFILTRATION, Archetype.RECON],
-  "Death Watch Fire Team" : [Archetype.SEEK_AND_DESTROY, Archetype.SECURITY],
+  'Intercessor Fire Team': [Archetype.SEEK_AND_DESTROY, Archetype.SECURITY],
+  'Assault Intercessor Fire Team': [Archetype.SEEK_AND_DESTROY, Archetype.SECURITY],
+  'Incursor Fire Team': [Archetype.SEEK_AND_DESTROY, Archetype.INFILTRATION, Archetype.RECON],
+  'Infiltrator Fire Team': [Archetype.SEEK_AND_DESTROY, Archetype.INFILTRATION, Archetype.RECON],
+  'Reiver Fire Team': [Archetype.SEEK_AND_DESTROY, Archetype.INFILTRATION, Archetype.RECON],
+  'Heavy Intercessor Fire Team': [Archetype.SEEK_AND_DESTROY, Archetype.SECURITY],
+  'Tactical Marine Fire Team': [Archetype.SEEK_AND_DESTROY, Archetype.SECURITY],
+  'Scout Fire Team': [Archetype.SEEK_AND_DESTROY, Archetype.INFILTRATION, Archetype.RECON],
+  'Death Watch Fire Team': [Archetype.SEEK_AND_DESTROY, Archetype.SECURITY]
 }
 
 const strategicPloys: Ploy[] = [
@@ -39,38 +39,38 @@ const tacticalPloys: Ploy[] = [
     cost: 1,
     description: `Use this Tactical Ploy in the Roll Defence Dice step of a shooting attack, after rolling defence dice for a friendly PRIMARIS operative. You can change one of your 
                   retained normal saves to a critical save.`
-  },{
+  }, {
     name: 'Only in death does duty end',
     cost: 1,
     description: `Use this Tactical Ploy when a ready friendly SPACE MARINE💀 operative is incapacitated. That operative is not removed from the killzone until the end of your next
                   activation and does not count as being injured.`
-  },{
+  }, {
     name: 'And they shall know no fear',
     cost: 1,
     description: `Use this Tactical Ploy when a friendly SPACE MARINE💀 operative is activated. Until the end of that operative's activation, you can ignore any or all modifiers to 
                 its APL characteristic and it is not injured.`
-  },{
+  }, {
     name: 'Omni-Scrambler',
     cost: 1,
     description: `Use this Tactical Ploy at the start of the Firefight phase. Select one enemy operative Visible to and within ⬟ of a friendly INFILTRATOR operative. Until the end 
                   of the Turning Point that enemy operative cannot be activated until another enemy operative has been activated (unless it is the only remaining enemy operative).`
-  },{
+  }, {
     name: 'Multi-Spectrum Array',
     cost: 1,
-    description: `Use this Tactical Ploy when a friendly INCURSOR operative performs a Shoot action. For that action's shooting attack, enemy operatives are not Obscured.`
-  },{
+    description: 'Use this Tactical Ploy when a friendly INCURSOR operative performs a Shoot action. For that action\'s shooting attack, enemy operatives are not Obscured.'
+  }, {
     name: 'Terror Troop',
     cost: 1,
-    description: `Use this Tactical Ploy during a friendly REIVER operative's activation. Until the start of the next Turning Point:`,
+    description: 'Use this Tactical Ploy during a friendly REIVER operative\'s activation. Until the start of the next Turning Point:',
     options: [
         `Each time an enemy operative would perform a mission action or the Pick Up action, if this friendly REIVER operative is within SQUARE of that enemy operative, one additional
         action point must be subtracted to perform that action.`,
-        `When determining control of an objective marker that friendly REIVER operative is within range of, treat enemy operatives' total APL as being 1 less. Note that this is not a modifier.`
+        'When determining control of an objective marker that friendly REIVER operative is within range of, treat enemy operatives\' total APL as being 1 less. Note that this is not a modifier.'
     ]
-  },
+  }
 
 ]
 
-const data = { strategicPloys, tacticalPloys, archetypes, tacOps: null, }
+const data = { strategicPloys, tacticalPloys, archetypes, tacOps: null }
 
 export default data

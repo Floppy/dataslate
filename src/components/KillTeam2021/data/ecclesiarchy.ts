@@ -1,14 +1,14 @@
-import {Archetype, FireteamArchetypes, Ploy} from '../../../types/KillTeam2021';
+import { Archetype, FireteamArchetypes, Ploy } from '../../../types/KillTeam2021'
 
 const archetypes: FireteamArchetypes = {
-  "Battle Sister Fire Team": [Archetype.SECURITY],
-  "Repentia Fire Team" : [Archetype.SEEK_AND_DESTROY],
-  "Arco-Flagellant Fire Team" : [Archetype.SEEK_AND_DESTROY],
+  'Battle Sister Fire Team': [Archetype.SECURITY],
+  'Repentia Fire Team': [Archetype.SEEK_AND_DESTROY],
+  'Arco-Flagellant Fire Team': [Archetype.SEEK_AND_DESTROY]
 }
 
 const strategicPloys: Ploy[] = [
   {
-    name: `Emporer's Guidance`,
+    name: 'Emporer\'s Guidance',
     cost: 1,
     description: `Until the end of the Turning Point, each time a friendly ADEPTA SORORITAS operative fights in combat or makes a shooting attack, in the Roll Attack Dice step of that
                   combat or shooting attack, if you retain any critical hits, you can re-roll one of your attack dice.`
@@ -20,12 +20,12 @@ const strategicPloys: Ploy[] = [
   }, {
     name: 'Extremis Trigger Word',
     cost: 1,
-    description: `Until the end of the Turning Point:`,
+    description: 'Until the end of the Turning Point:',
     options: [
-      `Each time a friendly ARCO-FLAGELLANT operative performs a Dash or Charge action, it can move an additional ▲ for that action`,
-      `Arco-flails that friendly ARCO-FLAGELLANT operatives are equipped with gain the Lethal 5+ special rule.`,
+      'Each time a friendly ARCO-FLAGELLANT operative performs a Dash or Charge action, it can move an additional ▲ for that action',
+      'Arco-flails that friendly ARCO-FLAGELLANT operatives are equipped with gain the Lethal 5+ special rule.'
     ],
-    postOptionText: `You can use this Strategic Ploy once`
+    postOptionText: 'You can use this Strategic Ploy once'
   }
 ]
 

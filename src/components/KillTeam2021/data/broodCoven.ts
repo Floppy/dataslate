@@ -1,9 +1,9 @@
-import {Archetype, FireteamArchetypes, Ploy} from '../../../types/KillTeam2021';
+import { Archetype, FireteamArchetypes, Ploy } from '../../../types/KillTeam2021'
 
 const archetypes: FireteamArchetypes = {
-  "Neophyte Hybrid Fire Team": [Archetype.SECURITY, Archetype.RECON, Archetype.INFILTRATION],
-  "Acolyte Hybrid Fire Team": [Archetype.SEEK_AND_DESTROY, Archetype.INFILTRATION],
-  "Hybrid Metamorph Fire Team": [Archetype.SEEK_AND_DESTROY],
+  'Neophyte Hybrid Fire Team': [Archetype.SECURITY, Archetype.RECON, Archetype.INFILTRATION],
+  'Acolyte Hybrid Fire Team': [Archetype.SEEK_AND_DESTROY, Archetype.INFILTRATION],
+  'Hybrid Metamorph Fire Team': [Archetype.SEEK_AND_DESTROY]
 }
 
 const strategicPloys: Ploy[] = [
@@ -32,7 +32,7 @@ const tacticalPloys: Ploy[] = [
   }, {
     name: 'Into the shadows',
     cost: 1,
-    description: `Use this Tactical Ploy at the end of a friendly BROOD COVEN💀 operative's activation. If that operative has an Engage order, change it to a Conceal order.`
+    description: 'Use this Tactical Ploy at the end of a friendly BROOD COVEN💀 operative\'s activation. If that operative has an Engage order, change it to a Conceal order.'
   }, {
     name: 'Crossfire',
     cost: 1,
