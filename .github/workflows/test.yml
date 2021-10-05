@@ -1,6 +1,20 @@
 on: [push]
 name: CI
 jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '14.x'
+    - uses: borales/actions-yarn@v2.1.0
+      with:
+        cmd: install
+    - uses: borales/actions-yarn@v2.1.0
+      with:
+        cmd: lint
   test:
     name: Test
     runs-on: ubuntu-latest
@@ -17,6 +31,3 @@ jobs:
         CI: true
       with:
         cmd: test
-    - uses: borales/actions-yarn@v2.1.0
-      with:
-        cmd: lint
