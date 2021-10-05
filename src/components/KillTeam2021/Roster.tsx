@@ -103,7 +103,9 @@ export function Roster(props: Props) {
       <Card>
         <Card.Header style={{...headingStyle}} as="h2">Tac Ops</Card.Header>
         <Card.Body>
-          { archetypes.length > 0 && <> <h4>ARCHETYPES</h4> {archetypes.map(archetype => { return <ArchetypeBadge archetype={archetype}/> } )} </> }
+          { archetypes.length > 0 &&
+            <Card.Title>ARCHETYPES - {archetypes.map(archetype => { return <ArchetypeBadge archetype={archetype}/> } )}</Card.Title>}
+
           { factionSpecificData && factionSpecificData.tacOps && <TacOpsList tacOps={factionSpecificData.tacOps} /> }
         </Card.Body>
       </Card>

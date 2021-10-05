@@ -8,8 +8,11 @@ type Props = {
 export function ArchetypeBadge (props: Props) {
 
     return (
-        <Badge pill variant="dark" className="w-25 px-5">
-            <div className="text-light">{props.archetype}</div>
+        <Badge pill variant="secondary" className="mb-2" style={{
+            textTransform: "uppercase",
+            marginRight: "10px",
+        }}>
+        {props.archetype}
         </Badge>
     )
 }
