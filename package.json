@@ -35,8 +35,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --coverage",
     "eject": "react-scripts eject",
-    "lint": "./node_modules/.bin/standard",
-    "lint-fix": "./node_modules/.bin/standard --fix"
+    "lint": "./node_modules/.bin/ts-standard",
+    "lint-fix": "./node_modules/.bin/ts-standard --fix"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -61,7 +61,7 @@
     "csv-parse": "^4.16.3",
     "react-scripts": "^4.0.3",
     "react-test-renderer": "^16.13.1",
-    "standard": "^16.0.4"
+    "ts-standard": "^10.0.0"
   },
   "standard": {
     "env": [
