@@ -1,7 +1,7 @@
 import React, { MouseEvent } from 'react';
-import { Col, Card } from 'react-bootstrap';
+import {Col, Card} from 'react-bootstrap';
 import { CloseButton } from '../CloseButton';
-import { Operative, Datacard, PsychicPower } from '../../types/KillTeam2021';
+import {Operative, Datacard, PsychicPower, Archetype} from '../../types/KillTeam2021';
 import { Datasheet } from './Datasheet';
 import { RuleList } from './RuleList';
 import { PowerList } from './PowerList';
@@ -10,12 +10,14 @@ import { TacOpsList } from './TacOpsList';
 import hash from 'node-object-hash'
 import _ from 'lodash'
 import getFactionSpecificData from './data'
+import {ArchetypeBadge} from "./ArchetypeBadge";
 
 type Props = {
   name: string,
   faction: string,
   operatives: Operative[],
   psychicPowers: PsychicPower[],
+  fireteams: string[],
   onClose: (event: MouseEvent<HTMLButtonElement>) => void,
 };
 
@@ -38,6 +40,14 @@ export function Roster(props: Props) {
   };
   const datacards = groupByDatacard(props.operatives)
   const factionSpecificData = getFactionSpecificData(props.faction)
+
+  let archetypes : Archetype[] = props.fireteams.flatMap( (fireteam) => {
+    return factionSpecificData?.archetypes[fireteam] as Archetype[] ?? null
+  }).filter( item => (item !== null) )
+
+  // Now remove duplicates
+  archetypes = (archetypes.filter( (item,index) => archetypes.indexOf(item) === index))
+  console.log(archetypes)
 
   return <>
     <h1 style={headingStyle}>
@@ -80,16 +90,19 @@ export function Roster(props: Props) {
             </Card.Body>
           </Card>
         </div>
-        {
-          factionSpecificData.tacOps &&
-            <Card>
-              <Card.Header style={{...headingStyle}} as="h2">Tac Ops</Card.Header>
-              <Card.Body>
-                <TacOpsList tacOps={factionSpecificData.tacOps} />
-              </Card.Body>
-            </Card>
-        }
+
       </div>
+    }
+    { ((factionSpecificData && factionSpecificData.tacOps) || (archetypes.length > 0)) &&
+      <Card>
+        <Card.Header style={{...headingStyle}} as="h2">Tac Ops</Card.Header>
+        <Card.Body>
+          { archetypes.length > 0 &&
+            <Card.Title>ARCHETYPES - {archetypes.map(archetype => { return <ArchetypeBadge archetype={archetype}/> } )}</Card.Title>}
+
+          { factionSpecificData && factionSpecificData.tacOps && <TacOpsList tacOps={factionSpecificData.tacOps} /> }
+        </Card.Body>
+      </Card>
     }
   </>
 }

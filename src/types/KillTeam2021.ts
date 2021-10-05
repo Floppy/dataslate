@@ -92,4 +92,16 @@ export type Roster = {
   faction: string,
   operatives: Operative[],
   psychicPowers: PsychicPower[],
+  fireteams: string[]
 };
+
+export enum Archetype {
+  SEEK_AND_DESTROY = "SEEK AND DESTROY",
+  SECURITY = "SECURITY",
+  INFILTRATION = "INFILTRATION",
+  RECON = "RECON"
+}
+
+export type FireteamArchetypes = {
+  [key: string]: Archetype[]
+}

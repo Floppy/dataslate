@@ -1,4 +1,11 @@
-import { Ploy } from '../../../types/KillTeam2021';
+import {Archetype, FireteamArchetypes, Ploy} from '../../../types/KillTeam2021';
+
+const archetypes: FireteamArchetypes = {
+  // 05/09/2021 - BattleScribe data currently has Kill Team, where it should probably be Fire Team - have submitted PR to BSData but also coding around it for now below
+  "Rubric Marine Kill Team": [Archetype.SEEK_AND_DESTROY, Archetype.SECURITY],
+  "Rubric Marine Fire Team": [Archetype.SEEK_AND_DESTROY, Archetype.SECURITY],
+  "Tzaangor Fire Team": [Archetype.SEEK_AND_DESTROY, Archetype.RECON],
+}
 
 const strategicPloys: Ploy[] = [
   {
@@ -40,6 +47,6 @@ const tacticalPloys: Ploy[] = [
   }
 ]
 
-const data = { strategicPloys, tacticalPloys, tacOps: null }
+const data = { strategicPloys, tacticalPloys, archetypes, tacOps: null }
 
 export default data

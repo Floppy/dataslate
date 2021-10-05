@@ -1,4 +1,9 @@
-import { Ploy } from '../../../types/KillTeam2021';
+import {Archetype, FireteamArchetypes, Ploy} from '../../../types/KillTeam2021';
+
+const archetypes: FireteamArchetypes = {
+  "Custodian Guard Fire Team": [Archetype.SEEK_AND_DESTROY, Archetype.SECURITY],
+  "Sister of Silence Fire Team": [Archetype.SEEK_AND_DESTROY, Archetype.SECURITY, Archetype.RECON],
+}
 
 const strategicPloys: Ploy[] = [
   {
@@ -15,7 +20,6 @@ const strategicPloys: Ploy[] = [
     name: 'Peerless Warriors',
     cost: 1,
     description: `Until the end of the Turning Point, each time a friendly ADEPTUS CUSTODES operative is activated, it can perform up to two Shoot and Fight actions during that activation.`,
-
   }
 ]
 
@@ -42,6 +46,6 @@ const tacticalPloys: Ploy[] = [
   }
 ]
 
-const data = { strategicPloys, tacticalPloys, tacOps: null }
+const data = { strategicPloys, tacticalPloys, archetypes, tacOps: null }
 
 export default data
