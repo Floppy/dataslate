@@ -1,5 +1,5 @@
 import React, { MouseEvent } from 'react';
-import { Col, Card } from 'react-bootstrap';
+import {Col, Card, Badge} from 'react-bootstrap';
 import { CloseButton } from '../CloseButton';
 import { Operative, Datacard, PsychicPower } from '../../types/KillTeam2021';
 import { Datasheet } from './Datasheet';
@@ -10,6 +10,7 @@ import { TacOpsList } from './TacOpsList';
 import hash from 'node-object-hash'
 import _ from 'lodash'
 import getFactionSpecificData from './data'
+import {ArchetypeBadge} from "./ArchetypeBadge";
 
 type Props = {
   name: string,
@@ -95,16 +96,17 @@ export function Roster(props: Props) {
             </Card.Body>
           </Card>
         </div>
-        {
-          factionSpecificData.tacOps &&
-            <Card>
-              <Card.Header style={{...headingStyle}} as="h2">Tac Ops</Card.Header>
-              <Card.Body>
-                <TacOpsList tacOps={factionSpecificData.tacOps} />
-              </Card.Body>
-            </Card>
-        }
+
       </div>
+    }
+    { ((factionSpecificData && factionSpecificData.tacOps) || (archetypes.length > 0)) &&
+      <Card>
+        <Card.Header style={{...headingStyle}} as="h2">Tac Ops</Card.Header>
+        <Card.Body>
+          { archetypes.length > 0 && <> <h4>ARCHETYPES</h4> {archetypes.map(archetype => { return <ArchetypeBadge archetype={archetype}/> } )} </> }
+          { factionSpecificData && factionSpecificData.tacOps && <TacOpsList tacOps={factionSpecificData.tacOps} /> }
+        </Card.Body>
+      </Card>
     }
   </>
 }
