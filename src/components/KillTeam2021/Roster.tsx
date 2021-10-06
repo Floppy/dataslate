@@ -1,16 +1,13 @@
 import React, { MouseEvent } from 'react'
 import { Col, Card } from 'react-bootstrap'
 import { CloseButton } from '../CloseButton'
-import { Operative, Datacard, PsychicPower, Archetype } from '../../types/KillTeam2021'
+import { Operative, Datacard, PsychicPower } from '../../types/KillTeam2021'
 import { Datasheet } from './Datasheet'
 import { RuleList } from './RuleList'
 import { PowerList } from './PowerList'
-import { PloysColumn } from './PloysColumn'
-import { TacOpsList } from './TacOpsList'
 import hash from 'node-object-hash'
 import _ from 'lodash'
-import getFactionSpecificData from './data'
-import { ArchetypeBadge } from './ArchetypeBadge'
+import { FactionSpecificData } from './FactionSpecificData'
 
 interface Props {
   name: string
@@ -39,15 +36,6 @@ export function Roster (props: Props) {
     display: 'flex'
   }
   const datacards = groupByDatacard(props.operatives)
-  const factionSpecificData = getFactionSpecificData(props.faction)
-
-  let archetypes: Archetype[] = props.fireteams.flatMap((fireteam) => {
-    return factionSpecificData?.archetypes[fireteam] as Archetype[] ?? null
-  }).filter(item => (item !== null))
-
-  // Now remove duplicates
-  archetypes = (archetypes.filter((item, index) => archetypes.indexOf(item) === index))
-  console.log(archetypes)
 
   return (
     <>
@@ -75,34 +63,7 @@ export function Roster (props: Props) {
         </Card.Body>
       </Card>}
 
-      {(factionSpecificData != null) &&
-        <div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'row' }}>
-            <Card style={{ width: '100%', marginRight: '5px' }}>
-              <Card.Header style={{ ...headingStyle }} as='h2'>Strategic Ploys</Card.Header>
-              <Card.Body>
-                <PloysColumn ploys={factionSpecificData.strategicPloys} />
-              </Card.Body>
-            </Card>
-            <Card style={{ width: '100%', marginLeft: '5px' }}>
-              <Card.Header style={{ ...headingStyle }} as='h2'>Tactical Ploys</Card.Header>
-              <Card.Body>
-                <PloysColumn ploys={factionSpecificData.tacticalPloys} />
-              </Card.Body>
-            </Card>
-          </div>
-
-        </div>}
-      {(((factionSpecificData != null) && factionSpecificData.tacOps) || (archetypes.length > 0)) &&
-        <Card>
-          <Card.Header style={{ ...headingStyle }} as='h2'>Tac Ops</Card.Header>
-          <Card.Body>
-            {archetypes.length > 0 &&
-              <Card.Title>ARCHETYPES - {archetypes.map(archetype => { return <ArchetypeBadge archetype={archetype} /> })}</Card.Title>}
-
-            {(factionSpecificData != null) && factionSpecificData.tacOps && <TacOpsList tacOps={factionSpecificData.tacOps} />}
-          </Card.Body>
-        </Card>}
+      <FactionSpecificData faction={props.faction} fireteams={props.fireteams} />
     </>
   )
 }

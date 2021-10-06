@@ -46,6 +46,11 @@ const tacticalPloys: Ploy[] = [
   }
 ]
 
-const data = { strategicPloys, tacticalPloys, archetypes, tacOps: null }
+const data = {
+  name: 'Craftworld' as const,
+  strategicPloys,
+  tacticalPloys,
+  archetypes
+}
 
 export default data

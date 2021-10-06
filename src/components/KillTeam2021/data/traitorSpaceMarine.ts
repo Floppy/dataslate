@@ -41,11 +41,16 @@ const tacticalPloys: Ploy[] = [
   }, {
     name: 'Warp Infused',
     cost: 1,
-    description: `Use this Tactical Ploy when a friendly HERETIC ASTARTES operative is activated. Until the end of that operative's activation, you can ignore any or all modifiers to 
+    description: `Use this Tactical Ploy when a friendly HERETIC ASTARTES operative is activated. Until the end of that operative's activation, you can ignore any or all modifiers to
                   its APL characteristic and it is not injured.`
   }
 ]
 
-const data = { strategicPloys, tacticalPloys, archetypes, tacOps: null }
+const data = {
+  name: 'Traitor Space Marine' as const,
+  strategicPloys,
+  tacticalPloys,
+  archetypes
+}
 
 export default data

@@ -42,11 +42,16 @@ const tacticalPloys: Ploy[] = [
   }, {
     name: 'Infernal Fusillade',
     cost: 1,
-    description: `Use this Tactical Ploy after making a shooting attack with a friendly ARCANA ASTARTES operative (excluding an ASPIRING SORCERER operative) in which the target did 
+    description: `Use this Tactical Ploy after making a shooting attack with a friendly ARCANA ASTARTES operative (excluding an ASPIRING SORCERER operative) in which the target did
                   not lose any wounds. Repeat that shooting attack.`
   }
 ]
 
-const data = { strategicPloys, tacticalPloys, archetypes, tacOps: null }
+const data = {
+  name: 'Thousand Sons' as const,
+  strategicPloys,
+  tacticalPloys,
+  archetypes
+}
 
 export default data

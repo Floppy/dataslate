@@ -39,12 +39,17 @@ const tacticalPloys: Ploy[] = [
     name: 'Bring It Down!',
     cost: 1,
     description: `Use this Tactical Ploy after a friendly IMPERIAL GUARD💀 operative makes a shooting attack. Until the end of the Turning Point, each time another friendly IMPERIAL GUARD💀
-                  operative makes a shooting attack against the target of that shooting attack, in the Roll Attack Dice step of that subsequent shooting attack, you can re-roll any or all 
+                  operative makes a shooting attack against the target of that shooting attack, in the Roll Attack Dice step of that subsequent shooting attack, you can re-roll any or all
                   of your attack dice.`
   }
 
 ]
 
-const data = { strategicPloys, tacticalPloys, archetypes, tacOps: null }
+const data = {
+  name: 'Imperial Guard' as const,
+  strategicPloys,
+  tacticalPloys,
+  archetypes
+}
 
 export default data

@@ -78,6 +78,12 @@ const tacOps: TacOp[] = [
   }
 ]
 
-const data = { strategicPloys, tacticalPloys, archetypes, tacOps }
+const data = {
+  name: 'Kommando' as const,
+  strategicPloys,
+  tacticalPloys,
+  archetypes,
+  tacOps
+}
 
 export default data
