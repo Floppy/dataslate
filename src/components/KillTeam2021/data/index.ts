@@ -16,6 +16,7 @@ import hunterClade from './hunterClade'
 import cadreMercenary from './cadreMercenary'
 import greenskin from './greenskin'
 import troupe from './troupe'
+import chaosDaemon from './chaosDaemon'
 
 const getFactionSpecificData = (factionName: string) => {
   switch (factionName) {
@@ -55,6 +56,9 @@ const getFactionSpecificData = (factionName: string) => {
       return greenskin
     case 'Troupe':
       return troupe
+    case 'Chaos Daemon':
+    case 'Chaos Daemons': // Battlescribe data has the 's', compendium has no 's'
+      return chaosDaemon
     default:
       return null
   }
