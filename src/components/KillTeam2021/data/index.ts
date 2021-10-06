@@ -16,6 +16,7 @@ import hunterClade from './hunterClade'
 import cadreMercenary from './cadreMercenary'
 import greenskin from './greenskin'
 import troupe from './troupe'
+import craftworld from "./craftworld";
 
 const getFactionSpecificData = (factionName: string) => {
   switch (factionName) {
@@ -55,6 +56,8 @@ const getFactionSpecificData = (factionName: string) => {
       return greenskin
     case 'Troupe':
       return troupe
+    case 'Craftworld':
+      return craftworld
     default:
       return null
   }
