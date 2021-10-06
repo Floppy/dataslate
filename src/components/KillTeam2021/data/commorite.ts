@@ -1,15 +1,15 @@
-import {Archetype, FireteamArchetypes, Ploy} from '../../../types/KillTeam2021'
+import { Archetype, FireteamArchetypes, Ploy } from '../../../types/KillTeam2021'
 
 const archetypes: FireteamArchetypes = {
   'Kabalite Fire Team': [Archetype.SECURITY, Archetype.RECON],
-  'Wych Fire Team': [Archetype.SEEK_AND_DESTROY, Archetype.RECON],
+  'Wych Fire Team': [Archetype.SEEK_AND_DESTROY, Archetype.RECON]
 }
 
 const strategicPloys: Ploy[] = [
   {
     name: 'Fleet',
     cost: 1,
-    description: 'Until the end of the Turning Point, each time a friendly COMMORRITE💀 operative performs a Fall Back or Normal Move action, it can perform a free Dash action with that action.',
+    description: 'Until the end of the Turning Point, each time a friendly COMMORRITE💀 operative performs a Fall Back or Normal Move action, it can perform a free Dash action with that action.'
   }, {
     name: 'Agile Gladiators',
     cost: 1,
@@ -18,8 +18,8 @@ const strategicPloys: Ploy[] = [
     options: [
         `It can move around, across and over other operatives (and their bases) as if they were not there, but must finish the move following all requirements specified by that move, and 
         cannot finish its move on top of other operatives (or their bases).`,
-        `It can ignore the first ⬤ distance it travels when climbing, traversing and dropping.`,
-        `It automatically passes jump tests.`
+        'It can ignore the first ⬤ distance it travels when climbing, traversing and dropping.',
+        'It automatically passes jump tests.'
     ]
   }, {
     name: 'Prey On The Weak',
@@ -41,9 +41,9 @@ const tacticalPloys: Ploy[] = [
     description: `Use this Tactical Ploy when an enemy operative is incapacitated. Before it is removed from the killzone, select on ready friendly COMMORRITE💀 operative that enemy operative
                   is within ⬟ of and Visible to. After the current activation:`,
     options: [
-        `You can activate that ready friendly operative.`,
-        `Add 1 to its APL`,
-        `During its next activation, it can perform Shoot or Fight actions twice, instead of once.`
+      'You can activate that ready friendly operative.',
+      'Add 1 to its APL',
+      'During its next activation, it can perform Shoot or Fight actions twice, instead of once.'
     ]
   }, {
     name: 'No Escape',

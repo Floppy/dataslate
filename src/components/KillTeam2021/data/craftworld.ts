@@ -1,4 +1,4 @@
-import {Archetype, FireteamArchetypes, Ploy} from '../../../types/KillTeam2021'
+import { Archetype, FireteamArchetypes, Ploy } from '../../../types/KillTeam2021'
 
 const archetypes: FireteamArchetypes = {
   'Guardian Defender Fire Team': [Archetype.SECURITY, Archetype.RECON],
@@ -11,7 +11,7 @@ const strategicPloys: Ploy[] = [
   {
     name: 'Fleet',
     cost: 1,
-    description: 'Until the end of the Turning Point, each time a friendly CRAFTWORLD💀 operative performs a Fall Back or Normal Move action, it can perform a free Dash action with that action.',
+    description: 'Until the end of the Turning Point, each time a friendly CRAFTWORLD💀 operative performs a Fall Back or Normal Move action, it can perform a free Dash action with that action.'
   }, {
     name: 'Forewarned',
     cost: 1,
@@ -34,15 +34,15 @@ const tacticalPloys: Ploy[] = [
   {
     name: 'Matchless Agility',
     cost: 1,
-    description: `Use this Tactical Ploy when a friendly CRAFTWORLD💀 operative is activated. Until the end of that operative's activation:`,
+    description: 'Use this Tactical Ploy when a friendly CRAFTWORLD💀 operative is activated. Until the end of that operative\'s activation:',
     options: [
-        `It cannot perform a Shoot or Fight action.`,
-        `If it performs a Dash action, it can move an additional ⬤ for that action.`
+      'It cannot perform a Shoot or Fight action.',
+      'If it performs a Dash action, it can move an additional ⬤ for that action.'
     ]
   }, {
     name: 'First of the Aspects',
     cost: 1,
-    description: `Use this Tactical Ploy during a friendly DIRE AVENGER operative's activation. Add 1 to its APL.`
+    description: 'Use this Tactical Ploy during a friendly DIRE AVENGER operative\'s activation. Add 1 to its APL.'
   }
 ]
 

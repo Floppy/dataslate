@@ -16,8 +16,8 @@ import hunterClade from './hunterClade'
 import cadreMercenary from './cadreMercenary'
 import greenskin from './greenskin'
 import troupe from './troupe'
-import craftworld from "./craftworld";
-import commorite from "./commorite";
+import craftworld from './craftworld'
+import commorite from './commorite'
 
 const getFactionSpecificData = (factionName: string) => {
   switch (factionName) {
