@@ -17,6 +17,7 @@ import cadreMercenary from './cadreMercenary'
 import greenskin from './greenskin'
 import troupe from './troupe'
 import craftworld from "./craftworld";
+import commorite from "./commorite";
 
 const getFactionSpecificData = (factionName: string) => {
   switch (factionName) {
@@ -58,6 +59,8 @@ const getFactionSpecificData = (factionName: string) => {
       return troupe
     case 'Craftworld':
       return craftworld
+    case 'Commorrite':
+      return commorite
     default:
       return null
   }
