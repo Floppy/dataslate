@@ -12,9 +12,9 @@ const strategicPloys: Ploy[] = [
     cost: 1,
     description: 'Until the end of the Turning Point:',
     options: [
-        `Each time a friendly HUNTER CLADE💀 VANGUARD operative that is within ⬤ of an objective marker or within ⬟ of your opponent's drop zone make a shooting attack,
+      `Each time a friendly HUNTER CLADE💀 VANGUARD operative that is within ⬤ of an objective marker or within ⬟ of your opponent's drop zone make a shooting attack,
         in the Roll Attack Dice step of that shooting attack, you can re-roll one of your attack dice.`,
-        `Each time a friendly HUNTER CLADE💀 RANGER operative that has not moved during the Turning Point makes a shooting attack, in the Roll Attack Dice step of that shooting 
+      `Each time a friendly HUNTER CLADE💀 RANGER operative that has not moved during the Turning Point makes a shooting attack, in the Roll Attack Dice step of that shooting
         attack, you can re-roll one of your attack dice.`
     ]
   }, {
@@ -46,7 +46,7 @@ const tacticalPloys: Ploy[] = [
     description: 'Use this Tactical Ploy in the Scouting step of the mission sequence, when you resolve your scouting option.',
     options: [
       'If you selected the Recon option, you can also perform a free Dash action with up to two friendly HUNTER CLADE💀 RANGER operatives that are wholly within your drop zone',
-        `If you selected the Infiltrate option, during the first Turning Point, you can also change the order of up to two ready friendly HUNTER CLADE💀 RANGER operatives when
+      `If you selected the Infiltrate option, during the first Turning Point, you can also change the order of up to two ready friendly HUNTER CLADE💀 RANGER operatives when
          each of them are activated`
     ]
   }, {
@@ -57,7 +57,7 @@ const tacticalPloys: Ploy[] = [
   }, {
     name: 'Concealed Position',
     cost: 1,
-    description: `Use this Tactical Ploy in the Set Up Operatives step of the mission sequence. Select one friendly HUNTER CLADE💀 INFILTRATOR operative. That operative can be 
+    description: `Use this Tactical Ploy in the Set Up Operatives step of the mission sequence. Select one friendly HUNTER CLADE💀 INFILTRATOR operative. That operative can be
                   set up with a Conceal order anywhere in the killzone that is within ▲ of Heavy terrain and more than ⬟ from enemy operatives and the enemy drop zone. That
                   operative cannot have its order changed during the first Turning Point as a result of the Infiltrate option in the Scouting step. You can only use this Tactical
                   Ploy once.`
@@ -84,7 +84,7 @@ const tacOps: TacOp[] = [
     description: [
       `At the end of any Turning Point, if an Imperative is active for your kill team, and the total wounds lost by enemy operatives during that Turning Point is greater than
       that lost by friendly operatives, you score 1VP`,
-      `At the end of any Turning Point, if a different Imperative is active for your kill team, and the total wounds lost by enemy operatives during that Turning Point is 
+      `At the end of any Turning Point, if a different Imperative is active for your kill team, and the total wounds lost by enemy operatives during that Turning Point is
       greater than that lost by friendly operatives, you score 1VP`
     ]
   }, {
@@ -98,6 +98,12 @@ const tacOps: TacOp[] = [
   }
 ]
 
-const data = { strategicPloys, tacticalPloys, archetypes, tacOps }
+const data = {
+  name: 'Hunter Clade' as const,
+  strategicPloys,
+  tacticalPloys,
+  archetypes,
+  tacOps
+}
 
 export default data

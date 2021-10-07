@@ -47,12 +47,17 @@ const tacticalPloys: Ploy[] = [
       'Before that PINK HORROR operative is removed from the killzone, set up two BLUE HORROR operatives as close as possible to that operative and not within Engagement Range of enemy operatives',
       `Before that BLUE HORROR operative is removed from the killzone, set up one BRIMESTONE HORRORS operative as close as possible to that operative and not within Engagement Range of enemy
        operatives.`
-     ],
+    ],
     postOptionText: `In either case, set up those operatives with the same order as the previous operative (including if it was ready or activated). In narrative play, any operatives set up as a
                       result of this Tactical Ploy are no longer part of your kill team after the game.`
   }
 ]
 
-const data = { strategicPloys, tacticalPloys, archetypes, tacOps: null }
+const data = {
+  name: 'Chaos Daemons' as const,
+  strategicPloys,
+  tacticalPloys,
+  archetypes
+}
 
 export default data

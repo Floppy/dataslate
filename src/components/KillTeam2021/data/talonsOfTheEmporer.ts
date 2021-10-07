@@ -14,7 +14,7 @@ const strategicPloys: Ploy[] = [
   }, {
     name: 'Creeping Dread',
     cost: 1,
-    description: `Until the end of the Turning Point, while an enemy operative is within ■ of a friendly ANATHEMA PSYKANA operative, worsen the Ballistic Skill and Weapon Skill 
+    description: `Until the end of the Turning Point, while an enemy operative is within ■ of a friendly ANATHEMA PSYKANA operative, worsen the Ballistic Skill and Weapon Skill
                   characteristics of ranged and melee weapons respectively that enemy operative is equipped with as if it is injured.`
   }, {
     name: 'Peerless Warriors',
@@ -46,6 +46,11 @@ const tacticalPloys: Ploy[] = [
   }
 ]
 
-const data = { strategicPloys, tacticalPloys, archetypes, tacOps: null }
+const data = {
+  name: 'Talons of the Emperor' as const,
+  strategicPloys,
+  tacticalPloys,
+  archetypes
+}
 
 export default data

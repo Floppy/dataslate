@@ -10,7 +10,7 @@ const strategicPloys: Ploy[] = [
   {
     name: 'Aimed Pulse Volley',
     cost: 1,
-    description: `Until the end of the Turning Point, each time a friendly FIRE WARRIOR operative makes a shooting attack with a pulse rifle as a result of a Shoot action, in the 
+    description: `Until the end of the Turning Point, each time a friendly FIRE WARRIOR operative makes a shooting attack with a pulse rifle as a result of a Shoot action, in the
                   Roll Attack Dice step of that shooting attack, if it has not moved during that activation, you can re-roll one of your attack dice.`
   }, {
     name: 'Breach and Clear',
@@ -32,7 +32,7 @@ const strategicPloys: Ploy[] = [
   }, {
     name: 'Recon Sweep',
     cost: 1,
-    description: `Friendly PATHFINDER operatives that are wholly within ⬟ of any killzone edge can immediately perform a free Dash action, but only if they can finish that move 
+    description: `Friendly PATHFINDER operatives that are wholly within ⬟ of any killzone edge can immediately perform a free Dash action, but only if they can finish that move
                   wholly within ⬟ of a killzone edge that is not your own killzone edge.`
   }
 ]
@@ -43,7 +43,7 @@ const tacticalPloys: Ploy[] = [
     cost: 1,
     description: `Use this Tactical Ploy in the Firefight phase, when a Shoot action is declared for a friendly HUNTER CADRE💀 operative.In the Select Valid Target step of that
                   shooting attack, you must select an enemy operative that is within Engagement Range of one or more other friendly operatives and within ⬟ of the active operative,
-                  and that enemy operative cannot be in Cover as a result of friendly operative's bases. Note, however that in the Roll Defence Dice step of that shooting attack, 
+                  and that enemy operative cannot be in Cover as a result of friendly operative's bases. Note, however that in the Roll Defence Dice step of that shooting attack,
                   the enemy operative can be in Cover as a result of friendly operatives' bases.`
   }, {
     name: 'Stand and Fire',
@@ -57,6 +57,11 @@ const tacticalPloys: Ploy[] = [
   }
 ]
 
-const data = { strategicPloys, tacticalPloys, archetypes, tacOps: null }
+const data = {
+  name: 'Hunter Cadre' as const,
+  strategicPloys,
+  tacticalPloys,
+  archetypes
+}
 
 export default data

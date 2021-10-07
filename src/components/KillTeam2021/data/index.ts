@@ -1,73 +1,50 @@
 import broodCoven from './broodCoven'
-import hiveFleet from './hiveFleet'
-import kommando from './kommando'
-import veteranGuardsmen from './veteranGuardsmen'
-import spaceMarine from './spaceMarine'
-import greyKnights from './greyKnights'
-import imperialGuard from './imperialGuard'
-import forgeWorld from './forgeWorld'
-import ecclesiarchy from './ecclesiarchy'
-import talonsOfTheEmporer from './talonsOfTheEmporer'
-import traitorSpaceMarine from './traitorSpaceMarine'
+import cadreMercenary from './cadreMercenary'
+import chaosDaemon from './chaosDaemons'
+import commorite from './commorrite'
+import craftworld from './craftworld'
 import deathGuard from './deathGuard'
-import thousandSons from './thousandSons'
+import ecclesiarchy from './ecclesiarchy'
+import forgeWorld from './forgeWorld'
+import greenskin from './greenskin'
+import greyKnights from './greyKnights'
+import hiveFleet from './hiveFleet'
 import hunterCadre from './hunterCadre'
 import hunterClade from './hunterClade'
-import cadreMercenary from './cadreMercenary'
-import greenskin from './greenskin'
+import imperialGuard from './imperialGuard'
+import kommando from './kommando'
+import spaceMarine from './spaceMarine'
+import talonsOfTheEmporer from './talonsOfTheEmporer'
+import thousandSons from './thousandSons'
+import traitorSpaceMarine from './traitorSpaceMarine'
 import troupe from './troupe'
-import craftworld from './craftworld'
-import commorite from './commorite'
-import chaosDaemon from './chaosDaemon'
+import veteranGuardsmen from './veteranGuardsmen'
 
-const getFactionSpecificData = (factionName: string) => {
-  switch (factionName) {
-    case 'Veteran Guardsmen':
-      return veteranGuardsmen
-    case 'Kommando':
-      return kommando
-    case 'Brood Coven':
-      return broodCoven
-    case 'Hive Fleet':
-      return hiveFleet
-    case 'Space Marine':
-      return spaceMarine
-    case 'Grey Knight':
-      return greyKnights
-    case 'Imperial Guard':
-      return imperialGuard
-    case 'Forge World':
-      return forgeWorld
-    case 'Ecclesiarchy':
-      return ecclesiarchy
-    case 'Talons of the Emperor':
-      return talonsOfTheEmporer
-    case 'Traitor Space Marine':
-      return traitorSpaceMarine
-    case 'Death Guard':
-      return deathGuard
-    case 'Thousand Sons':
-      return thousandSons
-    case 'Hunter Cadre':
-      return hunterCadre
-    case 'Hunter Clade':
-      return hunterClade
-    case 'Cadre Mercenary':
-      return cadreMercenary
-    case 'Greenskin':
-      return greenskin
-    case 'Troupe':
-      return troupe
-    case 'Craftworld':
-      return craftworld
-    case 'Commorrite':
-      return commorite
-    case 'Chaos Daemon':
-    case 'Chaos Daemons': // Battlescribe data has the 's', compendium has no 's'
-      return chaosDaemon
-    default:
-      return null
-  }
-}
+const data = [
+  broodCoven,
+  cadreMercenary,
+  chaosDaemon,
+  commorite,
+  craftworld,
+  deathGuard,
+  ecclesiarchy,
+  forgeWorld,
+  greenskin,
+  greyKnights,
+  hiveFleet,
+  hunterCadre,
+  hunterClade,
+  imperialGuard,
+  kommando,
+  spaceMarine,
+  talonsOfTheEmporer,
+  thousandSons,
+  traitorSpaceMarine,
+  troupe,
+  veteranGuardsmen
+]
+
+const getFactionSpecificData = (factionName: string) => data.find(factionData => factionData.name === factionName)
 
 export default getFactionSpecificData
+export { data }

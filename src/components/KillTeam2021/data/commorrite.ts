@@ -16,10 +16,10 @@ const strategicPloys: Ploy[] = [
     description: `Until the end of the Turning Point, each time a friendly WYCH operative fights in combat, in the Resolve Successful Hits step of that combat, each time your opponent strikes
                   with a normal hit, you can roll one D6: on a 4+, treat that strike as a parry instead. In addition, each time a friendly WYCH operative performs any kind of move:`,
     options: [
-        `It can move around, across and over other operatives (and their bases) as if they were not there, but must finish the move following all requirements specified by that move, and 
+      `It can move around, across and over other operatives (and their bases) as if they were not there, but must finish the move following all requirements specified by that move, and
         cannot finish its move on top of other operatives (or their bases).`,
-        'It can ignore the first ⬤ distance it travels when climbing, traversing and dropping.',
-        'It automatically passes jump tests.'
+      'It can ignore the first ⬤ distance it travels when climbing, traversing and dropping.',
+      'It automatically passes jump tests.'
     ]
   }, {
     name: 'Prey On The Weak',
@@ -29,7 +29,7 @@ const strategicPloys: Ploy[] = [
   }, {
     name: 'Inured to Suffering',
     cost: 1,
-    description: `Until the end of the Turning Point, each time a friendly COMMORRITE💀 operative would lose a wound, roll one D6: on a 6+, that wound is not lost. You can only use this 
+    description: `Until the end of the Turning Point, each time a friendly COMMORRITE💀 operative would lose a wound, roll one D6: on a 6+, that wound is not lost. You can only use this
                   Strategic Ploy if one or more operatives have been incapacitated.`
   }
 ]
@@ -54,6 +54,11 @@ const tacticalPloys: Ploy[] = [
   }
 ]
 
-const data = { strategicPloys, tacticalPloys, archetypes, tacOps: null }
+const data = {
+  name: 'Commorrite' as const,
+  strategicPloys,
+  tacticalPloys,
+  archetypes
+}
 
 export default data
