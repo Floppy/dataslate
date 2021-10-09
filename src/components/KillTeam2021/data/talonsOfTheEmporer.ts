@@ -32,8 +32,8 @@ const tacticalPloys: Ploy[] = [
   }, {
     name: 'Brotherhood of Demigods',
     cost: 1,
-    description: `Use this Tactical Ploy at the end of the Firefight phase, or when it is your turn to activate an operative. Select one friendly ADEPTUS CUSTODES operative to perform
-                  one free action (this does not count as an activation).`
+    description: `Use this Tactical Ploy at the end of the Firefight phase. Select one friendly ADEPTUS CUSTODES operative to perform one free Fight or Overwatch action (this does not 
+                  count as an activation).`
   }, {
     name: 'Talons',
     cost: 1,

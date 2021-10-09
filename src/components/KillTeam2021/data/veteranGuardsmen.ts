@@ -44,8 +44,8 @@ const tacticalPloys: Ploy[] = [
   }, {
     name: 'In death, atonement',
     cost: 1,
-    description: `Use this Tactical Ploy when a ready friendly VETERAN GUARDSMAN💀 operative is incapacitated.
-                  That operative is not removed from the killzone until the end of your next activation and does not count as being injured.`
+    description: `Use this Tactical Ploy when a ready friendly VETERAN GUARDSMAN💀 operative is incapacitated. That operative is not removed from the killzone until the end of
+                  your next activation or the end of the battle (whichever comes first) and does not count as being injured.`
   }, {
     name: 'Combined arms',
     cost: 1,
