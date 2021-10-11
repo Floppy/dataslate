@@ -8,13 +8,13 @@ const strategicPloys: Ploy[] = [
   {
     name: 'Bolter Discipline',
     cost: 1,
-    description: `Until the end of the Turning Point, each time a friendly GREY KNIGHT💀 operative is activated, if it does not perform a Fight action during that activation, it
-                  can perform two Shoot actions during that activation if a storm bolter is selected for each of those shooting attacks`
+    description: `Until the end of the Turning Point, each time a friendly GREY KNIGHT💀 operative is activated, if it does not perform a **Fight** action during that activation, it
+                  can perform two **Shoot** actions during that activation if a storm bolter is selected for each of those shooting attacks`
   }, {
     name: 'Shock Assault',
     cost: 1,
-    description: `Until the end of the Turning Point, each time a friendly GREY KNIGHT💀 operative is activated, if it does not perform a Shoot action during that activation, it
-                  can perform two Fight actions during that activation`
+    description: `Until the end of the Turning Point, each time a friendly GREY KNIGHT💀 operative is activated, if it does not perform a **Shoot** action during that activation, it
+                  can perform two **Fight** actions during that activation`
   }, {
     name: 'Tide of Shadows',
     cost: 1,
@@ -24,7 +24,7 @@ const strategicPloys: Ploy[] = [
   }, {
     name: 'Tide of Celerity',
     cost: 1,
-    description: 'Until the end of the Turning Point, each time a friendly GREY KNIGHT💀 operative performs a Charge action, it can move an additional ▲ for that action.'
+    description: 'Until the end of the Turning Point, each time a friendly GREY KNIGHT💀 operative performs a **Charge** action, it can move an additional ▲ for that action.'
   }
 ]
 

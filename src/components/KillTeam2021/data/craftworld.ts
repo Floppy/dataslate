@@ -11,7 +11,7 @@ const strategicPloys: Ploy[] = [
   {
     name: 'Fleet',
     cost: 1,
-    description: 'Until the end of the Turning Point, each time a friendly CRAFTWORLD💀 operative performs a Fall Back or Normal Move action, it can perform a free Dash action with that action.'
+    description: 'Until the end of the Turning Point, each time a friendly CRAFTWORLD💀 operative performs a **Fall Back** or **Normal Move** action, it can perform a free **Dash** action with that action.'
   }, {
     name: 'Forewarned',
     cost: 1,
@@ -25,7 +25,7 @@ const strategicPloys: Ploy[] = [
   }, {
     name: 'Hidden Paths',
     cost: 1,
-    description: `Each friendly RANGER operative that has a Conceal order, is within ▲ of Light or Heavy terrain and is more than ⬟ from enemy operatives can immediately perform a free Dash
+    description: `Each friendly RANGER operative that has a Conceal order, is within ▲ of Light or Heavy terrain and is more than ⬟ from enemy operatives can immediately perform a free **Dash**
                   action, but must finish that move within ▲ of Light or Heavy terrain.`
   }
 ]
@@ -34,11 +34,9 @@ const tacticalPloys: Ploy[] = [
   {
     name: 'Matchless Agility',
     cost: 1,
-    description: 'Use this Tactical Ploy when a friendly CRAFTWORLD💀 operative is activated. Until the end of that operative\'s activation:',
-    options: [
-      'It cannot perform a Shoot or Fight action.',
-      'If it performs a Dash action, it can move an additional ⬤ for that action.'
-    ]
+    description: `Use this Tactical Ploy when a friendly CRAFTWORLD💀 operative is activated. Until the end of that operative's activation:
+  - It cannot perform a **Shoot** or **Fight** action.
+  - If it performs a **Dash** action, it can move an additional ⬤ for that action.`
   }, {
     name: 'First of the Aspects',
     cost: 1,

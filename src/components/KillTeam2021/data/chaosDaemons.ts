@@ -1,4 +1,4 @@
-import { Archetype, FireteamArchetypes, Ploy } from '../../../types/KillTeam2021';
+import { Archetype, FireteamArchetypes, Ploy } from '../../../types/KillTeam2021'
 
 const archetypes: FireteamArchetypes = {
   'Bloodletter Fire Team': [Archetype.SEEK_AND_DESTROY],
@@ -16,7 +16,7 @@ const strategicPloys: Ploy[] = [
   }, {
     name: 'Quicksilver Swiftness',
     cost: 1,
-    description: 'Until the end of the Turning Point, each time a friendly SLAANESH operative is activated, it can perform a free Dash action during that activation.'
+    description: 'Until the end of the Turning Point, each time a friendly SLAANESH operative is activated, it can perform a free **Dash** action during that activation.'
   }, {
     name: 'Glistening Barrage',
     cost: 1,
@@ -42,14 +42,12 @@ const tacticalPloys: Ploy[] = [
   }, {
     name: 'Split',
     cost: 0,
-    description: `Use this Tactical Ploy when a friendly PINK HORROR operative is incapacitated for 2CP, or when a friendly BLUE HORROR operative is incapacitated for 1CP.`,
-    options: [
-      'Before that PINK HORROR operative is removed from the killzone, set up two BLUE HORROR operatives as close as possible to that operative and not within Engagement Range of enemy operatives',
-      `Before that BLUE HORROR operative is removed from the killzone, set up one BRIMESTONE HORRORS operative as close as possible to that operative and not within Engagement Range of enemy
-       operatives.`
-    ],
-    postOptionText: `In either case, set up those operatives with the same order as the previous operative (including if it was ready or activated). In narrative play, any operatives set up as a
-                      result of this Tactical Ploy are no longer part of your kill team after the game.`
+    description: `Use this Tactical Ploy when a friendly PINK HORROR operative is incapacitated for 2CP, or when a friendly BLUE HORROR operative is incapacitated for 1CP.
+  - Before that PINK HORROR operative is removed from the killzone, set up two BLUE HORROR operatives as close as possible to that operative and not within Engagement Range of enemy operatives
+  - Before that BLUE HORROR operative is removed from the killzone, set up one BRIMESTONE HORRORS operative as close as possible to that operative and not within Engagement Range of enemy
+
+  In either case, set up those operatives with the same order as the previous operative (including if it was ready or activated).
+  In narrative play, any operatives set up as a result of this Tactical Ploy are no longer part of your kill team after the game`
   }
 ]
 

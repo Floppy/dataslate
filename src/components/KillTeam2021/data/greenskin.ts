@@ -20,7 +20,7 @@ const strategicPloys: Ploy[] = [
   }, {
     name: 'Get stuck in!',
     cost: 1,
-    description: 'Until the end of the Turning Point, each time a friendly BOY operative performs a Fight action, in the Roll Attack Dice step of that combat, you can re-roll one of your attack dice.'
+    description: 'Until the end of the Turning Point, each time a friendly BOY operative performs a **Fight** action, in the Roll Attack Dice step of that combat, you can re-roll one of your attack dice.'
   }, {
     name: 'Skulk about',
     cost: 1,
