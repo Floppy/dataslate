@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Dataslate",
+  "name": "Datasheets for Warhammer 40,000: Kill Team",
   "icons": [
     {
       "src": "favicon.ico",

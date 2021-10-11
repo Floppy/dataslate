@@ -1,14 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Dropzone from 'react-dropzone'
 import type { DropzoneOptions } from 'react-dropzone'
 import Intro from './Intro'
 import { Row, Col, Alert, Card } from 'react-bootstrap'
 
+import SettingsDialog from './SettingsDialog'
+import { Settings } from '../types/Settings'
+
 interface Props {
   onUpload: DropzoneOptions['onDrop']
+  settings: Settings
+  setSettings: (settings: Settings) => void
+}
+
+function fileDropZone (props: Props) {
+  return (
+    <Dropzone onDrop={props.onUpload} accept='.ros,.rosz'>
+      {({ getRootProps, getInputProps }) => (
+        <Alert variant='primary' {...getRootProps()} style={{ textAlign: 'center' }}>
+          <input {...getInputProps()} />
+          <p>Drop your roster file here, or click to select one.</p>
+          <p><em>(*.rosz and *.ros accepted)</em></p>
+        </Alert>
+      )}
+    </Dropzone>
+  )
 }
 
 function Homepage (props: Props) {
+  const [showSettings, setShowSettings] = useState(false)
+
   return (
     <>
       <Intro />
@@ -35,15 +56,16 @@ function Homepage (props: Props) {
           <Card>
             <Card.Header as='h3'>Step 2</Card.Header>
             <Card.Body style={{ minHeight: '12em' }}>
-              <Dropzone onDrop={props.onUpload} accept='.ros,.rosz'>
-                {({ getRootProps, getInputProps }) => (
-                  <Alert variant='primary' {...getRootProps()} style={{ textAlign: 'center' }}>
-                    <input {...getInputProps()} />
-                    <p>Drop your roster file here, or click to select one.</p>
-                    <p><em>(*.rosz and *.ros accepted)</em></p>
-                  </Alert>
-                )}
-              </Dropzone>
+              <Card.Text>
+                <span>Choose your <a href='#' onClick={() => setShowSettings(true)}>Settings</a></span>
+                <SettingsDialog
+                  show={showSettings} setShowSettings={setShowSettings}
+                  settings={props.settings} setSettings={props.setSettings}
+                />
+              </Card.Text>
+              <Card.Text>
+                {fileDropZone(props)}
+              </Card.Text>
             </Card.Body>
           </Card>
         </Col>
