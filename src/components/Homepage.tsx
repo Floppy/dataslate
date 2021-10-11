@@ -49,6 +49,13 @@ function Homepage (props: Props) {
                   <li>Kill Team 2021</li>
                 </ul>
               </Card.Text>
+              <Card.Text>
+                <span>And choose your <a href='#' onClick={() => setShowSettings(true)}>Settings</a></span>
+                <SettingsDialog
+                    show={showSettings} setShowSettings={setShowSettings}
+                    settings={props.settings} setSettings={props.setSettings}
+                />
+              </Card.Text>
             </Card.Body>
           </Card>
         </Col>
@@ -56,13 +63,7 @@ function Homepage (props: Props) {
           <Card>
             <Card.Header as='h3'>Step 2</Card.Header>
             <Card.Body style={{ minHeight: '12em' }}>
-              <Card.Text>
-                <span>Choose your <a href='#' onClick={() => setShowSettings(true)}>Settings</a></span>
-                <SettingsDialog
-                  show={showSettings} setShowSettings={setShowSettings}
-                  settings={props.settings} setSettings={props.setSettings}
-                />
-              </Card.Text>
+
               <Card.Text>
                 {fileDropZone(props)}
               </Card.Text>
