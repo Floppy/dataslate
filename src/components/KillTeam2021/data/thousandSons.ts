@@ -12,8 +12,8 @@ const strategicPloys: Ploy[] = [
     name: 'Malicious Volleys',
     cost: 1,
     description: `Until the end of the Turning Point, each time a friendly ARCANA ASTARTES operative is activated, if it does not perform a Fight action during that activation, it
-                  can perform two Shoot actions during that activation if a bolt weapon is selected for each of those shooting attacks. A bolt weapon is a ranged weapon that includes
-                  'bolt' in its name, e.g. inferno boltgun.`
+                  can perform two Shoot actions during that activation if a bolt weapon is selected for each of those shooting attacks. A bolt weapon is a ranged weapon that includes 
+                  'bolt' in its name (excluding Doombolt), e.g. inferno boltgun.`
   }, {
     name: 'Sorcerous Automata',
     cost: 1,
