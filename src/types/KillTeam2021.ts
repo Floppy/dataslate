@@ -36,18 +36,14 @@ export interface PsychicPower {
 export interface Ploy {
   name: string
   cost: number
-  description: any
-  weapon?: Weapon
-  options?: string[]
-  postOptionText?: string
+  description: string
   action?: Action
 }
 
 export interface TacOp {
   id: number
   name: string
-  revealTime: string
-  description: string[]
+  description: string
   action?: Action
 }
 

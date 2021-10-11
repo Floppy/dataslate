@@ -9,14 +9,14 @@ const strategicPloys: Ploy[] = [
   {
     name: 'Malicious Volleys',
     cost: 1,
-    description: `Until the end of the Turning Point, each time a friendly BUBONIC ASTARTES operative is activated, if it does not perform a Fight action during that activation, it
-                  can perform two Shoot actions during that activation if a bolt weapon is selected for each of those shooting attacks. A bolt weapon is a ranged weapon that includes
+    description: `Until the end of the Turning Point, each time a friendly BUBONIC ASTARTES operative is activated, if it does not perform a **Fight** action during that activation, it
+                  can perform two **Shoot** actions during that activation if a bolt weapon is selected for each of those shooting attacks. A bolt weapon is a ranged weapon that includes
                   'bolt' in its name, e.g. boltgun, bolt pistol etc.`
   }, {
     name: 'Hateful Assault',
     cost: 1,
-    description: `Until the end of the Turning Point, each time a friendly BUBONIC ASTARTES operative is activated, if it does not perform a Shoot action during that activation, it can
-                  perform two Fight actions during that activation.`
+    description: `Until the end of the Turning Point, each time a friendly BUBONIC ASTARTES operative is activated, if it does not perform a **Shoot** action during that activation, it can
+                  perform two **Fight** actions during that activation.`
   }, {
     name: 'Contagion',
     cost: 1,

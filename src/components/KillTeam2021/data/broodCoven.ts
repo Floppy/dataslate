@@ -15,11 +15,9 @@ const strategicPloys: Ploy[] = [
     name: 'Lurk in the shadows',
     cost: 1,
     description: `Until the end of the Turning Point, each time a shooting attack is made against a friendly BROOD COVEN💀 operative, in the Roll Defence Dice step of that shooting attack,
-                  before rolling your defence dice, if it is in Cover and either has a Conceal order or is ready, you can do one of the following:`,
-    options: [
-      'One additional dice can be retained as a successful normal save as a result of Cover.',
-      'Retain one dice as a successful critical save as a result of Cover instead of a normal save.'
-    ]
+  before rolling your defence dice, if it is in Cover and either has a Conceal order or is ready, you can do one of the following:
+  - One additional dice can be retained as a successful normal save as a result of Cover.
+  - Retain one dice as a successful critical save as a result of Cover instead of a normal save.`
   }
 ]
 

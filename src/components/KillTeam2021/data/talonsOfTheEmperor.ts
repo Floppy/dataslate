@@ -19,7 +19,7 @@ const strategicPloys: Ploy[] = [
   }, {
     name: 'Peerless Warriors',
     cost: 1,
-    description: 'Until the end of the Turning Point, each time a friendly ADEPTUS CUSTODES operative is activated, it can perform up to two Shoot and Fight actions during that activation.'
+    description: 'Until the end of the Turning Point, each time a friendly ADEPTUS CUSTODES operative is activated, it can perform up to two **Shoot** and **Fight** actions during that activation.'
   }
 ]
 
@@ -32,17 +32,16 @@ const tacticalPloys: Ploy[] = [
   }, {
     name: 'Brotherhood of Demigods',
     cost: 1,
-    description: `Use this Tactical Ploy at the end of the Firefight phase. Select one friendly ADEPTUS CUSTODES operative to perform one free Fight or Overwatch action (this does not 
+    description: `Use this Tactical Ploy at the end of the Firefight phase. Select one friendly ADEPTUS CUSTODES operative to perform one free **Fight** or **Overwatch** action (this does not
                   count as an activation).`
   }, {
     name: 'Talons',
     cost: 1,
-    description: 'Use this Tactical Ploy when a friendly TALONS OF THE EMPEROR💀 operative within ⬟ of enemy operatives or within ⬤ of the centre of an objective marker is activated:',
-    options: [
-      'If that operative is an ANATHEMA PSYKANA operative, select one ready friendly ADEPTUS CUSTODES operative Visible to and within ■ of it',
-      'If that operative is an ADEPTUS CUSTODES operative, select one ready friendly ANATHEMA PSYKANA operative Visible to and within ■ of it'
-    ],
-    postOptionText: 'Both operatives are activated at the same time and you can perform their actions in any order.'
+    description: `Use this Tactical Ploy when a friendly TALONS OF THE EMPEROR💀 operative within ⬟ of enemy operatives or within ⬤ of the centre of an objective marker is activated:
+  - If that operative is an ANATHEMA PSYKANA operative, select one ready friendly ADEPTUS CUSTODES operative Visible to and within ■ of it
+  - If that operative is an ADEPTUS CUSTODES operative, select one ready friendly ANATHEMA PSYKANA operative Visible to and within ■ of it
+
+  Both operatives are activated at the same time and you can perform their actions in any order.`
   }
 ]
 

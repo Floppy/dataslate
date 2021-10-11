@@ -1,7 +1,7 @@
 import React from 'react'
 import { Ploy } from '../../types/KillTeam2021'
-import { Card, Col, Table } from 'react-bootstrap'
-import { HighlightedText } from './HighlightedText'
+import { Card, Col } from 'react-bootstrap'
+import { CompileDescription } from './CompileDescription'
 
 interface Props {
   ploys: Ploy[]
@@ -17,43 +17,7 @@ export function PloysColumn (props: Props) {
             <span>{x.cost}CP</span>
           </Card.Header>
           <Card.Body>
-            <p>
-              <HighlightedText>{x.description}</HighlightedText>
-            </p>
-            {(x.weapon != null)
-              ? <Table striped bordered size='sm'>
-                <thead>
-                  <tr>
-                    <th>A</th>
-                    <th>WS</th>
-                    <th>D</th>
-                    <th>SR</th>
-                    <th>!</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>{x.weapon.attacks}</td>
-                    <td>{x.weapon.hit}+</td>
-                    <td>{x.weapon.damage}/{x.weapon.criticalDamage}</td>
-                    <td><HighlightedText>{x.weapon.specialRules}</HighlightedText></td>
-                    <td><HighlightedText>{x.weapon.criticalRules}</HighlightedText></td>
-                  </tr>
-                </tbody>
-                </Table>
-              : <></>}
-            {
-              (x.options != null) &&
-                <ul>
-                  {x.options.map(line => <li><HighlightedText>{line}</HighlightedText></li>)}
-                </ul>
-            }
-            {
-              x.postOptionText &&
-                <p>
-                  <HighlightedText>{x.postOptionText}</HighlightedText>
-                </p>
-            }
+            <CompileDescription>{x.description}</CompileDescription>
             {
               (x.action != null) &&
                 <p>
@@ -63,7 +27,7 @@ export function PloysColumn (props: Props) {
                       <span>{x.action.cost}AP</span>
                     </Card.Header>
                     <Card.Body>
-                      <HighlightedText>{x.action.description}</HighlightedText>
+                      <CompileDescription>{x.action.description}</CompileDescription>
                     </Card.Body>
                   </Card>
                 </p>
