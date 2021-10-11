@@ -42,8 +42,8 @@ const tacticalPloys: Ploy[] = [
   }, {
     name: 'Only in death does duty end',
     cost: 1,
-    description: `Use this Tactical Ploy when a ready friendly SPACE MARINE💀 operative is incapacitated. That operative is not removed from the killzone until the end of your next
-                  activation and does not count as being injured.`
+    description: `Use this Tactical Ploy when a ready friendly SPACE MARINE💀 operative is incapacitated. That operative is not removed from the killzone until the end of your next 
+                activation or the end of the battle (whichever comes first) and does not count as being injured.`
   }, {
     name: 'And they shall know no fear',
     cost: 1,
