@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Dropzone from 'react-dropzone'
 import type { DropzoneOptions } from 'react-dropzone'
 import Intro from './Intro'
-import { Row, Col, Alert, Card } from 'react-bootstrap'
+import { Row, Col, Alert, Card, Button } from 'react-bootstrap'
 
 import SettingsDialog from './SettingsDialog'
 import { Settings } from '../types/Settings'
@@ -50,7 +50,7 @@ function Homepage (props: Props) {
                 </ul>
               </Card.Text>
               <Card.Text>
-                <span>And choose your <a href='#' onClick={() => setShowSettings(true)}>Settings</a></span>
+                <Button variant="outline-secondary" onClick={() => setShowSettings(true)}>Edit Display Settings</Button>
                 <SettingsDialog
                     show={showSettings} setShowSettings={setShowSettings}
                     settings={props.settings} setSettings={props.setSettings}
