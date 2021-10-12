@@ -1,13 +1,14 @@
 import React, { MouseEvent } from 'react'
 import { Col, Card } from 'react-bootstrap'
 import { CloseButton } from '../CloseButton'
-import { Operative, Datacard, PsychicPower } from '../../types/KillTeam2021'
+import {Operative, Datacard, PsychicPower, Stats, Weapon, Equipment, Action} from '../../types/KillTeam2021'
 import { Datasheet } from './Datasheet'
 import { RuleList } from './RuleList'
 import { PowerList } from './PowerList'
 import hash from 'node-object-hash'
 import _ from 'lodash'
 import { FactionSpecificData } from './FactionSpecificData'
+import {Ability} from "../../types/Ability";
 
 interface Props {
   name: string
@@ -16,6 +17,7 @@ interface Props {
   psychicPowers: PsychicPower[]
   fireteams: string[]
   onClose: (event: MouseEvent<HTMLButtonElement>) => void
+  isRoster?: boolean
   showWoundTrack: boolean
 }
 
@@ -37,6 +39,7 @@ export function Roster (props: Props) {
     display: 'flex'
   }
   const datacards = groupByDatacard(props.operatives)
+  const fullOperatives = props.operatives.sort((a: Operative, b: Operative) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0))
 
   return (
     <>
@@ -48,6 +51,19 @@ export function Roster (props: Props) {
           <CloseButton onClose={props.onClose} />
         </Col>
       </h1>
+      { props.isRoster && (
+          <Card>
+            <Card.Header style={{ ...headingStyle, breakBefore: 'always' }} as='h2'>Roster</Card.Header>
+            <Card.Body>
+              Roster Size:{ fullOperatives.length }
+              { fullOperatives.map( (op, index) => {
+                return (
+                    <div>{index}:&nbsp; {op.name} - {}</div>
+                )
+              })}
+            </Card.Body>
+          </Card>
+      )}
       {_.orderBy(datacards, ['leader', 'name'], ['desc', 'asc']).map((datacard: Datacard) => (
         <Datasheet datacard={datacard} showWoundTrack={props.showWoundTrack} />
       ))}
