@@ -58,6 +58,7 @@ export interface Equipment {
 }
 
 export interface Operative {
+  id: String
   datacard: string
   name: string
   stats: Stats

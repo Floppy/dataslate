@@ -99,6 +99,7 @@ const parseOperative = (model: Element): Operative => {
   const faction = _.intersection(allKeywords, factionKeywords).pop() || allKeywords.find((k) => (k === k.toUpperCase())) || null
   const keywords = _.remove(allKeywords, (x) => (x !== faction))
   const details = {
+    id: xpSelect('string(@id)', model, true).toString(),
     datacard: xpSelect('string(@name)', model, true).toString(),
     name: xpSelect('string(@customName)', model, true).toString(),
     stats: {
