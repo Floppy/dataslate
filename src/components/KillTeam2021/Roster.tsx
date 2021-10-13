@@ -1,5 +1,5 @@
 import React, { MouseEvent } from 'react'
-import { Col, Card } from 'react-bootstrap'
+import { Col, Row, Card } from 'react-bootstrap'
 import { CloseButton } from '../CloseButton'
 import {Operative, Datacard, PsychicPower, Stats, Weapon, Equipment, Action} from '../../types/KillTeam2021'
 import { Datasheet } from './Datasheet'
@@ -58,7 +58,11 @@ export function Roster (props: Props) {
               Roster Size:{ fullOperatives.length }
               { fullOperatives.map( (op, index) => {
                 return (
-                    <div>{index}:&nbsp; {op.name} - {}</div>
+                    <Row key={index}>
+                      <Col>{op.name.toString()}</Col>
+                      <Col>{JSON.stringify(op.datacard)}</Col>
+                      <Col>{JSON.stringify(op.weapons)}</Col>
+                    </Row>
                 )
               })}
             </Card.Body>
