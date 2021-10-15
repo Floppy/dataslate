@@ -49,10 +49,10 @@ function Homepage (props: Props): JSX.Element {
                 </ul>
               </Card.Text>
               <Card.Text>
-                <Button variant="outline-secondary" onClick={() => setShowSettings(true)}>Edit Display Settings</Button>
+                <Button variant='outline-secondary' onClick={() => setShowSettings(true)}>Edit Display Settings</Button>
                 <SettingsDialog
-                    show={showSettings} setShowSettings={setShowSettings}
-                    settings={props.settings} setSettings={props.setSettings}
+                  show={showSettings} setShowSettings={setShowSettings}
+                  settings={props.settings} setSettings={props.setSettings}
                 />
               </Card.Text>
             </Card.Body>

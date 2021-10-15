@@ -1,4 +1,4 @@
-import { Archetype, FireteamArchetypes, Ploy } from '../../../types/KillTeam2021';
+import { Archetype, FireteamArchetypes, Ploy } from '../../../types/KillTeam2021'
 
 const archetypes: FireteamArchetypes = {
   'Bloodletter Fire Team': [Archetype.SEEK_AND_DESTROY],
@@ -42,7 +42,7 @@ const tacticalPloys: Ploy[] = [
   }, {
     name: 'Split',
     cost: 0,
-    description: `Use this Tactical Ploy when a friendly PINK HORROR operative is incapacitated for 2CP, or when a friendly BLUE HORROR operative is incapacitated for 1CP.`,
+    description: 'Use this Tactical Ploy when a friendly PINK HORROR operative is incapacitated for 2CP, or when a friendly BLUE HORROR operative is incapacitated for 1CP.',
     options: [
       'Before that PINK HORROR operative is removed from the killzone, set up two BLUE HORROR operatives as close as possible to that operative and not within Engagement Range of enemy operatives',
       `Before that BLUE HORROR operative is removed from the killzone, set up one BRIMESTONE HORRORS operative as close as possible to that operative and not within Engagement Range of enemy
