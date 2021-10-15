@@ -80,6 +80,10 @@
     ]
   },
   "jest": {
+    "transform": {
+      "^.+\\.[t|j]sx?$": "babel-jest"
+    },
+    "transformIgnorePatterns": ["node_modules/(?!react-markdown)/"],
     "coverageThreshold": {
       "global": {
         "branches": 0,
