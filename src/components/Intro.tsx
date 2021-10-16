@@ -1,7 +1,7 @@
 import React from 'react'
 import { Jumbotron } from 'react-bootstrap'
 
-function Intro () {
+function Intro (): JSX.Element {
   return (
     <Jumbotron>
       <h1>

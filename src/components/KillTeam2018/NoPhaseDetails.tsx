@@ -11,7 +11,7 @@ interface Props {
   onSelectionChanged: (uuid: string, value: number) => void,
 }
 
-export function NoPhaseDetails (props: Props) {
+export function NoPhaseDetails (props: Props): JSX.Element {
   return (
     <Card className={props.model.selected > 0 ? 'included' : 'excluded'}>
       <ModelTitle {...props.model} showSelector onSelectionChanged={props.onSelectionChanged} />

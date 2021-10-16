@@ -7,7 +7,7 @@ interface Props {
   weapons: Weapon[]
 }
 
-export function WeaponList (props: Props) {
+export function WeaponList (props: Props): JSX.Element {
   return (
     <>
       <Table striped bordered size='sm'>

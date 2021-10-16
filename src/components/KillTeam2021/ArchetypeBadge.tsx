@@ -6,7 +6,7 @@ interface Props {
   archetype: Archetype
 }
 
-export function ArchetypeBadge (props: Props) {
+export function ArchetypeBadge (props: Props): JSX.Element {
   return (
     <Badge
       pill variant='secondary' className='mb-2' style={{

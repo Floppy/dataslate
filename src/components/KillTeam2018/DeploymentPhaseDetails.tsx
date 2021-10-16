@@ -8,7 +8,7 @@ interface Props {
   model: Model
 }
 
-export function DeploymentPhaseDetails (props: Props) {
+export function DeploymentPhaseDetails (props: Props): JSX.Element {
   return (
     <Row>
       <Col>
@@ -19,6 +19,6 @@ export function DeploymentPhaseDetails (props: Props) {
   )
 }
 
-export function hasDeploymentPhase (model: Model) {
+export function hasDeploymentPhase (model: Model): boolean {
   return ((model.abilities.filter((x) => ((x.phases != null) && x.phases.includes('deployment')))).length > 0)
 }

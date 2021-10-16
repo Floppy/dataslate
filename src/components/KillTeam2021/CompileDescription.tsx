@@ -9,7 +9,7 @@ interface Props {
   children: string
 }
 
-export function CompileDescription (props: Props) {
+export function CompileDescription (props: Props): JSX.Element {
   const descriptionWithHighlightedSymbols = <HighlightedText>{props.children}</HighlightedText>
 
   return (

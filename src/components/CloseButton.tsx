@@ -5,6 +5,6 @@ interface Props {
   onClose: (event: MouseEvent<HTMLButtonElement>) => void
 }
 
-export function CloseButton (props: Props) {
+export function CloseButton (props: Props): JSX.Element {
   return (<Button variant='dark' className='d-print-none' onClick={props.onClose}>Close</Button>)
 }

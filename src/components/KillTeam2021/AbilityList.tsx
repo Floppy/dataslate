@@ -8,7 +8,7 @@ interface Props {
   abilities: Ability[]
 }
 
-function AbilityList (props: Props) {
+function AbilityList (props: Props): JSX.Element {
   return props.abilities.length === 0 ? <></> : (
     <Card border='secondary' bg='light'>
       <Card.Header style={{ background: 'rgba(0, 0, 0, 0.05)' }} as='h4'>

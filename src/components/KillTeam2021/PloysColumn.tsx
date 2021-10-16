@@ -7,7 +7,7 @@ interface Props {
   ploys: Ploy[]
 }
 
-export function PloysColumn (props: Props) {
+export function PloysColumn (props: Props): JSX.Element {
   return (
     <Col>
       {props.ploys.map((x: Ploy) => (

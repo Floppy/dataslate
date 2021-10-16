@@ -11,7 +11,7 @@ interface Props {
   model: Model
 }
 
-export function ShootingPhaseDetails (props: Props) {
+export function ShootingPhaseDetails (props: Props): JSX.Element {
   return (
     <Row>
       <Col sm='10'>
@@ -33,6 +33,6 @@ export function ShootingPhaseDetails (props: Props) {
   )
 }
 
-export function hasRangedWeapons (model: Model) {
+export function hasRangedWeapons (model: Model): boolean {
   return !isNaN(model.stats.ballistic_skill) && (model.weapons.filter((x) => (x.type !== 'Melee')).length > 0)
 }

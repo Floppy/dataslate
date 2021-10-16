@@ -13,7 +13,7 @@ interface Props {
   setSettings: (settings: Settings) => void
 }
 
-function fileDropZone (props: Props) {
+function fileDropZone (props: Props): JSX.Element {
   return (
     <Dropzone onDrop={props.onUpload} accept='.ros,.rosz'>
       {({ getRootProps, getInputProps }) => (
@@ -27,7 +27,7 @@ function fileDropZone (props: Props) {
   )
 }
 
-function Homepage (props: Props) {
+function Homepage (props: Props): JSX.Element {
   const [showSettings, setShowSettings] = useState(false)
 
   return (

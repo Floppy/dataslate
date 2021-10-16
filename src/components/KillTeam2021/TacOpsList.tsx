@@ -7,7 +7,7 @@ interface Props {
   tacOps: TacOp[]
 }
 
-export function TacOpsList (props: Props) {
+export function TacOpsList (props: Props): JSX.Element {
   return (
     <Row xs={1} sm={2} md={3} className='g-4'>
       {props.tacOps.map((x: TacOp) => (

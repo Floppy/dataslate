@@ -16,7 +16,7 @@ interface Props {
   points: number
 }
 
-function StatsTable (props: Props) {
+function StatsTable (props: Props): JSX.Element {
   return (
     <Table striped bordered size='sm'>
       <thead>

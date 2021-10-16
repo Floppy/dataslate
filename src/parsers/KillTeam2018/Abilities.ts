@@ -152,7 +152,7 @@ const antiPatterns = {
   ]
 }
 
-export const calculatePhases = (description: string) => {
+export const calculatePhases = (description: string): string[] => {
   const minDesc = ' ' + description.toLowerCase().replace(/[.,)(]/g, '') + ' '
   const phases: string[] = []
   _.forIn(phasePatterns, (patterns, phase) => {
@@ -176,7 +176,7 @@ export const calculatePhases = (description: string) => {
   return phases
 }
 
-export const parseAdditionalAttacks = (description: string) => {
+export const parseAdditionalAttacks = (description: string): number => {
   const patterns = [
     /Add ([1-9]{1}) to this model's Attacks characteristic/,
     / ([1-9]|an|one|two) additional attack/,
@@ -201,7 +201,7 @@ export const parseAdditionalAttacks = (description: string) => {
   }))
 }
 
-export const invulnerableSave = (abilities: Ability[]) => {
+export const invulnerableSave = (abilities: Ability[]): number | null => {
   const patterns = [
     /models with this ability have a ([1-6]{1})\+ invulnerable save/,
     /has a ([1-6]{1})\+ invulnerable save($|\.|,| and| instead of)/,

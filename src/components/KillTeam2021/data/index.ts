@@ -1,6 +1,8 @@
+import { FactionSpecificData } from '../../../types/KillTeam2021'
+
+import chaosDaemon from './chaosDaemons'
 import broodCoven from './broodCoven'
 import cadreMercenary from './cadreMercenary'
-import chaosDaemon from './chaosDaemons'
 import commorite from './commorrite'
 import craftworld from './craftworld'
 import deathGuard from './deathGuard'
@@ -44,7 +46,9 @@ const data = [
   veteranGuardsmen
 ]
 
-const getFactionSpecificData = (factionName: string) => data.find(factionData => factionData.name === factionName)
+const getFactionSpecificData = (factionName: string): FactionSpecificData | undefined => (
+  data.find(factionData => factionData.name === factionName)
+)
 
 export default getFactionSpecificData
 export { data }

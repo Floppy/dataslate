@@ -24,7 +24,7 @@ interface Props {
   onSelectionChanged: (uuid: string, value: number) => void,
 }
 
-export function Roster (props: Props) {
+export function Roster (props: Props): JSX.Element {
   // Display models sorted by category and type
   const sortedModels = _.sortBy(props.models, (x: Model) => ([x.category == null, x.category, x.type]))
   // Work out which models are actually selected
