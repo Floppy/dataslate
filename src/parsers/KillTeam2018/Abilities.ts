@@ -201,7 +201,7 @@ export const parseAdditionalAttacks = (description: string): number => {
   }))
 }
 
-export const invulnerableSave = (abilities: Ability[]): number | null => {
+export const invulnerableSave = (abilities: Ability[]): number | null | undefined => {
   const patterns = [
     /models with this ability have a ([1-6]{1})\+ invulnerable save/,
     /has a ([1-6]{1})\+ invulnerable save($|\.|,| and| instead of)/,
