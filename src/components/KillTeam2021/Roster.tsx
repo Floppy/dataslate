@@ -1,7 +1,7 @@
-import React, {MouseEvent, useEffect, useState} from 'react'
-import { Col, Row, Card } from 'react-bootstrap'
+import React, { MouseEvent, useEffect, useState } from 'react'
+import { Col, Card } from 'react-bootstrap'
 import { CloseButton } from '../CloseButton'
-import { Operative, Datacard, PsychicPower, Stats, Weapon, Equipment, Action } from '../../types/KillTeam2021'
+import { Operative, Datacard, PsychicPower } from '../../types/KillTeam2021'
 import { Datasheet } from './Datasheet'
 import { RuleList } from './RuleList'
 import { PowerList } from './PowerList'
@@ -42,7 +42,16 @@ export function Roster (props: Props) {
   }
 
   const [selectedOperatives, setSelectedOperatives] = useState(props.operatives.map((operative, index) => { return operative.id }))
-  let datacards = groupByDatacard(props.operatives, selectedOperatives)
+  const [datacards, setDataCards] = useState<Datacard[] | []>([])
+
+  const updateSelectedOperatives = (operativeIds: string[]): void => {
+    setSelectedOperatives(operativeIds)
+    setDataCards(groupByDatacard(props.operatives, selectedOperatives))
+  }
+
+  useEffect(() => {
+    setDataCards(groupByDatacard(props.operatives, selectedOperatives))
+  }, [])
 
   return (
     <>
@@ -58,7 +67,7 @@ export function Roster (props: Props) {
         <Card>
           <Card.Header style={{ ...headingStyle, breakBefore: 'always' }} as='h2'>Roster</Card.Header>
           <Card.Body>
-            <RosterSelection operatives={props.operatives} selectedOperatives={selectedOperatives} setSelectedOperatives={setSelectedOperatives} />
+            <RosterSelection operatives={props.operatives} selectedOperatives={selectedOperatives} setSelectedOperatives={updateSelectedOperatives} />
           </Card.Body>
         </Card>
       )}

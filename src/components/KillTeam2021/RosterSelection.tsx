@@ -1,5 +1,5 @@
 import { Operative, Weapon } from '../../types/KillTeam2021'
-import {Col, Row, Table} from 'react-bootstrap'
+import { Row, Table } from 'react-bootstrap'
 import ReactBootstrapSlider from 'react-bootstrap-slider'
 import React from 'react'
 
@@ -11,7 +11,7 @@ interface Props {
 
 const weaponNames = (weapons: Weapon[]) => {
   return weapons.map((weapon, index) => {
-    return <span>{weapon.name}</span>
+    return <Row>{weapon.name}</Row>
   })
 }
 
@@ -35,7 +35,6 @@ const selectionChanged = (selectedOperatives: string[], opId: string, selected: 
     }
     selectedOps = selectedOperatives
   }
-  console.log(selectedOps)
   return selectedOps
 }
 
@@ -51,23 +50,23 @@ export function RosterSelection (props: Props) {
         </tr>
       </thead>
       <tbody>
-      {props.operatives.map((op, index) => {
-        return (
-          <tr key={index}>
-            <td>{operativeName(op)}</td>
-            <td>{weaponNames(op.weapons)}</td>
-            <td>
-              <ReactBootstrapSlider
-                value={props.selectedOperatives.includes(op.id)}
-                slideStop={(x: any) => props.setSelectedOperatives(selectionChanged(props.selectedOperatives, op.id, x.target.value))}
-                step={0.5}
-                max={1}
-                min={0}
-              />
-            </td>
-          </tr>
-        )
-      })}
+        {props.operatives.map((op, index) => {
+          return (
+            <tr key={index}>
+              <td>{operativeName(op)}</td>
+              <td>{weaponNames(op.weapons)}</td>
+              <td>
+                <ReactBootstrapSlider
+                  value={props.selectedOperatives.includes(op.id)}
+                  slideStop={(x: any) => props.setSelectedOperatives(selectionChanged(props.selectedOperatives, op.id, x.target.value))}
+                  step={0.5}
+                  max={1}
+                  min={0}
+                />
+              </td>
+            </tr>
+          )
+        })}
       </tbody>
     </Table>
   )
