@@ -23,12 +23,11 @@ interface Props {
 
 const groupByDatacard = (operatives: Operative[], selectedOperatives: string[]): Datacard[] => {
   const filteredOperatives = operatives.filter((op) => { return selectedOperatives.includes(op.id) })
-  console.log(filteredOperatives.length)
   const groupedOperatives = _.groupBy(filteredOperatives, (o) => (hash().hash({ datacard: o.datacard, weapons: o.weapons, equipment: o.equipment })))
   return _.map(groupedOperatives, (ops, hash) => ({
     ...ops[0],
     name: ops[0].datacard,
-    operativeNames: ops.map((c) => (c.name)).sort()
+    operativeNames: ops.map((op) => (op.name)).sort()
   }))
 }
 
@@ -51,7 +50,7 @@ export function Roster (props: Props) {
 
   useEffect(() => {
     setDataCards(groupByDatacard(props.operatives, selectedOperatives))
-  }, [])
+  }, [props.operatives, selectedOperatives])
 
   return (
     <>
@@ -63,7 +62,7 @@ export function Roster (props: Props) {
           <CloseButton onClose={props.onClose} />
         </Col>
       </h1>
-      {props.isRoster && (
+      {(props.isRoster ?? false) && (
         <Card>
           <Card.Header style={{ ...headingStyle, breakBefore: 'always' }} as='h2'>Roster</Card.Header>
           <Card.Body>
@@ -71,8 +70,8 @@ export function Roster (props: Props) {
           </Card.Body>
         </Card>
       )}
-      {_.orderBy(datacards, ['leader', 'name'], ['desc', 'asc']).map((datacard: Datacard) => (
-        <Datasheet datacard={datacard} showWoundTrack={props.showWoundTrack} />
+      {_.orderBy(datacards, ['leader', 'name'], ['desc', 'asc']).map((datacard: Datacard, idx) => (
+        <Datasheet key={idx} datacard={datacard} showWoundTrack={props.showWoundTrack} />
       ))}
       <Card>
         <Card.Header style={{ ...headingStyle, breakBefore: 'always' }} as='h2'>Rules</Card.Header>
@@ -80,12 +79,13 @@ export function Roster (props: Props) {
           <RuleList rules={_.uniqBy(_.flatten(datacards.map((m) => (m.rules))), 'name')} />
         </Card.Body>
       </Card>
-      {props.psychicPowers.length > 0 && <Card>
-        <Card.Header style={{ ...headingStyle }} as='h2'>Psychic Powers</Card.Header>
-        <Card.Body>
-          <PowerList powers={props.psychicPowers} />
-        </Card.Body>
-      </Card>}
+      {props.psychicPowers.length > 0 &&
+        <Card>
+          <Card.Header style={{ ...headingStyle }} as='h2'>Psychic Powers</Card.Header>
+          <Card.Body>
+            <PowerList powers={props.psychicPowers} />
+          </Card.Body>
+        </Card>}
 
       <FactionSpecificData faction={props.faction} fireteams={props.fireteams} />
     </>

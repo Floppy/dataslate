@@ -1,6 +1,5 @@
 import { Operative, Weapon } from '../../types/KillTeam2021'
-import { Row, Table } from 'react-bootstrap'
-import ReactBootstrapSlider from 'react-bootstrap-slider'
+import { Form, Row, Table } from 'react-bootstrap'
 import React from 'react'
 
 interface Props {
@@ -9,19 +8,23 @@ interface Props {
   setSelectedOperatives: (opIds: string[]) => void
 }
 
-const weaponNames = (weapons: Weapon[]) => {
+const weaponNames = (weapons: Weapon[]): JSX.Element[] => {
   return weapons.map((weapon, index) => {
-    return <Row>{weapon.name}</Row>
+    return <Row key={index}>{weapon.name}</Row>
   })
 }
 
-const operativeName = (operative: Operative) => {
+const operativeName = (operative: Operative): JSX.Element => {
   // TODO: Hasn't been tested with a roster with actual names for units, I think this is only supported if you pay for battlescribe
   const name = operative.name.includes(operative.datacard) ? operative.name : `${operative.name} [${operative.datacard}]`
   return <span>{name}</span>
 }
 
-const selectionChanged = (selectedOperatives: string[], opId: string, selected: boolean) => {
+const flipSelection = (selectedOperatives: string[], opId: string): string[] => {
+  return selectionChanged(selectedOperatives, opId, !selectedOperatives.includes(opId))
+}
+
+const selectionChanged = (selectedOperatives: string[], opId: string, selected: boolean): string[] => {
   let selectedOps = []
   if (selected) {
     selectedOps = [
@@ -39,29 +42,32 @@ const selectionChanged = (selectedOperatives: string[], opId: string, selected: 
 }
 
 export function RosterSelection (props: Props) {
-  console.log(props.selectedOperatives)
   return (
     <Table>
       <thead>
         <tr>
           <th>Operative</th>
           <th>Weapons</th>
-          <th>Include in Kill Team</th>
+          <th />
         </tr>
       </thead>
       <tbody>
         {props.operatives.map((op, index) => {
+          const selected = props.selectedOperatives.includes(op.id)
+          const className = selected ? '' : 'excluded'
           return (
-            <tr key={index}>
+            <tr
+              key={index} onClick={(event) => { props.setSelectedOperatives(flipSelection(props.selectedOperatives, op.id)) }}
+              className={className}
+            >
               <td>{operativeName(op)}</td>
               <td>{weaponNames(op.weapons)}</td>
               <td>
-                <ReactBootstrapSlider
-                  value={props.selectedOperatives.includes(op.id)}
-                  slideStop={(x: any) => props.setSelectedOperatives(selectionChanged(props.selectedOperatives, op.id, x.target.value))}
-                  step={0.5}
-                  max={1}
-                  min={0}
+                <Form.Check
+                  type='checkbox'
+                  id='operative'
+                  label=''
+                  checked={selected}
                 />
               </td>
             </tr>
