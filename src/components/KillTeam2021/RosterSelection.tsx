@@ -1,5 +1,5 @@
 import { Operative, Weapon } from '../../types/KillTeam2021'
-import { Col, Row } from 'react-bootstrap'
+import {Col, Row, Table} from 'react-bootstrap'
 import ReactBootstrapSlider from 'react-bootstrap-slider'
 import React from 'react'
 
@@ -42,18 +42,21 @@ const selectionChanged = (selectedOperatives: string[], opId: string, selected: 
 export function RosterSelection (props: Props) {
   console.log(props.selectedOperatives)
   return (
-    <>
-      <Row>
-        <Col xs={3}>Operative</Col>
-        <Col xs={6}>Weapons</Col>
-        <Col xs={2}>Include in Kill Team</Col>
-      </Row>
+    <Table>
+      <thead>
+        <tr>
+          <th>Operative</th>
+          <th>Weapons</th>
+          <th>Include in Kill Team</th>
+        </tr>
+      </thead>
+      <tbody>
       {props.operatives.map((op, index) => {
         return (
-          <Row key={index}>
-            <Col xs={3}>{operativeName(op)}</Col>
-            <Col xs={6}>{weaponNames(op.weapons)}</Col>
-            <Col xs={2}>
+          <tr key={index}>
+            <td>{operativeName(op)}</td>
+            <td>{weaponNames(op.weapons)}</td>
+            <td>
               <ReactBootstrapSlider
                 value={props.selectedOperatives.includes(op.id)}
                 slideStop={(x: any) => props.setSelectedOperatives(selectionChanged(props.selectedOperatives, op.id, x.target.value))}
@@ -61,10 +64,11 @@ export function RosterSelection (props: Props) {
                 max={1}
                 min={0}
               />
-            </Col>
-          </Row>
+            </td>
+          </tr>
         )
       })}
-    </>
+      </tbody>
+    </Table>
   )
 }
