@@ -9,7 +9,7 @@ interface Props {
   userStrength: number
 }
 
-function WeaponList (props: Props) {
+function WeaponList (props: Props): JSX.Element {
   const weapons = props.phase === 'shooting'
     ? props.weapons.filter((x) => (x.type !== 'Melee'))
     : props.weapons.filter((x) => (x.type === 'Melee'))

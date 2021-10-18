@@ -5,7 +5,7 @@ interface Props {
   children: React.ReactNode
 }
 
-export function HighlightedText (props: Props) {
+export function HighlightedText (props: Props): JSX.Element {
   let output = [props.children]
   output = reactStringReplace(output, '▲', () => <span className='triangle'>▲</span>)
   output = reactStringReplace(output, '●', () => <span className='circle'>●</span>)

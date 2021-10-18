@@ -1,6 +1,8 @@
+import { FactionSpecificData } from '../../../types/KillTeam2021'
+
+import chaosDaemon from './chaosDaemons'
 import broodCoven from './broodCoven'
 import cadreMercenary from './cadreMercenary'
-import chaosDaemon from './chaosDaemons'
 import commorite from './commorrite'
 import craftworld from './craftworld'
 import deathGuard from './deathGuard'
@@ -14,7 +16,7 @@ import hunterClade from './hunterClade'
 import imperialGuard from './imperialGuard'
 import kommando from './kommando'
 import spaceMarine from './spaceMarine'
-import talonsOfTheEmporer from './talonsOfTheEmporer'
+import talonsOfTheEmperor from './talonsOfTheEmperor'
 import thousandSons from './thousandSons'
 import traitorSpaceMarine from './traitorSpaceMarine'
 import troupe from './troupe'
@@ -37,14 +39,16 @@ const data = [
   imperialGuard,
   kommando,
   spaceMarine,
-  talonsOfTheEmporer,
+  talonsOfTheEmperor,
   thousandSons,
   traitorSpaceMarine,
   troupe,
   veteranGuardsmen
 ]
 
-const getFactionSpecificData = (factionName: string) => data.find(factionData => factionData.name === factionName)
+const getFactionSpecificData = (factionName: string): FactionSpecificData | undefined => (
+  data.find(factionData => factionData.name === factionName)
+)
 
 export default getFactionSpecificData
 export { data }

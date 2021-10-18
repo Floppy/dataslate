@@ -9,7 +9,7 @@ interface Props {
   model: Model
 }
 
-export function PsychicPhaseDetails (props: Props) {
+export function PsychicPhaseDetails (props: Props): JSX.Element {
   return (
     <Row>
       <Col>
@@ -21,6 +21,6 @@ export function PsychicPhaseDetails (props: Props) {
   )
 }
 
-export function hasPsychicPhase (model: Model) {
+export function hasPsychicPhase (model: Model): boolean {
   return (model.psychicPowers.length > 0 || (model.abilities.filter((x) => ((x.phases != null) && x.phases.includes('psychic')))).length > 0)
 }

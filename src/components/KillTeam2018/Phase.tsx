@@ -7,7 +7,7 @@ interface Props {
   children: React.ReactNode
 }
 
-function Phase (props: Props) {
+function Phase (props: Props): JSX.Element {
   return (
     <div style={{
       pageBreakAfter: 'always'

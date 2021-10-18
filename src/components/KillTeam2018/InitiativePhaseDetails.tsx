@@ -8,7 +8,7 @@ interface Props {
   model: Model
 }
 
-export function InitiativePhaseDetails (props: Props) {
+export function InitiativePhaseDetails (props: Props): JSX.Element {
   return (
     <Row>
       <Col>
@@ -19,6 +19,6 @@ export function InitiativePhaseDetails (props: Props) {
   )
 }
 
-export function hasInitiativePhase (model: Model) {
+export function hasInitiativePhase (model: Model): boolean {
   return ((model.abilities.filter((x) => ((x.phases != null) && x.phases.includes('initiative')))).length > 0)
 }

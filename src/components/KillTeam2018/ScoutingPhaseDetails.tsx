@@ -8,7 +8,7 @@ interface Props {
   model: Model
 }
 
-export function ScoutingPhaseDetails (props: Props) {
+export function ScoutingPhaseDetails (props: Props): JSX.Element {
   return (
     <Row>
       <Col>
@@ -19,6 +19,6 @@ export function ScoutingPhaseDetails (props: Props) {
   )
 }
 
-export function hasScoutingPhase (model: Model) {
+export function hasScoutingPhase (model: Model): boolean {
   return ((model.abilities.filter((x) => ((x.phases != null) && x.phases.includes('scouting')))).length > 0)
 }

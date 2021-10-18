@@ -1,13 +1,13 @@
 import React from 'react'
 import { TacOp } from '../../types/KillTeam2021'
 import { Card, Row, Col } from 'react-bootstrap'
-import { HighlightedText } from './HighlightedText'
+import { CompileDescription } from './CompileDescription'
 
 interface Props {
   tacOps: TacOp[]
 }
 
-export function TacOpsList (props: Props) {
+export function TacOpsList (props: Props): JSX.Element {
   return (
     <Row xs={1} sm={2} md={3} className='g-4'>
       {props.tacOps.map((x: TacOp) => (
@@ -18,14 +18,7 @@ export function TacOpsList (props: Props) {
               <span>{x.name}</span>
             </Card.Header>
             <Card.Body>
-              <p>
-                {x.revealTime}
-              </p>
-              <p>
-                <ul>
-                  {x.description.map(line => <li><HighlightedText>{line}</HighlightedText></li>)}
-                </ul>
-              </p>
+              <CompileDescription>{x.description}</CompileDescription>
               {
                 (x.action != null) &&
                   <>
@@ -39,7 +32,7 @@ export function TacOpsList (props: Props) {
                           <span>{x.action.cost}AP</span>
                         </Card.Header>
                         <Card.Body>
-                          <HighlightedText>{x.action.description}</HighlightedText>
+                          <CompileDescription>{x.action.description}</CompileDescription>
                         </Card.Body>
                       </Card>
                     </p>

@@ -10,39 +10,35 @@ const strategicPloys: Ploy[] = [
   {
     name: 'Protector Imperative',
     cost: 1,
-    description: 'Until the end of the Turning Point:',
-    options: [
-      'Each time a friendly FORGE WORLD💀 operative makes a shooting attack, in the Roll Attack Dice step of that shooting attack, you can re-roll one of your attack dice.',
-      'Each time a friendly FORGE WORLD💀 operative fights in combat, in the Roll Attack Dice step of that combat, you must re-roll one of your successful hits.'
-    ],
-    postOptionText: 'You can only use this Strategic Ploy once.'
+    description: `Until the end of the Turning Point:
+  - Each time a friendly FORGE WORLD💀 operative makes a shooting attack, in the Roll Attack Dice step of that shooting attack, you can re-roll one of your attack dice.
+  - Each time a friendly FORGE WORLD💀 operative fights in combat, in the Roll Attack Dice step of that combat, you must re-roll one of your successful hits.
+
+  You can only use this Strategic Ploy once.`
   }, {
     name: 'Conqueror Imperative',
     cost: 1,
-    description: 'Until the end of the Turning Point:',
-    options: [
-      'Each time a friendly FORGE WORLD💀 operative fights in combat, in the Roll Attack Dice step of that combat, you can re-roll one of your attack dice.',
-      'Each time a friendly FORGE WORLD💀 operative makes a shooting attack, in the Roll Attack Dice step of that shooting attack, you must re-roll one of your successful hits.'
-    ],
-    postOptionText: 'You can only use this Strategic Ploy once.'
+    description: `Until the end of the Turning Point:
+  - Each time a friendly FORGE WORLD💀 operative fights in combat, in the Roll Attack Dice step of that combat, you can re-roll one of your attack dice.
+  - Each time a friendly FORGE WORLD💀 operative makes a shooting attack, in the Roll Attack Dice step of that shooting attack, you must re-roll one of your successful hits.
+
+  You can only use this Strategic Ploy once.`
   }, {
     name: 'Bulwark Imperative',
     cost: 1,
-    description: 'Until the end of the Turning Point:',
-    options: [
-      'Each time a shooting attack is made against a friendly FORGE WORLD💀 operative, in the Roll Defence Dice step of that shooting attack, you can re-roll one of your defence dice.',
-      'Subtract ⬤ from the Movement characteristic of friendly FORGE WORLD💀 operatives.'
-    ],
-    postOptionText: 'You can only use this Strategic Ploy once.'
+    description: `Until the end of the Turning Point:
+  - Each time a shooting attack is made against a friendly FORGE WORLD💀 operative, in the Roll Defence Dice step of that shooting attack, you can re-roll one of your defence dice.
+  - Subtract ⬤ from the Movement characteristic of friendly FORGE WORLD💀 operatives.
+
+  You can only use this Strategic Ploy once.`
   }, {
     name: 'Aggressor Imperative',
     cost: 1,
-    description: 'Until the end of the Turning Point:',
-    options: [
-      'Each time a friendly FORGE WORLD💀 operative performs a Normal Move or Charge action, it can move an additional ▲.',
-      'Each time a shooting attack is made against a friendly FORGE WORLD💀 operative, in the Roll Defence DIce step of that shooting attack, you must re-roll one of your successful saves.'
-    ],
-    postOptionText: 'You can only use this Strategic Ploy once.'
+    description: `Until the end of the Turning Point:
+  - Each time a friendly FORGE WORLD💀 operative performs a **Normal Move** or **Charge** action, it can move an additional ▲.
+  - Each time a shooting attack is made against a friendly FORGE WORLD💀 operative, in the Roll Defence Dice step of that shooting attack, you must re-roll one of your successful saves.
+
+  You can only use this Strategic Ploy once.`
   }
 ]
 

@@ -11,7 +11,7 @@ interface Props {
   model: Model
 }
 
-export function FightPhaseDetails (props: Props) {
+export function FightPhaseDetails (props: Props): JSX.Element {
   return (
     <Row>
       <Col sm='10'>

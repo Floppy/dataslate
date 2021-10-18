@@ -7,7 +7,7 @@ interface Props {
   secondaryValue?: string | null
 }
 
-export function StatBadge (props: Props) {
+export function StatBadge (props: Props): JSX.Element {
   return (
     <Badge pill variant='dark' className='w-100 mb-2 px-0'>
       <div className='text-light'>{props.name}</div>

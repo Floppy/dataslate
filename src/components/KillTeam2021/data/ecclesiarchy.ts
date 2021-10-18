@@ -20,12 +20,11 @@ const strategicPloys: Ploy[] = [
   }, {
     name: 'Extremis Trigger Word',
     cost: 1,
-    description: 'Until the end of the Turning Point:',
-    options: [
-      'Each time a friendly ARCO-FLAGELLANT operative performs a Dash or Charge action, it can move an additional ▲ for that action',
-      'Arco-flails that friendly ARCO-FLAGELLANT operatives are equipped with gain the Lethal 5+ special rule.'
-    ],
-    postOptionText: 'You can use this Strategic Ploy once'
+    description: `Until the end of the Turning Point:
+  - Each time a friendly ARCO-FLAGELLANT operative performs a **Dash** or **Charge** action, it can move an additional ▲ for that action
+  - Arco-flails that friendly ARCO-FLAGELLANT operatives are equipped with gain the Lethal 5+ special rule.
+
+  You can use this Strategic Ploy once`
   }
 ]
 

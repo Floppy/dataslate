@@ -8,17 +8,10 @@ const strategicPloys: Ploy[] = [
   {
     name: 'Overcharge lasguns',
     cost: 1,
-    description: 'Until the end of the Turning Point, change the profile of lasguns that friendly VETERAN GUARDSMAN💀 operatives are equipped with to include the following:',
-    weapon: {
-      name: 'Overcharged lasgun',
-      melee: false,
-      attacks: 4,
-      hit: 4,
-      damage: 2,
-      criticalDamage: 3,
-      specialRules: 'AP1, Hot',
-      criticalRules: ''
-    }
+    description: `Until the end of the Turning Point, change the profile of lasguns that friendly VETERAN GUARDSMAN💀 operatives are equipped with to include the following:
+  | A | WS | D   | SR       | ! |
+  | - | -  | -   | -        | - |
+  | 4 | 4+ | 2/3 | AP1, Hot |   |`
   }, {
     name: 'Take cover',
     cost: 1,
@@ -26,7 +19,7 @@ const strategicPloys: Ploy[] = [
   }, {
     name: 'Into the breach',
     cost: 1,
-    description: 'Each friendly VETERAN GUARDSMAN💀 operative within your drop zone can perform a free Dash action, but must finish that move closer to the enemy\'s drop zone.'
+    description: 'Each friendly VETERAN GUARDSMAN💀 operative within your drop zone can perform a free **Dash** action, but must finish that move closer to the enemy\'s drop zone.'
   }, {
     name: 'Clear the line',
     cost: 1,
@@ -58,27 +51,21 @@ const tacticalPloys: Ploy[] = [
 const tacOps: TacOp[] = [{
   id: 1,
   name: 'Boots on the ground',
-  revealTime: 'You can reveal this Tac Op at the end of any Turning Point',
-  description: [
-    `At the end of that Turning Point, if there are more friendly operatives than enemy operatives within ⬟ of your drop zone, and there are more friendly
-     operatives than enemy operatives within ⬟ of your opponent's drop zone, you score 1VP.`,
-    'If you achieve the first condition at the end of any subsequent Turning Points, you score 1VP.'
-  ]
+  description: `You can reveal this Tac Op at the end of any Turning Point.
+  - At the end of that Turning Point, if there are more friendly operatives than enemy operatives within ⬟ of your drop zone, and there are more friendly
+     operatives than enemy operatives within ⬟ of your opponent's drop zone, you score 1VP.
+  - If you achieve the first condition at the end of any subsequent Turning Points, you score 1VP.`
 }, {
   id: 2,
   name: 'Stand fast',
-  revealTime: 'You can reveal this Tac Op in the Reveal Tac Ops step of any Turning Point',
-  description: [
-    'At the end of any Turning Point, if friendly operatives control two or more objective markers, and frierndly operatives control more objective markers than enemy operatives, you score 1VP.',
-    'If you achieve the first condition at the end of any subsequent Turning Point, you score an additional 1VP.'
-  ]
+  description: `You can reveal this Tac Op in the Reveal Tac Ops step of any Turning Point
+  - At the end of any Turning Point, if friendly operatives control two or more objective markers, and frierndly operatives control more objective markers than enemy operatives, you score 1VP.
+  - If you achieve the first condition at the end of any subsequent Turning Point, you score an additional 1VP.`
 }, {
   id: 3,
   name: 'Glory in death',
-  revealTime: 'Reveal this Tac Op at the end of the battle',
-  description: [
-    'If more friendly operatives were incapacitated than enemy operatives, but you scored more victory points from the mission objective, you score 2 VPs.'
-  ]
+  description: `Reveal this Tac Op at the end of the battle
+  - If more friendly operatives were incapacitated than enemy operatives, but you scored more victory points from the mission objective, you score 2 VPs.`
 }]
 
 const data = {

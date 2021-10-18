@@ -10,7 +10,7 @@ interface Props {
   model: Model
 }
 
-export function MovementPhaseDetails (props: Props) {
+export function MovementPhaseDetails (props: Props): JSX.Element {
   return (
     <Row>
       <Col sm='11'>

@@ -7,7 +7,7 @@ interface Props {
   powers: PsychicPower[]
 }
 
-function PsychicPowerList (props: Props) {
+function PsychicPowerList (props: Props): JSX.Element {
   return props.powers.length === 0 ? <></> : (
     <Table striped bordered size='sm'>
       <thead>

@@ -32,7 +32,7 @@ const groupByDatacard = (operatives: Operative[], selectedOperatives: string[]):
   }))
 }
 
-export function Roster (props: Props) {
+export function Roster (props: Props): JSX.Element {
   const headingStyle = {
     background: '#FF6F2D',
     color: 'black',

@@ -11,7 +11,7 @@ import { Roster as Roster2021 } from './types/KillTeam2021'
 import { DataDevPage } from './components/KillTeam2021/DataDevPage'
 import { Settings } from './types/Settings'
 
-export function App () {
+export function App (): JSX.Element {
   const [roster, setRoster] = useState<Roster2018|Roster2021|null>(null)
 
   const [settings, setSettings] = useState({ showWoundTrack: true, printRosterList: false })
@@ -20,12 +20,12 @@ export function App () {
     setSettings(loadSettingsFromLocalStorage())
   }, [])
 
-  const setAndSaveSettings = (settings: Settings) => {
+  const setAndSaveSettings = (settings: Settings): void => {
     setSettings(settings)
     saveSettingsToLocalStorage(settings)
   }
 
-  const saveSettingsToLocalStorage = (settings: Settings) => {
+  const saveSettingsToLocalStorage = (settings: Settings): void => {
     localStorage.setItem('settings', JSON.stringify(settings))
   }
 
@@ -37,16 +37,16 @@ export function App () {
     }
   }
 
-  const handleUpload = async (acceptedFiles: File[]) => {
+  const handleUpload = async (acceptedFiles: File[]): Promise<void> => {
     const r = await loadFiles(acceptedFiles)
     setRoster(r)
   }
 
-  const handleClose = () => {
+  const handleClose = (): void => {
     setRoster(null)
   }
 
-  const handleSelectionChanged = (uuid: string, selectedCount: number) => {
+  const handleSelectionChanged = (uuid: string, selectedCount: number): void => {
     if ((roster != null) && isRosterKT18(roster)) {
       setRoster(Object.assign({
         models: roster.models.map((model) => (

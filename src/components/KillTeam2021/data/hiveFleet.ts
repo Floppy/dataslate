@@ -10,7 +10,7 @@ const strategicPloys: Ploy[] = [
   {
     name: 'Stalk',
     cost: 1,
-    description: 'One friendly HIVE FLEET💀 operative that has a Conceal order and is more than ■ from enemy operatives can perform a free Normal Move action.'
+    description: 'One friendly HIVE FLEET💀 operative that has a Conceal order and is more than ■ from enemy operatives can perform a free **Normal Move** action.'
   }, {
     name: 'Lurk',
     cost: 1,

@@ -31,3 +31,8 @@ jobs:
         CI: true
       with:
         cmd: test
+    - uses: borales/actions-yarn@v2.1.0
+      env:
+        CI: true
+      with:
+        cmd: build

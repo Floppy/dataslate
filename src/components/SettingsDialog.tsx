@@ -9,8 +9,8 @@ interface Props {
   setSettings: (settings: Settings) => void
 }
 
-function SettingsDialog (props: Props) {
-  const handleWoundTrackChange = (event: any) => {
+function SettingsDialog (props: Props): JSX.Element {
+  const handleWoundTrackChange = (event: any): void => {
     const target = event.target
     const showWoundTrack: boolean = target.checked
     const newSettings = {

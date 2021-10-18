@@ -8,7 +8,7 @@ interface Props {
   powers: PsychicPower[]
 }
 
-export function PowerList (props: Props) {
+export function PowerList (props: Props): JSX.Element {
   return (
     <Row xs={1} sm={2} md={3} className='g-4'>
       {_.sortBy(props.powers, ['name']).map((x: PsychicPower) => (
