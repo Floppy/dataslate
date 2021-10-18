@@ -19,6 +19,7 @@ interface Props {
   onClose: (event: MouseEvent<HTMLButtonElement>) => void
   isRoster?: boolean
   showWoundTrack: boolean
+  printRosterList: boolean
 }
 
 const groupByDatacard = (operatives: Operative[], selectedOperatives: string[]): Datacard[] => {
@@ -52,6 +53,8 @@ export function Roster (props: Props) {
     setDataCards(groupByDatacard(props.operatives, selectedOperatives))
   }, [props.operatives, selectedOperatives])
 
+  const rosterClassName = props.printRosterList ? '' : 'noprint'
+
   return (
     <>
       <h1 style={headingStyle}>
@@ -63,7 +66,7 @@ export function Roster (props: Props) {
         </Col>
       </h1>
       {(props.isRoster ?? false) && (
-        <Card>
+        <Card className={rosterClassName}>
           <Card.Header style={{ ...headingStyle, breakBefore: 'always' }} as='h2'>Roster</Card.Header>
           <Card.Body>
             <RosterSelection operatives={props.operatives} selectedOperatives={selectedOperatives} setSelectedOperatives={updateSelectedOperatives} />

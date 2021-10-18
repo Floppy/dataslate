@@ -54,7 +54,7 @@ export function RosterSelection (props: Props) {
       <tbody>
         {props.operatives.map((op, index) => {
           const selected = props.selectedOperatives.includes(op.id)
-          const className = selected ? '' : 'excluded'
+          const className = selected ? '' : 'unselected'
           return (
             <tr
               key={index} onClick={(event) => { props.setSelectedOperatives(flipSelection(props.selectedOperatives, op.id)) }}

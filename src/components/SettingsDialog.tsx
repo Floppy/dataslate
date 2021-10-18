@@ -15,7 +15,17 @@ function SettingsDialog (props: Props) {
     const showWoundTrack: boolean = target.checked
     const newSettings = {
       ...props.settings,
-      showWoundTrack: showWoundTrack
+      showWoundTrack
+    }
+    props.setSettings(newSettings)
+  }
+
+  const handlePrintRosterChange = (event: any) => {
+    const target = event.target
+    const printRosterList: boolean = target.checked
+    const newSettings = {
+      ...props.settings,
+      printRosterList
     }
     props.setSettings(newSettings)
   }
@@ -42,6 +52,13 @@ function SettingsDialog (props: Props) {
                 label='Show Wound Track'
                 onChange={handleWoundTrackChange}
                 checked={props.settings.showWoundTrack}
+              />
+              <Form.Check
+                type='checkbox'
+                id='printRosterList'
+                label='Print Roster List'
+                onChange={handlePrintRosterChange}
+                checked={props.settings.printRosterList}
               />
             </Form>
           </Row>
