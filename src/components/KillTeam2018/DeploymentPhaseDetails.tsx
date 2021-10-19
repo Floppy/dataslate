@@ -20,5 +20,5 @@ export function DeploymentPhaseDetails (props: Props): JSX.Element {
 }
 
 export function hasDeploymentPhase (model: Model): boolean {
-  return ((model.abilities.filter((x) => ((x.phases != null) && x.phases.includes('deployment')))).length > 0)
+  return ((model.abilities.filter((x) => (x.phases?.includes('deployment')))).length > 0)
 }

@@ -20,5 +20,5 @@ export function ScoutingPhaseDetails (props: Props): JSX.Element {
 }
 
 export function hasScoutingPhase (model: Model): boolean {
-  return ((model.abilities.filter((x) => ((x.phases != null) && x.phases.includes('scouting')))).length > 0)
+  return ((model.abilities.filter((x) => (x.phases?.includes('scouting')))).length > 0)
 }

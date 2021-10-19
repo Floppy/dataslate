@@ -47,7 +47,7 @@ export function ModelTitle (props: Props): JSX.Element {
         <Col style={{ flexGrow: 0 }}>
           <ReactBootstrapSlider
             value={props.selected}
-            slideStop={(x: any) => (props.onSelectionChanged != null) && props.onSelectionChanged(props.uuid, x.target.value)}
+            slideStop={(x: any) => props.onSelectionChanged?.(props.uuid, x.target.value)}
             step={1}
             max={props.count}
             min={0}
