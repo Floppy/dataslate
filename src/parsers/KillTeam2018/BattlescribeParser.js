@@ -39,6 +39,7 @@ const parseForceRule = (rule) => {
 const parseAbility = (ability) => {
   const description = xpath(".//roster:characteristic[@name='Description']", ability)[0].childNodes[0].nodeValue
   return {
+    id: xpath('string(@id)', ability, true).toString(),
     name: ability.getAttribute('name'),
     description,
     phases: calculatePhases(description)
@@ -61,6 +62,7 @@ const parseWeapon = (weapon, userStrength) => {
   let weaponType = weaponStat('Type', weapon, false)
   if (weaponType !== 'Melee') { weaponType = weaponType.split(' ').slice(0, -1).join(' ') }
   return {
+    id: xpath('string(@id)', weapon, true).toString(),
     name: weapon.getAttribute('name'),
     range: weaponStat('Range', weapon, true),
     type: weaponType,
@@ -75,6 +77,7 @@ const parseWeapon = (weapon, userStrength) => {
 const parseWargear = (wargear) => {
   const description = xpath(".//roster:characteristic[@name='Ability']", wargear)[0].childNodes[0].nodeValue
   return {
+    id: xpath('string(@id)', wargear, true).toString(),
     name: wargear.getAttribute('name'),
     description,
     phases: calculatePhases(description)
@@ -90,6 +93,7 @@ const parsePsychicPower = (power) => {
     description = warpChargeDescription[2]
   }
   return {
+    id: xpath('string(@id)', power, true).toString(),
     name: power.getAttribute('name'),
     charge,
     description
@@ -135,6 +139,7 @@ const parseModel = (model) => {
   const keywords = xpath("roster:categories/roster:category[@primary='false' and not(starts-with(@name,'Faction: '))]", model).map((x) => x.getAttribute('name'))
   _.remove(keywords, (x) => (x === 'Model'))
   const details = {
+    id: model.getAttribute('id'),
     name: model.getAttribute('customName'),
     type: model.getAttribute('name'),
     category: category === 'Non-specialist' ? null : category,

@@ -20,6 +20,7 @@ export function KeywordList (props: Props): JSX.Element {
         </Badge> : <></>}
       {props.keywords.map((keyword: string) => (
         <Badge
+          key={`keyword-${keyword}`}
           pill variant='secondary' className='mb-2' style={{
             textTransform: 'uppercase',
             marginRight: '10px'

@@ -54,6 +54,7 @@ const tacOps: TacOp[] = [
                  Your opponent selects one terrain feature that includes any parts with the Heavy trait to be their bulwark.
   - If a friendly operative performs the **'Blow it up!'** action, you score 2VPs`,
     action: {
+      id: 'c5599e16-997d-47e9-ae64-7cdc8cd6d123',
       name: 'Blow it up!',
       cost: 2,
       description: `An operative can perform this action while within ▲ of your opponent's bulwark. An operative cannot perform this action while within ⬤ of enemy operatives.

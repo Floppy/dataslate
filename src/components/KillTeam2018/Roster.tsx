@@ -52,7 +52,7 @@ export function Roster (props: Props): JSX.Element {
       <>
         <AbilityList abilities={props.forceRules} phase='' highlight />
         {sortedModels.map((model: Model) => (
-          <NoPhaseDetails model={model} onSelectionChanged={props.onSelectionChanged} />
+          <NoPhaseDetails key={model.name} model={model} onSelectionChanged={props.onSelectionChanged} />
         ))}
       </>
       {_.some(selectedModels, hasScoutingPhase) &&
@@ -61,7 +61,7 @@ export function Roster (props: Props): JSX.Element {
             <AbilityList abilities={props.forceRules} phase='scouting' highlight />
             {selectedModels.map((model: Model) => (
               hasScoutingPhase(model) &&
-                <ScoutingPhaseDetails model={model} />
+                <ScoutingPhaseDetails key={model.name} model={model} />
             ))}
           </>
         </Phase>}
@@ -71,7 +71,7 @@ export function Roster (props: Props): JSX.Element {
             <AbilityList abilities={props.forceRules} phase='deployment' highlight />
             {selectedModels.map((model: Model) => (
               hasDeploymentPhase(model) &&
-                <DeploymentPhaseDetails model={model} />
+                <DeploymentPhaseDetails key={model.name} model={model} />
             ))}
           </>
         </Phase>}
@@ -81,7 +81,7 @@ export function Roster (props: Props): JSX.Element {
             <AbilityList abilities={props.forceRules} phase='initiative' highlight />
             {selectedModels.map((model: Model) => (
               hasInitiativePhase(model) &&
-                <InitiativePhaseDetails model={model} />
+                <InitiativePhaseDetails key={model.name} model={model} />
             ))}
           </>
         </Phase>}
@@ -89,7 +89,7 @@ export function Roster (props: Props): JSX.Element {
         <>
           <AbilityList abilities={props.forceRules} phase='movement' highlight />
           {selectedModels.map((model: Model) => (
-            <MovementPhaseDetails model={model} />
+            <MovementPhaseDetails key={model.name} model={model} />
           ))}
         </>
       </Phase>
@@ -99,7 +99,7 @@ export function Roster (props: Props): JSX.Element {
             <AbilityList abilities={props.forceRules} phase='psychic' highlight />
             {selectedModels.map((model: Model) => (
               hasPsychicPhase(model) &&
-                <PsychicPhaseDetails model={model} />
+                <PsychicPhaseDetails key={model.name} model={model} />
             ))}
           </>
         </Phase>}
@@ -107,7 +107,7 @@ export function Roster (props: Props): JSX.Element {
         <>
           <AbilityList abilities={props.forceRules} phase='shooting' highlight />
           {selectedModels.map((model: Model) => (
-            <ShootingPhaseDetails model={model} />
+            <ShootingPhaseDetails key={model.name} model={model} />
           ))}
         </>
       </Phase>
@@ -115,7 +115,7 @@ export function Roster (props: Props): JSX.Element {
         <>
           <AbilityList abilities={props.forceRules} phase='fight' highlight />
           {selectedModels.map((model: Model) => (
-            <FightPhaseDetails model={model} />
+            <FightPhaseDetails key={model.name} model={model} />
           ))}
         </>
       </Phase>
@@ -123,7 +123,7 @@ export function Roster (props: Props): JSX.Element {
         <>
           <AbilityList abilities={props.forceRules} phase='morale' highlight />
           {selectedModels.map((model: Model) => (
-            <MoralePhaseDetails model={model} />
+            <MoralePhaseDetails key={model.name} model={model} />
           ))}
         </>
       </Phase>

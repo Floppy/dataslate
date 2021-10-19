@@ -19,7 +19,7 @@ function PsychicPowerList (props: Props): JSX.Element {
       </thead>
       <tbody>
         {_.sortBy(props.powers, ['name']).map((x: PsychicPower) => (
-          <tr>
+          <tr key={x.id}>
             <td>{x.name}</td>
             <td>{x.charge}</td>
             <td>{x.description}</td>

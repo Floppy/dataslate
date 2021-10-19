@@ -16,6 +16,7 @@ const stat = (name: string, model: Element): number => {
 
 const parseWeapon = (weapon: Node): Weapon => {
   return {
+    id: xpSelect('string(@id)', weapon, true).toString(),
     name: xpSelect('string(@name)', weapon, true).toString(),
     melee: xpSelect('string(@name)', weapon, true).toString().startsWith('⚔'),
     attacks: parseInt(xpSelect(".//bs:characteristic[@name='A']/text()", weapon, true).toString()),
@@ -29,6 +30,7 @@ const parseWeapon = (weapon: Node): Weapon => {
 
 const parseAbility = (ability: Node): Ability => {
   return {
+    id: xpSelect('string(@id)', ability, true).toString(),
     name: xpSelect('string(@name)', ability, true).toString(),
     description: (xpSelect(".//bs:characteristic[@name='Ability']/text()", ability, true) ?? '-').toString(),
     phases: []
@@ -39,6 +41,7 @@ const parsePsychicPower = (power: Node): PsychicPower => {
   const name = xpSelect('string(@name)', power, true).toString()
   const weap = xpSelect("..//bs:profile[@typeName='Weapons']", power, true) as Node
   return {
+    id: xpSelect('string(@id)', power, true).toString(),
     name,
     description: (xpSelect(".//bs:characteristic[@name='Effect']/text()", power, true) ?? '-').toString(),
     weapon: weap !== null ? parseWeapon(weap) : null
@@ -47,6 +50,7 @@ const parsePsychicPower = (power: Node): PsychicPower => {
 
 const parseAction = (action: Node): Action => {
   return {
+    id: xpSelect('string(@id)', action, true).toString(),
     name: xpSelect('string(@name)', action, true).toString(),
     description: (xpSelect(".//bs:characteristic[@name='Unique Action']/text()", action, true) ?? '-').toString(),
     cost: 1
@@ -56,6 +60,7 @@ const parseAction = (action: Node): Action => {
 const parseEquipment = (equipment: Node): Equipment => {
   const description = xpSelect(".//bs:characteristic[@name='Equipment']/text()", equipment, true)
   return {
+    id: xpSelect('string(@id)', equipment, true).toString(),
     name: xpSelect('string(@name)', equipment, true).toString(),
     cost: parseInt(xpSelect('string(.//bs:cost/@value)', equipment, true).toString()),
     description: description?.toString()
@@ -64,6 +69,7 @@ const parseEquipment = (equipment: Node): Equipment => {
 
 const parseRule = (rule: Node): Ability => {
   return {
+    id: xpSelect('string(@id)', rule, true).toString(),
     name: xpSelect('string(@name)', rule, true).toString(),
     description: (xpSelect('.//bs:description/text()', rule, true) ?? '-').toString(),
     phases: []
@@ -99,6 +105,7 @@ const parseOperative = (model: Element): Operative => {
   const faction = _.intersection(allKeywords, factionKeywords).pop() ?? allKeywords.find((k) => (k === k.toUpperCase())) ?? null
   const keywords = _.remove(allKeywords, (x) => (x !== faction))
   const details = {
+    id: xpSelect('string(@id)', model, true).toString(),
     datacard: xpSelect('string(@name)', model, true).toString(),
     name: xpSelect('string(@customName)', model, true).toString(),
     stats: {

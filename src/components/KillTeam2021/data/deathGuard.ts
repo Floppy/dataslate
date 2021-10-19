@@ -42,6 +42,7 @@ const tacticalPloys: Ploy[] = [
     cost: 1,
     description: 'Use this Tactical Ploy when a friendly BUBONIC ASTARTES operative is activated. Until the end of that operative\'s activation, it can perform the following action:',
     action: {
+      id: '037a26a5-0373-4ec0-a2d5-b7e4f7a6f7b3',
       name: 'Dig In',
       cost: 1,
       description: 'Until the end of the Turning Point, add 1 to this operative\'s Defence characteristic.'

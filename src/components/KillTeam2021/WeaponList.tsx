@@ -23,7 +23,7 @@ export function WeaponList (props: Props): JSX.Element {
         </thead>
         <tbody>
           {props.weapons.map((x: Weapon) => (
-            <tr>
+            <tr key={x.id}>
               <td>{x.name}</td>
               <td>{x.attacks}</td>
               <td>{x.hit}+</td>

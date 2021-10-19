@@ -12,7 +12,7 @@ export function ActionList (props: Props): JSX.Element {
   return (
     <>
       {_.sortBy(props.actions, ['name']).map((x: Action) => (
-        <Card border='primary' bg='light'>
+        <Card key={x.id} border='primary' bg='light'>
           <Card.Header style={{ background: '#FF6F2D', color: 'white' }} as='h4'>
             {x.name}
           </Card.Header>

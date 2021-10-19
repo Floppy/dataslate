@@ -25,7 +25,7 @@ function AbilityList (props: Props): JSX.Element {
       </thead>
       <tbody>
         {_.sortBy(abilities, ['name']).map((x: Ability) => (
-          <tr>
+          <tr key={x.id}>
             <td>{x.name}</td>
             <td>{x.description}</td>
           </tr>

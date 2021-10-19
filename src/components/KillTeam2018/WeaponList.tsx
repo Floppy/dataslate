@@ -30,7 +30,7 @@ function WeaponList (props: Props): JSX.Element {
       </thead>
       <tbody>
         {_.sortBy(weapons, ['name']).map((x: Weapon) => (
-          <tr>
+          <tr key={x.id}>
             <td style={{ whiteSpace: 'nowrap' }}>{x.name}</td>
             {props.phase === 'shooting' && <td>{x.range}&quot;</td>}
             {props.phase === 'shooting' && <td style={{ whiteSpace: 'nowrap' }}>{x.type}</td>}
