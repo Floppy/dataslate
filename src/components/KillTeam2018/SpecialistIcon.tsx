@@ -5,7 +5,7 @@ interface Props {
 }
 
 export function SpecialistIcon (props: Props): JSX.Element {
-  return (props.specialism
+  return (props.specialism !== ''
     ? <img className='specialism' style={{ height: '1em', marginRight: '10px' }} alt={props.specialism} src={`/icons/${props.specialism.toLowerCase()}.svg`} />
     : <></>
   )

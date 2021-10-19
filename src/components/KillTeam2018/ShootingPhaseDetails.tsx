@@ -25,7 +25,7 @@ export function ShootingPhaseDetails (props: Props): JSX.Element {
       </Col>
       <Col sm='1' className='px-1'>
         <StatBadge name='Sv' value={`${props.model.stats.save}`} secondaryValue='+' />
-        {props.model.stats.invulnerable_save
+        {props.model.stats.invulnerable_save > 0
           ? <StatBadge name='Inv' value={`${props.model.stats.invulnerable_save}`} secondaryValue='+' />
           : <></>}
       </Col>

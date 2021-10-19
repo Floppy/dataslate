@@ -20,13 +20,13 @@ export function FightPhaseDetails (props: Props): JSX.Element {
         <AbilityList abilities={props.model.abilities} phase='fight' />
       </Col>
       <Col sm='1' className='px-1'>
-        <StatBadge name='A' value={`${props.model.stats.attacks}`} secondaryValue={props.model.stats.additional_attacks ? `+${props.model.stats.additional_attacks}` : null} />
+        <StatBadge name='A' value={`${props.model.stats.attacks}`} secondaryValue={props.model.stats.additional_attacks > 0 ? `+${props.model.stats.additional_attacks}` : null} />
         <StatBadge name='T' value={`${props.model.stats.toughness}`} />
       </Col>
       <Col sm='1' className='px-1'>
         <StatBadge name='WS' value={`${props.model.stats.weapon_skill}`} secondaryValue='+' />
         <StatBadge name='Sv' value={`${props.model.stats.save}`} secondaryValue='+' />
-        {props.model.stats.invulnerable_save
+        {props.model.stats.invulnerable_save > 0
           ? <StatBadge name='Inv' value={`${props.model.stats.invulnerable_save}`} secondaryValue='+' />
           : <></>}
       </Col>

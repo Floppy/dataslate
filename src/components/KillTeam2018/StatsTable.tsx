@@ -42,11 +42,11 @@ function StatsTable (props: Props): JSX.Element {
           <td>{props.toughness}</td>
           <td>{props.wounds}</td>
           <td>{props.attacks}
-            {props.additional_attacks ? <strong>{' +'}{props.additional_attacks}</strong> : null}
+            {props.additional_attacks > 0 ? <strong>{' +'}{props.additional_attacks}</strong> : null}
           </td>
           <td>{props.leadership}</td>
           <td>{props.save}+
-            {props.invulnerable_save ? <>{' / '}<strong>{props.invulnerable_save}++</strong></> : null}
+            {props.invulnerable_save > 0 ? <>{' / '}<strong>{props.invulnerable_save}++</strong></> : null}
           </td>
           <td>{props.points}</td>
         </tr>

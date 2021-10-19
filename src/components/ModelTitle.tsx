@@ -35,8 +35,8 @@ export function ModelTitle (props: Props): JSX.Element {
   return (
     <h3 style={headingStyle}>
       <Col>
-        {props.category !== null && props.specialism !== null && (props.category === 'Specialist' || props.category === 'Specialist Retainer') && <SpecialistIcon specialism={props.specialism} />}
-        {props.category !== null && <CategoryIcon category={props.category} />}
+        {props.category !== null && props.category !== undefined && props.specialism !== null && props.specialism !== undefined && (props.category === 'Specialist' || props.category === 'Specialist Retainer') && <SpecialistIcon specialism={props.specialism} />}
+        {props.category !== null && props.category !== undefined && <CategoryIcon category={props.category} />}
         {props.selected > 1 && (
           <small>{props.selected} × </small>
         )}
