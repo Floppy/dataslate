@@ -143,7 +143,7 @@ export const parseBattlescribeXML = (doc: Document): Roster => {
   const counts: { [key: string]: number } = {}
   for (const o of operatives) {
     if (o.name === '') {
-      if (counts[o.datacard] === null) {
+      if (counts[o.datacard] === undefined) {
         counts[o.datacard] = 0
       }
       o.name = o.datacard + ' ' + romanNumerals[counts[o.datacard]++]
