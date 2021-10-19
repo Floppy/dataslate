@@ -152,7 +152,7 @@ export const parseBattlescribeXML = (doc: Document): Roster => {
       o.name = o.datacard + ' ' + romanNumerals[counts[o.datacard]++]
     }
   }
-  console.log(`Is Roster? ${isRoster}`)
+
   return {
     system: 'KillTeam2021',
     name,
