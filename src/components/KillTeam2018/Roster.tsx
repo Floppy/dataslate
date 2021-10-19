@@ -21,7 +21,7 @@ interface Props {
   models: Model[]
   forceRules: Ability[]
   onClose: (event: MouseEvent<HTMLButtonElement>) => void
-  onSelectionChanged: (uuid: string, value: number) => void,
+  onSelectionChanged: (uuid: string, value: number) => void
 }
 
 export function Roster (props: Props): JSX.Element {

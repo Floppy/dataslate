@@ -7,7 +7,7 @@ import _ from 'lodash'
 
 interface Props {
   showSelector?: boolean
-  onSelectionChanged?: (uuid: string, value: number) => void,
+  onSelectionChanged?: (uuid: string, value: number) => void
   selected: number
   count: number
   uuid: string
