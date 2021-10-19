@@ -20,7 +20,7 @@ function SettingsDialog (props: Props): JSX.Element {
     props.setSettings(newSettings)
   }
 
-  const handlePrintRosterChange = (event: any) => {
+  const handlePrintRosterChange = (event: any): void => {
     const target = event.target
     const printRosterList: boolean = target.checked
     const newSettings = {

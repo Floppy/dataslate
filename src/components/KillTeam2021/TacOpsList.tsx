@@ -11,7 +11,7 @@ export function TacOpsList (props: Props): JSX.Element {
   return (
     <Row xs={1} sm={2} md={3} className='g-4'>
       {props.tacOps.map((x: TacOp) => (
-        <Col>
+        <Col key={x.id}>
           <Card border='info' bg='light'>
             <Card.Header style={{ background: '#17a2b8', color: 'white', display: 'flex', justifyContent: 'space-between' }} as='h4'>
               <span>Tac Op {x.id}</span>
