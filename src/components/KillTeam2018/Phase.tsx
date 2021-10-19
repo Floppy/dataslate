@@ -25,7 +25,7 @@ function Phase (props: Props): JSX.Element {
           {props.name} Phase
         </Col>
         <Col style={{ flexGrow: 0, textAlign: 'right' }}>
-          {props.note && (
+          {props.note !== null && (
             <small>{props.note}</small>
           )}
         </Col>

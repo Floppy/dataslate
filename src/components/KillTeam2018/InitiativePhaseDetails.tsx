@@ -20,5 +20,5 @@ export function InitiativePhaseDetails (props: Props): JSX.Element {
 }
 
 export function hasInitiativePhase (model: Model): boolean {
-  return ((model.abilities.filter((x) => ((x.phases != null) && x.phases.includes('initiative')))).length > 0)
+  return ((model.abilities.filter((x) => (x.phases?.includes('initiative')))).length > 0)
 }

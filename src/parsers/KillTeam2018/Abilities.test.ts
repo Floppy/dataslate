@@ -3,12 +3,14 @@ import _ from 'lodash'
 import parse from 'csv-parse/lib/sync'
 import fs from 'fs'
 
+const compareFn = (a, b): number => a.localeCompare(b)
+
 const abilities = parse(fs.readFileSync('abilities.csv'), {
   columns: true,
   skip_empty_lines: true
 })
 _.forEach(abilities, (a) => {
-  describe(`for the ability "${a.ability}"`, () => {
+  describe(`for the ability "${a.ability as string}"`, () => {
     it('works out correct phases', () => {
       const phases = calculatePhases(a.ability)
       const expectedPhases = []
@@ -24,15 +26,15 @@ _.forEach(abilities, (a) => {
       }, (value, key) => {
         if (value) { expectedPhases.push(key) }
       })
-      expect(phases.sort()).toEqual(expectedPhases.sort())
+      expect(phases.sort(compareFn)).toEqual(expectedPhases.sort(compareFn))
     })
 
     it('works out correct additional attacks', () => {
-      expect(parseAdditionalAttacks(a.ability)).toEqual(parseInt(a.A) || 0)
+      expect(parseAdditionalAttacks(a.ability)).toEqual(parseInt(a.A) ?? 0)
     })
 
     it('works out correct invulnerable save', () => {
-      expect(invulnerableSave([{ description: a.ability }])).toEqual(parseInt(a.Inv) || undefined)
+      expect(invulnerableSave([{ description: a.ability }])).toEqual(parseInt(a.Inv) ?? undefined)
     })
   })
 })
@@ -42,7 +44,7 @@ const rules = parse(fs.readFileSync('rules.csv'), {
   skip_empty_lines: true
 })
 _.forEach(rules, (a) => {
-  describe(`for the rules "${a.ability}"`, () => {
+  describe(`for the rules "${a.ability as string}"`, () => {
     it('works out correct phases', () => {
       const phases = calculatePhases(a.ability)
       const expectedPhases = []
@@ -58,7 +60,7 @@ _.forEach(rules, (a) => {
       }, (value, key) => {
         if (value) { expectedPhases.push(key) }
       })
-      expect(phases.sort()).toEqual(expectedPhases.sort())
+      expect(phases.sort(compareFn)).toEqual(expectedPhases.sort(compareFn))
     })
   })
 })

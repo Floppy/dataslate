@@ -9,28 +9,30 @@ const xpSelect = XPath.useNamespaces({ bs: 'http://www.battlescribe.net/schema/r
 
 const stat = (name: string, model: Element): number => {
   const node = xpSelect(`bs:profiles/bs:profile[@typeName='Operative']//bs:characteristic[@name='${name}']/text()`, model, true)
-  if (node) {
+  if (node !== null) {
     return parseInt(node.toString())
   } else { return 0 }
 }
 
 const parseWeapon = (weapon: Node): Weapon => {
   return {
+    id: xpSelect('string(@id)', weapon, true).toString(),
     name: xpSelect('string(@name)', weapon, true).toString(),
     melee: xpSelect('string(@name)', weapon, true).toString().startsWith('⚔'),
     attacks: parseInt(xpSelect(".//bs:characteristic[@name='A']/text()", weapon, true).toString()),
     hit: parseInt(xpSelect(".//bs:characteristic[@name='WS/BS']/text()", weapon, true).toString()),
     damage: parseInt(xpSelect(".//bs:characteristic[@name='D']/text()", weapon, true).toString().split('/')[0]),
-    specialRules: (xpSelect(".//bs:characteristic[@name='SR']/text()", weapon, true) || '-').toString(),
+    specialRules: (xpSelect(".//bs:characteristic[@name='SR']/text()", weapon, true) ?? '-').toString(),
     criticalDamage: parseInt(xpSelect(".//bs:characteristic[@name='D']/text()", weapon, true).toString().split('/')[1]),
-    criticalRules: (xpSelect(".//bs:characteristic[@name='!']/text()", weapon, true) || '-').toString()
+    criticalRules: (xpSelect(".//bs:characteristic[@name='!']/text()", weapon, true) ?? '-').toString()
   }
 }
 
 const parseAbility = (ability: Node): Ability => {
   return {
+    id: xpSelect('string(@id)', ability, true).toString(),
     name: xpSelect('string(@name)', ability, true).toString(),
-    description: (xpSelect(".//bs:characteristic[@name='Ability']/text()", ability, true) || '-').toString(),
+    description: (xpSelect(".//bs:characteristic[@name='Ability']/text()", ability, true) ?? '-').toString(),
     phases: []
   }
 }
@@ -39,16 +41,18 @@ const parsePsychicPower = (power: Node): PsychicPower => {
   const name = xpSelect('string(@name)', power, true).toString()
   const weap = xpSelect("..//bs:profile[@typeName='Weapons']", power, true) as Node
   return {
+    id: xpSelect('string(@id)', power, true).toString(),
     name,
-    description: (xpSelect(".//bs:characteristic[@name='Effect']/text()", power, true) || '-').toString(),
-    weapon: weap ? parseWeapon(weap) : null
+    description: (xpSelect(".//bs:characteristic[@name='Effect']/text()", power, true) ?? '-').toString(),
+    weapon: weap !== null ? parseWeapon(weap) : null
   }
 }
 
 const parseAction = (action: Node): Action => {
   return {
+    id: xpSelect('string(@id)', action, true).toString(),
     name: xpSelect('string(@name)', action, true).toString(),
-    description: (xpSelect(".//bs:characteristic[@name='Unique Action']/text()", action, true) || '-').toString(),
+    description: (xpSelect(".//bs:characteristic[@name='Unique Action']/text()", action, true) ?? '-').toString(),
     cost: 1
   }
 }
@@ -56,16 +60,18 @@ const parseAction = (action: Node): Action => {
 const parseEquipment = (equipment: Node): Equipment => {
   const description = xpSelect(".//bs:characteristic[@name='Equipment']/text()", equipment, true)
   return {
+    id: xpSelect('string(@id)', equipment, true).toString(),
     name: xpSelect('string(@name)', equipment, true).toString(),
     cost: parseInt(xpSelect('string(.//bs:cost/@value)', equipment, true).toString()),
-    description: description ? description.toString() : null
+    description: description?.toString()
   }
 }
 
 const parseRule = (rule: Node): Ability => {
   return {
+    id: xpSelect('string(@id)', rule, true).toString(),
     name: xpSelect('string(@name)', rule, true).toString(),
-    description: (xpSelect('.//bs:description/text()', rule, true) || '-').toString(),
+    description: (xpSelect('.//bs:description/text()', rule, true) ?? '-').toString(),
     phases: []
   }
 }
@@ -95,8 +101,8 @@ const factionKeywords = [
 ]
 
 const parseOperative = (model: Element): Operative => {
-  const allKeywords = (xpSelect(".//bs:categories/bs:category[@primary='false']/@name", model) as Node[]).map((x) => (x.textContent || '').replace('💀', ''))
-  const faction = _.intersection(allKeywords, factionKeywords).pop() || allKeywords.find((k) => (k === k.toUpperCase())) || null
+  const allKeywords = (xpSelect(".//bs:categories/bs:category[@primary='false']/@name", model) as Node[]).map((x) => (x.textContent ?? '').replace('💀', ''))
+  const faction = _.intersection(allKeywords, factionKeywords).pop() ?? allKeywords.find((k) => (k === k.toUpperCase())) ?? null
   const keywords = _.remove(allKeywords, (x) => (x !== faction))
   const details = {
     id: xpSelect('string(@id)', model, true).toString(),
@@ -146,7 +152,7 @@ export const parseBattlescribeXML = (doc: Document): Roster => {
   const counts: { [key: string]: number } = {}
   for (const o of operatives) {
     if (o.name === '') {
-      if (!counts[o.datacard]) {
+      if (counts[o.datacard] === undefined) {
         counts[o.datacard] = 0
       }
       o.name = o.datacard + ' ' + romanNumerals[counts[o.datacard]++]

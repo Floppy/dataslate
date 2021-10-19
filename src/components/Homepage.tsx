@@ -13,8 +13,6 @@ interface Props {
   setSettings: (settings: Settings) => void
 }
 
-const GIT_SHA = process.env.REACT_APP_GIT_SHA ?? ''
-
 function fileDropZone (props: Props): JSX.Element {
   return (
     <Dropzone onDrop={props.onUpload} accept='.ros,.rosz'>
@@ -91,7 +89,7 @@ function Homepage (props: Props): JSX.Element {
         Icons courtesy of <a href='https://killteam.app/'>Companion for Kill Team</a>.
         Released as <a href='https://github.com/floppy/dataslate'>Open Source</a>,
         report problems <a href='https://github.com/floppy/dataslate/issues/new'>on GitHub</a>.
-        Version: <em><a {...{ href: `https://github.com/floppy/dataslate/tree/${GIT_SHA}` }}>{GIT_SHA}</a></em>
+        Version: <em><a {...{ href: `https://github.com/floppy/dataslate/tree/${process.env.REACT_APP_GIT_SHA !== undefined ? process.env.REACT_APP_GIT_SHA : ''}` }}>{process.env.REACT_APP_GIT_SHA}</a></em>
       </footer>
     </>
   )

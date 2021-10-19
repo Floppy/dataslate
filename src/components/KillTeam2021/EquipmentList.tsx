@@ -15,9 +15,9 @@ export function EquipmentList (props: Props): JSX.Element {
       </Card.Header>
       <Card.Body>
         {props.equipment.map((x: Equipment) => (
-          <p>
+          <p key={x.id}>
             <strong>{x.name} ({x.cost} EP)</strong>
-            {x.description
+            {x.description !== null
               ? <><strong>: </strong><HighlightedText>{x.description}</HighlightedText></>
               : <></>}
           </p>

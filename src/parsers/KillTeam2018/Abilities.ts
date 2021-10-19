@@ -195,7 +195,7 @@ export const parseAdditionalAttacks = (description: string): number => {
       }
       if (match[1] === 'an' || match[1] === 'one') return 1
       if (match[1] === 'two') return 2
-      return parseInt(match[1] || match[2])
+      return parseInt(match[1] ?? match[2])
     }
     return 0
   }))

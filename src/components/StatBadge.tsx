@@ -13,7 +13,7 @@ export function StatBadge (props: Props): JSX.Element {
       <div className='text-light'>{props.name}</div>
       <div className='h1'>
         {props.value}
-        {props.secondaryValue
+        {props.secondaryValue !== null
           ? <small>{props.secondaryValue}</small>
           : <></>}
       </div>

@@ -23,6 +23,7 @@ const strategicPloys: Ploy[] = [
     cost: 1,
     description: 'Until the end of the Turning Point, friendly STEALTH BATTLESUIT operatives can perform the following action:',
     action: {
+      id: 'd914e915-c2e8-410d-bfa1-ca1cca16de7b',
       name: 'Camouflage Field Engagement',
       cost: 1,
       description: 'Change this operative\'s order.'

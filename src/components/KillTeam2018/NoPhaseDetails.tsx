@@ -8,7 +8,7 @@ import { Model } from '../../types/KillTeam2018'
 
 interface Props {
   model: Model
-  onSelectionChanged: (uuid: string, value: number) => void,
+  onSelectionChanged: (uuid: string, value: number) => void
 }
 
 export function NoPhaseDetails (props: Props): JSX.Element {

@@ -13,7 +13,7 @@ export function RuleList (props: Props): JSX.Element {
     <Table striped bordered>
       <tbody>
         {_.sortBy(props.rules, ['name']).map((x: Ability) => (
-          <tr>
+          <tr key={x.id}>
             <td><strong>{x.name}</strong></td>
             <td><HighlightedText>{x.description}</HighlightedText></td>
           </tr>

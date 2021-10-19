@@ -17,7 +17,7 @@ export function WoundTracks (props: Props): JSX.Element {
       </thead>
       <tbody>
         {props.names.map((name) => (
-          <tr>
+          <tr key={name}>
             <td>{name}</td>
             <td>{'□ '.repeat(props.wounds)}</td>
           </tr>

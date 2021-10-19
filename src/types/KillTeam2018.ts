@@ -1,12 +1,14 @@
 import { Ability } from './Ability'
 
 export interface PsychicPower {
+  id: string
   name: string
   charge: number
   description: string
 }
 
 export interface Weapon {
+  id: string
   name: string
   range: number
   type: string
@@ -18,6 +20,7 @@ export interface Weapon {
 }
 
 export interface Wargear {
+  id: string
   name: string
   abilities: string
 }
@@ -37,6 +40,7 @@ export interface ModelStats {
 }
 
 export interface Model {
+  id: string
   uuid: string
   type: string
   name: string

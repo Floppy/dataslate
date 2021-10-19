@@ -11,7 +11,7 @@ export function PloysColumn (props: Props): JSX.Element {
   return (
     <Col>
       {props.ploys.map((x: Ploy) => (
-        <Card border='info' bg='light'>
+        <Card key={x.name} border='info' bg='light'>
           <Card.Header style={{ background: '#17a2b8', color: 'white', display: 'flex', justifyContent: 'space-between' }} as='h4'>
             <span>{x.name}</span>
             <span>{x.cost}CP</span>

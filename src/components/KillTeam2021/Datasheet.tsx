@@ -59,7 +59,7 @@ export function Datasheet (props: Props): JSX.Element {
           </Col>
         </Row>
       </Card.Body>
-      <KeywordList faction={props.datacard.faction ? `${props.datacard.faction} 💀` : null} keywords={props.datacard.keywords} />
+      <KeywordList faction={props.datacard.faction !== null ? `${props.datacard.faction} 💀` : null} keywords={props.datacard.keywords} />
     </Card>
   )
 }

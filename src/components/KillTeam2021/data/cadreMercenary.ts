@@ -18,6 +18,7 @@ const strategicPloys: Ploy[] = [
     cost: 1,
     description: 'Until the end of the Turning Point, friendly KROOT CARNIVORE operatives can perform the following action:',
     action: {
+      id: '01b86b94-ef5f-4b45-99fb-79bb06ae13c1',
       name: 'Fieldcraft',
       cost: 1,
       description: 'Change this operative\'s order.'

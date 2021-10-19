@@ -22,5 +22,5 @@ export function PsychicPhaseDetails (props: Props): JSX.Element {
 }
 
 export function hasPsychicPhase (model: Model): boolean {
-  return (model.psychicPowers.length > 0 || (model.abilities.filter((x) => ((x.phases != null) && x.phases.includes('psychic')))).length > 0)
+  return (model.psychicPowers.length > 0 || (model.abilities.filter((x) => (x.phases?.includes('psychic')))).length > 0)
 }

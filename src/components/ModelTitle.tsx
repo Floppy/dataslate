@@ -7,7 +7,7 @@ import _ from 'lodash'
 
 interface Props {
   showSelector?: boolean
-  onSelectionChanged?: (uuid: string, value: number) => void,
+  onSelectionChanged?: (uuid: string, value: number) => void
   selected: number
   count: number
   uuid: string
@@ -35,19 +35,19 @@ export function ModelTitle (props: Props): JSX.Element {
   return (
     <h3 style={headingStyle}>
       <Col>
-        {props.category && props.specialism && (props.category === 'Specialist' || props.category === 'Specialist Retainer') && <SpecialistIcon specialism={props.specialism} />}
-        {props.category && <CategoryIcon category={props.category} />}
+        {props.category !== null && props.category !== undefined && props.specialism !== null && props.specialism !== undefined && (props.category === 'Specialist' || props.category === 'Specialist Retainer') && <SpecialistIcon specialism={props.specialism} />}
+        {props.category !== null && props.category !== undefined && <CategoryIcon category={props.category} />}
         {props.selected > 1 && (
           <small>{props.selected} × </small>
         )}
         <strong>{titleComponents[0]} </strong>
         <small>{_.join(_.slice(titleComponents, 1), ', ')}</small>
       </Col>
-      {props.showSelector && (
+      {props.showSelector === true && (
         <Col style={{ flexGrow: 0 }}>
           <ReactBootstrapSlider
             value={props.selected}
-            slideStop={(x: any) => (props.onSelectionChanged != null) && props.onSelectionChanged(props.uuid, x.target.value)}
+            slideStop={(x: any) => props.onSelectionChanged?.(props.uuid, x.target.value)}
             step={1}
             max={props.count}
             min={0}

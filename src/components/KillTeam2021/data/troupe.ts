@@ -41,6 +41,7 @@ const tacticalPloys: Ploy[] = [
     cost: 1,
     description: 'Use this Tactical Ploy when a friendly TROUPE💀 operative is activated. Until the end of its activation, it can perform the following action:',
     action: {
+      id: '03faa540-bdfc-423e-a173-035f96aa9fb1',
       name: 'Hero\'s path',
       cost: 3,
       description: 'Move this operative anywhere in the killzone that is more than ⬟ from enemy operatives.'
