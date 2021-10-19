@@ -43,7 +43,7 @@ export function ModelTitle (props: Props): JSX.Element {
         <strong>{titleComponents[0]} </strong>
         <small>{_.join(_.slice(titleComponents, 1), ', ')}</small>
       </Col>
-      {props.showSelector !== null && (
+      {props.showSelector === true && (
         <Col style={{ flexGrow: 0 }}>
           <ReactBootstrapSlider
             value={props.selected}
