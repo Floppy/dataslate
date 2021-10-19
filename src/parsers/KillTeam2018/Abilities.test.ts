@@ -3,7 +3,7 @@ import _ from 'lodash'
 import parse from 'csv-parse/lib/sync'
 import fs from 'fs'
 
-const compareFn = (a, b) => a.localeCompare(b)
+const compareFn = (a, b): number => a.localeCompare(b)
 
 const abilities = parse(fs.readFileSync('abilities.csv'), {
   columns: true,
