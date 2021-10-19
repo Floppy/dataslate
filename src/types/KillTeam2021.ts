@@ -106,10 +106,3 @@ export enum Archetype {
 export interface FireteamArchetypes {
   [key: string]: Archetype[]
 }
-
-export interface FactionSpecificData {
-  name: string
-  strategicPloys: Ploy[]
-  tacticalPloys: Ploy[]
-  archetypes: FireteamArchetypes
-}
