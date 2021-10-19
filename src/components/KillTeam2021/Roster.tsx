@@ -57,13 +57,13 @@ export function Roster (props: Props): JSX.Element {
           <RuleList rules={_.uniqBy(_.flatten(datacards.map((m) => (m.rules))), 'name')} />
         </Card.Body>
       </Card>
-      {props.psychicPowers.length > 0 && <Card>
-        <Card.Header style={{ ...headingStyle }} as='h2'>Psychic Powers</Card.Header>
-        <Card.Body>
-          <PowerList powers={props.psychicPowers} />
-        </Card.Body>
-      </Card>}
-
+      {props.psychicPowers.length > 0 &&
+        <Card>
+          <Card.Header style={{ ...headingStyle }} as='h2'>Psychic Powers</Card.Header>
+          <Card.Body>
+            <PowerList powers={props.psychicPowers} />
+          </Card.Body>
+        </Card>}
       <FactionSpecificData faction={props.faction} fireteams={props.fireteams} />
     </>
   )
