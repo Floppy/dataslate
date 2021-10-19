@@ -22,27 +22,28 @@ export function PowerList (props: Props): JSX.Element {
                 <HighlightedText>{x.description}</HighlightedText>
               </p>
               {(x.weapon != null)
-                ? <Table striped bordered size='sm'>
-                  <thead>
-                    <tr>
-                      <th>A</th>
-                      <th>WS</th>
-                      <th>D</th>
-                      <th>SR</th>
-                      <th>!</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>{x.weapon.attacks}</td>
-                      <td>{x.weapon.hit}+</td>
-                      <td>{x.weapon.damage}/{x.weapon.criticalDamage}</td>
-                      <td><HighlightedText>{x.weapon.specialRules}</HighlightedText></td>
-                      <td><HighlightedText>{x.weapon.criticalRules}</HighlightedText></td>
-                    </tr>
-                  </tbody>
+                ? (
+                  <Table striped bordered size='sm'>
+                    <thead>
+                      <tr>
+                        <th>A</th>
+                        <th>WS</th>
+                        <th>D</th>
+                        <th>SR</th>
+                        <th>!</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>{x.weapon.attacks}</td>
+                        <td>{x.weapon.hit}+</td>
+                        <td>{x.weapon.damage}/{x.weapon.criticalDamage}</td>
+                        <td><HighlightedText>{x.weapon.specialRules}</HighlightedText></td>
+                        <td><HighlightedText>{x.weapon.criticalRules}</HighlightedText></td>
+                      </tr>
+                    </tbody>
                   </Table>
-                : <></>}
+                ) : <></>}
             </Card.Body>
           </Card>
         </Col>
