@@ -35,15 +35,15 @@ export function ModelTitle (props: Props): JSX.Element {
   return (
     <h3 style={headingStyle}>
       <Col>
-        {props.category && props.specialism && (props.category === 'Specialist' || props.category === 'Specialist Retainer') && <SpecialistIcon specialism={props.specialism} />}
-        {props.category && <CategoryIcon category={props.category} />}
+        {props.category !== null && props.specialism !== null && (props.category === 'Specialist' || props.category === 'Specialist Retainer') && <SpecialistIcon specialism={props.specialism} />}
+        {props.category !== null && <CategoryIcon category={props.category} />}
         {props.selected > 1 && (
           <small>{props.selected} × </small>
         )}
         <strong>{titleComponents[0]} </strong>
         <small>{_.join(_.slice(titleComponents, 1), ', ')}</small>
       </Col>
-      {props.showSelector && (
+      {props.showSelector !== null && (
         <Col style={{ flexGrow: 0 }}>
           <ReactBootstrapSlider
             value={props.selected}
