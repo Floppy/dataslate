@@ -24,7 +24,7 @@ const groupByDatacard = (operatives: Operative[]): Datacard[] => {
   return _.map(groupedOperatives, (ops, hash) => ({
     ...ops[0],
     name: ops[0].datacard,
-    operativeNames: ops.map((c) => (c.name)).sort()
+    operativeNames: ops.map((c) => (c.name)).sort((a, b) => a.localeCompare(b))
   }))
 }
 

@@ -3,6 +3,8 @@ import _ from 'lodash'
 import parse from 'csv-parse/lib/sync'
 import fs from 'fs'
 
+const compareFn = (a, b) => a.localeCompare(b)
+
 const abilities = parse(fs.readFileSync('abilities.csv'), {
   columns: true,
   skip_empty_lines: true
@@ -24,7 +26,7 @@ _.forEach(abilities, (a) => {
       }, (value, key) => {
         if (value) { expectedPhases.push(key) }
       })
-      expect(phases.sort()).toEqual(expectedPhases.sort())
+      expect(phases.sort(compareFn)).toEqual(expectedPhases.sort(compareFn))
     })
 
     it('works out correct additional attacks', () => {
@@ -58,7 +60,7 @@ _.forEach(rules, (a) => {
       }, (value, key) => {
         if (value) { expectedPhases.push(key) }
       })
-      expect(phases.sort()).toEqual(expectedPhases.sort())
+      expect(phases.sort(compareFn)).toEqual(expectedPhases.sort(compareFn))
     })
   })
 })
