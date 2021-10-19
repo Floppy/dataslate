@@ -10,7 +10,7 @@ interface Props {
 
 const weaponNames = (weapons: Weapon[]): JSX.Element[] => {
   return weapons.map((weapon, index) => {
-    return <Row key={index}>{weapon.name}</Row>
+    return <Row key={weapon.name}>{weapon.name}</Row>
   })
 }
 
@@ -52,12 +52,12 @@ export function RosterSelection (props: Props) {
         </tr>
       </thead>
       <tbody>
-        {props.operatives.map((op, index) => {
+        {props.operatives.map((op) => {
           const selected = props.selectedOperatives.includes(op.id)
           const className = selected ? '' : 'unselected'
           return (
             <tr
-              key={index} onClick={(event) => { props.setSelectedOperatives(flipSelection(props.selectedOperatives, op.id)) }}
+              key={op.id} onClick={(event) => { props.setSelectedOperatives(flipSelection(props.selectedOperatives, op.id)) }}
               className={className}
             >
               <td>{operativeName(op)}</td>
