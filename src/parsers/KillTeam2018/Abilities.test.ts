@@ -8,7 +8,7 @@ const abilities = parse(fs.readFileSync('abilities.csv'), {
   skip_empty_lines: true
 })
 _.forEach(abilities, (a) => {
-  describe(`for the ability "${a.ability}"`, () => {
+  describe(`for the ability "${a.ability as string}"`, () => {
     it('works out correct phases', () => {
       const phases = calculatePhases(a.ability)
       const expectedPhases = []
@@ -42,7 +42,7 @@ const rules = parse(fs.readFileSync('rules.csv'), {
   skip_empty_lines: true
 })
 _.forEach(rules, (a) => {
-  describe(`for the rules "${a.ability}"`, () => {
+  describe(`for the rules "${a.ability as string}"`, () => {
     it('works out correct phases', () => {
       const phases = calculatePhases(a.ability)
       const expectedPhases = []
