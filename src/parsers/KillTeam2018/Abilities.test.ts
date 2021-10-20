@@ -30,11 +30,11 @@ _.forEach(abilities, (a) => {
     })
 
     it('works out correct additional attacks', () => {
-      expect(parseAdditionalAttacks(a.ability)).toEqual(parseInt(a.A) ?? 0)
+      expect(parseAdditionalAttacks(a.ability)).toEqual(a.A !== '' ? parseInt(a.A) : 0)
     })
 
     it('works out correct invulnerable save', () => {
-      expect(invulnerableSave([{ description: a.ability }])).toEqual(parseInt(a.Inv) ?? undefined)
+      expect(invulnerableSave([{ description: a.ability }])).toEqual(a.Inv !== '' ? parseInt(a.Inv) : undefined)
     })
   })
 })
