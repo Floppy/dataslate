@@ -68,7 +68,7 @@
     "react-test-renderer": "^16.13.1",
     "ts-standard": "^10.0.0"
   },
-  "standard": {
+  "ts-standard": {
     "env": [
       "jest",
       "es6",
@@ -76,7 +76,8 @@
     ],
     "ignore": [
       "build/*",
-      "docs/*"
+      "docs/*",
+      "src/react-app-env.d.ts"
     ]
   },
   "jest": {
