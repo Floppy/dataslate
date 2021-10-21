@@ -1,6 +1,6 @@
 import React from 'react'
 import { Badge } from 'react-bootstrap'
-import { Archetype } from '../../types/KillTeam2021'
+import { Archetype } from '../../../../types/KillTeam2021'
 
 interface Props {
   archetype: Archetype
