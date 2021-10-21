@@ -4,6 +4,7 @@ export interface Action {
   id: string
   name: string
   cost: number
+  intro?: string
   description: string
 }
 
