@@ -76,8 +76,7 @@ export function App (): JSX.Element {
           <Container fluid='lg'>
             {roster === null ? <Homepage onUpload={handleUpload} settings={settings} setSettings={setAndSaveSettings} /> : <></>}
             {(roster != null) && isRosterKT18(roster) ? <RosterView2018 name={roster.name} models={roster.models} onClose={handleClose} forceRules={roster.forceRules} onSelectionChanged={handleSelectionChanged} /> : <></>}
-            {(roster != null) && isRosterKT21(roster) ? <RosterView2021 name={roster.name} operatives={roster.operatives} psychicPowers={roster.psychicPowers} faction={roster.faction} fireteams={roster.fireteams} isRoster={roster.isRoster}
-                                              onClose={handleClose} showWoundTrack={settings.showWoundTrack} printRosterList={settings.printRosterList} rosterSelection={settings.rosterSelection} /> : <></>}
+            {(roster != null) && isRosterKT21(roster) ? <RosterView2021 name={roster.name} operatives={roster.operatives} psychicPowers={roster.psychicPowers} faction={roster.faction} fireteams={roster.fireteams} isRoster={roster.isRoster} onClose={handleClose} showWoundTrack={settings.showWoundTrack} printRosterList={settings.printRosterList} rosterSelection={settings.rosterSelection} /> : <></>}
           </Container>
         </Route>
       </Switch>
