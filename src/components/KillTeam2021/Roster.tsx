@@ -20,6 +20,7 @@ interface Props {
   onClose: (event: MouseEvent<HTMLButtonElement>) => void
   isRoster?: boolean
   showWoundTrack: boolean
+  rosterSelection: boolean
   printRosterList: boolean
 }
 
@@ -66,7 +67,7 @@ export function Roster (props: Props): JSX.Element {
           <CloseButton onClose={props.onClose} />
         </Col>
       </h1>
-      {(props.isRoster ?? false) && (
+      {(props.isRoster ?? false) && (props.rosterSelection) && (
         <Card className={rosterClassName}>
           <Card.Header style={{ ...headingStyle, breakBefore: 'always' }} as='h2'>Roster</Card.Header>
           <Card.Body>
