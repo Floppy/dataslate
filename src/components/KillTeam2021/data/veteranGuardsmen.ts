@@ -24,7 +24,7 @@ const strategicPloys: Ploy[] = [
     name: 'Clear the line',
     cost: 1,
     description: `Until the end of the Turning Point, each time a friendly VETERAN GUARDSMAN💀 operative fights in combat,
-                  before rolling your attack dice for that combat, you can retain one as a successfull normal hit withour rolling it.`
+                  before rolling your attack dice for that combat, you can retain one as a successful normal hit without rolling it.`
   }
 ]
 
@@ -59,7 +59,7 @@ const tacOps: TacOp[] = [{
   id: 2,
   name: 'Stand fast',
   description: `You can reveal this Tac Op in the Reveal Tac Ops step of any Turning Point
-  - At the end of any Turning Point, if friendly operatives control two or more objective markers, and frierndly operatives control more objective markers than enemy operatives, you score 1VP.
+  - At the end of any Turning Point, if friendly operatives control two or more objective markers, and friendly operatives control more objective markers than enemy operatives, you score 1VP.
   - If you achieve the first condition at the end of any subsequent Turning Point, you score an additional 1VP.`
 }, {
   id: 3,
