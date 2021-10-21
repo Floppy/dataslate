@@ -1,4 +1,4 @@
-import {Archetype, FireteamArchetypes, Ploy, TacOp} from '../../../types/KillTeam2021'
+import { Archetype, FireteamArchetypes, Ploy, TacOp } from '../../../types/KillTeam2021'
 
 const archetypes: FireteamArchetypes = {
   // TODO: If kill team includes four or more ARCANA ASTARTES operatives, this kill team has the Security archetype. If your kill team includes five or more
@@ -17,7 +17,7 @@ const strategicPloys: Ploy[] = [
   }, {
     name: 'Psychic Dominion',
     cost: 1,
-    description: `Until the end of the Turning Point, friendly SORCERER operatives can perform the **Manifest Psychic Power** action twice during their activation.`
+    description: 'Until the end of the Turning Point, friendly SORCERER operatives can perform the **Manifest Psychic Power** action twice during their activation.'
   }, {
     name: 'Slow and Purposeful',
     cost: 1,
@@ -65,35 +65,38 @@ const tacOps: TacOp[] = [{
   id: 1,
   name: 'Scry Secret',
   description: `Reveal this Tac Op in the Target Reveal step of the first Turning Point. Your opponent selects one of their operatives to be holding a secret.
-  
-  - If a friendly operative performs the **Scry Secret** action, you score 1VP.
-  - At the end of the battle, if a friendly operative has performed the **Scry Secret** action and has not been incapacitated, you score 1VP.
-  
-  Friendly **SORCERER** operatives can perform the following mission action:
-  
-  **Scry Secret (1AP):** Psychic action. An operative can perform this action while within ⬟ of the enemy operative holding a secret. An operative cannot perform this
+- If a friendly operative performs the **Scry Secret** action, you score 1VP.
+- At the end of the battle, if a friendly operative has performed the **Scry Secret** action and has not been incapacitated, you score 1VP.`,
+  action: {
+    id: '',
+    name: 'Scry Secret',
+    cost: 1,
+    intro: 'Friendly **SORCERER** operatives can perform the following mission action:',
+    description: `Psychic action. An operative can perform this action while within ⬟ of the enemy operative holding a secret. An operative cannot perform this
   action while within Engagement Range of an enemy operative. Your kill team can only perform this action once.`
+  }
 }, {
   id: 2,
   name: 'Sorcerous Ritual',
-    description: `Reveal this Tac Op when a friendly operative performs the **Sorcerous Ritual** action.
+  description: `Reveal this Tac Op when a friendly operative performs the **Sorcerous Ritual** action.
 - If a friendly operative performs the **Sorcerous Ritual** action in two or more Turning Points, you score 1VP.
-- If a friendly operative performs the **Sorcerous Ritual** action in three or more Turning Points, you score 1VP.
-
-Friendly **SORCERER** operatives can perform the following mission action:
-
-**Sorcerous Ritual (1AP):** Psychic action. An operative can perform this action while within ⬤ of a ritual site. An operative cannot perform this action while 
+- If a friendly operative performs the **Sorcerous Ritual** action in three or more Turning Points, you score 1VP.`,
+  action: {
+    id: 'c5599e16-997d-47e9-ae64-7cdc8cd6d123',
+    name: 'Sorcerous Ritual',
+    cost: 1,
+    intro: 'Friendly **SORCERER** operatives can perform the following mission action:',
+    description: `** Psychic action. An operative can perform this action while within ⬤ of a ritual site. An operative cannot perform this action while 
 within ⬤ of an enemy operative. A ritual site is the centre of the killzone or an objective marker that is more than ⬟ from your drop zone. Once a friendly 
 operative performs this action, friendly operatives can only perform this action again at the same ritual site.`
+  }
 }, {
   id: 3,
   name: 'Grand Plan',
   description: `Reveal this Tac Op in the Target Reveal step of the first Turning Point. Your opponent selects one of their operatives and an objective marker that
 is more than ⬟ from their killzone edge (they cannot select an objective marker that can be removed during the battle).
 - If that enemy operative is incapacitated, you score 1 VP.
-- If you control that objective marker at the end of any Turning Point, you score 1VP.
-    `
-
+- If you control that objective marker at the end of any Turning Point, you score 1VP.`
 }]
 
 const data = {

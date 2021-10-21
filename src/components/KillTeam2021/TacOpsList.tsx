@@ -23,7 +23,7 @@ export function TacOpsList (props: Props): JSX.Element {
                 (x.action != null) &&
                   <>
                     <p>
-                      Friendly operatives an perform the following mission action:
+                      <CompileDescription>{x.action.intro ?? 'Friendly operatives can perform the following mission action:'}</CompileDescription>
                     </p>
                     <p>
                       <Card border='primary' bg='light'>
