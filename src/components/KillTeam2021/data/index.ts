@@ -21,6 +21,7 @@ import thousandSons from './thousandSons'
 import traitorSpaceMarine from './traitorSpaceMarine'
 import troupe from './troupe'
 import veteranGuardsmen from './veteranGuardsmen'
+import warpCoven from './warpCoven'
 
 const data = [
   broodCoven,
@@ -43,7 +44,8 @@ const data = [
   thousandSons,
   traitorSpaceMarine,
   troupe,
-  veteranGuardsmen
+  veteranGuardsmen,
+  warpCoven
 ]
 
 const getFactionSpecificData = (factionName: string): FactionSpecificData | undefined => (

@@ -15,6 +15,7 @@ const stat = (name: string, model: Element): number => {
 }
 
 const parseWeapon = (weapon: Node): Weapon => {
+  console.log(weapon)
   return {
     id: xpSelect('string(@id)', weapon, true).toString(),
     name: xpSelect('string(@name)', weapon, true).toString(),
@@ -40,11 +41,12 @@ const parseAbility = (ability: Node): Ability => {
 const parsePsychicPower = (power: Node): PsychicPower => {
   const name = xpSelect('string(@name)', power, true).toString()
   const weap = xpSelect("..//bs:profile[@typeName='Weapons']", power, true) as Node
+
   return {
     id: xpSelect('string(@id)', power, true).toString(),
     name,
     description: (xpSelect(".//bs:characteristic[@name='Effect']/text()", power, true) ?? '-').toString(),
-    weapon: weap !== null ? parseWeapon(weap) : null
+    weapon: (weap !== undefined) ? parseWeapon(weap) : null
   }
 }
 
@@ -97,7 +99,8 @@ const factionKeywords = [
   'Tomb World',
   'Traitor Space Marine',
   'Troupe',
-  'Veteran Guardsman'
+  'Veteran Guardsman',
+  'Warpcoven'
 ]
 
 const parseOperative = (model: Element): Operative => {
