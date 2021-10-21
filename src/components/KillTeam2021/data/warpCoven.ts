@@ -21,8 +21,8 @@ const strategicPloys: Ploy[] = [
   }, {
     name: 'Slow and Purposeful',
     cost: 1,
-    description: `Until the end of the Turning Point, each time a friendly **RUBRIC MARINE** operative makes a shooting attack, if it has not performed a **Charge,
-    Fall Back** or **Normal Move** action during this Turning Point, in the Roll Attack Dice step of that shooting attack, you can re-roll any or all of your attack
+    description: `Until the end of the Turning Point, each time a friendly **RUBRIC MARINE** operative makes a shooting attack, if it has not performed a **Charge**,
+    **Fall Back** or **Normal Move** action during this Turning Point, in the Roll Attack Dice step of that shooting attack, you can re-roll any or all of your attack
     dice results of one result (e.g. results of 2).`
   }, {
     name: 'Savage Herd',
