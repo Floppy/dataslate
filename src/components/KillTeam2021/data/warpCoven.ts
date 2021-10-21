@@ -68,7 +68,7 @@ const tacOps: TacOp[] = [{
 - If a friendly operative performs the **Scry Secret** action, you score 1VP.
 - At the end of the battle, if a friendly operative has performed the **Scry Secret** action and has not been incapacitated, you score 1VP.`,
   action: {
-    id: '',
+    id: '1',
     name: 'Scry Secret',
     cost: 1,
     intro: 'Friendly **SORCERER** operatives can perform the following mission action:',
@@ -82,7 +82,7 @@ const tacOps: TacOp[] = [{
 - If a friendly operative performs the **Sorcerous Ritual** action in two or more Turning Points, you score 1VP.
 - If a friendly operative performs the **Sorcerous Ritual** action in three or more Turning Points, you score 1VP.`,
   action: {
-    id: 'c5599e16-997d-47e9-ae64-7cdc8cd6d123',
+    id: '2',
     name: 'Sorcerous Ritual',
     cost: 1,
     intro: 'Friendly **SORCERER** operatives can perform the following mission action:',
