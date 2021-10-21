@@ -1,5 +1,3 @@
-import { FactionSpecificData } from '../../../types/KillTeam2021'
-
 import chaosDaemon from './chaosDaemons'
 import broodCoven from './broodCoven'
 import cadreMercenary from './cadreMercenary'
@@ -48,7 +46,8 @@ const data = [
   warpCoven
 ]
 
-const getFactionSpecificData = (factionName: string): FactionSpecificData | undefined => (
+// eslint-disable-next-line
+const getFactionSpecificData = (factionName: string) => (
   data.find(factionData => factionData.name === factionName)
 )
 

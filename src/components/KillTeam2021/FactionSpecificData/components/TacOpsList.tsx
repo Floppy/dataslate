@@ -1,7 +1,7 @@
 import React from 'react'
-import { TacOp } from '../../types/KillTeam2021'
+import { TacOp } from '../../../../types/KillTeam2021'
 import { Card, Row, Col } from 'react-bootstrap'
-import { CompileDescription } from './CompileDescription'
+import { CompileDescription } from './../../CompileDescription'
 
 interface Props {
   tacOps: TacOp[]
