@@ -39,12 +39,14 @@ const parseAbility = (ability: Node): Ability => {
 
 const parsePsychicPower = (power: Node): PsychicPower => {
   const name = xpSelect('string(@name)', power, true).toString()
-  const weap = xpSelect("..//bs:profile[@typeName='Weapons']", power, true) as Node
+  const weapon = xpSelect("..//bs:profile[@typeName='Weapons']", power, true) as Node
+
   return {
     id: xpSelect('string(@id)', power, true).toString(),
     name,
     description: (xpSelect(".//bs:characteristic[@name='Effect']/text()", power, true) ?? '-').toString(),
-    weapon: weap !== null ? parseWeapon(weap) : null
+    // eslint-disable-next-line
+    weapon: weapon && parseWeapon(weapon)
   }
 }
 
@@ -97,7 +99,8 @@ const factionKeywords = [
   'Tomb World',
   'Traitor Space Marine',
   'Troupe',
-  'Veteran Guardsman'
+  'Veteran Guardsman',
+  'Warpcoven'
 ]
 
 const parseOperative = (model: Element): Operative => {

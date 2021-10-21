@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react'
 import getFactionSpecificData from './data'
-import { FactionSpecificData } from './FactionSpecificData'
+import { FactionSpecificData } from './FactionSpecificData/FactionSpecificData'
 
 import { data } from './data/index'
 

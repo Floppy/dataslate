@@ -4,6 +4,7 @@ export interface Action {
   id: string
   name: string
   cost: number
+  intro?: string
   description: string
 }
 
@@ -106,11 +107,4 @@ export enum Archetype {
 
 export interface FireteamArchetypes {
   [key: string]: Archetype[]
-}
-
-export interface FactionSpecificData {
-  name: string
-  strategicPloys: Ploy[]
-  tacticalPloys: Ploy[]
-  archetypes: FireteamArchetypes
 }

@@ -7,7 +7,8 @@ import { RuleList } from './RuleList'
 import { PowerList } from './PowerList'
 import hash from 'node-object-hash'
 import _ from 'lodash'
-import { FactionSpecificData } from './FactionSpecificData'
+
+import { FactionSpecificData } from './FactionSpecificData/FactionSpecificData'
 import { RosterSelection } from './RosterSelection'
 
 interface Props {

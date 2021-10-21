@@ -1,6 +1,6 @@
 import { Operative, Weapon } from '../../types/KillTeam2021'
 import { Form, Row, Table } from 'react-bootstrap'
-import React from 'react'
+import React, { FC } from 'react'
 
 interface Props {
   operatives: Operative[]
@@ -41,7 +41,7 @@ const selectionChanged = (selectedOperatives: string[], opId: string, selected: 
   return selectedOps
 }
 
-export function RosterSelection (props: Props) {
+export const RosterSelection: FC<Props> = (props: Props) => {
   return (
     <Table>
       <thead>
