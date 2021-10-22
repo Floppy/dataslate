@@ -76,7 +76,7 @@ export function Roster (props: Props): JSX.Element {
         </Card>
       )}
       {_.orderBy(datacards, ['leader', 'name'], ['desc', 'asc']).map((datacard: Datacard) => (
-        <Datasheet key={datacard.name} datacard={datacard} showWoundTrack={props.showWoundTrack} />
+        <Datasheet key={datacard.operativeNames.toString()} datacard={datacard} showWoundTrack={props.showWoundTrack} />
       ))}
       <Card>
         <Card.Header style={{ ...headingStyle, breakBefore: 'always' }} as='h2'>Rules</Card.Header>
