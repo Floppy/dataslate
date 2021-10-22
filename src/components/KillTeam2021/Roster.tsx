@@ -1,4 +1,4 @@
-import React, { MouseEvent } from 'react'
+import React, { MouseEvent, useEffect, useState } from 'react'
 import { Col, Card } from 'react-bootstrap'
 import { CloseButton } from '../CloseButton'
 import { Operative, Datacard, PsychicPower } from '../../types/KillTeam2021'
@@ -7,7 +7,9 @@ import { RuleList } from './RuleList'
 import { PowerList } from './PowerList'
 import hash from 'node-object-hash'
 import _ from 'lodash'
+
 import { FactionSpecificData } from './FactionSpecificData/FactionSpecificData'
+import { RosterSelection } from './RosterSelection'
 
 interface Props {
   name: string
@@ -16,11 +18,15 @@ interface Props {
   psychicPowers: PsychicPower[]
   fireteams: string[]
   onClose: (event: MouseEvent<HTMLButtonElement>) => void
+  isRoster?: boolean
   showWoundTrack: boolean
+  rosterSelection: boolean
+  printRosterList: boolean
 }
 
-const groupByDatacard = (operatives: Operative[]): Datacard[] => {
-  const groupedOperatives = _.groupBy(operatives, (o) => (hash().hash({ datacard: o.datacard, weapons: o.weapons, equipment: o.equipment })))
+const groupByDatacard = (operatives: Operative[], selectedOperatives: string[]): Datacard[] => {
+  const filteredOperatives = operatives.filter((op) => { return selectedOperatives.includes(op.id) })
+  const groupedOperatives = _.groupBy(filteredOperatives, (o) => (hash().hash({ datacard: o.datacard, weapons: o.weapons, equipment: o.equipment })))
   return _.map(groupedOperatives, (ops, hash) => ({
     ...ops[0],
     name: ops[0].datacard,
@@ -36,7 +42,20 @@ export function Roster (props: Props): JSX.Element {
     width: '100%',
     display: 'flex'
   }
-  const datacards = groupByDatacard(props.operatives)
+
+  const [selectedOperatives, setSelectedOperatives] = useState(props.operatives.map((operative, index) => { return operative.id }))
+  const [datacards, setDataCards] = useState<Datacard[] | []>([])
+
+  const updateSelectedOperatives = (operativeIds: string[]): void => {
+    setSelectedOperatives(operativeIds)
+    setDataCards(groupByDatacard(props.operatives, selectedOperatives))
+  }
+
+  useEffect(() => {
+    setDataCards(groupByDatacard(props.operatives, selectedOperatives))
+  }, [props.operatives, selectedOperatives])
+
+  const rosterClassName = props.printRosterList ? '' : 'noprint'
 
   return (
     <>
@@ -48,8 +67,16 @@ export function Roster (props: Props): JSX.Element {
           <CloseButton onClose={props.onClose} />
         </Col>
       </h1>
+      {(props.isRoster ?? false) && (props.rosterSelection) && (
+        <Card className={rosterClassName}>
+          <Card.Header style={{ ...headingStyle, breakBefore: 'always' }} as='h2'>Roster</Card.Header>
+          <Card.Body>
+            <RosterSelection operatives={props.operatives} selectedOperatives={selectedOperatives} setSelectedOperatives={updateSelectedOperatives} />
+          </Card.Body>
+        </Card>
+      )}
       {_.orderBy(datacards, ['leader', 'name'], ['desc', 'asc']).map((datacard: Datacard) => (
-        <Datasheet key={datacard.name} datacard={datacard} showWoundTrack={props.showWoundTrack} />
+        <Datasheet key={datacard.operativeNames.toString()} datacard={datacard} showWoundTrack={props.showWoundTrack} />
       ))}
       <Card>
         <Card.Header style={{ ...headingStyle, breakBefore: 'always' }} as='h2'>Rules</Card.Header>
