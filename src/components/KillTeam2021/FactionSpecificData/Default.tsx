@@ -1,19 +1,17 @@
 import React, { FC } from 'react'
-import {Button, Card, OverlayTrigger, Popover} from 'react-bootstrap'
+import { Button, Card, OverlayTrigger, Popover } from 'react-bootstrap'
 import { Archetype } from '../../../types/KillTeam2021'
 import { PloysColumn } from './components/PloysColumn'
 import { TacOpsList } from './components/TacOpsList'
 import getFactionSpecificData from './../data'
 import { ArchetypeBadge } from './components/ArchetypeBadge'
 import HelpPopover from '../../HelpPopover'
-import {ArchetypePanel} from "./components/ArchetypePanel";
+import { ArchetypePanel } from './components/ArchetypePanel'
 
 interface Props {
   faction: string
   fireteams: string[]
 }
-
-
 
 export const Default: FC<Props> = (props) => {
   const headingStyle = {
@@ -60,7 +58,7 @@ export const Default: FC<Props> = (props) => {
           <Card.Header style={{ ...headingStyle }} as='h2'>Tac Ops</Card.Header>
           <Card.Body>
             <Card.Title>
-              <ArchetypePanel archetypes={archetypes} archetypeRules={archetypeRules}/>
+              <ArchetypePanel archetypes={archetypes} archetypeRules={archetypeRules} />
             </Card.Title>
 
             {tacOps !== undefined && <TacOpsList tacOps={tacOps} />}

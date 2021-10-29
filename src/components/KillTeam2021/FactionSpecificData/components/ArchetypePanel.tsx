@@ -1,8 +1,8 @@
 import React from 'react'
-import {Badge, Button, OverlayTrigger} from 'react-bootstrap'
+import { Badge, Button, OverlayTrigger } from 'react-bootstrap'
 import { Archetype } from '../../../../types/KillTeam2021'
-import HelpPopover from "../../../HelpPopover";
-import {ArchetypeBadge} from "./ArchetypeBadge";
+import HelpPopover from '../../../HelpPopover'
+import { ArchetypeBadge } from './ArchetypeBadge'
 
 interface Props {
   archetypes: Archetype[]
@@ -12,8 +12,8 @@ interface Props {
 export function ArchetypePanel (props: Props): JSX.Element {
   return (
     <>
-        ARCHETYPES - {props.archetypes.map((archetype, index) => { return <ArchetypeBadge key={index} archetype={archetype} /> })}
-        { props.archetypeRules && <OverlayTrigger trigger="click" placement="right" overlay={HelpPopover('Archetype Rules', props.archetypeRules)}><Button variant='outline-secondary'>Selection Rules</Button></OverlayTrigger>}
+      ARCHETYPES - {props.archetypes.map((archetype, index) => { return <ArchetypeBadge key={index} archetype={archetype} /> })}
+      {props.archetypeRules && <OverlayTrigger trigger='click' placement='right' overlay={HelpPopover('Archetype Rules', props.archetypeRules)}><Button variant='outline-secondary'>Selection Rules</Button></OverlayTrigger>}
     </>
   )
 }
