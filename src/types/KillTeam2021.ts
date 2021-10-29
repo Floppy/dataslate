@@ -105,5 +105,6 @@ export enum Archetype {
 }
 
 export interface FireteamArchetypes {
-  [key: string]: Archetype[]
+  fireteams: { [key: string]: Archetype[] }
+  rules?: string
 }

@@ -1,15 +1,18 @@
 import React, { FC } from 'react'
-import { Card } from 'react-bootstrap'
+import {Button, Card, OverlayTrigger, Popover} from 'react-bootstrap'
 import { Archetype } from '../../../types/KillTeam2021'
 import { PloysColumn } from './components/PloysColumn'
 import { TacOpsList } from './components/TacOpsList'
 import getFactionSpecificData from './../data'
 import { ArchetypeBadge } from './components/ArchetypeBadge'
+import HelpPopover from '../../HelpPopover'
 
 interface Props {
   faction: string
   fireteams: string[]
 }
+
+
 
 export const Default: FC<Props> = (props) => {
   const headingStyle = {
@@ -27,12 +30,13 @@ export const Default: FC<Props> = (props) => {
   }
 
   const archetypes: Archetype[] = props.fireteams
-    .flatMap(fireteam => factionSpecificData?.archetypes[fireteam] as unknown as Archetype)
+    .flatMap(fireteam => factionSpecificData?.archetypes.fireteams[fireteam] as unknown as Archetype)
     .filter(Boolean)
     .filter((item, index, self) => self.indexOf(item) === index)
 
   // @ts-expect-error
   const tacOps = factionSpecificData?.tacOps
+  const archetypeRules = factionSpecificData?.archetypes.rules ?? null
 
   return (
     <>
@@ -54,7 +58,10 @@ export const Default: FC<Props> = (props) => {
         <Card>
           <Card.Header style={{ ...headingStyle }} as='h2'>Tac Ops</Card.Header>
           <Card.Body>
-            <Card.Title>ARCHETYPES - {archetypes.map((archetype, index) => { return <ArchetypeBadge key={index} archetype={archetype} /> })}</Card.Title>
+            <Card.Title>
+              ARCHETYPES - {archetypes.map((archetype, index) => { return <ArchetypeBadge key={index} archetype={archetype} /> })}
+              { archetypeRules && <OverlayTrigger trigger="click" placement="right" overlay={HelpPopover('Archetype Rules', archetypeRules)}><Button variant='outline-secondary'>Selection Rules</Button></OverlayTrigger>}
+            </Card.Title>
 
             {tacOps !== undefined && <TacOpsList tacOps={tacOps} />}
           </Card.Body>

@@ -1,8 +1,10 @@
 import { Archetype, FireteamArchetypes, Ploy } from '../../../types/KillTeam2021'
 
 const archetypes: FireteamArchetypes = {
-  'Guardsman Fire Team': [Archetype.SECURITY],
-  'Tempestus Scion Fire Team': [Archetype.SECURITY, Archetype.SEEK_AND_DESTROY, Archetype.INFILTRATION, Archetype.RECON]
+  fireteams: {
+    'Guardsman Fire Team': [Archetype.SECURITY],
+    'Tempestus Scion Fire Team': [Archetype.SECURITY, Archetype.SEEK_AND_DESTROY, Archetype.INFILTRATION, Archetype.RECON]
+  }
 }
 
 const strategicPloys: Ploy[] = [

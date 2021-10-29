@@ -1,10 +1,12 @@
 import { Archetype, FireteamArchetypes, Ploy } from '../../../types/KillTeam2021'
 
 const archetypes: FireteamArchetypes = {
-  'Guardian Defender Fire Team': [Archetype.SECURITY, Archetype.RECON],
-  'Storm Guardian Fire Team': [Archetype.SEEK_AND_DESTROY, Archetype.RECON],
-  'Ranger Fire Team': [Archetype.SEEK_AND_DESTROY, Archetype.SECURITY, Archetype.RECON],
-  'Dire Avenger Fire Team': [Archetype.SEEK_AND_DESTROY, Archetype.SECURITY, Archetype.RECON]
+  fireteams: {
+    'Guardian Defender Fire Team': [Archetype.SECURITY, Archetype.RECON],
+    'Storm Guardian Fire Team': [Archetype.SEEK_AND_DESTROY, Archetype.RECON],
+    'Ranger Fire Team': [Archetype.SEEK_AND_DESTROY, Archetype.SECURITY, Archetype.RECON],
+    'Dire Avenger Fire Team': [Archetype.SEEK_AND_DESTROY, Archetype.SECURITY, Archetype.RECON]
+  }
 }
 
 const strategicPloys: Ploy[] = [

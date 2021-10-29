@@ -1,9 +1,11 @@
 import { Archetype, FireteamArchetypes, Ploy, TacOp } from '../../../types/KillTeam2021'
 
 const archetypes: FireteamArchetypes = {
-  // TODO: If kill team includes four or more ARCANA ASTARTES operatives, this kill team has the Security archetype. If your kill team includes five or more
-  // TODO: TZAANGOR operatives, this kill team has teh Recon archetype
-  'Warp Coven Kill Team': [Archetype.RECON, Archetype.SECURITY]
+  rules: `If your kill team includes four or more **ARCANA ASTARTES** operatives, this kill team has the Security archetype. 
+If your kill team includes five or more **TZAANG0R** operatives, this kill team has the Recon archetype.`,
+  fireteams: {
+    'Warp Coven Kill Team': [Archetype.RECON, Archetype.SECURITY]
+  }
 }
 
 const strategicPloys: Ploy[] = [
