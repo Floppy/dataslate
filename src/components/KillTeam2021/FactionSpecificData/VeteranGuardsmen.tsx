@@ -7,6 +7,7 @@ import { ArchetypeBadge } from './components/ArchetypeBadge'
 import {Button, Card, Col, OverlayTrigger} from 'react-bootstrap'
 import { CompileDescription } from '../CompileDescription'
 import helpPopover from "../../HelpPopover";
+import {ArchetypePanel} from "./components/ArchetypePanel";
 
 interface Props {
   fireteams: string[]
@@ -55,8 +56,7 @@ export const VeteranGuardsmen: FC<Props> = (props) => {
           <Card.Header style={{ ...headingStyle }} as='h2'>Tac Ops</Card.Header>
           <Card.Body>
             <Card.Title>
-              ARCHETYPES - {archetypes.map((archetype, index) => { return <ArchetypeBadge key={index} archetype={archetype} /> })}
-              { archetypeRules && <OverlayTrigger trigger="click" placement="right" overlay={helpPopover('Archetype Rules', archetypeRules)}><Button variant='outline-secondary'>Selection Rules</Button></OverlayTrigger>}
+              <ArchetypePanel archetypes={archetypes} archetypeRules={archetypeRules}/>
             </Card.Title>
             <TacOpsList tacOps={factionSpecificData?.tacOps} />
           </Card.Body>

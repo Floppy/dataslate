@@ -6,6 +6,7 @@ import { TacOpsList } from './components/TacOpsList'
 import getFactionSpecificData from './../data'
 import { ArchetypeBadge } from './components/ArchetypeBadge'
 import HelpPopover from '../../HelpPopover'
+import {ArchetypePanel} from "./components/ArchetypePanel";
 
 interface Props {
   faction: string
@@ -59,8 +60,7 @@ export const Default: FC<Props> = (props) => {
           <Card.Header style={{ ...headingStyle }} as='h2'>Tac Ops</Card.Header>
           <Card.Body>
             <Card.Title>
-              ARCHETYPES - {archetypes.map((archetype, index) => { return <ArchetypeBadge key={index} archetype={archetype} /> })}
-              { archetypeRules && <OverlayTrigger trigger="click" placement="right" overlay={HelpPopover('Archetype Rules', archetypeRules)}><Button variant='outline-secondary'>Selection Rules</Button></OverlayTrigger>}
+              <ArchetypePanel archetypes={archetypes} archetypeRules={archetypeRules}/>
             </Card.Title>
 
             {tacOps !== undefined && <TacOpsList tacOps={tacOps} />}
