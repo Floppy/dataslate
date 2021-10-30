@@ -54,7 +54,7 @@ const parseAction = (action: Node, psychicPowers: string|null): Action => {
   const name = xpSelect('string(@name)', action, true).toString() ?? ''
   let description = (xpSelect(".//bs:characteristic[@name='Unique Action']/text()", action, true) ?? '-').toString()
 
-  if (psychicPowers && name.toLowerCase().includes('psychic power')) {
+  if (psychicPowers !== null && name.toLowerCase().includes('psychic power')) {
     description += ' **Available Powers**: ' + psychicPowers
   }
   return {
