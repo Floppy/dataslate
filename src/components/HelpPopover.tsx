@@ -2,7 +2,7 @@ import { Popover } from 'react-bootstrap'
 import { CompileDescription } from './KillTeam2021/CompileDescription'
 import React from 'react'
 
-const helpPopover = (title: string, body: string) => {
+export default function helpPopover (title: string, body: string): JSX.Element {
   return (
     <Popover id='rule-popover'>
       <Popover.Title as='h3'>{title}</Popover.Title>
@@ -12,5 +12,3 @@ const helpPopover = (title: string, body: string) => {
     </Popover>
   )
 }
-
-export default helpPopover

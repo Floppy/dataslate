@@ -1,5 +1,5 @@
 import React from 'react'
-import { Badge, Button, OverlayTrigger } from 'react-bootstrap'
+import { Button, OverlayTrigger } from 'react-bootstrap'
 import { Archetype } from '../../../../types/KillTeam2021'
 import HelpPopover from '../../../HelpPopover'
 import { ArchetypeBadge } from './ArchetypeBadge'
