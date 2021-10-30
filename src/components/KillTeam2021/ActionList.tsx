@@ -2,7 +2,7 @@ import React from 'react'
 import { Action } from '../../types/KillTeam2021'
 import { Card } from 'react-bootstrap'
 import _ from 'lodash'
-import { HighlightedText } from './HighlightedText'
+import { CompileDescription } from './CompileDescription'
 
 interface Props {
   actions: Action[]
@@ -17,7 +17,7 @@ export function ActionList (props: Props): JSX.Element {
             {x.name}
           </Card.Header>
           <Card.Body>
-            <HighlightedText>{x.description}</HighlightedText>
+            <CompileDescription>{x.description}</CompileDescription>
           </Card.Body>
         </Card>
       ))}

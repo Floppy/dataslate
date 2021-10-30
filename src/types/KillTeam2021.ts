@@ -87,6 +87,7 @@ export interface Datacard {
   leader: boolean
   keywords: string[]
   faction: string | null
+  psychicPowers: string | null
 }
 
 export interface Roster {
