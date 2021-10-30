@@ -71,6 +71,7 @@ export interface Operative {
   leader: boolean
   keywords: string[]
   faction: string | null
+  psychicPowers: string | null
 }
 
 // Datacards are a collection of grouped Operatives
