@@ -88,7 +88,7 @@ function Homepage (props: Props): JSX.Element {
         Built with <a href='https://reactjs.org/'>React</a> and <a href='https://getbootstrap.com'>Bootstrap</a>.
         Icons courtesy of <a href='https://killteam.app/'>Companion for Kill Team</a>.
         Released as <a href='https://github.com/floppy/dataslate'>Open Source</a>,
-        report problems <a href='https://github.com/floppy/dataslate/issues/new'>on GitHub</a>.
+        report problems <a href='https://github.com/floppy/dataslate/issues/new'>on GitHub</a> or on <a href='https://discord.gg/8DTSYxbhfV'> Discord</a>.
         Version: <em><a {...{ href: `https://github.com/floppy/dataslate/tree/${process.env.REACT_APP_GIT_SHA !== undefined ? process.env.REACT_APP_GIT_SHA : ''}` }}>{process.env.REACT_APP_GIT_SHA}</a></em>
       </footer>
     </>
