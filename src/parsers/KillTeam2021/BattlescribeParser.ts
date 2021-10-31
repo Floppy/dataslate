@@ -155,7 +155,14 @@ export const parseBattlescribeXML = (doc: Document): Roster => {
 
   const fireteams = (xpSelect('//bs:force/@name', doc) as Node[]).map((node) => { return node.nodeValue }) as string[]
 
-  const psychicPowers = (xpSelect(".//bs:profile[@typeName='Psychic Power']", doc) as Node[]).map(parsePsychicPower)
+  const psychicPowers = [] as PsychicPower[]
+
+  (xpSelect(".//bs:profile[@typeName='Psychic Power']", doc) as Node[]).map(parsePsychicPower).forEach((power: PsychicPower) => {
+    if (psychicPowers.find(p => p.name === power.name) === undefined) {
+      psychicPowers.push(power)
+    }
+  })
+
   // Assign unique operative names if they don't have them
   const romanNumerals = [
     '', 'Ⅱ', 'Ⅲ', 'Ⅳ', 'Ⅴ',
