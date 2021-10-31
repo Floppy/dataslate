@@ -50,15 +50,22 @@ const parsePsychicPower = (power: Node): PsychicPower => {
   }
 }
 
-const parseAction = (action: Node, psychicPowers: string|null): Action => {
+const parseAction = (action: Node, psychicDiscipline: string|null, psychicPowers: string|null): Action => {
   const name = xpSelect('string(@name)', action, true).toString() ?? ''
   let description = (xpSelect(".//bs:characteristic[@name='Unique Action']/text()", action, true) ?? '-').toString()
+
+  if (psychicDiscipline !== null && name.toLowerCase().includes('psychic power')) {
+    description += `
+    
+**Psychic Discipline**:` + psychicDiscipline
+  }
 
   if (psychicPowers !== null && name.toLowerCase().includes('psychic power')) {
     description += `   
 
 **Available Powers**: ` + psychicPowers
   }
+
   return {
     id: xpSelect('string(@id)', action, true).toString(),
     name: name,
@@ -118,7 +125,7 @@ const parseOperative = (model: Element): Operative => {
 
   const psychicDiscipline = xpSelect("string(.//bs:selection[./bs:selections/bs:selection/bs:profiles/bs:profile/@typeName='Psychic Power']/@name)", model, true).toString()
   const psychicPowers = (xpSelect(".//bs:profile[@typeName='Psychic Power']/@name", model) as Node[]).map((x) => x.nodeValue).join(', ')
-  const actions = (xpSelect(".//bs:profile[@typeName='Unique Actions']", model) as Node[]).map((x) => parseAction(x, psychicPowers))
+  const actions = (xpSelect(".//bs:profile[@typeName='Unique Actions']", model) as Node[]).map((x) => parseAction(x, psychicDiscipline, psychicPowers))
 
   const details = {
     id: xpSelect('string(@id)', model, true).toString(),
