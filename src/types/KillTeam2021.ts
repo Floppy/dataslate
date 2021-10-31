@@ -71,6 +71,7 @@ export interface Operative {
   leader: boolean
   keywords: string[]
   faction: string | null
+  psychicDiscipline: string | null
   psychicPowers: string | null
 }
 

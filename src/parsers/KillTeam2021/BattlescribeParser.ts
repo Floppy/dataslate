@@ -116,6 +116,7 @@ const parseOperative = (model: Element): Operative => {
   const faction = _.intersection(allKeywords, factionKeywords).pop() ?? allKeywords.find((k) => (k === k.toUpperCase())) ?? null
   const keywords = _.remove(allKeywords, (x) => (x !== faction))
 
+  const psychicDiscipline = xpSelect("string(.//bs:selection[./bs:selections/bs:selection/bs:profiles/bs:profile/@typeName='Psychic Power']/@name)", model, true).toString()
   const psychicPowers = (xpSelect(".//bs:profile[@typeName='Psychic Power']/@name", model) as Node[]).map((x) => x.nodeValue).join(', ')
   const actions = (xpSelect(".//bs:profile[@typeName='Unique Actions']", model) as Node[]).map((x) => parseAction(x, psychicPowers))
 
@@ -138,6 +139,7 @@ const parseOperative = (model: Element): Operative => {
     actions: actions,
     rules: (xpSelect('.//bs:rules/bs:rule', model) as Node[]).map(parseRule),
     leader: (xpSelect("string(.//bs:categories/bs:category[@primary='true']/@name)", model, true).toString() === 'Leader'),
+    psychicDiscipline: psychicDiscipline,
     psychicPowers: psychicPowers,
     keywords,
     faction
