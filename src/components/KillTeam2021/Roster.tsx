@@ -23,7 +23,7 @@ const groupByDatacard = (operatives: Operative[]): Datacard[] => {
   const groupedOperatives = _.groupBy(operatives, (o) => (hash().hash({ datacard: o.datacard, weapons: o.weapons, equipment: o.equipment })))
   return _.map(groupedOperatives, (ops, hash) => ({
     ...ops[0],
-    name: ops[0].datacard,
+    name: ops[0].name,
     operativeNames: ops.map((c) => (c.name)).sort((a, b) => a.localeCompare(b))
   }))
 }
