@@ -71,6 +71,8 @@ export interface Operative {
   leader: boolean
   keywords: string[]
   faction: string | null
+  psychicDiscipline: string | null
+  psychicPowers: string | null
 }
 
 // Datacards are a collection of grouped Operatives
@@ -86,6 +88,7 @@ export interface Datacard {
   leader: boolean
   keywords: string[]
   faction: string | null
+  psychicPowers: string | null
 }
 
 export interface Roster {
@@ -105,5 +108,6 @@ export enum Archetype {
 }
 
 export interface FireteamArchetypes {
-  [key: string]: Archetype[]
+  fireteams: { [key: string]: Archetype[] }
+  rules?: string
 }

@@ -37,6 +37,15 @@ const parseAbility = (ability: Node): Ability => {
   }
 }
 
+const parseBoonOfTzeentch = (boon: Node): Ability => {
+  return {
+    id: xpSelect('string(@id)', boon, true).toString(),
+    name: xpSelect('string(@name)', boon).toString(),
+    description: xpSelect('string(.//bs:profiles/bs:profile/bs:characteristics/bs:characteristic)', boon).toString(),
+    phases: []
+  }
+}
+
 const parsePsychicPower = (power: Node): PsychicPower => {
   const name = xpSelect('string(@name)', power, true).toString()
   const weapon = xpSelect("..//bs:profile[@typeName='Weapons']", power, true) as Node
@@ -50,11 +59,26 @@ const parsePsychicPower = (power: Node): PsychicPower => {
   }
 }
 
-const parseAction = (action: Node): Action => {
+const parseAction = (action: Node, psychicDiscipline: string|null, psychicPowers: string|null): Action => {
+  const name = xpSelect('string(@name)', action, true).toString() ?? ''
+  let description = (xpSelect(".//bs:characteristic[@name='Unique Action']/text()", action, true) ?? '-').toString()
+
+  if (psychicDiscipline !== null && name.toLowerCase().includes('psychic power')) {
+    description += `
+    
+**Psychic Discipline**:` + psychicDiscipline
+  }
+
+  if (psychicPowers !== null && name.toLowerCase().includes('psychic power')) {
+    description += `   
+
+**Available Powers**: ` + psychicPowers
+  }
+
   return {
     id: xpSelect('string(@id)', action, true).toString(),
-    name: xpSelect('string(@name)', action, true).toString(),
-    description: (xpSelect(".//bs:characteristic[@name='Unique Action']/text()", action, true) ?? '-').toString(),
+    name: name,
+    description: description,
     cost: 1
   }
 }
@@ -107,6 +131,18 @@ const parseOperative = (model: Element): Operative => {
   const allKeywords = (xpSelect(".//bs:categories/bs:category[@primary='false']/@name", model) as Node[]).map((x) => (x.textContent ?? '').replace('💀', ''))
   const faction = _.intersection(allKeywords, factionKeywords).pop() ?? allKeywords.find((k) => (k === k.toUpperCase())) ?? null
   const keywords = _.remove(allKeywords, (x) => (x !== faction))
+
+  const psychicDiscipline = xpSelect("string(.//bs:selection[./bs:selections/bs:selection/bs:profiles/bs:profile/@typeName='Psychic Power']/@name)", model, true).toString()
+  const psychicPowers = (xpSelect(".//bs:profile[@typeName='Psychic Power']/@name", model) as Node[]).map((x) => x.nodeValue).join(', ')
+  const actions = (xpSelect(".//bs:profile[@typeName='Unique Actions']", model) as Node[]).map((x) => parseAction(x, psychicDiscipline, psychicPowers))
+  const abilities = (xpSelect(".//bs:profile[@typeName='Abilities']", model) as Node[]).map(parseAbility)
+
+  const boonOfTzeentch = xpSelect(".//bs:selection[./bs:profiles/bs:profile/@typeName='Boon of Tzeentch']", model, true) as Node
+
+  if (boonOfTzeentch !== undefined) {
+    abilities.push(parseBoonOfTzeentch(boonOfTzeentch))
+  }
+
   const details = {
     id: xpSelect('string(@id)', model, true).toString(),
     datacard: xpSelect('string(@name)', model, true).toString(),
@@ -122,10 +158,12 @@ const parseOperative = (model: Element): Operative => {
     },
     weapons: (xpSelect(".//bs:profile[@typeName='Weapons']", model) as Node[]).map(parseWeapon),
     equipment: (xpSelect(".//bs:selection[(@type='upgrade') and (.//bs:cost/@value!=\"0.0\")]", model) as Node[]).map(parseEquipment),
-    abilities: (xpSelect(".//bs:profile[@typeName='Abilities']", model) as Node[]).map(parseAbility),
-    actions: (xpSelect(".//bs:profile[@typeName='Unique Actions']", model) as Node[]).map(parseAction),
+    abilities: abilities,
+    actions: actions,
     rules: (xpSelect('.//bs:rules/bs:rule', model) as Node[]).map(parseRule),
     leader: (xpSelect("string(.//bs:categories/bs:category[@primary='true']/@name)", model, true).toString() === 'Leader'),
+    psychicDiscipline: psychicDiscipline,
+    psychicPowers: psychicPowers,
     keywords,
     faction
   }
@@ -142,7 +180,14 @@ export const parseBattlescribeXML = (doc: Document): Roster => {
 
   const fireteams = (xpSelect('//bs:force/@name', doc) as Node[]).map((node) => { return node.nodeValue }) as string[]
 
-  const psychicPowers = (xpSelect(".//bs:profile[@typeName='Psychic Power']", doc) as Node[]).map(parsePsychicPower)
+  const psychicPowers = [] as PsychicPower[]
+
+  (xpSelect(".//bs:profile[@typeName='Psychic Power']", doc) as Node[]).map(parsePsychicPower).forEach((power: PsychicPower) => {
+    if (psychicPowers.find(p => p.name === power.name) === undefined) {
+      psychicPowers.push(power)
+    }
+  })
+
   // Assign unique operative names if they don't have them
   const romanNumerals = [
     '', 'Ⅱ', 'Ⅲ', 'Ⅳ', 'Ⅴ',

@@ -4,7 +4,7 @@ import { Archetype } from '../../../types/KillTeam2021'
 import { PloysColumn } from './components/PloysColumn'
 import { TacOpsList } from './components/TacOpsList'
 import getFactionSpecificData from './../data'
-import { ArchetypeBadge } from './components/ArchetypeBadge'
+import { ArchetypePanel } from './components/ArchetypePanel'
 
 interface Props {
   faction: string
@@ -27,12 +27,13 @@ export const Default: FC<Props> = (props) => {
   }
 
   const archetypes: Archetype[] = props.fireteams
-    .flatMap(fireteam => factionSpecificData?.archetypes[fireteam] as unknown as Archetype)
+    .flatMap(fireteam => factionSpecificData?.archetypes.fireteams[fireteam] as unknown as Archetype)
     .filter(Boolean)
     .filter((item, index, self) => self.indexOf(item) === index)
 
   // @ts-expect-error
   const tacOps = factionSpecificData?.tacOps
+  const archetypeRules = factionSpecificData?.archetypes.rules ?? null
 
   return (
     <>
@@ -54,7 +55,9 @@ export const Default: FC<Props> = (props) => {
         <Card>
           <Card.Header style={{ ...headingStyle }} as='h2'>Tac Ops</Card.Header>
           <Card.Body>
-            <Card.Title>ARCHETYPES - {archetypes.map((archetype, index) => { return <ArchetypeBadge key={index} archetype={archetype} /> })}</Card.Title>
+            <Card.Title>
+              <ArchetypePanel archetypes={archetypes} archetypeRules={archetypeRules} />
+            </Card.Title>
 
             {tacOps !== undefined && <TacOpsList tacOps={tacOps} />}
           </Card.Body>
