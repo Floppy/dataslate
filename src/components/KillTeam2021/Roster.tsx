@@ -23,7 +23,7 @@ const groupByDatacard = (operatives: Operative[]): Datacard[] => {
   const groupedOperatives = _.groupBy(operatives, (o) => (hash().hash({ datacard: o.datacard, weapons: o.weapons, equipment: o.equipment })))
   return _.map(groupedOperatives, (ops, hash) => ({
     ...ops[0],
-    name: ops[0].name,
+    name: ops[0].datacard,
     operativeNames: ops.map((c) => (c.name)).sort((a, b) => a.localeCompare(b))
   }))
 }
@@ -49,7 +49,7 @@ export function Roster (props: Props): JSX.Element {
         </Col>
       </h1>
       {_.orderBy(datacards, ['leader', 'name'], ['desc', 'asc']).map((datacard: Datacard) => (
-        <Datasheet key={datacard.name} datacard={datacard} showWoundTrack={props.showWoundTrack} />
+        <Datasheet key={datacard.operativeNames.toString()} datacard={datacard} showWoundTrack={props.showWoundTrack} />
       ))}
       <Card>
         <Card.Header style={{ ...headingStyle, breakBefore: 'always' }} as='h2'>Rules</Card.Header>
