@@ -37,6 +37,15 @@ const parseAbility = (ability: Node): Ability => {
   }
 }
 
+const parseBoonOfTzeentch = (boon: Node): Ability => {
+  return {
+    id: xpSelect('string(@id)', boon, true).toString(),
+    name: xpSelect('string(@name)', boon).toString(),
+    description: xpSelect('string(.//bs:profiles/bs:profile/bs:characteristics/bs:characteristic)', boon).toString(),
+    phases: []
+  }
+}
+
 const parsePsychicPower = (power: Node): PsychicPower => {
   const name = xpSelect('string(@name)', power, true).toString()
   const weapon = xpSelect("..//bs:profile[@typeName='Weapons']", power, true) as Node
@@ -126,6 +135,13 @@ const parseOperative = (model: Element): Operative => {
   const psychicDiscipline = xpSelect("string(.//bs:selection[./bs:selections/bs:selection/bs:profiles/bs:profile/@typeName='Psychic Power']/@name)", model, true).toString()
   const psychicPowers = (xpSelect(".//bs:profile[@typeName='Psychic Power']/@name", model) as Node[]).map((x) => x.nodeValue).join(', ')
   const actions = (xpSelect(".//bs:profile[@typeName='Unique Actions']", model) as Node[]).map((x) => parseAction(x, psychicDiscipline, psychicPowers))
+  const abilities = (xpSelect(".//bs:profile[@typeName='Abilities']", model) as Node[]).map(parseAbility)
+
+  const boonOfTzeentch = xpSelect(".//bs:selection[./bs:profiles/bs:profile/@typeName='Boon of Tzeentch']", model, true) as Node
+
+  if (boonOfTzeentch !== undefined) {
+    abilities.push(parseBoonOfTzeentch(boonOfTzeentch))
+  }
 
   const details = {
     id: xpSelect('string(@id)', model, true).toString(),
@@ -142,7 +158,7 @@ const parseOperative = (model: Element): Operative => {
     },
     weapons: (xpSelect(".//bs:profile[@typeName='Weapons']", model) as Node[]).map(parseWeapon),
     equipment: (xpSelect(".//bs:selection[(@type='upgrade') and (.//bs:cost/@value!=\"0.0\")]", model) as Node[]).map(parseEquipment),
-    abilities: (xpSelect(".//bs:profile[@typeName='Abilities']", model) as Node[]).map(parseAbility),
+    abilities: abilities,
     actions: actions,
     rules: (xpSelect('.//bs:rules/bs:rule', model) as Node[]).map(parseRule),
     leader: (xpSelect("string(.//bs:categories/bs:category[@primary='true']/@name)", model, true).toString() === 'Leader'),
