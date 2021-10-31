@@ -8,6 +8,9 @@ import { PowerList } from './PowerList'
 import hash from 'node-object-hash'
 import _ from 'lodash'
 import { FactionSpecificData } from './FactionSpecificData/FactionSpecificData'
+import { Settings } from '../../types/Settings'
+import { CarouselWrapper } from './CarouselWrapper'
+import { CarouselItemWrapper } from './CarouselItemWrapper'
 
 interface Props {
   name: string
@@ -16,7 +19,7 @@ interface Props {
   psychicPowers: PsychicPower[]
   fireteams: string[]
   onClose: (event: MouseEvent<HTMLButtonElement>) => void
-  showWoundTrack: boolean
+  settings: Settings
 }
 
 const groupByDatacard = (operatives: Operative[]): Datacard[] => {
@@ -48,23 +51,33 @@ export function Roster (props: Props): JSX.Element {
           <CloseButton onClose={props.onClose} />
         </Col>
       </h1>
-      {_.orderBy(datacards, ['leader', 'name'], ['desc', 'asc']).map((datacard: Datacard) => (
-        <Datasheet key={datacard.operativeNames.toString()} datacard={datacard} showWoundTrack={props.showWoundTrack} />
-      ))}
-      <Card>
-        <Card.Header style={{ ...headingStyle, breakBefore: 'always' }} as='h2'>Rules</Card.Header>
-        <Card.Body>
-          <RuleList rules={_.uniqBy(_.flatten(datacards.map((m) => (m.rules))), 'name')} />
-        </Card.Body>
-      </Card>
-      {props.psychicPowers.length > 0 &&
-        <Card>
-          <Card.Header style={{ ...headingStyle }} as='h2'>Psychic Powers</Card.Header>
-          <Card.Body>
-            <PowerList powers={props.psychicPowers} />
-          </Card.Body>
-        </Card>}
-      <FactionSpecificData faction={props.faction} fireteams={props.fireteams} />
+      <CarouselWrapper carouselMode={props.settings.touchscreenMode}>
+        {_.orderBy(datacards, ['leader', 'name'], ['desc', 'asc']).map((datacard: Datacard) => (
+          <CarouselItemWrapper key={datacard.operativeNames.toString()} carouselMode={props.settings.touchscreenMode}>
+            <Datasheet datacard={datacard} showWoundTrack={props.settings.showWoundTrack} />
+          </CarouselItemWrapper>
+        ))}
+        <CarouselItemWrapper carouselMode={props.settings.touchscreenMode}>
+          <Card>
+            <Card.Header style={{ ...headingStyle, breakBefore: 'always' }} as='h2'>Rules</Card.Header>
+            <Card.Body>
+              <RuleList rules={_.uniqBy(_.flatten(datacards.map((m) => (m.rules))), 'name')} />
+            </Card.Body>
+          </Card>
+        </CarouselItemWrapper>
+        {props.psychicPowers.length > 0 &&
+          <CarouselItemWrapper carouselMode={props.settings.touchscreenMode}>
+            <Card>
+              <Card.Header style={{ ...headingStyle }} as='h2'>Psychic Powers</Card.Header>
+              <Card.Body>
+                <PowerList powers={props.psychicPowers} />
+              </Card.Body>
+            </Card>
+          </CarouselItemWrapper>}
+        <CarouselItemWrapper carouselMode={props.settings.touchscreenMode}>
+          <FactionSpecificData faction={props.faction} fireteams={props.fireteams} />
+        </CarouselItemWrapper>
+      </CarouselWrapper>
     </>
   )
 }

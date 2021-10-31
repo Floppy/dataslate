@@ -20,7 +20,7 @@ function SettingsDialog (props: Props): JSX.Element {
     props.setSettings(newSettings)
   }
 
-  const handleTouchscreenModeChange = (event: any) => {
+  const handleTouchscreenModeChange = (event: any): void => {
     const target = event.target
     const touchScreenMode: boolean = target.checked
     const newSettings = {
@@ -54,11 +54,11 @@ function SettingsDialog (props: Props): JSX.Element {
                 checked={props.settings.showWoundTrack}
               />
               <Form.Check
-                  type='checkbox'
-                  id='touchScreenMode'
-                  label='Touch Screen Mode (WIP)'
-                  onChange={handleTouchscreenModeChange}
-                  checked={props.settings.touchscreenMode}
+                type='checkbox'
+                id='touchScreenMode'
+                label='Touch Screen Mode (WIP)'
+                onChange={handleTouchscreenModeChange}
+                checked={props.settings.touchscreenMode}
               />
             </Form>
           </Row>

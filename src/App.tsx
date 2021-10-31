@@ -9,7 +9,7 @@ import { loadFiles } from './FileLoader'
 import { Roster as Roster2018 } from './types/KillTeam2018'
 import { Roster as Roster2021 } from './types/KillTeam2021'
 import { DataDevPage } from './components/KillTeam2021/DataDevPage'
-import {DEFAULT_SETTINGS, Settings} from './types/Settings'
+import { DEFAULT_SETTINGS, Settings } from './types/Settings'
 
 export function App (): JSX.Element {
   const [roster, setRoster] = useState<Roster2018|Roster2021|null>(null)
@@ -76,7 +76,7 @@ export function App (): JSX.Element {
           <Container fluid='lg'>
             {roster === null ? <Homepage onUpload={handleUpload} settings={settings} setSettings={setAndSaveSettings} /> : <></>}
             {(roster != null) && isRosterKT18(roster) ? <RosterView2018 name={roster.name} models={roster.models} onClose={handleClose} forceRules={roster.forceRules} onSelectionChanged={handleSelectionChanged} /> : <></>}
-            {(roster != null) && isRosterKT21(roster) ? <RosterView2021 name={roster.name} operatives={roster.operatives} psychicPowers={roster.psychicPowers} faction={roster.faction} fireteams={roster.fireteams} onClose={handleClose} showWoundTrack={settings.showWoundTrack} /> : <></>}
+            {(roster != null) && isRosterKT21(roster) ? <RosterView2021 name={roster.name} operatives={roster.operatives} psychicPowers={roster.psychicPowers} faction={roster.faction} fireteams={roster.fireteams} onClose={handleClose} settings={settings} /> : <></>}
           </Container>
         </Route>
       </Switch>
