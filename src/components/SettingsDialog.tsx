@@ -1,12 +1,22 @@
 import React from 'react'
-import { Form, Modal, Col, Row } from 'react-bootstrap'
+import {Form, Modal, Col, Row, OverlayTrigger, Popover, Tooltip} from 'react-bootstrap'
 import { Settings } from '../types/Settings'
+import HelpPopover from './HelpPopover'
+import {CompileDescription} from "./KillTeam2021/CompileDescription";
 
 interface Props {
   setShowSettings: (showSettings: boolean) => void
   show: boolean
   settings: Settings
   setSettings: (settings: Settings) => void
+}
+
+function settingTooltip (title: string, body: string): JSX.Element {
+  return (
+      <Tooltip id='settings-tooltip'>
+          <CompileDescription>{body}</CompileDescription>
+      </Tooltip>
+  )
 }
 
 function SettingsDialog (props: Props): JSX.Element {
@@ -44,8 +54,8 @@ function SettingsDialog (props: Props): JSX.Element {
       <Modal.Body>
         <Col>
           <Row>KT 2021 Settings</Row>
-          <Row>
-            <Form>
+          <Form>
+            <Row>
               <Form.Check
                 type='checkbox'
                 id='showWoundTrack'
@@ -53,15 +63,18 @@ function SettingsDialog (props: Props): JSX.Element {
                 onChange={handleWoundTrackChange}
                 checked={props.settings.showWoundTrack}
               />
+            </Row>
+            <Row>
               <Form.Check
                 type='checkbox'
                 id='touchScreenMode'
                 label='Touch Screen Mode (WIP)'
                 onChange={handleTouchscreenModeChange}
                 checked={props.settings.touchscreenMode}
-              />
-            </Form>
-          </Row>
+              />&nbsp;
+              <OverlayTrigger trigger='click' placement='right' overlay={settingTooltip('Touchscreen Mode', 'Swipe or click on the left or right of a page, instead of having a single page and scrolling')}><a href='#'>?</a></OverlayTrigger>
+            </Row>
+          </Form>
         </Col>
       </Modal.Body>
     </Modal>
