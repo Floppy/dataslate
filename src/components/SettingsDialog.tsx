@@ -71,7 +71,7 @@ function SettingsDialog (props: Props): JSX.Element {
                 onChange={handleTouchscreenModeChange}
                 checked={props.settings.touchscreenMode}
               />&nbsp;
-              <OverlayTrigger trigger='click' placement='right' overlay={settingTooltip('Touchscreen Mode', 'Swipe or click on the left or right of a page, instead of having a single page and scrolling')}><a href='#'>?</a></OverlayTrigger>
+              <OverlayTrigger trigger='click' placement='right' overlay={settingTooltip('Touchscreen Mode', 'Swipe or click on the left or right of a page, instead of having a single page and scrolling')}><button onClick={(event) => event.preventDefault()}>?</button></OverlayTrigger>
             </Row>
           </Form>
         </Col>
