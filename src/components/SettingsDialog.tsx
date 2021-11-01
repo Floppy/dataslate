@@ -1,8 +1,7 @@
 import React from 'react'
-import {Form, Modal, Col, Row, OverlayTrigger, Popover, Tooltip} from 'react-bootstrap'
+import { Form, Modal, Col, Row, OverlayTrigger, Tooltip } from 'react-bootstrap'
 import { Settings } from '../types/Settings'
-import HelpPopover from './HelpPopover'
-import {CompileDescription} from "./KillTeam2021/CompileDescription";
+import { CompileDescription } from './KillTeam2021/CompileDescription'
 
 interface Props {
   setShowSettings: (showSettings: boolean) => void
@@ -13,9 +12,9 @@ interface Props {
 
 function settingTooltip (title: string, body: string): JSX.Element {
   return (
-      <Tooltip id='settings-tooltip'>
-          <CompileDescription>{body}</CompileDescription>
-      </Tooltip>
+    <Tooltip id='settings-tooltip'>
+      <CompileDescription>{body}</CompileDescription>
+    </Tooltip>
   )
 }
 
