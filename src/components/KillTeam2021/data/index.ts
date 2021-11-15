@@ -20,6 +20,7 @@ import traitorSpaceMarine from './traitorSpaceMarine'
 import troupe from './troupe'
 import veteranGuardsmen from './veteranGuardsmen'
 import warpCoven from './warpCoven'
+import pathfinder from './pathfinder'
 
 const data = [
   broodCoven,
@@ -37,6 +38,7 @@ const data = [
   hunterClade,
   imperialGuard,
   kommando,
+  pathfinder,
   spaceMarine,
   talonsOfTheEmperor,
   thousandSons,
