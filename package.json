@@ -63,7 +63,7 @@
     "@types/react-test-renderer": "^17.0.1",
     "@types/uuid": "^8.3.3",
     "@types/xmldom": "^0.1.31",
-    "csv-parse": "^4.16.3",
+    "csv-parse": "^5.0.3",
     "react-scripts": "^4.0.3",
     "react-test-renderer": "^16.13.1",
     "ts-standard": "^10.0.0"
