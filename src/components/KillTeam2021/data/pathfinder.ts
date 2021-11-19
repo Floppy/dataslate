@@ -87,17 +87,17 @@ const artOfWar = {
   description: `Pathfinder Shas'uis are accomplished leaders. They have spent years studying the philosophies of T'au warfare, and have years of experience in implementing them.
                 When a SHAS'UI operative uses its Art of War ability, select one Art of War below to be in effect until the end of the Turning Point.`,
   options: [{
-    name: `Mont'ka`,
-    description: `Each time a friendly PATHFINDER operative is activated, if it has an Engage order for that activation, it can perform a free Dash action during that activation.`
+    name: 'Mont\'ka',
+    description: 'Each time a friendly PATHFINDER operative is activated, if it has an Engage order for that activation, it can perform a free Dash action during that activation.'
   }, {
-    name: `Kauyon`,
+    name: 'Kauyon',
     description: `Each time a shooting is made against a friendly PATHFINDER operative before rolling your defence dice, if it is in Cover additional dice can be retained as 
                   a successful normal save as a result of Cover.`
   }]
 }
 
 const markerLights = {
-  name: ``
+  name: ''
 }
 
 /*
@@ -181,7 +181,9 @@ const data = {
   strategicPloys,
   tacticalPloys,
   archetypes,
-  tacOps
+  tacOps,
+  artOfWar,
+  markerLights
 }
 
 export default data
