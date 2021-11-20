@@ -85,7 +85,7 @@ const tacOps: TacOp[] = [
 const artOfWar = {
   name: 'Art of War',
   description: `Pathfinder Shas'uis are accomplished leaders. They have spent years studying the philosophies of T'au warfare, and have years of experience in implementing them.
-                When a SHAS'UI operative uses its Art of War ability, select one Art of War below to be in effect until the end of the Turning Point.`,
+                When a **SHAS'UI** operative uses its Art of War ability, select one Art of War below to be in effect until the end of the Turning Point.`,
   options: [{
     name: 'Mont\'ka',
     description: 'Each time a friendly PATHFINDER operative is activated, if it has an Engage order for that activation, it can perform a free Dash action during that activation.'
