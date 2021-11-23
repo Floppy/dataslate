@@ -97,84 +97,32 @@ const artOfWar = {
 }
 
 const markerLights = {
-  name: ''
-}
+  name: 'Markerlights',
+  description: `A markerlight is a device that projects a beam onto a target. Once an enemy has been 'painted' by such a beam, a torrent of targeting data is fed into the 
+                cadre tactical network, relaying ranges, triangulating optimum firing trajectories and superimposing aiming vectors to other T'au warriors, allowing them 
+                to engage the target with unerring accuracy.`,
+  abilities: [{
+    id: '1',
+    name: 'Markerlight (1AP)',
+    description: `Select one enemy operative Visible to this operative. That enemy operative gains 1 Markerlight token. An operative cannot perform this action if it 
+                is within Engagement Range of an enemy operative. If an operative would perform this action and a **Shoot** action in the same activation, only the target 
+                of that **Shoot** action's shooting attack can be selected for this action.`
+  }],
+  description2:
+`Operatives gain Markerlight tokens as specified by the Markerlight action above. In the Ready Operatives step of each Initiative phase, remove one 
+Markerlight token that each operatives has.
+                  
+Each time a friendly PATHFINDER💀 operative makes a shooting attack, it gains a number of cumulative benefits for that shooting attack depending on how 
+many Markerlight tokens the target operative has. Operatives gain no markerlight benefits for shooting attacks made with EMP and fusion grenades.
 
-/*
-MARKERLIGHTS
-A markerlight is a device that projects a beam onto a target. Once an enemy has been 'painted' by such a beam, a torrent of targeting data is fed into the cadre tactical network, relaying ranges, triangulating optimum firing trajectories and superimposing aiming vectors to other T'au warriors, allowing them to engage the target with unerring accuracy.
-MARKERLIGHT
-1AP
-Select one enemy operative Visible to this operative. That enemy operative gains 1 Markerlight token. An operative cannot perform this action if it is within Engagement Range of an enemy operative. If an operative would perform this action and a Shoot action in the same activation, only the target of that Shoot action's shooting attack can be selected for this action.
-Operatives gain Markerlight tokens as specified by the Markerlight action above. In the Ready Operatives step of each Initiative phase, remove one Markerlight token that each operatives has.
-Each time a friendly PATHFINDERS operative makes a shooting attack, it gains a number of cumulative benefits for that shooting attack depending on how many Markerlight tokens the target operative has. Operatives gain no markerlight benefits for shooting attacks made with EMP and fusion grenades.
-Markerlight Tokens
-1+
-Benefit
-In the Roll Attack Dice step of that
-shooting attack, you can re-roll one of your attack dice.
-For that shooting attack, the active operative's ranged weapons gain the No Cover special rule.
-For that shooting attack, improve the Ballistic Skill characteristic of ranged weapons the active operative is equipped with by 1.
-In the Select Valid Target step of that shooting attack, the enemy operative is not Obscured.
-In the Select Valid Target step of that shooting attack, the enemy operative is treated as if it has an Engage order.
-2+
-3+
-4+
-ART OF WAR
-Pathfinder Shas'uis are accomplished leaders. They have spent years studying the philosophies of T'au warfare, and have years of experience in implementing them.
-When a SHAS'UI operative uses its Art of War ability, select one Art of War below to be in effect until the end of the Turning Point.
-Mont'ka
-Each time a friendly PATHFINDER operative is activated, if it has an Engage order for that activation, it can perform a free Dash action during that activation.
-Kauyon
-Each time a shooting is made against a friendly PATHFINDER operative barore rolling your defence dice, if it is in Cover additional dice can be retained as a successful normal save as a result of Cover.
-56
-but on
-PATHFINDERS
-ACTIONS
-KE COVE
-the end of th
-d's made aga
-DRON
-acteristic b
-DED
-end of the Tu
-DER operativ
-Dice step of
-her friendly PA
-perative), you ca
-TERMINED TA
-SHAS UI opera
-tilar ability in the p
-Poy Until the E
-MHFINDER opera
-SMAS UN operativ
-ed for your kill L
-ng in effect for this
-otka it can only F
-of and Visible to
-is declared. You
-5+
-Copy text
-MARKERLIGHTS
-A markerlight is a device that projects a beam onto a target. Once an enemy has been 'painted' by such a beam, a torrent of targeting data is fed into the cadre tactical network, relaying ranges, triangulating optimum firing trajectories and superimposing aiming vectors to other T'au warriors, allowing them to engage the target with unerring accuracy.
-MARKERLIGHT
-1AP
-Select one enemy operative Visible to this operative. That enemy operative gains 1 Markerlight token. An operative cannot perform this action if it is within Engagement Range of an enemy operative. If an operative would perform this action and a Shoot action in the same activation, only the target of that Shoot action's shooting attack can be selected for this action.
-Operatives gain Markerlight tokens as specified by the Markerlight action above. In the Ready Operatives step of each Initiative phase, remove one Markerlight token that each operatives has.
-Each time a friendly PATHFINDERS operative makes a shooting attack, it gains a number of cumulative benefits for that shooting attack depending on how many Markerlight tokens the target operative has. Operatives gain no markerlight benefits for shooting attacks made with EMP and fusion grenades.
-Markerlight Tokens
-1+
-Benefit
-In the Roll Attack Dice step of that
-shooting attack, you can re-roll one of your attack dice.
-For that shooting attack, the active operative's ranged weapons gain the No Cover special rule.
-For that shooting attack, improve the Ballistic Skill characteristic of ranged weapons the active operative is equipped with by 1.
-In the Select Valid Target step of that shooting attack, the enemy operative is not Obscured.
-In the Select Valid Target step of that shooting attack, the enemy operative is treated as if it has an Engage order.
-2+
-3+
-4+
- */
+|Markerlight Tokens|Benefit|
+|-|-|
+|1+|In the Roll Attack Dice step of that shooting attack, you can re-roll one of your attack dice.|
+|2+|For that shooting attack, the active operative's ranged weapons gain the No Cover special rule.|
+|3+|For that shooting attack, improve the Ballistic Skill characteristic of ranged weapons the active operative is equipped with by 1.|
+|4+|In the Select Valid Target step of that shooting attack, the enemy operative is not Obscured.|
+|5+|In the Select Valid Target step of that shooting attack, the enemy operative is treated as if it has an Engage order.|`
+}
 
 const data = {
   name: 'Pathfinder' as const,

@@ -6,6 +6,7 @@ import getFactionSpecificData from './../data'
 import { Card, Col } from 'react-bootstrap'
 import { CompileDescription } from '../CompileDescription'
 import { ArchetypePanel } from './components/ArchetypePanel'
+import AbilityList from '../AbilityList'
 
 interface Props {
   fireteams: string[]
@@ -62,6 +63,17 @@ export const Pathfinder: FC<Props> = (props) => {
       </div>
       <div style={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'row' }}>
         <Card style={{ width: '100%', marginRight: '5px' }}>
+          <Card.Header style={{ ...headingStyle }} as='h2'>{factionSpecificData.markerLights.name}</Card.Header>
+          <Card.Body>
+            <CompileDescription>{factionSpecificData.markerLights.description}</CompileDescription>
+            <AbilityList abilities={factionSpecificData.markerLights.abilities} />
+            <CompileDescription>{factionSpecificData.markerLights.description2}</CompileDescription>
+          </Card.Body>
+        </Card>
+
+      </div>
+      <div style={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'row' }}>
+        <Card style={{ width: '100%', marginRight: '5px' }}>
           <Card.Header style={{ ...headingStyle }} as='h2'>{factionSpecificData.artOfWar.name}</Card.Header>
           <Card.Body>
             <CompileDescription>{factionSpecificData.artOfWar.description}</CompileDescription>
@@ -80,7 +92,6 @@ export const Pathfinder: FC<Props> = (props) => {
             </Col>
           </Card.Body>
         </Card>
-
       </div>
     </>
   )
