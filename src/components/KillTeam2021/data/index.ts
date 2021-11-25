@@ -12,6 +12,7 @@ import hiveFleet from './hiveFleet'
 import hunterCadre from './hunterCadre'
 import hunterClade from './hunterClade'
 import imperialGuard from './imperialGuard'
+import novitiate from './novitiate'
 import kommando from './kommando'
 import spaceMarine from './spaceMarine'
 import talonsOfTheEmperor from './talonsOfTheEmperor'
@@ -38,6 +39,7 @@ const data = [
   hunterClade,
   imperialGuard,
   kommando,
+  novitiate,
   pathfinder,
   spaceMarine,
   talonsOfTheEmperor,
