@@ -6,13 +6,12 @@ import getFactionSpecificData from './../data'
 import { Card, Col } from 'react-bootstrap'
 import { CompileDescription } from '../CompileDescription'
 import { ArchetypePanel } from './components/ArchetypePanel'
-import AbilityList from '../AbilityList'
 
 interface Props {
   fireteams: string[]
 }
 
-export const Pathfinder: FC<Props> = (props) => {
+export const Novitiate: FC<Props> = (props) => {
   const headingStyle = {
     background: '#FF6F2D',
     color: 'black',
@@ -20,10 +19,9 @@ export const Pathfinder: FC<Props> = (props) => {
     width: '100%',
     display: 'flex'
   }
+  const factionSpecificData = getFactionSpecificData('Novitiate')
 
-  const factionSpecificData = getFactionSpecificData('Pathfinder')
-
-  if (factionSpecificData === undefined || factionSpecificData.name !== 'Pathfinder') {
+  if (factionSpecificData === undefined || factionSpecificData.name !== 'Novitiate') {
     return <></>
   }
 
@@ -63,25 +61,14 @@ export const Pathfinder: FC<Props> = (props) => {
       </div>
       <div style={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'row' }}>
         <Card style={{ width: '100%', marginRight: '5px' }}>
-          <Card.Header style={{ ...headingStyle }} as='h2'>{factionSpecificData.markerLights.name}</Card.Header>
+          <Card.Header style={{ ...headingStyle }} as='h2'>{factionSpecificData.actsOfFaith.name}</Card.Header>
           <Card.Body>
-            <CompileDescription>{factionSpecificData.markerLights.description}</CompileDescription>
-            <AbilityList abilities={factionSpecificData.markerLights.abilities} />
-            <CompileDescription>{factionSpecificData.markerLights.description2}</CompileDescription>
-          </Card.Body>
-        </Card>
-      </div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'row' }}>
-        <Card style={{ width: '100%', marginRight: '5px' }}>
-          <Card.Header style={{ ...headingStyle }} as='h2'>{factionSpecificData.artOfWar.name}</Card.Header>
-          <Card.Body>
-            <CompileDescription>{factionSpecificData.artOfWar.description}</CompileDescription>
-
+            <CompileDescription>{factionSpecificData.actsOfFaith.description}</CompileDescription>
             <Col>
-              {factionSpecificData.artOfWar.options.map(x => (
+              {factionSpecificData.actsOfFaith.acts.map(x => (
                 <Card key={x.name} border='info' bg='light'>
                   <Card.Header style={{ background: '#17a2b8', color: 'white', display: 'flex', justifyContent: 'space-between' }} as='h4'>
-                    <span>{x.name}</span>
+                    <span>{x.name} - {x.cost}</span>
                   </Card.Header>
                   <Card.Body>
                     <CompileDescription>{x.description}</CompileDescription>

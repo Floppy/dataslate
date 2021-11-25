@@ -2,7 +2,7 @@ import { Archetype, FireteamArchetypes, Ploy, TacOp } from '../../../types/KillT
 
 const archetypes: FireteamArchetypes = {
   fireteams: {
-    'Novitiate Kill Team': [Archetype.RECON]
+    'Novitiate Kill Team': [Archetype.SECURITY, Archetype.RECON]
   }
 }
 
@@ -82,12 +82,82 @@ const tacOps: TacOp[] = [
   }
 ]
 
+const actsOfFaith = {
+  name: 'Acts of Faith',
+  description: `Keep a pool of Faith points. At the start of each Turning Point, if there are any friendly NOVITIATE💀 operatives in the kill zone, you gain 3 Faith points. 
+In addition, you gain one Faith point at the end of an activation, if any of the following apply:
+- During that activation, a friendly NOVITIATE💀 operative with the Combat specialism incapacitated an enemy operative in a combat.
+- During that activation, a friendly NOVITIATE💀 operative with the Marksman specialism incapacitated an enemy operative with a shooting attack.
+- During that activation, a friendly NOVITIATE💀 operative with the Staunch specialism performed a mission action.
+- A friendly NOVITIATE💀 operative with the Scout specialism was activated and finished that activation within ⬟ of the enemy drop zone.
+
+Faith points can be subtracted so that friendly NOVITIATE💀 operatives can perform Acts of Faith listed below. Each Act of Faith will specify when it can be used, 
+its effect and how many Faith points you must subtract from your total to use it. If you cannot subtract the required Faith points from your total, you cannot use that Act of Faith.
+
+Unless otherwise specified, only one Act of Faith can be used during each activation (friendly or enemy). For example, a shooting attack is made against a friendly 
+NOVITIATE💀 operative. In the Roll Defence Dice step of that shooting attack, that operative's controlling player decides to subtract 2 Faith points to use Divine Shield to 
+retain one failed save as a successful normal save. No other Acts of Faith can then be performed during that activation (other than Faithful Blessing).
+`,
+  acts: [
+    {
+      name: 'Faithful Blessing',
+      description: `When a friendly NOVITIATE💀 operative fights in combat or makes a shooting attack, in the Roll Attack Dice or Roll Defence Dice 
+                    step of that combat or shooting attack, re-roll one of your attack or defence dice. This Act of Faith can be used more than once in each activation, 
+                    and can be used with other Acts of Faith.`,
+      cost: '1 Faith Point'
+    },
+    {
+      name: 'Guiding Light',
+      description: `When a friendly NOVITIATE💀 operative fights in combat or makes a shooting attack, in the Roll Attack Dice step of that combat 
+                    or shooting attack, retain one of your failed hits as a successful normal hit.`,
+      cost: '2 Faith Points'
+    },
+    {
+      name: 'Vengeful Strike',
+      description: `When a friendly NOVITIATE💀 operative fights in combat or makes a shooting attack, in the Roll Attack Dice step of that combat or 
+                    shooting attack, retain one of your successful normal hits as a critical hit instead.`,
+      cost: '3 Faith Points'
+    },
+    {
+      name: 'Divine Shield',
+      description: `When a shooting attack is made against a friendly NOVITIATE💀 operative, in the Roll Defence Dice step of that shooting attack, 
+                    retain one of your failed saves as a successful normal save.`,
+      cost: '2 Faith Points'
+    },
+    {
+      name: 'Armour of Contempt',
+      description: `When a shooting attack is made against a friendly NOVITIATE💀 operative, in the Roll Defence Dice step of that shooting attack,
+                    retain one of your successful normal saves as a critical save instead.`,
+      cost: '2 Faith Points'
+    },
+    {
+      name: 'Emperor\'s Protection',
+      description: `When a friendly NOVITIATE💀 operative suffers a mortal wound, ignore that mortal wound. This Act of Faith can be used more than 
+                    once in each activation.`,
+      cost: '1 Faith Point'
+    },
+    {
+      name: 'Blessed Rejuvenation',
+      description: `When a friendly NOVITIATE💀 operative is activated, it regains D3 lost wounds. This Act of Faith can be used a maximum of two
+                    times in each activation.`,
+      cost: '2 Faith Points'
+    },
+    {
+      name: 'Blinding Aura',
+      description: `When an enemy operative performs a shooting attack, select one friendly NOVITIATE💀 operative. Until the end of that activation, while 
+                    that friendly operative is more than ⬤ from that enemy operative, that friendly operative is treated as being in Cover.`,
+      cost: '2 Faith Points'
+    }
+  ]
+}
+
 const data = {
-  name: 'Notiviate' as const,
+  name: 'Novitiate' as const,
   strategicPloys,
   tacticalPloys,
   archetypes,
-  tacOps
+  tacOps,
+  actsOfFaith
 }
 
 export default data
