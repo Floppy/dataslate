@@ -57,7 +57,7 @@ const tacticalPloys: Ploy[] = [
     cost: 1,
     description: `Use this Tactical Ploy after rolling your attack dice for a shooting attack made by a friendly **NOVITIATE CONDEMNOR** operative. You can re-roll any 
                   or all of your attack dice for that shooting attack.`
-  },
+  }
 ]
 
 const tacOps: TacOp[] = [
