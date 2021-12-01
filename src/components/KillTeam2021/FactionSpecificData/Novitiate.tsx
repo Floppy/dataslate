@@ -63,7 +63,7 @@ export const Novitiate: FC<Props> = (props) => {
         <Card style={{ width: '100%', marginRight: '5px' }}>
           <Card.Header style={{ ...headingStyle }} as='h2'>{factionSpecificData.actsOfFaith.name}</Card.Header>
           <Card.Body>
-            <CompileDescription>{factionSpecificData.actsOfFaith.description}</CompileDescription>
+            <a href={factionSpecificData.actsOfFaith.wahapediaUrl} target='_blank' rel='noreferrer'>Full Rules</a>
             <Col>
               {factionSpecificData.actsOfFaith.acts.map(x => (
                 <Card key={x.name} border='info' bg='light'>

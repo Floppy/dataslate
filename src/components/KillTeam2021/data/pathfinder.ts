@@ -84,6 +84,7 @@ const tacOps: TacOp[] = [
 
 const artOfWar = {
   name: 'Art of War',
+  wahapediaUrl: 'https://wahapedia.ru/kill-team2/kill-teams/pathfinder/#Art-of-War',
   description: `Pathfinder Shas'uis are accomplished leaders. They have spent years studying the philosophies of T'au warfare, and have years of experience in implementing them.
                 When a **SHAS'UI** operative uses its Art of War ability, select one Art of War below to be in effect until the end of the Turning Point.`,
   options: [{
@@ -98,6 +99,7 @@ const artOfWar = {
 
 const markerLights = {
   name: 'Markerlights',
+  wahapediaUrl: 'https://wahapedia.ru/kill-team2/kill-teams/pathfinder/#Markerlights',
   description: `A markerlight is a device that projects a beam onto a target. Once an enemy has been 'painted' by such a beam, a torrent of targeting data is fed into the 
                 cadre tactical network, relaying ranges, triangulating optimum firing trajectories and superimposing aiming vectors to other T'au warriors, allowing them 
                 to engage the target with unerring accuracy.`,
@@ -113,8 +115,9 @@ const markerLights = {
 Markerlight token that each operatives has.
                   
 Each time a friendly PATHFINDER💀 operative makes a shooting attack, it gains a number of cumulative benefits for that shooting attack depending on how 
-many Markerlight tokens the target operative has. Operatives gain no markerlight benefits for shooting attacks made with EMP and fusion grenades.
+many Markerlight tokens the target operative has. Operatives gain no markerlight benefits for shooting attacks made with EMP and fusion grenades.`,
 
+  benefitTable: `
 |Markerlight Tokens|Benefit|
 |-|-|
 |1+|In the Roll Attack Dice step of that shooting attack, you can re-roll one of your attack dice.|

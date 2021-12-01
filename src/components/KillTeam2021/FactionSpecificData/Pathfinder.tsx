@@ -65,9 +65,9 @@ export const Pathfinder: FC<Props> = (props) => {
         <Card style={{ width: '100%', marginRight: '5px' }}>
           <Card.Header style={{ ...headingStyle }} as='h2'>{factionSpecificData.markerLights.name}</Card.Header>
           <Card.Body>
-            <CompileDescription>{factionSpecificData.markerLights.description}</CompileDescription>
+            <a href={factionSpecificData.markerLights.wahapediaUrl} target='_blank' rel='noreferrer'>Full Rules</a>
             <AbilityList abilities={factionSpecificData.markerLights.abilities} />
-            <CompileDescription>{factionSpecificData.markerLights.description2}</CompileDescription>
+            <CompileDescription>{factionSpecificData.markerLights.benefitTable}</CompileDescription>
           </Card.Body>
         </Card>
       </div>
@@ -75,8 +75,7 @@ export const Pathfinder: FC<Props> = (props) => {
         <Card style={{ width: '100%', marginRight: '5px' }}>
           <Card.Header style={{ ...headingStyle }} as='h2'>{factionSpecificData.artOfWar.name}</Card.Header>
           <Card.Body>
-            <CompileDescription>{factionSpecificData.artOfWar.description}</CompileDescription>
-
+            <a href={factionSpecificData.artOfWar.wahapediaUrl} target='_blank' rel='noreferrer'>Full Rules</a>
             <Col>
               {factionSpecificData.artOfWar.options.map(x => (
                 <Card key={x.name} border='info' bg='light'>

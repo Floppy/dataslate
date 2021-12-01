@@ -84,6 +84,7 @@ const tacOps: TacOp[] = [
 
 const actsOfFaith = {
   name: 'Acts of Faith',
+  wahapediaUrl: 'https://wahapedia.ru/kill-team2/kill-teams/novitiate/#Acts-of-Faith',
   description: `Keep a pool of Faith points. At the start of each Turning Point, if there are any friendly NOVITIATE💀 operatives in the kill zone, you gain 3 Faith points. 
 In addition, you gain one Faith point at the end of an activation, if any of the following apply:
 - During that activation, a friendly NOVITIATE💀 operative with the Combat specialism incapacitated an enemy operative in a combat.
