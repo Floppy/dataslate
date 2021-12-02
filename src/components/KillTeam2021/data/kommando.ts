@@ -70,7 +70,7 @@ const tacOps: TacOp[] = [
   - At the end of the second Turning Point, if friendly operatives control more objective markers than enemy operatives control, you score 1 VP`
   }, {
     id: 3,
-    name: 'Get stick in!',
+    name: 'Get stuck in!',
     description: `You can reveal this Tac Op in the Reveal Tac Ops step of any turning Point
   - At the end of any turning Point (excluding the fourth), if three or more friendly operatives are within ⬟ of your opponents drop zone, you score 1 VP.
   - If you achieve the first condition at the end of any subsequent Turning Points (excluding the fourth), you score 1 VP.`

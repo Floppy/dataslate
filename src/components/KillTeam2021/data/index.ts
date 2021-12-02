@@ -12,6 +12,7 @@ import hiveFleet from './hiveFleet'
 import hunterCadre from './hunterCadre'
 import hunterClade from './hunterClade'
 import imperialGuard from './imperialGuard'
+import novitiate from './novitiate'
 import kommando from './kommando'
 import spaceMarine from './spaceMarine'
 import talonsOfTheEmperor from './talonsOfTheEmperor'
@@ -20,6 +21,7 @@ import traitorSpaceMarine from './traitorSpaceMarine'
 import troupe from './troupe'
 import veteranGuardsmen from './veteranGuardsmen'
 import warpCoven from './warpCoven'
+import pathfinder from './pathfinder'
 
 const data = [
   broodCoven,
@@ -37,6 +39,8 @@ const data = [
   hunterClade,
   imperialGuard,
   kommando,
+  novitiate,
+  pathfinder,
   spaceMarine,
   talonsOfTheEmperor,
   thousandSons,
