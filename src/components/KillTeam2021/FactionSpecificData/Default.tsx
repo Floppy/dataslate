@@ -37,7 +37,7 @@ export const Default: FC<Props> = (props) => {
 
   return (
     <>
-      <div style={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'row' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'row', breakBefore: 'page' }}>
         <Card style={{ width: '100%', marginRight: '5px' }}>
           <Card.Header style={{ ...headingStyle }} as='h2'>Strategic Ploys</Card.Header>
           <Card.Body>
@@ -51,7 +51,7 @@ export const Default: FC<Props> = (props) => {
           </Card.Body>
         </Card>
       </div>
-      <div>
+      <div style={{ breakBefore: 'page' }}>
         <Card>
           <Card.Header style={{ ...headingStyle }} as='h2'>Tac Ops</Card.Header>
           <Card.Body>

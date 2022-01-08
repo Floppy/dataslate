@@ -51,12 +51,6 @@ export function Roster (props: Props): JSX.Element {
       {_.orderBy(datacards, ['leader', 'name'], ['desc', 'asc']).map((datacard: Datacard) => (
         <Datasheet key={datacard.operativeNames.toString()} datacard={datacard} showWoundTrack={props.showWoundTrack} />
       ))}
-      <Card>
-        <Card.Header style={{ ...headingStyle, breakBefore: 'always' }} as='h2'>Rules</Card.Header>
-        <Card.Body>
-          <RuleList rules={_.uniqBy(_.flatten(datacards.map((m) => (m.rules))), 'name')} />
-        </Card.Body>
-      </Card>
       {props.psychicPowers.length > 0 &&
         <Card>
           <Card.Header style={{ ...headingStyle }} as='h2'>Psychic Powers</Card.Header>
@@ -65,6 +59,12 @@ export function Roster (props: Props): JSX.Element {
           </Card.Body>
         </Card>}
       <FactionSpecificData faction={props.faction} fireteams={props.fireteams} />
+      <Card>
+        <Card.Header style={{ ...headingStyle, breakBefore: 'always' }} as='h2'>Rules</Card.Header>
+        <Card.Body>
+          <RuleList rules={_.uniqBy(_.flatten(datacards.map((m) => (m.rules))), 'name')} />
+        </Card.Body>
+      </Card>
     </>
   )
 }
