@@ -59,7 +59,7 @@ export function Roster (props: Props): JSX.Element {
           </Card.Body>
         </Card>}
       <FactionSpecificData faction={props.faction} fireteams={props.fireteams} />
-      <Card style={{ breakBefore: 'always' }}>
+      <Card style={{ breakBefore: 'page' }}>
         <Card.Header style={{ ...headingStyle }} as='h2'>Rules</Card.Header>
         <Card.Body>
           <RuleList rules={_.uniqBy(_.flatten(datacards.map((m) => (m.rules))), 'name')} />
