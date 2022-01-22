@@ -54,17 +54,9 @@ export function Roster (props: Props): JSX.Element {
       <CarouselWrapper carouselMode={props.settings.touchscreenMode}>
         {_.orderBy(datacards, ['leader', 'name'], ['desc', 'asc']).map((datacard: Datacard) => (
           <CarouselItemWrapper key={datacard.operativeNames.toString()} carouselMode={props.settings.touchscreenMode}>
-            <Datasheet datacard={datacard} showWoundTrack={props.settings.showWoundTrack} />
+            <Datasheet key={datacard.operativeNames.toString()} datacard={datacard} showWoundTrack={props.showWoundTrack} />
           </CarouselItemWrapper>
         ))}
-        <CarouselItemWrapper carouselMode={props.settings.touchscreenMode}>
-          <Card>
-            <Card.Header style={{ ...headingStyle, breakBefore: 'always' }} as='h2'>Rules</Card.Header>
-            <Card.Body>
-              <RuleList rules={_.uniqBy(_.flatten(datacards.map((m) => (m.rules))), 'name')} />
-            </Card.Body>
-          </Card>
-        </CarouselItemWrapper>
         {props.psychicPowers.length > 0 &&
           <CarouselItemWrapper carouselMode={props.settings.touchscreenMode}>
             <Card>
@@ -77,7 +69,16 @@ export function Roster (props: Props): JSX.Element {
         <CarouselItemWrapper carouselMode={props.settings.touchscreenMode}>
           <FactionSpecificData faction={props.faction} fireteams={props.fireteams} />
         </CarouselItemWrapper>
+        <CarouselItemWrapper carouselMode={props.settings.touchscreenMode}>
+          <Card>
+            <Card.Header style={{ ...headingStyle, breakBefore: 'always' }} as='h2'>Rules</Card.Header>
+            <Card.Body>
+              <RuleList rules={_.uniqBy(_.flatten(datacards.map((m) => (m.rules))), 'name')} />
+            </Card.Body>
+          </Card>
+        </CarouselItemWrapper>
       </CarouselWrapper>
+
     </>
   )
 }
