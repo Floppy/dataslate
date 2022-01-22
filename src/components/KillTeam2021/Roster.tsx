@@ -54,7 +54,7 @@ export function Roster (props: Props): JSX.Element {
       <CarouselWrapper carouselMode={props.settings.touchscreenMode}>
         {_.orderBy(datacards, ['leader', 'name'], ['desc', 'asc']).map((datacard: Datacard) => (
           <CarouselItemWrapper key={datacard.operativeNames.toString()} carouselMode={props.settings.touchscreenMode}>
-            <Datasheet key={datacard.operativeNames.toString()} datacard={datacard} showWoundTrack={props.showWoundTrack} />
+            <Datasheet key={datacard.operativeNames.toString()} datacard={datacard} showWoundTrack={props.settings.showWoundTrack} />
           </CarouselItemWrapper>
         ))}
         {props.psychicPowers.length > 0 &&
