@@ -22,6 +22,7 @@ import troupe from './troupe'
 import veteranGuardsmen from './veteranGuardsmen'
 import warpCoven from './warpCoven'
 import pathfinder from './pathfinder'
+import wyrmblade from './wyrmblade'
 
 const data = [
   broodCoven,
@@ -47,7 +48,8 @@ const data = [
   traitorSpaceMarine,
   troupe,
   veteranGuardsmen,
-  warpCoven
+  warpCoven,
+  wyrmblade
 ]
 
 // eslint-disable-next-line
