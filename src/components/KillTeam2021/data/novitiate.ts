@@ -65,8 +65,8 @@ const tacOps: TacOp[] = [
     id: 1,
     name: 'Purge With Flame',
     description: `You can reveal this Tac Op in the Target Reveal Step of any Turning Point.  
-  - If two or more enemy operatives are incapacitated by attacks made by weapons with the Inferno x special rule, you score 1VP.
-  - If an enemy **LEADER** operative is incapacitated by an attack made by a weapon with the Inferno x critical hit rule, you score 1VP`
+  - If two or more enemy operatives are incapacitated by attacks made by weapons with the Inferno X critical hit rule, you score 1VP.
+  - If an enemy **LEADER** operative is incapacitated by an attack made by a weapon with the Inferno X critical hit rule, you score 1VP`
   }, {
     id: 2,
     name: 'Reconsecrate Ground',
@@ -102,9 +102,9 @@ retain one failed save as a successful normal save. No other Acts of Faith can t
   acts: [
     {
       name: 'Faithful Blessing',
-      description: `When a friendly NOVITIATE💀 operative fights in combat or makes a shooting attack, in the Roll Attack Dice or Roll Defence Dice 
-                    step of that combat or shooting attack, re-roll one of your attack or defence dice. This Act of Faith can be used more than once in each activation, 
-                    and can be used with other Acts of Faith.`,
+      description: `When a friendly NOVITIATE💀 operative is fighting in combat or making a shooting attack, or a shooting attack is being made against it, in the Roll 
+                    Attack Dice step (for the former) or the Roll Defence Dice step (for the latter) of that combat or shooting attack, re-roll one of your attack or defence
+                    dice. This Act of Faith can be used more than once in each activation, and can be used with other Acts of Faith.`,
       cost: '1 Faith Point'
     },
     {
@@ -146,7 +146,9 @@ retain one failed save as a successful normal save. No other Acts of Faith can t
     {
       name: 'Blinding Aura',
       description: `When an enemy operative performs a shooting attack, select one friendly NOVITIATE💀 operative. Until the end of that activation, while 
-                    that friendly operative is more than ⬤ from that enemy operative, that friendly operative is treated as being in Cover.`,
+                    that friendly operative is more than ⬤ from that enemy operative:
+- That friendly operative is treated as being in Cover.
+- While that friendly operative has a Conceal order, it is always treated as having a Conceal order, regardless of any other rules (e.g. Vantage Point).`,
       cost: '2 Faith Points'
     }
   ]
