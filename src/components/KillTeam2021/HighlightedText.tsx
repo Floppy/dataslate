@@ -1,4 +1,3 @@
-import * as React from 'react'
 import reactStringReplace from 'react-string-replace'
 
 interface Props {
@@ -6,7 +5,7 @@ interface Props {
 }
 
 export function HighlightedText (props: Props): JSX.Element {
-  let output = [props.children]
+  let output: React.ReactNodeArray = [props.children]
   output = reactStringReplace(output, '▲', () => <span className='triangle'>▲</span>)
   output = reactStringReplace(output, '●', () => <span className='circle'>●</span>)
   output = reactStringReplace(output, '○', () => <span className='circle'>●</span>)
@@ -14,7 +13,7 @@ export function HighlightedText (props: Props): JSX.Element {
   output = reactStringReplace(output, '⬛', () => <span className='square'>■</span>)
   output = reactStringReplace(output, '■', () => <span className='square'>■</span>)
   output = reactStringReplace(output, '⬟', () => <span className='pentagon'>⬟</span>)
-  output = output.filter(el => el !== '')
+  output = output.filter((el: React.ReactNode) => (el !== ''))
 
   return <>{output}</>
 }
