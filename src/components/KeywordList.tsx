@@ -19,7 +19,8 @@ export function KeywordList (props: Props): JSX.Element {
           >
             {props.faction}
           </Badge>
-        ) : <></>}
+          )
+        : <></>}
       {props.keywords.map((keyword: string) => (
         <Badge
           key={`keyword-${keyword}`}

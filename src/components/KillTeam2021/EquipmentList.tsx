@@ -8,21 +8,23 @@ interface Props {
 }
 
 export function EquipmentList (props: Props): JSX.Element {
-  return props.equipment.length === 0 ? <></> : (
-    <Card border='secondary' bg='light'>
-      <Card.Header style={{ background: 'rgba(0, 0, 0, 0.05)' }} as='h4'>
-        Equipment
-      </Card.Header>
-      <Card.Body>
-        {props.equipment.map((x: Equipment) => (
-          <p key={x.id}>
-            <strong>{x.name} ({x.cost} EP)</strong>
-            {x.description !== null
-              ? <><strong>: </strong><HighlightedText>{x.description}</HighlightedText></>
-              : <></>}
-          </p>
-        ))}
-      </Card.Body>
-    </Card>
-  )
+  return props.equipment.length === 0
+    ? <></>
+    : (
+      <Card border='secondary' bg='light'>
+        <Card.Header style={{ background: 'rgba(0, 0, 0, 0.05)' }} as='h4'>
+          Equipment
+        </Card.Header>
+        <Card.Body>
+          {props.equipment.map((x: Equipment) => (
+            <p key={x.id}>
+              <strong>{x.name} ({x.cost} EP)</strong>
+              {x.description !== null
+                ? <><strong>: </strong><HighlightedText>{x.description}</HighlightedText></>
+                : <></>}
+            </p>
+          ))}
+        </Card.Body>
+      </Card>
+      )
 }

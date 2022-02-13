@@ -1,3 +1,3 @@
 declare module 'react-bootstrap-slider';
 
-declare var ReactBootstrapSlider: any
+declare let ReactBootstrapSlider: any
