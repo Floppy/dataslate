@@ -6,10 +6,10 @@ module.exports = {
     }
     return config
   },
-  jest: function(config) {
+  jest: function (config) {
     config.transformIgnorePatterns = [
-      "node_modules/(?!react-markdown)/"
-    ];
-    return config;
+      'node_modules/(?!react-markdown)/'
+    ]
+    return config
   }
 }
