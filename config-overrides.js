@@ -5,5 +5,11 @@ module.exports = {
       stream: require.resolve('stream-browserify')
     }
     return config
+  },
+  jest: function(config) {
+    config.transformIgnorePatterns = [
+      "node_modules/(?!react-markdown)/"
+    ];
+    return config;
   }
 }
