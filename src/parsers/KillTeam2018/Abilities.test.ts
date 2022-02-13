@@ -3,7 +3,7 @@ import _ from 'lodash'
 import parse from 'csv-parse/lib/sync'
 import fs from 'fs'
 
-const compareFn = (a, b): number => a.localeCompare(b)
+const compareFn = (a: string, b: string): number => a.localeCompare(b)
 
 const abilities = parse(fs.readFileSync('abilities.csv'), {
   columns: true,
@@ -13,7 +13,7 @@ _.forEach(abilities, (a) => {
   describe(`for the ability "${a.ability as string}"`, () => {
     it('works out correct phases', () => {
       const phases = calculatePhases(a.ability)
-      const expectedPhases = []
+      const expectedPhases: string[] = []
       _.forIn({
         scouting: a.scouting === 'Y',
         deployment: a.deployment === 'Y',
@@ -34,7 +34,7 @@ _.forEach(abilities, (a) => {
     })
 
     it('works out correct invulnerable save', () => {
-      expect(invulnerableSave([{ description: a.ability }])).toEqual(a.Inv !== '' ? parseInt(a.Inv) : undefined)
+      expect(invulnerableSave([{ description: a.ability, name: '', id: '' }])).toEqual(a.Inv !== '' ? parseInt(a.Inv) : undefined)
     })
   })
 })
@@ -47,7 +47,7 @@ _.forEach(rules, (a) => {
   describe(`for the rules "${a.ability as string}"`, () => {
     it('works out correct phases', () => {
       const phases = calculatePhases(a.ability)
-      const expectedPhases = []
+      const expectedPhases: string[] = []
       _.forIn({
         scouting: a.scouting === 'Y',
         deployment: a.deployment === 'Y',
