@@ -1,4 +1,3 @@
-import React from 'react'
 import { TacOp } from '../../../../types/KillTeam2021'
 import { Card, Row, Col } from 'react-bootstrap'
 import { CompileDescription } from './../../CompileDescription'

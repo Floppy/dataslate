@@ -1,4 +1,4 @@
-import React, { MouseEvent } from 'react'
+import { MouseEvent } from 'react';
 import { Col } from 'react-bootstrap'
 import { Model } from '../../types/KillTeam2018'
 import { Ability } from '../../types/Ability'

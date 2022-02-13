@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react';
 import { VeteranGuardsmen } from './VeteranGuardsmen'
 import { Pathfinder } from './Pathfinder'
 import { Default } from './Default'

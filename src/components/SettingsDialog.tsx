@@ -1,4 +1,3 @@
-import React from 'react'
 import { Form, Modal, Col, Row } from 'react-bootstrap'
 import { Settings } from '../types/Settings'
 

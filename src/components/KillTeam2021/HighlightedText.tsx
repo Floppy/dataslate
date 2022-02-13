@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react';
 import reactStringReplace from 'react-string-replace'
 
 interface Props {

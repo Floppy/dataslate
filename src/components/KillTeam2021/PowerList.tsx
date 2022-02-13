@@ -1,4 +1,3 @@
-import React from 'react'
 import { PsychicPower } from '../../types/KillTeam2021'
 import { Card, Row, Col, Table } from 'react-bootstrap'
 import _ from 'lodash'

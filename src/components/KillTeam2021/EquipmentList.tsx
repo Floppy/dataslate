@@ -1,4 +1,3 @@
-import React from 'react'
 import { Equipment } from '../../types/KillTeam2021'
 import { Card } from 'react-bootstrap'
 import { HighlightedText } from './HighlightedText'

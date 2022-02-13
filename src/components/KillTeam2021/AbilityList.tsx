@@ -1,4 +1,3 @@
-import React from 'react'
 import { Ability } from '../../types/Ability'
 import { Card } from 'react-bootstrap'
 import _ from 'lodash'

@@ -1,4 +1,3 @@
-import React from 'react'
 import { SpecialistIcon } from './KillTeam2018/SpecialistIcon'
 import { CategoryIcon } from './KillTeam2018/CategoryIcon'
 import { Col } from 'react-bootstrap'

@@ -1,6 +1,5 @@
 import { Popover } from 'react-bootstrap'
 import { CompileDescription } from './KillTeam2021/CompileDescription'
-import React from 'react'
 
 export default function helpPopover (title: string, body: string): JSX.Element {
   return (

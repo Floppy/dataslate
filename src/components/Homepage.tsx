@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react';
 import Dropzone from 'react-dropzone'
 import type { DropzoneOptions } from 'react-dropzone'
 import Intro from './Intro'

@@ -1,4 +1,4 @@
-import React, { MouseEvent } from 'react'
+import { MouseEvent } from 'react';
 import { Col, Card } from 'react-bootstrap'
 import { CloseButton } from '../CloseButton'
 import { Operative, Datacard, PsychicPower } from '../../types/KillTeam2021'

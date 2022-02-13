@@ -1,4 +1,3 @@
-import React from 'react'
 import { StatBadge } from '../StatBadge'
 import AbilityList from './AbilityList'
 import WeaponList from './WeaponList'

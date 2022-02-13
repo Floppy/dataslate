@@ -1,4 +1,3 @@
-import React from 'react'
 import { Action } from '../../types/KillTeam2021'
 import { Card } from 'react-bootstrap'
 import _ from 'lodash'

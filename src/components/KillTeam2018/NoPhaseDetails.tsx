@@ -1,4 +1,3 @@
-import React from 'react'
 import StatsTable from './StatsTable'
 import AbilityList from './AbilityList'
 import { Card } from 'react-bootstrap'

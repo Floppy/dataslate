@@ -1,4 +1,3 @@
-import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import { HighlightedText } from './HighlightedText'
 import ReactDOMServer from 'react-dom/server'

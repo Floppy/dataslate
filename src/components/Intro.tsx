@@ -1,4 +1,3 @@
-import React from 'react'
 import { Jumbotron } from 'react-bootstrap'
 
 function Intro (): JSX.Element {

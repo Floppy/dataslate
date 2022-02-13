@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react';
 import { Archetype } from '../../../types/KillTeam2021'
 import { PloysColumn } from './components/PloysColumn'
 import { TacOpsList } from './components/TacOpsList'

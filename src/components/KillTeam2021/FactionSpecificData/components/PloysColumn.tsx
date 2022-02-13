@@ -1,4 +1,3 @@
-import React from 'react'
 import { Ploy } from '../../../../types/KillTeam2021'
 import { Card, Col } from 'react-bootstrap'
 import { CompileDescription } from '../../CompileDescription'

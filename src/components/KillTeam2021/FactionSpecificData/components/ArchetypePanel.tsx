@@ -1,4 +1,3 @@
-import React from 'react'
 import { Button, OverlayTrigger } from 'react-bootstrap'
 import { Archetype } from '../../../../types/KillTeam2021'
 import HelpPopover from '../../../HelpPopover'
