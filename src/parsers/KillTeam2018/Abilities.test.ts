@@ -34,7 +34,7 @@ _.forEach(abilities, (a) => {
     })
 
     it('works out correct invulnerable save', () => {
-      expect(invulnerableSave([{ description: a.ability, name: "", id: "" }])).toEqual(a.Inv !== '' ? parseInt(a.Inv) : undefined)
+      expect(invulnerableSave([{ description: a.ability, name: '', id: '' }])).toEqual(a.Inv !== '' ? parseInt(a.Inv) : undefined)
     })
   })
 })
