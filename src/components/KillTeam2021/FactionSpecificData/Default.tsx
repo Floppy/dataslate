@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC } from 'react'
 import { Card } from 'react-bootstrap'
 import { Archetype } from '../../../types/KillTeam2021'
 import { PloysColumn } from './components/PloysColumn'

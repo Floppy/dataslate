@@ -1,4 +1,4 @@
-import { MouseEvent } from 'react';
+import { MouseEvent } from 'react'
 import { Button } from 'react-bootstrap'
 
 interface Props {
