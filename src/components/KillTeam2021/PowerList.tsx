@@ -43,7 +43,8 @@ export function PowerList (props: Props): JSX.Element {
                       </tr>
                     </tbody>
                   </Table>
-                ) : <></>}
+                  )
+                : <></>}
             </Card.Body>
           </Card>
         </Col>
