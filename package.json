@@ -67,7 +67,7 @@
     "@types/uuid": "^8.3.4",
     "@types/xmldom": "^0.1.31",
     "csv-parse": "^4.16.3",
-    "react-app-rewired": "^2.1.11",
+    "react-app-rewired": "^2.2.1",
     "react-scripts": "^5.0.0",
     "react-test-renderer": "^16.13.1",
     "ts-standard": "^11.0.0"
