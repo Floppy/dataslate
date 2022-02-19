@@ -17,6 +17,7 @@ import kommando from './kommando'
 import spaceMarine from './spaceMarine'
 import talonsOfTheEmperor from './talonsOfTheEmperor'
 import thousandSons from './thousandSons'
+import tombWorld from './tombWorld'
 import traitorSpaceMarine from './traitorSpaceMarine'
 import troupe from './troupe'
 import veteranGuardsmen from './veteranGuardsmen'
@@ -45,6 +46,7 @@ const data = [
   spaceMarine,
   talonsOfTheEmperor,
   thousandSons,
+  tombWorld,
   traitorSpaceMarine,
   troupe,
   veteranGuardsmen,
