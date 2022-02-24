@@ -1,6 +1,7 @@
 import React, { MouseEvent } from 'react'
 import { Col } from 'react-bootstrap'
 import { CloseButton } from '../CloseButton'
+import { StratagemList } from './StratagemList'
 import { Settings } from '../../types/Settings'
 import Phase from './Phase'
 import { NoPhaseDetails } from './NoPhaseDetails'
@@ -113,6 +114,9 @@ export function Roster (props: Props): JSX.Element {
             <MoralePhaseDetails key={unit.id} unit={unit} />
           ))}
         </>
+      </Phase>
+      <Phase name='stratagems'>
+        <StratagemList />
       </Phase>
     </>
   )
