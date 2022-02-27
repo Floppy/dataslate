@@ -5,6 +5,8 @@ import { Settings } from '../../types/Settings'
 
 interface Props {
   name: string
+  faction: string
+  datasheets: any
   onClose: (event: MouseEvent<HTMLButtonElement>) => void
   settings: Settings
 }
@@ -21,15 +23,20 @@ export function Roster (props: Props): JSX.Element {
     <>
       <h1 style={headingStyle}>
         <Col>
-          {props.name}
+          {props.name} ({props.faction})
         </Col>
         <Col style={{ flexGrow: 0, textAlign: 'right' }}>
           <CloseButton onClose={props.onClose} />
         </Col>
       </h1>
-      <div>
-        You've found some secret work in progress! 40k support is under development, check back later!
-      </div>
+      <ul>
+        {props.datasheets.map((d: string) => (
+          <li key={d}>{d}</li>
+        ))}
+      </ul>
+      <p>
+        40k support is under development, check back later for more features!
+      </p>
     </>
   )
 }

@@ -6,9 +6,10 @@ import { Roster } from '../../types/WH40k9e'
 const xpSelect = XPath.useNamespaces({ bs: 'http://www.battlescribe.net/schema/rosterSchema' })
 
 export const parseBattlescribeXML = (doc: Document): Roster => {
-  const name = xpSelect('string(/bs:roster/@name)', doc, true).toString()
   return {
     system: 'WH40k9e',
-    name
+    name: xpSelect('string(/bs:roster/@name)', doc, true).toString(),
+    faction: xpSelect('string(/bs:roster/bs:forces/bs:force/@catalogueName)', doc, true).toString(),
+    datasheets: (xpSelect('/bs:roster/bs:forces/bs:force/bs:selections/bs:selection[@type=\'unit\' or @type=\'model\']/@name', doc, false) as Node[]).map((n) => (n.nodeValue || ""))
   }
 }
