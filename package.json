@@ -22,7 +22,7 @@
     "popper.js": "^1.16.1",
     "prop-types": "^15.8.1",
     "react": "^16.14.0",
-    "react-bootstrap": "^1.6.4",
+    "react-bootstrap": "^2.2.0",
     "react-bootstrap-slider": "^3.0.0",
     "react-dom": "^16.13.1",
     "react-dropzone": "^11.5.1",
