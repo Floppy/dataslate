@@ -39,7 +39,7 @@ const tacticalPloys: Ploy[] = [
     cost: 1,
     description: `Use this tactical Ploy at the start of the Firefight phase. Select one friendly PATHFINDER💀 operative (excluding a **DRONE** operative) that is within ■ of any
                   enemy or within ⬤ of the centre of an objective marker and activate it. Once that operative has completed its activation, the player who has the Initiative
-                  activates an operative as normal.`
+                  activates an operative as normal. Can only be used once per battle, and only if you don't have the initiative.`
   }, {
     name: 'Supporting Fire',
     cost: 1,
@@ -124,7 +124,7 @@ many Markerlight tokens the target operative has. Operatives gain no markerlight
 |2+|For that shooting attack, the active operative's ranged weapons gain the No Cover special rule.|
 |3+|For that shooting attack, improve the Ballistic Skill characteristic of ranged weapons the active operative is equipped with by 1.|
 |4+|In the Select Valid Target step of that shooting attack, the enemy operative is not Obscured.|
-|5+|In the Select Valid Target step of that shooting attack, the enemy operative is treated as if it has an Engage order.|`
+|5+|In the Select Valid Target step of that shooting attack, the enemy operative is treated as if it has an Engage order unless it’s in Cover provided by Heavy terrain.|`
 }
 
 const data = {

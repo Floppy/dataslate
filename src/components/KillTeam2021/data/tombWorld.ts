@@ -43,7 +43,7 @@ const strategicPloys: Ploy[] = [
 const tacticalPloys: Ploy[] = [
   {
     name: 'Reanimation Protocols',
-    cost: 1,
+    cost: 0,
     description: `Use this Tactical Ploy when a friendly TOMB WORLD💀 operative is incapacitated. Before removing that operative from the killzone, place a Reanimation token
      under its base and leave its order token next to it. In the **Ready Operatives** step of each Turning Point, before resolving the **Living Metal** ability, roll one D6 
      for each of your Reanimation tokens. On a 3+ (or a 2+ if that operative is a NECRON WARRIOR operative):
