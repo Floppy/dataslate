@@ -10,7 +10,7 @@ const strategicPloys: Ploy[] = [
   {
     name: 'Between Colours',
     cost: 1,
-    description: `Until the end of the Turning Point, friendly **VOID-DANCER TROUP💀** operatives can perform **Shoot** actions
+    description: `Until the end of the Turning Point, friendly **VOID-DANCER TROUPE💀** operatives can perform **Shoot** actions
             during **Normal Move** actions (any remaining increments of movement can be used after performing the **Shoot** action).
             You cannot select a shrieker cannon for those shooting attacks.`
   },
@@ -44,27 +44,27 @@ const tacticalPloys: Ploy[] = [
   {
     name: 'Murderous Entrance',
     cost: 1,
-    description: `Use this Tactical Ploy in the Resolve Successful Hits step of a combat, after a friendly **VOID-DANCER TROUP💀** operative
+    description: `Use this Tactical Ploy in the Resolve Successful Hits step of a combat, after a friendly **VOID-DANCER TROUPE💀** operative
             that performed a **Charge** action during this activation strikes with a critical hit. You can immediately select one of your
             remaining attack dice and strike with it.`
   },
   {
     name: 'The Curtain Falls',
     cost: 1,
-    description: `Use this Tactical Ploy in the Resolve Successful Hits step of a combat, after an active friendly **VOID-DANCER TROUP💀** operative
+    description: `Use this Tactical Ploy in the Resolve Successful Hits step of a combat, after an active friendly **VOID-DANCER TROUPE💀** operative
         strikes. Immediately end that combat and that friendly operative can perform a **Fall Back** action for 1AP, even if it has performed an action during 
         that activation that prevents it from performing a **Fall Back** action (e.g. a **Charge** action).`
   },
   {
     name: 'Ruthless Derision',
     cost: 1,
-    description: `Use this Tactical Ploy after rolling your attack dice for a shooting attack made by a friendly **VOID-DANCER TROUP💀** operative 
+    description: `Use this Tactical Ploy after rolling your attack dice for a shooting attack made by a friendly **VOID-DANCER TROUPE💀** operative 
         in an activation in which it performed a **Fall Back** action. You can re-roll any or all of your attack dice for that shooting attack.`
   },
   {
     name: 'Capricious Role',
     cost: 1,
-    description: `Use this Tactical Ploy when a friendly **VOID-DANCER TROUP💀** operative is activated. Until the end of its
+    description: `Use this Tactical Ploy when a friendly **VOID-DANCER TROUPE💀** operative is activated. Until the end of its
         activation, that operative can perform **Dash** and **Charge** actions while within Engagement Range of enemy operatives.`
   }
 ]
@@ -121,7 +121,7 @@ When you add the fourth mark to your Performance tally:
 | **Comedy** | The operative performs a **Fall Back** action | This operative can perform the **Fall Back** action for one less action point (to a minimum of 1AP). |
 | **Epic** | This operative incapacitates an enemy operative in combat by inflicting damage with two or less attack dice in the Resolve Successful Hits step. | Each time this operative fights in combat, in the Resolve Successful Hits step of that combat, if you did not retain any critical hits, you can strike or parry with one normal hit as if it were a critical hit. |
 | **Melodrama** | This operative incapacitates an enemy operative in shooting attack by inflicting damage with two or less attack dice in the Resolve Successful Hits step. |Each time this operative makes a shooting attack, in the Roll Attack Dice step of that shooting attack, you can re-roll one of your attack dice. |
-| **Odyssey** | This operative performs a Charge action and ends the move within ⬟ of your opponent's drop zone. | This operative can move up to a distance equal to its Movement characteristic plus ⬛ for Charge actions, instead of plus ⬤. |
+| **Odyssey** | This operative performs a **Charge** action and ends the move within ⬟ of your opponent's drop zone. | This operative can move up to a distance equal to its Movement characteristic plus ⬛ for **Charge** actions, instead of plus ⬤. |
 | **Tragedy** | The operative loses wounds from a shooting attack made by an enemy operative. | Each time a shooting attack is made against this operative, in the Roll Defence Dice step of that shooting attack, before rolling your defence dice, if it is not in Cover, you can retain one as a successful normal save without rolling it. |
 `
 }
