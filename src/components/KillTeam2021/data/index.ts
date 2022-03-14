@@ -21,6 +21,7 @@ import tombWorld from './tombWorld'
 import traitorSpaceMarine from './traitorSpaceMarine'
 import troupe from './troupe'
 import veteranGuardsmen from './veteranGuardsmen'
+import voidDancer from './voidDancer'
 import warpCoven from './warpCoven'
 import pathfinder from './pathfinder'
 import wyrmblade from './wyrmblade'
@@ -50,6 +51,7 @@ const data = [
   traitorSpaceMarine,
   troupe,
   veteranGuardsmen,
+  voidDancer,
   warpCoven,
   wyrmblade
 ]
