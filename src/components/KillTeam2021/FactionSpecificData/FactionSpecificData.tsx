@@ -3,6 +3,7 @@ import { VeteranGuardsmen } from './VeteranGuardsmen'
 import { Pathfinder } from './Pathfinder'
 import { Default } from './Default'
 import { Novitiate } from './Novitiate'
+import { VoidDancerTroupe } from './VoidDancerTroupe'
 
 interface Props {
   faction: string
@@ -19,6 +20,8 @@ export const FactionSpecificData: FC<Props> = (props) => {
     case 'Pathfinder':
       console.log('PATHFINDER SWITCH')
       return <Pathfinder fireteams={props.fireteams} />
+    case 'Void-Dancer Troupe':
+      return <VoidDancerTroupe fireteams={props.fireteams} />
     default:
       return <Default faction={props.faction} fireteams={props.fireteams} />
   }
