@@ -26,12 +26,14 @@ import voidDancer from './voidDancer'
 import warpCoven from './warpCoven'
 import pathfinder from './pathfinder'
 import wyrmblade from './wyrmblade'
+import corsairVoidscarred from './corsairVoidscarred'
 
 const data = [
   broodCoven,
   cadreMercenary,
   chaosDaemon,
   commorite,
+  corsairVoidscarred,
   craftworld,
   deathGuard,
   ecclesiarchy,
