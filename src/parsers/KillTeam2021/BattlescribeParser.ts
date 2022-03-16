@@ -107,6 +107,7 @@ const factionKeywords = [
   'Cadre Mercenary',
   'Chaos Daemons',
   'Commorrite',
+  'Corsair Voidscarred',
   'Craftworld',
   'Death Guard',
   'Ecclesiarchy',
@@ -115,8 +116,12 @@ const factionKeywords = [
   'Grey Knight',
   'Hive Fleet',
   'Hunter Cadre',
+  'Hunter Clade',
   'Imperial Guard',
   'Kommando',
+  'Legionary',
+  'Novitiate',
+  'Pathfinder',
   'Space Marine',
   'Talons of the Emperor',
   'Thousand Sons',
@@ -124,7 +129,9 @@ const factionKeywords = [
   'Traitor Space Marine',
   'Troupe',
   'Veteran Guardsman',
-  'Warpcoven'
+  'Voiddancer Troupe',
+  'Warpcoven',
+  'Wyrmblade'
 ]
 
 const parseOperative = (model: Element): Operative => {
