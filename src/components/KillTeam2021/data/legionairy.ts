@@ -162,19 +162,12 @@ within ▲ of that terrain feature is greater than that of enemy operatives, you
   }
 ]
 
-const marksOfChaos = {
-  name: 'Marks of Chaos',
-  wahapediaUrl: 'xxxx',
-  description: ''
-}
-
 const data = {
   name: 'Legionary' as const,
   strategicPloys,
   tacticalPloys,
   archetypes,
-  tacOps,
-  marksOfChaos
+  tacOps
 }
 
 export default data
