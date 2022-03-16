@@ -25,42 +25,59 @@ const strategicPloys: Ploy[] = [
   {
     name: 'Blood for the Blood God',
     cost: 1,
-    description: ``
+    description: `Until the end of the Turning Point, each time a friendly **KHORNE** operative fights in combat,
+    in the Resolve Successful Hits step of that combat, if it performed a **Charge** action during that actiation,
+    the first time it strikes, inflict one additional damage.`
   },
   {
     name: 'Perpetual Aggression',
     cost: 1,
-    description: `💀`
+    description: `Until the end of the Turning Point, each time after a friendly **KHORNE** operative fights
+    in combat, if it is not within Engagement Range of an enemy operative, it can make a move following the 
+    same rules as a **Normal Move** action, with the following exceptions:
+* It can only move up to ■.
+* It can move within Engagement Range of enemy operatives.
+* If it can, it must finish the move within Engagement Range of the closest Visible enemy operative.`
   },
   {
     name: 'Mutagenic Flesh',
     cost: 1,
-    description: `💀`
+    description: `Until the end of the Turning Point, each time Normal Damage would be inflicted upon a friendly
+    **NURGLE** operative from an attack dice, subtract 1 from the damage inflicted from that attack dice (to a 
+    minimum of 2).`
   },
   {
     name: 'Implacable',
     cost: 1,
-    description: `💀`
+    description: `Until the end of the Turning Point, friendly **NURGLE** operatives:
+* Are not treated as being injured.
+* Ignore all negative modifiers to their APL.
+* Ignore the worsening of their Ballistic Skill when performing an **OVERWATCH** action.`
   },
   {
     name: 'Graceful Killer',
     cost: 1,
-    description: `💀`
+    description: `Until the end of the Turning Point, add 1 to the Critical Damage characteristic of friendly **SLAANESH**
+    operatives' melee weapons.`
   },
   {
     name: 'Delicious Agony',
     cost: 1,
-    description: `💀`
+    description: `Until the end of the Turning Point, each time a friendly **SLAANESH** operative fights in combat, in the 
+    Resolve Successful Hits step of that combat, when you would resolve your first successful hit, if the target is injured, 
+    you can resolve two of your successful hits (instead of one).`
   },
   {
     name: 'Protected by Fate',
     cost: 1,
-    description: `💀`
+    description: `Until the end of the Turning Point, each time a shooting attack is made against a friendly **TZEENTCH**
+    operative, in the Roll Defence Dice step of that shooting attack, if you retain any critical saves, you can select
+    one of your failed saves to be retained as a successful normal save.`
   },
   {
     name: 'Aetheric Ward',
     cost: 1,
-    description: `💀`
+    description: 'Until the end of the Turning Point, friendly **TZEENTCH** operatives have a 4+ invulnerable save.'
   }
 ]
 
@@ -148,7 +165,7 @@ within ▲ of that terrain feature is greater than that of enemy operatives, you
 const marksOfChaos = {
   name: 'Marks of Chaos',
   wahapediaUrl: 'xxxx',
-  description: ``
+  description: ''
 }
 
 const data = {

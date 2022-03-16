@@ -14,6 +14,7 @@ import hunterClade from './hunterClade'
 import imperialGuard from './imperialGuard'
 import novitiate from './novitiate'
 import kommando from './kommando'
+import legionary from './legionairy'
 import spaceMarine from './spaceMarine'
 import talonsOfTheEmperor from './talonsOfTheEmperor'
 import thousandSons from './thousandSons'
@@ -42,6 +43,7 @@ const data = [
   hunterClade,
   imperialGuard,
   kommando,
+  legionary,
   novitiate,
   pathfinder,
   spaceMarine,
