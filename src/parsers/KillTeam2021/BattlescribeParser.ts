@@ -9,7 +9,8 @@ const xpSelect = XPath.useNamespaces({ bs: 'http://www.battlescribe.net/schema/r
 
 const stat = (name: string, model: Element): number => {
   const node = xpSelect(`bs:profiles/bs:profile[@typeName='Operative']//bs:characteristic[@name='${name}']/text()`, model, true)
-  if (node !== null) {
+
+  if (node !== null && node !== undefined) {
     return parseInt(node.toString())
   } else { return 0 }
 }

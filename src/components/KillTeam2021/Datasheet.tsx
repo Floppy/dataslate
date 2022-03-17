@@ -10,6 +10,7 @@ import { KeywordList } from '../KeywordList'
 import { WoundTracks } from './WoundTracks'
 import AbilityList from './AbilityList'
 import { v4 as uuidv4 } from 'uuid'
+import { RuleNameList } from '../RuleNameList'
 
 interface Props {
   datacard: Datacard
@@ -17,6 +18,9 @@ interface Props {
 }
 
 export function Datasheet (props: Props): JSX.Element {
+  console.log(props.datacard.name)
+  console.log(props.datacard.rules)
+
   return (
     <Card className={props.datacard.operativeNames.length > 0 ? 'included' : 'excluded'}>
       <ModelTitle
@@ -60,6 +64,7 @@ export function Datasheet (props: Props): JSX.Element {
         </Row>
       </Card.Body>
       <KeywordList faction={props.datacard.faction !== null ? `${props.datacard.faction} 💀` : null} keywords={props.datacard.keywords} />
+      <RuleNameList rules={props.datacard.rules.map(ability => ability.name)} />
     </Card>
   )
 }
