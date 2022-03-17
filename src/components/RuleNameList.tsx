@@ -25,7 +25,7 @@ const standardRules = [
   'PX',
   'REAP X',
   'RELENTLESS',
-  'RENDING', 'RENDING',
+  'RENDING',
   'RNG X',
   'SILENT',
   'SPLASH X',
