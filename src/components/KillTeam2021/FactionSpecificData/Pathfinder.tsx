@@ -66,7 +66,7 @@ export const Pathfinder: FC<Props> = (props) => {
           <Card.Header style={{ ...headingStyle }} as='h2'>{factionSpecificData.markerLights.name}</Card.Header>
           <Card.Body>
             <a href={factionSpecificData.markerLights.wahapediaUrl} target='_blank' rel='noreferrer'>Full Rules</a>
-            <AbilityList abilities={factionSpecificData.markerLights.abilities} />
+            <AbilityList abilities={factionSpecificData.markerLights.abilities} ruleNames={[]} />
             <CompileDescription>{factionSpecificData.markerLights.benefitTable}</CompileDescription>
           </Card.Body>
         </Card>

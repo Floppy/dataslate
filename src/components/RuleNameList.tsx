@@ -36,7 +36,7 @@ const standardRules = [
 
 export function RuleNameList (props: Props): JSX.Element {
   return (
-    <div style={{ background: 'rgba(0, 0, 0, 0.125)', padding: '5px 10px 0px 10px' }}>
+    <div>
       {props.rules.filter((rule: string) => !standardRules.includes(rule.trim().toUpperCase())).map((rule: string) => (
         <Badge
           key={`rule-${rule}`}

@@ -3,13 +3,15 @@ import { Ability } from '../../types/Ability'
 import { Card } from 'react-bootstrap'
 import _ from 'lodash'
 import { CompileDescription } from './CompileDescription'
+import { RuleNameList } from '../RuleNameList'
 
 interface Props {
   abilities: Ability[]
+  ruleNames: string[]
 }
 
 function AbilityList (props: Props): JSX.Element {
-  return props.abilities.length === 0
+  return props.abilities.length === 0 && props.ruleNames.length === 0
     ? <></>
     : (
       <Card border='secondary' bg='light'>
@@ -23,6 +25,9 @@ function AbilityList (props: Props): JSX.Element {
               <CompileDescription>{x.description}</CompileDescription>
             </p>
           ))}
+          {props.ruleNames.length === 0
+            ? <></>
+            : <RuleNameList rules={props.ruleNames} />}
         </Card.Body>
       </Card>
       )
