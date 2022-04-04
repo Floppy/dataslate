@@ -48,14 +48,16 @@ const parseBoonOfTzeentch = (boon: Node): Ability => {
 
 const parsePsychicPower = (power: Node): PsychicPower => {
   const name = xpSelect('string(@name)', power, true).toString()
-  const weapon = xpSelect("..//bs:profile[@typeName='Weapons']", power, true) as Node
+  const weapons = (xpSelect("..//bs:profile[@typeName='Weapons']", power) as Node[]).map(parseWeapon)
+    .filter(weapon => weapon.name.toUpperCase().includes(name.toUpperCase()))
+
+  const weapon = weapons.length > 0 ? weapons[0] : null
 
   return {
     id: xpSelect('string(@id)', power, true).toString(),
     name,
     description: (xpSelect(".//bs:characteristic[@name='Effect']/text()", power, true) ?? '-').toString(),
-    // eslint-disable-next-line
-    weapon: weapon && parseWeapon(weapon)
+    weapon: weapon
   }
 }
 
@@ -141,6 +143,7 @@ const parseOperative = (model: Element): Operative => {
 
   const psychicDiscipline = xpSelect("string(.//bs:selection[./bs:selections/bs:selection/bs:profiles/bs:profile/@typeName='Psychic Power']/@name)", model, true).toString()
   const psychicPowers = (xpSelect(".//bs:profile[@typeName='Psychic Power']/@name", model) as Node[]).map((x) => x.nodeValue).join(', ')
+
   const actions = (xpSelect(".//bs:profile[@typeName='Unique Actions']", model) as Node[]).map((x) => parseAction(x, psychicDiscipline, psychicPowers))
   const abilities = (xpSelect(".//bs:profile[@typeName='Abilities']", model) as Node[]).map(parseAbility)
 
