@@ -9,7 +9,7 @@
     "@types/lodash": "^4.14.181",
     "@types/node": "^16.11.13",
     "@types/react": "^16.14.17",
-    "@types/react-dom": "^16.9.8",
+    "@types/react-dom": "^18.0.1",
     "bootstrap": "^4.6.1",
     "browserify": "^17.0.0",
     "crypto-browserify": "^3.12.0",
