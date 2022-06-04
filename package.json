@@ -43,7 +43,9 @@
     "test": "react-app-rewired test --coverage",
     "eject": "react-app-rewired eject",
     "lint": "./node_modules/.bin/ts-standard",
-    "lint-fix": "./node_modules/.bin/ts-standard --fix"
+    "lint-fix": "./node_modules/.bin/ts-standard --fix",
+    "deploy-dev": "aws s3 sync build/ s3://dataslate-dev --delete",
+    "deploy-test": "aws s3 sync build/ s3://dataslate --delete"
   },
   "eslintConfig": {
     "extends": "react-app"

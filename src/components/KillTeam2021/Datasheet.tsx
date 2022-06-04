@@ -10,6 +10,7 @@ import { KeywordList } from '../KeywordList'
 import { WoundTracks } from './WoundTracks'
 import AbilityList from './AbilityList'
 import { v4 as uuidv4 } from 'uuid'
+import {RuleNameList} from "../RuleNameList";
 
 interface Props {
   datacard: Datacard
@@ -38,15 +39,19 @@ export function Datasheet (props: Props): JSX.Element {
             <WeaponList weapons={props.datacard.weapons} />
             <Row>
               <Col>
-                <AbilityList abilities={props.datacard.abilities} ruleNames={props.datacard.rules.map(ability => ability.name)} />
-                {props.datacard.actions.length === 0
-                  ? <></>
-                  : <EquipmentList equipment={props.datacard.equipment} />}
-              </Col>
-              <Col>
-                {props.datacard.actions.length === 0
-                  ? <EquipmentList equipment={props.datacard.equipment} />
-                  : <ActionList actions={props.datacard.actions} />}
+                <div>
+                  <AbilityList abilities={props.datacard.abilities}  />
+                  {props.datacard.rules.length === 0
+                    ? <></>
+                    : <RuleNameList ruleNames={props.datacard.rules.map(ability => ability.name)}/>
+                  }
+                  {props.datacard.equipment.length === 0
+                      ? <></>
+                      : <EquipmentList equipment={props.datacard.equipment} />}
+                  {props.datacard.actions.length === 0
+                      ? <></>
+                      : <ActionList actions={props.datacard.actions} />}
+                </div>
               </Col>
             </Row>
           </Col>
