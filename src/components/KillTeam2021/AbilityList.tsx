@@ -3,7 +3,6 @@ import { Ability } from '../../types/Ability'
 import { Card } from 'react-bootstrap'
 import _ from 'lodash'
 import { CompileDescription } from './CompileDescription'
-import { RuleNameList } from '../RuleNameList'
 
 interface Props {
   abilities: Ability[]
