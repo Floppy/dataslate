@@ -12,20 +12,27 @@ const strategicPloys: Ploy[] = [
   {
     name: 'Bolter Discipline',
     cost: 1,
-    description: `Until the end of the Turning Point, each time a friendly SPACE MARINE💀 operative (excluding a SCOUT operative) is activated, if it does not perform a **Fight** action
+    description: `Until the end of the Turning Point, each time a friendly **PHOBOS STRIKE TEAM💀** operative is activated, if it does not perform a **Fight** action
                   during that activation, it can perform two **Shoot** actions during that activation if a bolt weapon is selected for each of those shooting attacks. A bolt weapon is a
-                  ranged weapon that includes 'bolt' in its name, e.g. boltgun, heavy bolter etc. In the case of the infernus heavy bolter, it must be the heavy bolter profile that
-                  is selected.`
+                  ranged weapon that includes 'bolt' in its name, e.g. bolt carbine, special issue bolt pistol etc.`
   }, {
     name: 'Shock Assault',
     cost: 1,
-    description: `Until the end of the Turning Point, each time a friendly SPACE MARINE💀 operative (excluding a SCOUT operative) is activated, if it does not perform a **Shoot** action
+    description: `Until the end of the Turning Point, each time a friendly **PHOBOS STRIKE TEAM💀** operative is activated, if it does not perform a **Shoot** action
                   during that activation, it can perform two **Fight** actions during that activation.`
   }, {
-    name: 'Tactical Precision',
+    name: 'Vanguard',
     cost: 1,
-    description: `Until the end of the Turning Point, while a friendly SPACE MARINE💀 operative is within ■ of and Visible to a friendly LEADER operative, each time it fights in combat
-                  or makes a shooting attack, in the Roll Attack Dice step of that combat or shooting attack, you can re-roll one of your attack dice.`
+    description: `Until the end of the Turning Point, while a friendly **PHOBOS STRIKE TEAM💀** operative is activated, during that activation:
+  * It can ignore the first distance of ⬤ it travels for a climb, drop or traverse.
+  * It automatically passes jump tests.
+  * Add ▲ to its Movement characteristic.`
+  }, {
+    name: 'And They Shall Know No Fear',
+    cost: 1,
+    description: `Until the end of the Turning Point:
+  * You can ignore any or all modifiers to the APL of friendly **PHOBOS STRIKE TEAM💀** operatives.
+  * Friendly **PHOBOS STRIKE TEAM💀** operatives are not injured.`
   }
 ]
 
