@@ -38,36 +38,37 @@ const strategicPloys: Ploy[] = [
 
 const tacticalPloys: Ploy[] = [
   {
+    name: 'Stealth Assault',
+    cost: 1,
+    description: `Use this Tactical Ploy when a friendly **PHOBOS STRIKE TEAM💀** operative with a Conceal order that is not within Engagement Range of an
+    enemy is activated.
+  * That operative cannot make a shooting attack during that activation.
+  * The first time that operative performs a **Fight** action during that activation, in the Resolve Successful Hits step of that combat, the first time
+  you resolve one of your successful hits, you can immediately resolve another of your successful hits.
+   
+  **Designer's Note:** Unless the operative can perform a **Charge** action while it has a Conceal order (e.g. The Assassin Battle Honour), when it is activated,
+  you will need to change its order to Engage to use this Tactical Ploy.`
+  },
+  {
     name: 'Transhuman Physiology',
     cost: 1,
-    description: `Use this Tactical Ploy in the Roll Defence Dice step of a shooting attack, after rolling defence dice for a friendly PRIMARIS operative. You can change one of your
-                  retained normal saves to a critical save.`
+    description: `Use this Tactical Ploy in the Roll Defence Dice step of a shooting attack, after rolling defence dice for a friendly **PHOBOS STRIKE TEAM💀**
+     operative. You can retain one of your successful normal saves as a critical save instead.`
   }, {
-    name: 'Only in death does duty end',
+    name: 'One Step Ahead',
     cost: 1,
-    description: `Use this Tactical Ploy when a ready friendly SPACE MARINE💀 operative is incapacitated. That operative is not removed from the killzone until the end of your next 
-                activation or the end of the battle (whichever comes first) and does not count as being injured.`
+    description: `Use this Tactical Ploy at the end of the Select a Kill Team step of the mission sequence, after kill teams have been revealed. You can 
+    remove one friendly **PHOBOS STRIKE TEAM💀** operative from your kill team and add a different **PHOBOS STRIKE TEAM💀** operative to your kill team
+    (adhering to the requirements of selecting your kill team). If both players have this or a similar ability, the Defender resolves this ability first.`
   }, {
-    name: 'And they shall know no fear',
+    name: 'Elite Reconnaissance',
     cost: 1,
-    description: `Use this Tactical Ploy when a friendly SPACE MARINE💀 operative is activated. Until the end of that operative's activation, you can ignore any or all modifiers to
-                its APL characteristic and it is not injured.`
-  }, {
-    name: 'Omni-Scrambler',
-    cost: 1,
-    description: `Use this Tactical Ploy at the start of the Firefight phase. Select one enemy operative Visible to and within ⬟ of a friendly INFILTRATOR operative. Until the end
-                  of the Turning Point that enemy operative cannot be activated until another enemy operative has been activated (unless it is the only remaining enemy operative).`
-  }, {
-    name: 'Multi-Spectrum Array',
-    cost: 1,
-    description: 'Use this Tactical Ploy when a friendly INCURSOR operative performs a **Shoot** action. For that action\'s shooting attack, enemy operatives are not Obscured.'
-  }, {
-    name: 'Terror Troop',
-    cost: 1,
-    description: `Use this Tactical Ploy during a friendly REIVER operative's activation. Until the start of the next Turning Point:
-  - Each time an enemy operative would perform a mission action or the Pick Up action, if this friendly REIVER operative is within SQUARE of that enemy operative, one additional
-        action point must be subtracted to perform that action.
-  - When determining control of an objective marker that friendly REIVER operative is within range of, treat enemy operatives total APL as being 1 less. Note that this is not a modifier.`
+    description: `Use this Tactical Ploy at the end of the Scouting step of the mission sequence. Select one of the following (if both players have this or a
+    similar ability, the Defender resolves this ability first):
+  * You can redeploy up to two friendly **PHOBOS STRIKE TEAM💀** operatives that are wholly within your drop zone as if it was the Set Up Operatives step of 
+  the mission sequence.
+  * Select and resolve an additional scouting option. It must be a different option to your original selection, and initiative is still determined by your original
+  selection.`
   }
 ]
 
