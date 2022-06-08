@@ -1,4 +1,4 @@
-import {Archetype, FireteamArchetypes, Ploy, TacOp} from '../../../types/KillTeam2021'
+import { Archetype, FireteamArchetypes, Ploy, TacOp } from '../../../types/KillTeam2021'
 
 const archetypes: FireteamArchetypes = {
   fireteams: {
@@ -50,7 +50,7 @@ const tacticalPloys: Ploy[] = [
   {
     name: 'Moment of Repute',
     cost: 1,
-    description: `Use this Tactical Ploy when a friendly **BLOODED💀** operative that is under the gaze of the gods is activated. Add 1 to its APL.`
+    description: 'Use this Tactical Ploy when a friendly **BLOODED💀** operative that is under the gaze of the gods is activated. Add 1 to its APL.'
   },
   {
     name: 'Reward Earned',

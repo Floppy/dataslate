@@ -28,7 +28,7 @@ import warpCoven from './warpCoven'
 import pathfinder from './pathfinder'
 import wyrmblade from './wyrmblade'
 import corsairVoidscarred from './corsairVoidscarred'
-import phobosStrikeTeam from "./phobosStrikeTeam"
+import phobosStrikeTeam from './phobosStrikeTeam'
 
 const data = [
   blooded,

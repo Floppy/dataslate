@@ -3,10 +3,9 @@ import { Archetype } from '../../../types/KillTeam2021'
 import { PloysColumn } from './components/PloysColumn'
 import { TacOpsList } from './components/TacOpsList'
 import getFactionSpecificData from './../data'
-import { Card, Col } from 'react-bootstrap'
+import { Card } from 'react-bootstrap'
 import { CompileDescription } from '../CompileDescription'
 import { ArchetypePanel } from './components/ArchetypePanel'
-import AbilityList from '../AbilityList'
 
 interface Props {
   fireteams: string[]
