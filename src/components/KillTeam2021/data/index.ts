@@ -1,3 +1,4 @@
+import blooded from './blooded'
 import chaosDaemon from './chaosDaemons'
 import broodCoven from './broodCoven'
 import cadreMercenary from './cadreMercenary'
@@ -30,6 +31,7 @@ import corsairVoidscarred from './corsairVoidscarred'
 import phobosStrikeTeam from "./phobosStrikeTeam"
 
 const data = [
+  blooded,
   broodCoven,
   cadreMercenary,
   chaosDaemon,
