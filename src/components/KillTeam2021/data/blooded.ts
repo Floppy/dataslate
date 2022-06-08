@@ -97,12 +97,27 @@ const tacOps: TacOp[] = [
   }
 ]
 
+const blooded = {
+  // TODO: Replace with a Wahapedia link when available
+  name: 'Blooded',
+  wahapediaUrl: '#',
+  description: `
+  A link to Wahapedia with a full description of the Blooded ability will be added once available
+  
+  Keep a pool of Blooded tokens. Add a Blooded token to your pool as follows:
+* At the start of each Initiative phase.
+* The first time an enemy operative is incapacitated in each Turning Point.
+* The first time a friendly operative is incapacitated within ⬟ of an enemy operative in each Turning Point.
+`
+}
+
 const data = {
   name: 'Blooded' as const,
   strategicPloys,
   tacticalPloys,
   archetypes,
-  tacOps
+  tacOps,
+  blooded
 }
 
 export default data
