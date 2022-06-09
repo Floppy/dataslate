@@ -89,7 +89,7 @@ const parseAction = (action: Node, psychicDiscipline: string|null, psychicPowers
 const parseEquipment = (equipment: Node): Equipment => {
   const description = xpSelect(".//bs:characteristic[@name='Equipment']/text()", equipment, true)
   return {
-    id: xpSelect('string(@id)', equipment, true).toString(),
+    id: xpSelect('string(@entryId)', equipment, true).toString(),
     name: xpSelect('string(@name)', equipment, true).toString(),
     cost: parseInt(xpSelect('string(.//bs:cost/@value)', equipment, true).toString()),
     description: description?.toString()
