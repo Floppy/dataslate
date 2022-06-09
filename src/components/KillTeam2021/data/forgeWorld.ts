@@ -60,7 +60,7 @@ const tacticalPloys: Ploy[] = [
 ]
 
 const data = {
-  name: 'Forge World' as const,
+  name: 'Forge World (Legends)' as const,
   strategicPloys,
   tacticalPloys,
   archetypes
