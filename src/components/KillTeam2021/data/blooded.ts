@@ -108,6 +108,17 @@ const blooded = {
 * At the start of each Initiative phase.
 * The first time an enemy operative is incapacitated in each Turning Point.
 * The first time a friendly operative is incapacitated within ⬟ of an enemy operative in each Turning Point.
+
+Once in each Strategy phase, when it is your turn to use a Strategic Ploy or pass, you can assign any or all of your Blooded
+tokens from your pool to friendly **BLOODED💀** operatives in the killzone. Each operative can have no more than one Blooded token.
+
+In each Strategy phase, after assigning your Blooded tokens (if any), if four or more friendly operatives in the killzone have 
+Blooded tokens, you can select one of them to be **under the gaze of the gods** until the end of the Turning Point.
+
+Each time a friendly **BLOODED💀** operative that has a Blooded token fights in combat or makes a shooting attack, in the Roll
+Attack Dice step of that combat or shooting attack, before rolling your attack dice, you can retain one as a successful normal
+hit without rolling it. If that friendly **BLOODED💀** operative is under the gaze of the gods, you can retain one as a 
+successful critical hit instead.
 `
 }
 
