@@ -1,3 +1,4 @@
+import blooded from './blooded'
 import chaosDaemon from './chaosDaemons'
 import broodCoven from './broodCoven'
 import cadreMercenary from './cadreMercenary'
@@ -27,8 +28,10 @@ import warpCoven from './warpCoven'
 import pathfinder from './pathfinder'
 import wyrmblade from './wyrmblade'
 import corsairVoidscarred from './corsairVoidscarred'
+import phobosStrikeTeam from './phobosStrikeTeam'
 
 const data = [
+  blooded,
   broodCoven,
   cadreMercenary,
   chaosDaemon,
@@ -48,6 +51,7 @@ const data = [
   legionary,
   novitiate,
   pathfinder,
+  phobosStrikeTeam,
   spaceMarine,
   talonsOfTheEmperor,
   thousandSons,

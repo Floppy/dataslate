@@ -52,7 +52,7 @@ const tacticalPloys: Ploy[] = [
 ]
 
 const data = {
-  name: 'Troupe' as const,
+  name: 'Troupe (Legends)' as const,
   strategicPloys,
   tacticalPloys,
   archetypes

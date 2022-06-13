@@ -105,6 +105,7 @@ const parseRule = (rule: Node): Ability => {
 }
 
 const factionKeywords = [
+  'Blooded',
   'Brood Coven',
   'Cadre Mercenary',
   'Chaos Daemons',
@@ -113,7 +114,7 @@ const factionKeywords = [
   'Craftworld',
   'Death Guard',
   'Ecclesiarchy',
-  'Forge World',
+  'Forge World (Legends)',
   'Greenskin',
   'Grey Knight',
   'Hive Fleet',
@@ -124,12 +125,14 @@ const factionKeywords = [
   'Legionary',
   'Novitiate',
   'Pathfinder',
+  'Phobos Strike Team',
   'Space Marine',
   'Talons of the Emperor',
-  'Thousand Sons',
+  'Thousand Sons (Legends)',
   'Tomb World',
   'Traitor Space Marine',
   'Troupe',
+  'Troupe (Legends)',
   'Veteran Guardsman',
   'Voiddancer Troupe',
   'Warpcoven',
