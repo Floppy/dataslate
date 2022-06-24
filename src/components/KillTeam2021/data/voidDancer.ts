@@ -34,7 +34,7 @@ const strategicPloys: Ploy[] = [
     name: 'Cegorach\'s Jest',
     cost: 1,
     description: `Until the end of the Turning Point, each time a friendly **VOID-DANCER TROUPE💀** operative fights in combat, once 
-        in the Resolve Successful Hits step of that combat, when your opponent strikes with a hit, you can roll one D6. If the result is
+        in the Resolve Successful Hits step of that combat, when your opponent strikes with a normal hit, you can roll one D6. If the result is
         equal to or less than the Weapon Skill characteristic of the enemy operative's selected melee weapon, treat that strike as a parry
         instead (the Brutal special rule has no effect for that parry).`
   }
@@ -97,7 +97,7 @@ const tacOps: TacOp[] = [
 
 const saedath = {
   name: 'Saedath',
-  wahapediaUrl: 'xxxx',
+  wahapediaUrl: 'https://wahapedia.ru/kill-team2/kill-teams/void-dancer-troupe/#Saedath',
   /* Should remove these descriptions once Wahapedia link is available */
   description: `When selecting your kill team for the battle, select an Allegory to be active for it during the battle (reveal it to your opponent when you 
     reveal your kill team). Then, at the start of the first Strategy phase, select one friendly **VOID-DANCER TROUPE💀** operative to have the pivotal role for the 
@@ -114,7 +114,6 @@ and only one pivotal role can complete a Performance (even if you change the act
 When you add the fourth mark to your Performance tally:
 - All friendly **VOID-DANCER TROUPE💀** operatives have the Accolade ability of the active Allegory until the end of the battle.
 - You gain 1 Command Point.
-- In the Generate Command Points step of each Turning Point, you generate one additional Command Point.
 
 | Allegory | Performance | Accolade |
 |     -    |      -      |     -    |

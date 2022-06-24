@@ -36,7 +36,7 @@ const strategicPloys: Ploy[] = [
 const tacticalPloys: Ploy[] = [
   {
     name: 'A Worthy Cause',
-    cost: 1,
+    cost: 2,
     description: `Use this tactical Ploy at the start of the Firefight phase. Select one friendly PATHFINDER💀 operative (excluding a **DRONE** operative) that is within ■ of any
                   enemy or within ⬤ of the centre of an objective marker and activate it. Once that operative has completed its activation, the player who has the Initiative
                   activates an operative as normal. Can only be used once per battle, and only if you don't have the initiative.`
