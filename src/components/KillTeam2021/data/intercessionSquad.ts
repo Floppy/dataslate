@@ -2,7 +2,7 @@ import { Archetype, FireteamArchetypes, Ploy, TacOp } from '../../../types/KillT
 
 const archetypes: FireteamArchetypes = {
   fireteams: {
-    'Intercession Squad Kill Team': [Archetype.SECURITY, Archetype.SEEK_AND_DESTROY],
+    'Intercession Squad Kill Team': [Archetype.SECURITY, Archetype.SEEK_AND_DESTROY]
   }
 }
 
@@ -37,7 +37,7 @@ const strategicPloys: Ploy[] = [
     description: `Until the end of the Turning Point:
 * You can ignore any or all modifiers to the APL of friendly **INTERCESSION SQUAD💀** operatives.
 * Friendly **INTERCESSION SQUAD💀** operatives are not injured.`
-  },
+  }
 
 ]
 
@@ -68,7 +68,7 @@ const tacticalPloys: Ploy[] = [
     description: `Use this Tactical Ploy when a friendly **INTERCESSION SQUAD💀** operative is 
     incapacitated. Before that operative is removed from the killzone, it can perform a free 
     Shoot action. Unless otherwise specified, the operative would be injured for this.`
-  },
+  }
 ]
 
 const tacOps: TacOp[] = [

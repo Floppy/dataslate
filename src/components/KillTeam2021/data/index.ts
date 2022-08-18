@@ -13,7 +13,7 @@ import hiveFleet from './hiveFleet'
 import hunterCadre from './hunterCadre'
 import hunterClade from './hunterClade'
 import imperialGuard from './imperialGuard'
-import intercessionSquad from "./intercessionSquad"
+import intercessionSquad from './intercessionSquad'
 import novitiate from './novitiate'
 import kommando from './kommando'
 import legionary from './legionairy'
