@@ -11,7 +11,7 @@ const strategicPloys: Ploy[] = [
     name: 'Devastator Doctrine',
     cost: 1,
     description: `Until the end of the Turning Point, each time a friendly **INTERCESSION SQUAD💀** 
-    operative makes a shooting attack against an enemy operative more than from it, in the Roll 
+    operative makes a shooting attack against an enemy operative more than ⬟ from it, in the Roll 
     Attack Dice step of that shooting attack, you can re-roll one of your attack dice. You cannot 
     use another 'Doctrine' Strategic Ploy in this Turning Point.`
   },
@@ -19,7 +19,7 @@ const strategicPloys: Ploy[] = [
     name: 'Tactical Doctrine',
     cost: 1,
     description: `Until the end of the Turning Point, each time a friendly **INTERCESSION SQUAD💀**  
-    operative makes a shooting attack against an enemy operative within of it, in the Roll Attack 
+    operative makes a shooting attack against an enemy operative within ⬟ of it, in the Roll Attack 
     Dice step of that shooting attack, you can re-roll one of your attack dice. You cannot use 
     another 'Doctrine' Strategic Ploy in this Turning Point.`
   },
