@@ -27,7 +27,7 @@ const strategicPloys: Ploy[] = [
     name: 'Assault Doctrine',
     cost: 1,
     description: `Until the end of the Turning Point, each time a friendly **INTERCESSION SQUAD💀** 
-    operative fights in combat in an activation in which it performed a Charge action, in the Roll 
+    operative fights in combat in an activation in which it performed a **Charge**q action, in the Roll 
     Attack Dice step of that combat, you can re-roll one of your attack dice. You cannot use another 
     'Doctrine' Strategic Ploy in this Turning Point.`
   },
@@ -60,14 +60,14 @@ const tacticalPloys: Ploy[] = [
     name: 'Angel of Death',
     cost: 1,
     description: `Use this Tactical Ploy at the end of the Firefight phase. Select one friendly 
-    **INTERCESSION SQUAD💀** operative to perform a free Fight action.`
+    **INTERCESSION SQUAD💀** operative to perform a free **Fight** action.`
   },
   {
     name: 'Wrath of Vengeance',
     cost: 1,
     description: `Use this Tactical Ploy when a friendly **INTERCESSION SQUAD💀** operative is 
     incapacitated. Before that operative is removed from the killzone, it can perform a free 
-    Shoot action. Unless otherwise specified, the operative would be injured for this.`
+    **Shoot**a action. Unless otherwise specified, the operative would be injured for this.`
   }
 ]
 
