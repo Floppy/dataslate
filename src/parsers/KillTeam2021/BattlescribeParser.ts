@@ -121,6 +121,7 @@ const factionKeywords = [
   'Hunter Cadre',
   'Hunter Clade',
   'Imperial Guard',
+  'Intercession Squad',
   'Kommando',
   'Legionary',
   'Novitiate',

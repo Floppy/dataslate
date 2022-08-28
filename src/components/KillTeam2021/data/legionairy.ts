@@ -26,7 +26,7 @@ const strategicPloys: Ploy[] = [
     name: 'Blood for the Blood God',
     cost: 1,
     description: `Until the end of the Turning Point, each time a friendly **KHORNE** operative fights in combat,
-    in the Resolve Successful Hits step of that combat, if it performed a **Charge** action during that actiation,
+    in the Resolve Successful Hits step of that combat, if it performed a **Charge** action during that activation,
     the first time it strikes, inflict one additional damage.`
   },
   {
