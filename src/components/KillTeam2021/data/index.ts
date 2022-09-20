@@ -31,7 +31,7 @@ import wyrmblade from './wyrmblade'
 import corsairVoidscarred from './corsairVoidscarred'
 import phobosStrikeTeam from './phobosStrikeTeam'
 import gellerpoxInfected from './gellerpoxInfected'
-import elucidianStarStriders from "./elucidianStarStriders";
+import elucidianStarStriders from './elucidianStarStriders'
 
 const data = [
   blooded,
