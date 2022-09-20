@@ -30,6 +30,8 @@ import pathfinder from './pathfinder'
 import wyrmblade from './wyrmblade'
 import corsairVoidscarred from './corsairVoidscarred'
 import phobosStrikeTeam from './phobosStrikeTeam'
+import gellerpoxInfected from './gellerpoxInfected'
+import elucidianStarStriders from "./elucidianStarStriders";
 
 const data = [
   blooded,
@@ -41,7 +43,9 @@ const data = [
   craftworld,
   deathGuard,
   ecclesiarchy,
+  elucidianStarStriders,
   forgeWorld,
+  gellerpoxInfected,
   greenskin,
   greyKnights,
   hiveFleet,
