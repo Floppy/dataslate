@@ -6,6 +6,7 @@ import commorite from './commorrite'
 import craftworld from './craftworld'
 import deathGuard from './deathGuard'
 import ecclesiarchy from './ecclesiarchy'
+import farstalkerKinband from './farstalkerKinband'
 import forgeWorld from './forgeWorld'
 import greenskin from './greenskin'
 import greyKnights from './greyKnights'
@@ -32,6 +33,7 @@ import corsairVoidscarred from './corsairVoidscarred'
 import phobosStrikeTeam from './phobosStrikeTeam'
 import gellerpoxInfected from './gellerpoxInfected'
 import elucidianStarStriders from './elucidianStarStriders'
+import imperialNavyBreachers from './imperialNavyBreachers'
 
 const data = [
   blooded,
@@ -44,6 +46,7 @@ const data = [
   deathGuard,
   ecclesiarchy,
   elucidianStarStriders,
+  farstalkerKinband,
   forgeWorld,
   gellerpoxInfected,
   greenskin,
@@ -52,6 +55,7 @@ const data = [
   hunterCadre,
   hunterClade,
   imperialGuard,
+  imperialNavyBreachers,
   intercessionSquad,
   kommando,
   legionary,
