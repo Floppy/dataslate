@@ -112,12 +112,36 @@ at the end of that Group Activation that friendly operatives did not control at 
   }
 ]
 
+const breacherAbilities = [
+  {
+    name: 'Breach and Clear',
+    text: `Once per Turning Point, when a friendly **IMPERIAL NAVY BREACHER💀** operative is activated, you can use
+    this ability. If you do so:
+* Select one other friendly **IMPERIAL NAVY BREACHER💀** operative Visible to and within SQUARE of that operative
+that is eligible to be activated.
+* Until the end of the Turning Point, those operatives are treated as having a Group Activation characteristic of 2.
+* When the first operative's activation ends, you must select the second operative (even if it is not of the same type)
+to fulfil the Group Activation requirements.`
+  },
+  {
+    name: 'Void Armour',
+    text: `
+* This operative is unaffected by the Splash critical hit rule unless it is the target of the shooting attack.
+* Each time a shooting attack is made against this operative, if the ranged weapon has the Blast X or Torrent X
+special rule, or makes a shooting attack against each operative within a range of a specified point (e.g. Detonate,
+page 45), in the Roll Defence Dice step of that shooting attack, you can re-roll one of your defence dice (or up to
+two of your defence dice if this operatiev has the **NAVIS GRENADIER** keyword).`
+  }
+
+]
+
 const data = {
   name: 'Imperial Navy Breacher' as const,
   strategicPloys,
   tacticalPloys,
   archetypes,
-  tacOps
+  tacOps,
+  breacherAbilities
 }
 
 export default data

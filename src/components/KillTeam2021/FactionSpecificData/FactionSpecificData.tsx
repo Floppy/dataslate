@@ -5,6 +5,7 @@ import { Default } from './Default'
 import { Novitiate } from './Novitiate'
 import { VoidDancerTroupe } from './VoidDancerTroupe'
 import { Blooded } from './Blooded'
+import { ImperialNavyBreachers } from './ImperialNavyBreachers'
 
 interface Props {
   faction: string
@@ -25,6 +26,8 @@ export const FactionSpecificData: FC<Props> = (props) => {
       return <VoidDancerTroupe fireteams={props.fireteams} />
     case 'Blooded':
       return <Blooded fireteams={props.fireteams} />
+    case 'Imperial Navy Breacher':
+      return <ImperialNavyBreachers fireteams={props.fireteams} />
     default:
       return <Default faction={props.faction} fireteams={props.fireteams} />
   }
