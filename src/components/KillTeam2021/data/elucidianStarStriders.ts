@@ -116,12 +116,56 @@ you score 1VP.
   }
 ]
 
+const starstriderAbilities = [
+  {
+    name: 'Warrant of Trade',
+    text: `Up to three times per game, you can use a Warrant of Trade ability (below). Each ability specifies when 
+    it can be used, you must inform your opponent when you do so, and you cannot use the same ability more than
+    once per game.
+    
+|Ability|When|Effect|
+|--|--|--|
+|**Coerce**|In the Selected Drop Zone step, after rolling off to decide Attacker and Defender|You can re-roll your dice.|
+|**Coordinate**|At the end of the Select a Kill Team step.|Add 1CP to your pool|
+|**Adaptable Terms**|At the start of the Select Tac Ops step.|You can select Tac Ops from two of your Archetypes (rather than one)|
+|**Consideration**|At the start of the Select Equipment step.|You can select 6 additional points worth of equipment for the battle.|
+|**Explore**|At the end of the Scouting step.|Select and resolve an additional scouting option. It must be a different option to your original selection, and initiative is still determined by your original selection. If both players have this or a similar ability, the Defender resolves this ability first.|
+|**Seize**|In the Initiative phase, after rolling off to determine initiative.|You can re-roll your dice.|`
+
+  },
+  {
+    name: 'Privateer Support Assets',
+    text: `Once per Firefight phase, when you would activate a ready friendly operative, you can use a Privateer Support
+    Asset instead. Each time you do so, select one of the ranged weapons opposite and perform a **Shoot** action with it.
+    After you have done so, your opponent activates one of their operatives as normal.
+    
+You cannot select a ranged weapon you selected in the previous Turning Point, but you can in a Turning Point thereafter. 
+For example, if you selected archeotech beam in the first Turning Point, you couldn't select it in the second 
+Turning Point, but you could in the third Turning Point. If you did so, you couldn't subsequently select it in 
+the fourth Turning Point.
+
+When making shooting attacks with the ranged weapons on this page:
+* For the purposes of Line of Sight, draw Visibility and Cover lines from a friendly **NAVIS** (excluding **CANID**) or
+**ELUCIA VHANE** operative that is not within Engagement Range of enemy operatives.
+* For the purposes of the weapon's special rules, it is treated as if a friendly operative were making the shooting attack.
+* Other than Command Re-roll (see the Kill Team Core Book), you cannot use any Strategic or Tactical Ploys for shooting
+attacks made by Privateer Support Assets.
+
+|Name|A|BS|D|Special Rules|
+|----|-|--|-|-------------|
+|Archeotech beam|4|4+|6/7|AP2, Barrage|
+|Guided Shell|5|4+|3/5|Barrage, Blast ⬤|
+|Cluster Bomb|5|4+|2/3|Barrage, Blast ■|`
+  }
+]
+
 const data = {
   name: 'Elucidian Starstriders' as const,
   strategicPloys,
   tacticalPloys,
   archetypes,
-  tacOps
+  tacOps,
+  starstriderAbilities
 }
 
 export default data

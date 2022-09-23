@@ -6,6 +6,7 @@ import { Novitiate } from './Novitiate'
 import { VoidDancerTroupe } from './VoidDancerTroupe'
 import { Blooded } from './Blooded'
 import { ImperialNavyBreachers } from './ImperialNavyBreachers'
+import { ElucidianStarstrider } from './ElucidianStarstrider'
 
 interface Props {
   faction: string
@@ -28,6 +29,8 @@ export const FactionSpecificData: FC<Props> = (props) => {
       return <Blooded fireteams={props.fireteams} />
     case 'Imperial Navy Breacher':
       return <ImperialNavyBreachers fireteams={props.fireteams} />
+    case 'Elucidian Starstriders':
+      return <ElucidianStarstrider fireteams={props.fireteams} />
     default:
       return <Default faction={props.faction} fireteams={props.fireteams} />
   }
