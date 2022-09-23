@@ -108,7 +108,7 @@ you score 1VP.
       id: '1234',
       name: 'Investigate Motive Force',
       cost: 1,
-      intro: `The friendly **LECTRO-MAESTER** operative can perform the following mission action:`,
+      intro: 'The friendly **LECTRO-MAESTER** operative can perform the following mission action:',
       description: `An operative can perform this action while it controls an objective marker that is not 
             within your drop zone and has not been investigated for Motive Force during the battle. If it does so,
              that objective marker has been investigated for Motive Force.`

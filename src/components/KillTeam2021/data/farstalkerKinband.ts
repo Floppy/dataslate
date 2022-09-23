@@ -1,4 +1,4 @@
-import {Archetype, FireteamArchetypes, Ploy, TacOp} from '../../../types/KillTeam2021'
+import { Archetype, FireteamArchetypes, Ploy, TacOp } from '../../../types/KillTeam2021'
 
 const archetypes: FireteamArchetypes = {
   fireteams: {
@@ -40,7 +40,6 @@ const strategicPloys: Ploy[] = [
   }
 
 ]
-
 
 const tacticalPloys: Ploy[] = [
   {

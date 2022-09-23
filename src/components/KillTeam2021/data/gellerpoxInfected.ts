@@ -113,7 +113,7 @@ number of enemy operatives selected for deployment, you score 1VP.`
       id: '123',
       name: 'Tech Infection',
       cost: 1,
-      intro: `Friendly **GELLERPOX INFECTED💀** operatives can perform the following mission action:`,
+      intro: 'Friendly **GELLERPOX INFECTED💀** operatives can perform the following mission action:',
       description: `An operative can perform this action while it controls an objective marker that has not
                 been tech infected by your kill team. If it does so, that objective marker has been tech infected 
                 by your kill team.`
