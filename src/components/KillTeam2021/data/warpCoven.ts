@@ -15,7 +15,11 @@ const strategicPloys: Ploy[] = [
     description: `Until the end of the Turning Point, each time a friendly SORCERER operative is activated:
 - If it does not perform a **Shoot** action during that activation, it can perform two **Fight** actions during that activation
 - If it does not perform a **Fight** action during that activation, it can perform two **Shoot** actions during that activation, but it must select different
-    ranged weapons for those shooting attacks. Ranged weapons from a WARPCOVEN💀 psychic power are eligible weapons for this.`
+    ranged weapons for those shooting attacks. Ranged weapons from a WARPCOVEN💀 psychic power are eligible weapons for this.
+
+In addition, until the end of the Turning Point, each time a friendly **RUBRIC MARINE** operative is activated, if it does 
+not perform a Fight action during that activation, it can perform two Shoot actions during that activation. If it’s a
+**GUNNER** operative, one additional action point must be subtracted to perform the second Shoot action.`
   }, {
     name: 'Psychic Dominion',
     cost: 1,
