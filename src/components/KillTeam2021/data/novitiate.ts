@@ -98,6 +98,8 @@ its effect and how many Faith points you must subtract from your total to use it
 Unless otherwise specified, only one Act of Faith can be used during each activation (friendly or enemy). For example, a shooting attack is made against a friendly 
 NOVITIATE💀 operative. In the Roll Defence Dice step of that shooting attack, that operative's controlling player decides to subtract 2 Faith points to use Divine Shield to 
 retain one failed save as a successful normal save. No other Acts of Faith can then be performed during that activation (other than Faithful Blessing).
+
+You cannot use Acts of Faith to change dice you’ve re-rolled.
 `,
   acts: [
     {

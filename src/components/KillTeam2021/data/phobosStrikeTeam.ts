@@ -33,6 +33,13 @@ const strategicPloys: Ploy[] = [
     description: `Until the end of the Turning Point:
   * You can ignore any or all modifiers to the APL of friendly **PHOBOS STRIKE TEAM💀** operatives.
   * Friendly **PHOBOS STRIKE TEAM💀** operatives are not injured.`
+  }, {
+    name: 'Deadly Shots',
+    cost: 1,
+    description: `Until the end of the Turning Point, each time a friendly **PHOBOS STRIKE TEAM** operative makes a 
+    shooting attack, if it hasn’t yet performed a **Charge**, **Fall Back** or **Normal Move** action during this 
+    Turning Point, bolt weapons it’s equipped with gain the P1 critical hit rule for that shooting attack. This has 
+    no effect on weapons that already have the APx special rule or Px critical hit rule respectively.`
   }
 ]
 
