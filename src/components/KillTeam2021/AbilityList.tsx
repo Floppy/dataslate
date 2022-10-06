@@ -23,7 +23,7 @@ function AbilityList (props: Props): JSX.Element {
               {!(x.rule ?? false) &&
                 <CompileDescription>{x.description}</CompileDescription>}
               {(x.rule ?? false) &&
-                <CompileDescription>See Rules Below</CompileDescription>}
+                <CompileDescription>See Rules Section Below</CompileDescription>}
             </p>
           ))}
         </Card.Body>
