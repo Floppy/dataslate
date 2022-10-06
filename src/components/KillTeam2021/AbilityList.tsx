@@ -19,8 +19,10 @@ function AbilityList (props: Props): JSX.Element {
         <Card.Body>
           {_.sortBy(props.abilities, ['name']).map((x: Ability) => (
             <p key={x.id}>
-              <strong>{x.name}: </strong>
-              <CompileDescription>{x.description}</CompileDescription>
+              <strong>{x.name} {!x.rule && ':' } </strong>
+                {!x.rule &&
+                    <CompileDescription>{x.description}</CompileDescription>
+                }
             </p>
           ))}
         </Card.Body>
