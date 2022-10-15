@@ -33,7 +33,18 @@ const parseAbility = (ability: Node): Ability => {
     id: xpSelect('string(@id)', ability, true).toString(),
     name: xpSelect('string(@name)', ability, true).toString(),
     description: (xpSelect(".//bs:characteristic[@name='Ability']/text()", ability, true) ?? '-').toString(),
-    phases: []
+    phases: [],
+    rule: false
+  }
+}
+
+const parseOperativeRule = (rule: Node): Ability => {
+  return {
+    id: xpSelect('string(@id)', rule, true).toString(),
+    name: xpSelect('string(@name)', rule, true).toString(),
+    description: (xpSelect('.//bs:description/text()', rule, true) ?? '-').toString(),
+    phases: [],
+    rule: true
   }
 }
 
@@ -149,7 +160,8 @@ const parseOperative = (model: Element): Operative => {
   const psychicPowers = (xpSelect(".//bs:profile[@typeName='Psychic Power']/@name", model) as Node[]).map((x) => x.nodeValue).join(', ')
 
   const actions = (xpSelect(".//bs:profile[@typeName='Unique Actions']", model) as Node[]).map((x) => parseAction(x, psychicDiscipline, psychicPowers))
-  const abilities = (xpSelect(".//bs:profile[@typeName='Abilities']", model) as Node[]).map(parseAbility)
+  const abilities = (xpSelect(".//bs:profile[@typeName='Abilities']", model) as Node[]).map(parseAbility).concat(
+    (xpSelect('./bs:rules/bs:rule', model) as Node[]).map(parseOperativeRule))
 
   const boonOfTzeentch = xpSelect(".//bs:selection[./bs:profiles/bs:profile/@typeName='Boon of Tzeentch']", model, true) as Node
 
