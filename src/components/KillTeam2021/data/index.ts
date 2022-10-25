@@ -34,6 +34,7 @@ import phobosStrikeTeam from './phobosStrikeTeam'
 import gellerpoxInfected from './gellerpoxInfected'
 import elucidianStarStriders from './elucidianStarStriders'
 import imperialNavyBreachers from './imperialNavyBreachers'
+import kasrkin from './kasrkin'
 
 const data = [
   blooded,
@@ -57,6 +58,7 @@ const data = [
   imperialGuard,
   imperialNavyBreachers,
   intercessionSquad,
+  kasrkin,
   kommando,
   legionary,
   novitiate,
