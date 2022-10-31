@@ -32,7 +32,7 @@ const strategicPloys: Ploy[] = [
   {
     name: 'Dimensional Concealment',
     cost: 1,
-    description: `Until the end of the Turning Point, friendly **DEATHMARK** operative can perform the following action:`,
+    description: 'Until the end of the Turning Point, friendly **DEATHMARK** operative can perform the following action:',
     action: {
       id: '1234',
       name: 'Dimensional Concealment',
@@ -84,17 +84,41 @@ const tacOps: TacOp[] = [
   {
     id: 1,
     name: 'Unyielding Ancients',
-    description: ``
+    description: `Reveal this Tac Op in the Target Reveal step of the first Turning Point.
+
+* At the end of the battle, if three or more friendly **HIEROTEK CIRCLE💀** operatives (excluding **PLASMACYTE** 
+operatives) are within ⬟ of the centre of the killzone and/or your opponent's drop zone, you score 1VP.
+* If you achieved the first condition and one of those **HIEROTEK CIRCLE💀** operatives is a friendly **CRYPTEK** or
+**APPRENTEK** operative, you score 1VP.`
   },
   {
     id: 2,
     name: 'Unearth Artifice',
-    description: ``
+    description: `Reveal this Tac Op in the Target Reveal step of the first Turning Point. Place one of your Artifice
+    tokens anywhere in the killzone that is more than ⬟ from your drop zone and not on a terrain feature (unless it
+    has the insignificant trait). That token is earthed.
+* At the end of any Turning Point before the fourth, if you control your unearthed Artifice token, you score 1VP.
+* At the end of the battle, if you control your unearthed Artifice token, you score 1VP.`,
+    action: {
+      id: '1234',
+      name: 'Unearth Artifice',
+      cost: 2,
+      intro: 'Friendly operatives can perform the following mission action:',
+      description: `An operative can perform this action while it controls your earthed Artifice token. That Artifice
+      token is unearthed. An operative cannot perform this action while within Engagement Range of an enemy operative.`
+    }
   },
   {
     id: 3,
     name: 'Worthy of Study',
-    description: ``
+    description: `Reveal this Tac Op in the Target Reveal step of the first or second Turning Point. Select two of your 
+    opponent's operatives; your opponent then selects one of them to be worthy of study. If that enemy operative is
+    incapacitated, before it is removed from the killzone, place one of your Study tokens as close as possible to the 
+    centre of its base.
+
+* At the end of any Turning Point, if friendly operatives control your Study token and a friendly **CRYPTEK** or 
+**APPRENTEK** operative is within ⬟ of at least one of those friendly operatives, you score 1VP.
+* If you achieve the first condition at the end of the any subsequent Turning Points, you score 1VP.`
   }
 ]
 
