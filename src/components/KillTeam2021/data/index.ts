@@ -10,6 +10,7 @@ import farstalkerKinband from './farstalkerKinband'
 import forgeWorld from './forgeWorld'
 import greenskin from './greenskin'
 import greyKnights from './greyKnights'
+import hierotekCircle from './hierotekCircle'
 import hiveFleet from './hiveFleet'
 import hunterCadre from './hunterCadre'
 import hunterClade from './hunterClade'
@@ -52,6 +53,7 @@ const data = [
   gellerpoxInfected,
   greenskin,
   greyKnights,
+  hierotekCircle,
   hiveFleet,
   hunterCadre,
   hunterClade,
