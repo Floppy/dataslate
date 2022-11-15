@@ -1,6 +1,6 @@
 import { calculatePhases, parseAdditionalAttacks, invulnerableSave } from './Abilities'
 import _ from 'lodash'
-import parse from 'csv-parse/lib/sync'
+import { parse } from 'csv-parse/lib/sync'
 import fs from 'fs'
 
 const compareFn = (a: string, b: string): number => a.localeCompare(b)
