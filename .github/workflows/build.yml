@@ -10,9 +10,9 @@ jobs:
     steps:
     - uses: FranzDiebold/github-env-vars-action@v2
     - uses: actions/checkout@master
-    - uses: actions/setup-node@v1
+    - uses: actions/setup-node@v3
       with:
-        node-version: '16.x'
+        node-version-file: 'package.json'
     - run: yarn install
     - run: yarn build
       env:
