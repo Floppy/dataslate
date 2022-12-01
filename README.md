@@ -1,6 +1,16 @@
 
 Proper readme to come...
 
+## Requirements
+
+* NodeJS, version specified in package.json
+* Yarn
+
+### Recommended
+
+* [nodenv](https://github.com/nodenv/nodenv)
+* [nodenv-package-json-engine](https://github.com/nodenv/nodenv-package-json-engine)
+
 ## Extracting abilities from Battlescribe catalogue
 
 ```
