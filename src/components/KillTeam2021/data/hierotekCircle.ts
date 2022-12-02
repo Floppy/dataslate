@@ -122,12 +122,19 @@ operatives) are within ⬟ of the centre of the killzone and/or your opponent's 
   }
 ]
 
+const reanimationProtocols = {
+  name: 'Reanimation Protocols',
+  wahapediaUrl: 'https://wahapedia.ru/kill-team2/kill-teams/hierotek-circle/#Reanimation-Protocols',
+  description: ''
+}
+
 const data = {
   name: 'Hierotek Circle' as const,
   strategicPloys,
   tacticalPloys,
   archetypes,
-  tacOps
+  tacOps,
+  reanimationProtocols
 }
 
 export default data
