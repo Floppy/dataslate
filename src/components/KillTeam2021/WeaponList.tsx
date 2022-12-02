@@ -22,12 +22,12 @@ export function WeaponList (props: Props): JSX.Element {
           </tr>
         </thead>
         <tbody>
-          {props.weapons.map((x: Weapon) => (
+          {props.weapons.sort((a: Weapon, b: Weapon) => a.name.localeCompare(b.name)).map((x: Weapon) => (
             <tr key={x.id}>
               <td>{x.name}</td>
-              <td>{x.attacks}</td>
-              <td>{x.hit}+</td>
-              <td>{x.damage} / {x.criticalDamage}</td>
+              <td>{isNaN(x.attacks) ? '-' : x.attacks}</td>
+              <td>{isNaN(x.hit) ? '-' : (`${x.hit}+`)}</td>
+              <td>{isNaN(x.damage) ? '-' : (`${x.damage} / ${x.criticalDamage}`)}</td>
               <td><HighlightedText>{x.specialRules}</HighlightedText></td>
               <td><HighlightedText>{x.criticalRules}</HighlightedText></td>
             </tr>

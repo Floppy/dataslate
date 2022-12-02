@@ -10,6 +10,7 @@ import farstalkerKinband from './farstalkerKinband'
 import forgeWorld from './forgeWorld'
 import greenskin from './greenskin'
 import greyKnights from './greyKnights'
+import hierotekCircle from './hierotekCircle'
 import hiveFleet from './hiveFleet'
 import hunterCadre from './hunterCadre'
 import hunterClade from './hunterClade'
@@ -34,6 +35,7 @@ import phobosStrikeTeam from './phobosStrikeTeam'
 import gellerpoxInfected from './gellerpoxInfected'
 import elucidianStarStriders from './elucidianStarStriders'
 import imperialNavyBreachers from './imperialNavyBreachers'
+import kasrkin from './kasrkin'
 
 const data = [
   blooded,
@@ -51,12 +53,14 @@ const data = [
   gellerpoxInfected,
   greenskin,
   greyKnights,
+  hierotekCircle,
   hiveFleet,
   hunterCadre,
   hunterClade,
   imperialGuard,
   imperialNavyBreachers,
   intercessionSquad,
+  kasrkin,
   kommando,
   legionary,
   novitiate,
