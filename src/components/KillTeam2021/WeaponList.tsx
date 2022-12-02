@@ -25,9 +25,9 @@ export function WeaponList (props: Props): JSX.Element {
           {props.weapons.map((x: Weapon) => (
             <tr key={x.id}>
               <td>{x.name}</td>
-              <td>{x.attacks}</td>
-              <td>{x.hit}+</td>
-              <td>{x.damage} / {x.criticalDamage}</td>
+              <td>{x.attacks || '-'}</td>
+              <td>{(x.hit) ? (x.hit + '+') : '-'}</td>
+              <td>{x.damage ? ( `${x.damage} / ${x.criticalDamage}`) : '-'}</td>
               <td><HighlightedText>{x.specialRules}</HighlightedText></td>
               <td><HighlightedText>{x.criticalRules}</HighlightedText></td>
             </tr>
