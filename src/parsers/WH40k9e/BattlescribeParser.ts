@@ -18,7 +18,14 @@ const parseProfile = (node: Node): Profile => {
     name: xpSelect('string(@name)', node, true).toString(),
     profileStats: {
       movement: stat('M', node),
-      leadership: stat('Ld', node)
+      weapon_skill: stat('WS', node),
+      ballistic_skill: stat('BS', node),
+      strength: stat('S', node),
+      toughness: stat('T', node),
+      wounds: stat('W', node),
+      attacks: stat('A', node),
+      leadership: stat('Ld', node),
+      save: stat('Save', node)
     }
   }
 }

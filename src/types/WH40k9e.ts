@@ -12,14 +12,14 @@ export interface Profile {
 
 export interface ProfileStats {
   movement: number
-  // weapon_skill: number
-  // ballistic_skill: number
-  // strength: number
-  // toughness: number
-  // wounds: number
-  // attacks: number
+  weapon_skill: number
+  ballistic_skill: number
+  strength: number
+  toughness: number
+  wounds: number
+  attacks: number
   leadership: number
-  // save: number
+  save: number
 }
 
 export interface Unit {
