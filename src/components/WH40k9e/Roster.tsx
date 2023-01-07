@@ -4,6 +4,7 @@ import { CloseButton } from '../CloseButton'
 import { Settings } from '../../types/Settings'
 import Phase from './Phase'
 import { MovementPhaseDetails } from './MovementPhaseDetails'
+import { FightPhaseDetails } from './FightPhaseDetails'
 import { MoralePhaseDetails } from './MoralePhaseDetails'
 import { Unit } from '../../types/WH40k9e'
 
@@ -67,10 +68,13 @@ export function Roster (props: Props): JSX.Element {
       </Phase>
       <Phase name='fight'>
         <>
+          {props.units.map((unit: Unit) => (
+            <FightPhaseDetails key={unit.id} unit={unit} />
+          ))}
         </>
       </Phase>
       <Phase name='morale'>
-      <>
+        <>
           {props.units.map((unit: Unit) => (
             <MoralePhaseDetails key={unit.id} unit={unit} />
           ))}
