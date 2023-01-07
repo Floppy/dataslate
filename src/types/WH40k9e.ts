@@ -5,27 +5,26 @@ export interface Roster {
   units: Unit[]
 }
 
-export interface ModelType {
+export interface Profile {
   name: string
-  modelStats: ModelStats
-  count: number
+  profileStats: ProfileStats
 }
 
-export interface ModelStats {
+export interface ProfileStats {
   movement: number
-  weapon_skill: number
-  ballistic_skill: number
-  strength: number
-  toughness: number
-  wounds: number
-  attacks: number
-  leadership: number
-  save: number
+  // weapon_skill: number
+  // ballistic_skill: number
+  // strength: number
+  // toughness: number
+  // wounds: number
+  // attacks: number
+  // leadership: number
+  // save: number
 }
 
 export interface Unit {
   id: string
   datasheet: string
   name: string
-  modelTypes: ModelType[]
+  profiles: Profile[]
 }
