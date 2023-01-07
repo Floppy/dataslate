@@ -3,11 +3,14 @@ import { Col } from 'react-bootstrap'
 import { CloseButton } from '../CloseButton'
 import { Settings } from '../../types/Settings'
 import Phase from './Phase'
+import { MovementPhaseDetails } from './MovementPhaseDetails'
+import { Unit } from '../../types/WH40k9e'
+
 
 interface Props {
   name: string
   faction: string
-  datasheets: any
+  units: Unit[]
   onClose: (event: MouseEvent<HTMLButtonElement>) => void
   settings: Settings
 }
@@ -31,8 +34,8 @@ export function Roster (props: Props): JSX.Element {
         </Col>
       </h1>
       <ul>
-        {props.datasheets.map((d: string) => (
-          <li key={d}>{d}</li>
+        {props.units.map((unit: Unit) => (
+          <li key={unit.id}>{unit.datasheet}</li>
         ))}
       </ul>
       <p>
@@ -44,6 +47,9 @@ export function Roster (props: Props): JSX.Element {
       </Phase>
       <Phase name='movement'>
         <>
+        {props.units.map((unit: Unit) => (
+          <MovementPhaseDetails key={unit.id} unit={unit} />
+        ))}
         </>
       </Phase>
       <Phase name='psychic'>
