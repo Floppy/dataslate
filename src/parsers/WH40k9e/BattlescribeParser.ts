@@ -17,7 +17,8 @@ const parseProfile = (node: Node): Profile => {
   return {
     name: xpSelect('string(@name)', node, true).toString(),
     profileStats: {
-      movement: stat('M', node)
+      movement: stat('M', node),
+      leadership: stat('Ld', node)
     }
   }
 }

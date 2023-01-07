@@ -18,7 +18,7 @@ export interface ProfileStats {
   // toughness: number
   // wounds: number
   // attacks: number
-  // leadership: number
+  leadership: number
   // save: number
 }
 
