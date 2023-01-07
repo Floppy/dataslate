@@ -8,6 +8,7 @@ const xpSelect = XPath.useNamespaces({ bs: 'http://www.battlescribe.net/schema/r
 const parseUnit = (node: Node): Unit => {
   return {
     datasheet: xpSelect('string(@name)', node, true).toString(),
+    name: xpSelect('string(@customName)', node, true).toString(),
     id: xpSelect('string(@id)', node, true).toString(),
     modelTypes: []
   }

@@ -26,5 +26,6 @@ export interface ModelStats {
 export interface Unit {
   id: string
   datasheet: string
+  name: string
   modelTypes: ModelType[]
 }

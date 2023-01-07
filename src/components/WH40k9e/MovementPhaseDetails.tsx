@@ -13,7 +13,7 @@ export function MovementPhaseDetails (props: Props): JSX.Element {
   return (
     <Row>
       <Col sm='11'>
-        <ModelTitle name={props.unit.datasheet} selected={1} count={1} uuid={props.unit.id} type={props.unit.datasheet} />
+        <ModelTitle name={props.unit.name} selected={1} count={1} uuid={props.unit.id} type={props.unit.datasheet} />
       </Col>
       <Col sm='1' className='px-1'>
 
