@@ -2,6 +2,7 @@ import React, { MouseEvent } from 'react'
 import { Col } from 'react-bootstrap'
 import { CloseButton } from '../CloseButton'
 import { Settings } from '../../types/Settings'
+import Phase from './Phase'
 
 interface Props {
   name: string
@@ -37,6 +38,34 @@ export function Roster (props: Props): JSX.Element {
       <p>
         40k support is under development, check back later for more features!
       </p>
+      <Phase name='command'>
+        <>
+        </>
+      </Phase>
+      <Phase name='movement'>
+        <>
+        </>
+      </Phase>
+      <Phase name='psychic'>
+        <>
+        </>
+      </Phase>
+      <Phase name='shooting'>
+        <>
+        </>
+      </Phase>
+      <Phase name='charge'>
+        <>
+        </>
+      </Phase>
+      <Phase name='fight'>
+        <>
+        </>
+      </Phase>
+      <Phase name='morale'>
+        <>
+        </>
+      </Phase>
     </>
   )
 }
