@@ -4,6 +4,7 @@ import { Row, Col } from 'react-bootstrap'
 import { UnitTitle } from './UnitTitle'
 import { ProfileTitle } from './ProfileTitle'
 import { AbilityList } from './AbilityList'
+import { WeaponList } from './WeaponList'
 import { Unit, Profile } from '../../types/WH40k9e'
 
 
@@ -23,10 +24,12 @@ export function FightPhaseDetails (props: Props): JSX.Element {
         <Row key={profile.id}>
           <Col sm='10'>
             <ProfileTitle name={profile.name} />
+            <WeaponList weapons={profile.weapons} phase="fight"/>
           </Col>
           <Col sm='1' className='px-1'>
             <StatBadge name='A' value={`${profile.profileStats.attacks}`} />
             <StatBadge name='T' value={`${profile.profileStats.toughness}`} />
+            <StatBadge name='S' value={`${profile.profileStats.strength}`} />
           </Col>
           <Col sm='1' className='px-1'>
             <StatBadge name='WS' value={`${profile.profileStats.weapon_skill}`} secondaryValue='+' />

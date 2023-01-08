@@ -11,6 +11,7 @@ export interface Profile {
   name: string
   id: string
   profileStats: ProfileStats
+  weapons: Weapon[]
 }
 
 export interface ProfileStats {
@@ -32,6 +33,18 @@ export interface PsychicPower {
   charge: number
   range: string
   description: string
+}
+
+export interface Weapon {
+  id: string
+  name: string
+  range: number
+  type: string
+  shots: string
+  strength: number
+  armourPiercing: number
+  damage: number
+  abilities: string
 }
 
 export interface Unit {

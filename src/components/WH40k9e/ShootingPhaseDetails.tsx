@@ -5,6 +5,7 @@ import { UnitTitle } from './UnitTitle'
 import { ProfileTitle } from './ProfileTitle'
 import { Unit, Profile } from '../../types/WH40k9e'
 import { AbilityList } from './AbilityList'
+import { WeaponList } from './WeaponList'
 
 interface Props {
   unit: Unit
@@ -22,6 +23,7 @@ export function ShootingPhaseDetails (props: Props): JSX.Element {
         <Row key={profile.id}>
           <Col sm='10'>
             <ProfileTitle name={profile.name} />
+            <WeaponList weapons={profile.weapons} phase="shooting"/>
           </Col>
           <Col sm='1' className='px-1'>
             <StatBadge name='BS' value={`${profile.profileStats.ballistic_skill}`} secondaryValue='+' />
