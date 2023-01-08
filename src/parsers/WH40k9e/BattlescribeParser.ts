@@ -14,20 +14,20 @@ const stat = (name: string, node: Node): number => {
   } else { return -1 }
 }
 
-const parseProfile = (node: Node): Profile => {
+const parseUnitProfile = (unitProfileNode: Node): Profile => {
   return {
-    name: xpSelect('string(@name)', node, true).toString(),
-    id: xpSelect('string(@id)', node, true).toString(),
+    name: xpSelect('string(@name)', unitProfileNode, true).toString(),
+    id: xpSelect('string(@id)', unitProfileNode, true).toString(),
     profileStats: {
-      movement: stat('M', node),
-      weapon_skill: stat('WS', node),
-      ballistic_skill: stat('BS', node),
-      strength: stat('S', node),
-      toughness: stat('T', node),
-      wounds: stat('W', node),
-      attacks: stat('A', node),
-      leadership: stat('Ld', node),
-      save: stat('Save', node),
+      movement: stat('M', unitProfileNode),
+      weapon_skill: stat('WS', unitProfileNode),
+      ballistic_skill: stat('BS', unitProfileNode),
+      strength: stat('S', unitProfileNode),
+      toughness: stat('T', unitProfileNode),
+      wounds: stat('W', unitProfileNode),
+      attacks: stat('A', unitProfileNode),
+      leadership: stat('Ld', unitProfileNode),
+      save: stat('Save', unitProfileNode),
       invulnerable_save: 0
     },
     weapons: []
@@ -44,7 +44,6 @@ const parseAbility = (node: Node): Ability => {
   }
 }
 
-
 const parsePsychicPower = (node: Node): PsychicPower => {
   return {
     id: xpSelect('string(@id)', node, true).toString(),
@@ -55,14 +54,14 @@ const parsePsychicPower = (node: Node): PsychicPower => {
   }
 }
 
-const parseUnit = (node: Node): Unit => {
+const parseUnitSelection = (unitSelectionNode: Node): Unit => {
   return {
-    datasheet: xpSelect('string(@name)', node, true).toString(),
-    name: xpSelect('string(@customName)', node, true).toString(),
-    id: xpSelect('string(@id)', node, true).toString(),
-    profiles: (xpSelect('.//bs:profiles/bs:profile[@typeName=\'Unit\']', node, false) as Node[]).map((node: Node) => parseProfile(node)),
-    abilities: (xpSelect('.//bs:profiles/bs:profile[@typeName=\'Abilities\']', node, false) as Node[]).map((node: Node) => parseAbility(node)),
-    psychicPowers: (xpSelect('.//bs:profiles/bs:profile[@typeName=\'Psychic Power\']', node, false) as Node[]).map((node: Node) => parsePsychicPower(node))
+    datasheet: xpSelect('string(@name)', unitSelectionNode).toString(),
+    name: xpSelect('string(@customName)', unitSelectionNode).toString(),
+    id: xpSelect('string(@id)', unitSelectionNode).toString(),
+    profiles: (xpSelect('bs:profiles/bs:profile[@typeName=\'Unit\']', unitSelectionNode, false) as Node[]).map((node: Node) => parseUnitProfile(node)),
+    abilities: (xpSelect('bs:profiles/bs:profile[@typeName=\'Abilities\']', unitSelectionNode, false) as Node[]).map((node: Node) => parseAbility(node)),
+    psychicPowers: (xpSelect('bs:selections/bs:selection/bs:profiles/bs:profile[@typeName=\'Psychic Power\']', unitSelectionNode, false) as Node[]).map((node: Node) => parsePsychicPower(node))
   }
 }
 
@@ -71,6 +70,6 @@ export const parseBattlescribeXML = (doc: Document): Roster => {
     system: 'WH40k9e',
     name: xpSelect('string(/bs:roster/@name)', doc, true).toString(),
     faction: xpSelect('string(/bs:roster/bs:forces/bs:force/@catalogueName)', doc, true).toString(),
-    units: (xpSelect('/bs:roster/bs:forces/bs:force/bs:selections/bs:selection[@type=\'unit\' or @type=\'model\']', doc, false) as Node[]).map((node: Node) => parseUnit(node))
+    units: (xpSelect('/bs:roster/bs:forces/bs:force/bs:selections/bs:selection[@type=\'unit\' or @type=\'model\']', doc, false) as Node[]).map((node: Node) => parseUnitSelection(node))
   }
 }
