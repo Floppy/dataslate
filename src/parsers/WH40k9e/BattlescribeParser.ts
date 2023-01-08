@@ -52,7 +52,10 @@ const parseUnitSelection = (unitSelectionNode: Node): Unit => {
     id: stringAttr('@id', unitSelectionNode),
     datasheet: stringAttr('@name', unitSelectionNode),
     name: stringAttr('@customName', unitSelectionNode),
-    profiles: nodeMap("bs:profiles/bs:profile[@typeName='Unit']", unitSelectionNode, parseUnitProfile),
+    profiles: [
+      ...nodeMap("bs:profiles/bs:profile[@typeName='Unit']", unitSelectionNode, parseUnitProfile),
+      ...nodeMap("bs:selections/bs:selection/bs:profiles/bs:profile[@typeName='Unit']", unitSelectionNode, parseUnitProfile)
+    ],
     abilities: nodeMap("bs:profiles/bs:profile[@typeName='Abilities']", unitSelectionNode, parseAbility),
     psychicPowers: nodeMap("bs:selections/bs:selection/bs:profiles/bs:profile[@typeName='Psychic Power']", unitSelectionNode, parsePsychicPower)
   }
