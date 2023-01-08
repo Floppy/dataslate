@@ -25,10 +25,19 @@ export interface ProfileStats {
   save: number
 }
 
+export interface PsychicPower {
+  id: string
+  name: string
+  charge: number
+  range: string
+  description: string
+}
+
 export interface Unit {
   id: string
   datasheet: string
   name: string
   profiles: Profile[]
   abilities: Ability[]
+  psychicPowers: PsychicPower[]
 }

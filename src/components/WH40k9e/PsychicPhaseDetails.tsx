@@ -4,6 +4,7 @@ import { Row, Col } from 'react-bootstrap'
 import { UnitTitle } from './UnitTitle'
 import { ProfileTitle } from './ProfileTitle'
 import { AbilityList } from './AbilityList'
+import { PsychicPowerList } from './PsychicPowerList'
 import { Unit, Profile } from '../../types/WH40k9e'
 
 
@@ -29,6 +30,7 @@ export function PsychicPhaseDetails (props: Props): JSX.Element {
           </Col>
         </Row>
       ))}
+      <PsychicPowerList powers={props.unit.psychicPowers} />
       <AbilityList abilities={props.unit.abilities} phase="psychic"/>
     </>
   )

@@ -41,12 +41,7 @@ export function Roster (props: Props): JSX.Element {
           <CloseButton onClose={props.onClose} />
         </Col>
       </h1>
-      <ul>
-        {props.units.map((unit: Unit) => (
-          <li key={unit.id}>{unit.datasheet}</li>
-        ))}
-      </ul>
-      <p>
+      <p className='alert alert-info'>
         40k support is under development, check back later for more features!
       </p>
       <>

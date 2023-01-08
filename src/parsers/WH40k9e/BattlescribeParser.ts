@@ -1,5 +1,5 @@
 import * as XPath from 'xpath-ts'
-import { Roster, Unit, Profile } from '../../types/WH40k9e'
+import { Roster, Unit, Profile, PsychicPower } from '../../types/WH40k9e'
 import { Ability } from '../../types/Ability'
 import { calculatePhases } from './Abilities'
 
@@ -42,13 +42,25 @@ const parseAbility = (node: Node): Ability => {
   }
 }
 
+
+const parsePsychicPower = (node: Node): PsychicPower => {
+  return {
+    id: xpSelect('string(@id)', node, true).toString(),
+    name: xpSelect('string(@name)', node, true).toString(),
+    charge: parseInt(xpSelect('.//bs:characteristic[@name=\'Warp Charge\']/text()', node, true).toString()),
+    range: xpSelect('.//bs:characteristic[@name=\'Range\']/text()', node, true).toString(),
+    description: xpSelect('.//bs:characteristic[@name=\'Details\']/text()', node, true).toString()
+  }
+}
+
 const parseUnit = (node: Node): Unit => {
   return {
     datasheet: xpSelect('string(@name)', node, true).toString(),
     name: xpSelect('string(@customName)', node, true).toString(),
     id: xpSelect('string(@id)', node, true).toString(),
     profiles: (xpSelect('.//bs:profiles/bs:profile[@typeName=\'Unit\']', node, false) as Node[]).map((node: Node) => parseProfile(node)),
-    abilities: (xpSelect('.//bs:profiles/bs:profile[@typeName=\'Abilities\']', node, false) as Node[]).map((node: Node) => parseAbility(node))
+    abilities: (xpSelect('.//bs:profiles/bs:profile[@typeName=\'Abilities\']', node, false) as Node[]).map((node: Node) => parseAbility(node)),
+    psychicPowers: (xpSelect('.//bs:profiles/bs:profile[@typeName=\'Psychic Power\']', node, false) as Node[]).map((node: Node) => parsePsychicPower(node))
   }
 }
 
