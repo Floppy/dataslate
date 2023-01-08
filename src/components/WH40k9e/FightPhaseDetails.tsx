@@ -1,7 +1,8 @@
 import React from 'react'
 import { StatBadge } from '../StatBadge'
 import { Row, Col } from 'react-bootstrap'
-import { ModelTitle } from '../ModelTitle'
+import { UnitTitle } from './UnitTitle'
+import { ProfileTitle } from './ProfileTitle'
 
 import { Unit, Profile } from '../../types/WH40k9e'
 
@@ -10,10 +11,16 @@ interface Props {
 }
 
 export function FightPhaseDetails (props: Props): JSX.Element {
-  return <>{props.unit.profiles.map((profile: Profile) => (
+  return <>
+    <Row>
+      <Col sm='12'>
+        <UnitTitle name={props.unit.name} uuid={props.unit.id} datasheet={props.unit.datasheet} />
+      </Col>
+    </Row>
+    {props.unit.profiles.map((profile: Profile) => (
       <Row>
         <Col sm='10'>
-          <ModelTitle name={profile.name} selected={1} count={1} uuid={props.unit.id} type={props.unit.datasheet} />
+          <ProfileTitle name={profile.name} />
         </Col>
         <Col sm='1' className='px-1'>
           <StatBadge name='A' value={`${profile.profileStats.attacks}`} />

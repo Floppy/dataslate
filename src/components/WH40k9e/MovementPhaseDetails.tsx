@@ -1,9 +1,10 @@
 import React from 'react'
 import { StatBadge } from '../StatBadge'
 import { Row, Col } from 'react-bootstrap'
-import { ModelTitle } from '../ModelTitle'
+import { UnitTitle } from './UnitTitle'
 
 import { Unit, Profile } from '../../types/WH40k9e'
+import { ProfileTitle } from './ProfileTitle'
 
 interface Props {
   unit: Unit
@@ -11,15 +12,22 @@ interface Props {
 
 export function MovementPhaseDetails (props: Props): JSX.Element {
   return (
-    <Row>
-      <Col sm='11'>
-        <ModelTitle name={props.unit.name} selected={1} count={1} uuid={props.unit.id} type={props.unit.datasheet} />
-      </Col>
-      <Col sm='1' className='px-1'>
-        {props.unit.profiles.map((profile: Profile) => (
-          <StatBadge name='M' value={profile.profileStats.movement.toString()} />
-        ))}
-      </Col>
-    </Row>
+    <>
+      <Row>
+        <Col sm='12'>
+          <UnitTitle name={props.unit.name} uuid={props.unit.id} datasheet={props.unit.datasheet} />
+        </Col>
+      </Row>
+      {props.unit.profiles.map((profile: Profile) => (
+        <Row>
+          <Col sm='11'>
+            <ProfileTitle name={profile.name} />
+          </Col>
+          <Col sm='1' className='px-1'>
+            <StatBadge name='M' value={profile.profileStats.movement.toString()} />
+          </Col>
+        </Row>
+      ))}
+    </>
   )
 }
