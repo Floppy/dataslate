@@ -1,3 +1,5 @@
+import { Ability } from './Ability'
+
 export interface Roster {
   system: string
   faction: string
@@ -28,4 +30,5 @@ export interface Unit {
   datasheet: string
   name: string
   profiles: Profile[]
+  abilities: Ability[]
 }

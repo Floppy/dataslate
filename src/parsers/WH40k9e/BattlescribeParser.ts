@@ -1,5 +1,7 @@
 import * as XPath from 'xpath-ts'
 import { Roster, Unit, Profile } from '../../types/WH40k9e'
+import { Ability } from '../../types/Ability'
+import { calculatePhases } from './Abilities'
 
 // useNamespaces is NOT a React hook, so:
 // eslint-disable-next-line
@@ -30,12 +32,23 @@ const parseProfile = (node: Node): Profile => {
   }
 }
 
+const parseAbility = (node: Node): Ability => {
+  const description = xpSelect(". //bs:characteristic[@name='Description']/text()", node, true).toString()
+  return {
+    id: xpSelect('string(@id)', node, true).toString(),
+    name: xpSelect('string(@name)', node, true).toString(),
+    description: description ?? "",
+    phases: description ? calculatePhases(description) : []
+  }
+}
+
 const parseUnit = (node: Node): Unit => {
   return {
     datasheet: xpSelect('string(@name)', node, true).toString(),
     name: xpSelect('string(@customName)', node, true).toString(),
     id: xpSelect('string(@id)', node, true).toString(),
-    profiles: (xpSelect('.//bs:profiles/bs:profile[@typeName=\'Unit\']', node, false) as Node[]).map((node: Node) => parseProfile(node))
+    profiles: (xpSelect('.//bs:profiles/bs:profile[@typeName=\'Unit\']', node, false) as Node[]).map((node: Node) => parseProfile(node)),
+    abilities: (xpSelect('.//bs:profiles/bs:profile[@typeName=\'Abilities\']', node, false) as Node[]).map((node: Node) => parseAbility(node))
   }
 }
 

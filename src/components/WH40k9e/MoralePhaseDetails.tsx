@@ -3,7 +3,7 @@ import { StatBadge } from '../StatBadge'
 import { Row, Col } from 'react-bootstrap'
 import { UnitTitle } from './UnitTitle'
 import { ProfileTitle } from './ProfileTitle'
-
+import { AbilityList } from './AbilityList'
 import { Unit, Profile } from '../../types/WH40k9e'
 
 interface Props {
@@ -28,6 +28,7 @@ export function MoralePhaseDetails (props: Props): JSX.Element {
           </Col>
         </Row>
       ))}
+      <AbilityList abilities={props.unit.abilities} phase="morale"/>
     </>
   )
 }

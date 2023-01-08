@@ -2,7 +2,7 @@ import React from 'react'
 import { StatBadge } from '../StatBadge'
 import { Row, Col } from 'react-bootstrap'
 import { UnitTitle } from './UnitTitle'
-
+import { AbilityList } from './AbilityList'
 import { Unit, Profile } from '../../types/WH40k9e'
 import { ProfileTitle } from './ProfileTitle'
 
@@ -28,6 +28,7 @@ export function MovementPhaseDetails (props: Props): JSX.Element {
           </Col>
         </Row>
       ))}
+      <AbilityList abilities={props.unit.abilities} phase="movement"/>
     </>
   )
 }

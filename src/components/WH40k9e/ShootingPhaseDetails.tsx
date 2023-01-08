@@ -4,6 +4,7 @@ import { Row, Col } from 'react-bootstrap'
 import { UnitTitle } from './UnitTitle'
 import { ProfileTitle } from './ProfileTitle'
 import { Unit, Profile } from '../../types/WH40k9e'
+import { AbilityList } from './AbilityList'
 
 interface Props {
   unit: Unit
@@ -31,6 +32,7 @@ export function ShootingPhaseDetails (props: Props): JSX.Element {
           </Col>
         </Row>
       ))}
+      <AbilityList abilities={props.unit.abilities} phase="shooting"/>
     </>
   )
 }
