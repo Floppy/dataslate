@@ -1,4 +1,4 @@
-import { stringAttr, nodeMap, xpSelect } from '../Parser'
+import { stringAttr, nodeMap, xpSelect, stringContent, numericContent } from '../Parser'
 import { Roster, Unit, Profile, PsychicPower } from '../../types/WH40k9e'
 import { Ability } from '../../types/Ability'
 import { calculatePhases } from './Abilities'
@@ -31,7 +31,7 @@ const parseUnitProfile = (unitProfileNode: Node): Profile => {
 }
 
 const parseAbility = (node: Node): Ability => {
-  const description = xpSelect(".//bs:characteristic[@name='Description']/text()", node, true).toString()
+  const description = stringContent(".//bs:characteristic[@name='Description']", node)
   return {
     id: stringAttr('@id', node),
     name: stringAttr('@name', node),
@@ -44,9 +44,9 @@ const parsePsychicPower = (node: Node): PsychicPower => {
   return {
     id: stringAttr('@id', node),
     name: stringAttr('@name', node),
-    charge: parseInt(xpSelect('.//bs:characteristic[@name=\'Warp Charge\']/text()', node, true).toString()),
-    range: xpSelect('.//bs:characteristic[@name=\'Range\']/text()', node, true).toString(),
-    description: xpSelect('.//bs:characteristic[@name=\'Details\']/text()', node, true).toString()
+    charge: numericContent('.//bs:characteristic[@name=\'Warp Charge\']', node),
+    range: stringContent('.//bs:characteristic[@name=\'Range\']', node),
+    description: stringContent('.//bs:characteristic[@name=\'Details\']', node)
   }
 }
 
