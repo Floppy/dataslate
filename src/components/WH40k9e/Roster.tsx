@@ -3,10 +3,15 @@ import { Col } from 'react-bootstrap'
 import { CloseButton } from '../CloseButton'
 import { Settings } from '../../types/Settings'
 import Phase from './Phase'
+import { DeploymentPhaseDetails } from './DeploymentPhaseDetails'
+import { BattleRoundStartPhaseDetails } from './BattleRoundStartPhaseDetails'
+import { CommandPhaseDetails } from './CommandPhaseDetails'
 import { MovementPhaseDetails } from './MovementPhaseDetails'
+import { PsychicPhaseDetails } from './PsychicPhaseDetails'
+import { ShootingPhaseDetails } from './ShootingPhaseDetails'
+import { ChargePhaseDetails } from './ChargePhaseDetails'
 import { FightPhaseDetails } from './FightPhaseDetails'
 import { MoralePhaseDetails } from './MoralePhaseDetails'
-import { ShootingPhaseDetails } from './ShootingPhaseDetails'
 import { Unit } from '../../types/WH40k9e'
 
 interface Props {
@@ -43,8 +48,25 @@ export function Roster (props: Props): JSX.Element {
       <p>
         40k support is under development, check back later for more features!
       </p>
+      <Phase name='deployment'>
+        <>
+          {props.units.map((unit: Unit) => (
+            <DeploymentPhaseDetails key={unit.id} unit={unit} />
+          ))}
+        </>
+      </Phase>
+      <Phase name='start of battle round'>
+        <>
+          {props.units.map((unit: Unit) => (
+            <BattleRoundStartPhaseDetails key={unit.id} unit={unit} />
+          ))}
+        </>
+      </Phase>
       <Phase name='command'>
         <>
+          {props.units.map((unit: Unit) => (
+            <CommandPhaseDetails key={unit.id} unit={unit} />
+          ))}
         </>
       </Phase>
       <Phase name='movement'>
@@ -56,6 +78,9 @@ export function Roster (props: Props): JSX.Element {
       </Phase>
       <Phase name='psychic'>
         <>
+          {props.units.map((unit: Unit) => (
+            <PsychicPhaseDetails key={unit.id} unit={unit} />
+          ))}
         </>
       </Phase>
       <Phase name='shooting'>
@@ -67,6 +92,9 @@ export function Roster (props: Props): JSX.Element {
       </Phase>
       <Phase name='charge'>
         <>
+          {props.units.map((unit: Unit) => (
+            <ChargePhaseDetails key={unit.id} unit={unit} />
+          ))}
         </>
       </Phase>
       <Phase name='fight'>
