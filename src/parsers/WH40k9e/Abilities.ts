@@ -76,6 +76,7 @@ const phasePatterns = {
 
 const genericPatterns = [
   / loses? a wound /,
+  / this model is destroyed/,
 ]
 
 const antiPatterns = {
@@ -122,4 +123,23 @@ export const calculatePhases = (description: string): string[] => {
   })
   // OK, done
   return phases
+}
+
+
+export const invulnerableSave = (abilities: Ability[]): number | null | undefined => {
+  const patterns = [
+    /models with this ability have a ([1-6]{1})\+ invulnerable save/,
+    /has a ([1-6]{1})\+ invulnerable save($|\.|,| and| instead of)/,
+    /has an invulnerable save of ([1-6]{1})\+/
+  ]
+  const saves = _.map(abilities, (a) => {
+    return _.min(_.map(patterns, (pattern) => {
+      const match = a.description.match(pattern)
+      if (match != null) {
+        return parseInt(match[1])
+      }
+      return null
+    }))
+  })
+  return _.min(saves)
 }
