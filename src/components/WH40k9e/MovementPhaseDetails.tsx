@@ -28,7 +28,7 @@ export function MovementPhaseDetails (props: Props): JSX.Element {
           </Col>
         </Row>
       ))}
-      <AbilityList abilities={props.unit.abilities} phase="movement"/>
+      <AbilityList abilities={props.unit.abilities} phase='movement' />
     </>
   )
 }

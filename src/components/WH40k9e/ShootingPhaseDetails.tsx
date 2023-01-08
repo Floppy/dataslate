@@ -23,7 +23,7 @@ export function ShootingPhaseDetails (props: Props): JSX.Element {
         <Row key={profile.id}>
           <Col sm='10'>
             <ProfileTitle name={profile.name} />
-            <WeaponList weapons={profile.weapons} phase="shooting"/>
+            <WeaponList weapons={profile.weapons} phase='shooting' />
           </Col>
           <Col sm='1' className='px-1'>
             <StatBadge name='BS' value={`${profile.profileStats.ballistic_skill}`} secondaryValue='+' />
@@ -32,12 +32,12 @@ export function ShootingPhaseDetails (props: Props): JSX.Element {
           <Col sm='1' className='px-1'>
             <StatBadge name='Sv' value={`${profile.profileStats.save}`} secondaryValue='+' />
             {profile.profileStats.invulnerable_save > 0
-            ? <StatBadge name='Inv' value={`${profile.profileStats.invulnerable_save}`} secondaryValue='++' />
-            : <></>}
+              ? <StatBadge name='Inv' value={`${profile.profileStats.invulnerable_save}`} secondaryValue='++' />
+              : <></>}
           </Col>
         </Row>
       ))}
-      <AbilityList abilities={props.unit.abilities} phase="shooting"/>
+      <AbilityList abilities={props.unit.abilities} phase='shooting' />
     </>
   )
 }

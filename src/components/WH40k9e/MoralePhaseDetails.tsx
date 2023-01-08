@@ -28,7 +28,7 @@ export function MoralePhaseDetails (props: Props): JSX.Element {
           </Col>
         </Row>
       ))}
-      <AbilityList abilities={props.unit.abilities} phase="morale"/>
+      <AbilityList abilities={props.unit.abilities} phase='morale' />
     </>
   )
 }

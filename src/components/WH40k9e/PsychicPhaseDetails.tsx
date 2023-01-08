@@ -7,7 +7,6 @@ import { AbilityList } from './AbilityList'
 import { PsychicPowerList } from './PsychicPowerList'
 import { Unit, Profile } from '../../types/WH40k9e'
 
-
 interface Props {
   unit: Unit
 }
@@ -31,7 +30,7 @@ export function PsychicPhaseDetails (props: Props): JSX.Element {
         </Row>
       ))}
       <PsychicPowerList powers={props.unit.psychicPowers} />
-      <AbilityList abilities={props.unit.abilities} phase="psychic"/>
+      <AbilityList abilities={props.unit.abilities} phase='psychic' />
     </>
   )
 }

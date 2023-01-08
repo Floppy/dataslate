@@ -7,7 +7,6 @@ import { AbilityList } from './AbilityList'
 import { WeaponList } from './WeaponList'
 import { Unit, Profile } from '../../types/WH40k9e'
 
-
 interface Props {
   unit: Unit
 }
@@ -24,7 +23,7 @@ export function FightPhaseDetails (props: Props): JSX.Element {
         <Row key={profile.id}>
           <Col sm='10'>
             <ProfileTitle name={profile.name} />
-            <WeaponList weapons={profile.weapons} phase="fight"/>
+            <WeaponList weapons={profile.weapons} phase='fight' />
           </Col>
           <Col sm='1' className='px-1'>
             <StatBadge name='A' value={`${profile.profileStats.attacks}`} />
@@ -35,12 +34,12 @@ export function FightPhaseDetails (props: Props): JSX.Element {
             <StatBadge name='WS' value={`${profile.profileStats.weapon_skill}`} secondaryValue='+' />
             <StatBadge name='Sv' value={`${profile.profileStats.save}`} secondaryValue='+' />
             {profile.profileStats.invulnerable_save > 0
-            ? <StatBadge name='Inv' value={`${profile.profileStats.invulnerable_save}`} secondaryValue='++' />
-            : <></>}
+              ? <StatBadge name='Inv' value={`${profile.profileStats.invulnerable_save}`} secondaryValue='++' />
+              : <></>}
           </Col>
         </Row>
       ))}
-      <AbilityList abilities={props.unit.abilities} phase="fight"/>
+      <AbilityList abilities={props.unit.abilities} phase='fight' />
     </>
   )
 }

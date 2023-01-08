@@ -1,11 +1,9 @@
 import React from 'react'
-import { StatBadge } from '../StatBadge'
 import { Row, Col } from 'react-bootstrap'
 import { UnitTitle } from './UnitTitle'
 import { ProfileTitle } from './ProfileTitle'
 import { AbilityList } from './AbilityList'
 import { Unit, Profile } from '../../types/WH40k9e'
-
 
 interface Props {
   unit: Unit
@@ -24,11 +22,10 @@ export function NoPhaseDetails (props: Props): JSX.Element {
           <Col sm='11'>
             <ProfileTitle name={profile.name} />
           </Col>
-          <Col sm='1' className='px-1'>
-          </Col>
+          <Col sm='1' className='px-1' />
         </Row>
       ))}
-      <AbilityList abilities={props.unit.abilities} phase=""/>
+      <AbilityList abilities={props.unit.abilities} phase='' />
     </>
   )
 }

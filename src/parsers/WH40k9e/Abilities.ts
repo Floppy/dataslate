@@ -13,7 +13,7 @@ const phasePatterns = {
     / at the beginning of the battle round /
   ],
   command: [
-    / command phase /,
+    / command phase /
   ],
   movement: [
     / movement phase /,
@@ -32,7 +32,7 @@ const phasePatterns = {
   psychic: [
     / psychic /,
     / deny the witch /,
-    / perils of the warp /,
+    / perils of the warp /
   ],
   shooting: [
     / shooting phase /,
@@ -50,7 +50,7 @@ const phasePatterns = {
     / firing /,
     / obscured /,
     / pistol /,
-    / heavy weapons?/,
+    / heavy weapons?/
   ],
   charge: [
     / charge[sd]? /
@@ -64,19 +64,19 @@ const phasePatterns = {
     / piles? in /,
     / consolidates? /,
     / melee /,
-    / close combat /,
+    / close combat /
   ],
   morale: [
     / nerve /,
     / leadership /,
     / morale /,
-    / attrition /,
+    / attrition /
   ]
 }
 
 const genericPatterns = [
   / loses? a wound /,
-  / this model is destroyed/,
+  / this model is destroyed/
 ]
 
 const antiPatterns = {
@@ -124,7 +124,6 @@ export const calculatePhases = (description: string): string[] => {
   // OK, done
   return phases
 }
-
 
 export const invulnerableSave = (abilities: Ability[]): number | null | undefined => {
   const patterns = [
