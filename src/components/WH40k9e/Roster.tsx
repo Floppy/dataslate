@@ -6,6 +6,7 @@ import Phase from './Phase'
 import { MovementPhaseDetails } from './MovementPhaseDetails'
 import { FightPhaseDetails } from './FightPhaseDetails'
 import { MoralePhaseDetails } from './MoralePhaseDetails'
+import { ShootingPhaseDetails } from './ShootingPhaseDetails'
 import { Unit } from '../../types/WH40k9e'
 
 
@@ -60,6 +61,9 @@ export function Roster (props: Props): JSX.Element {
       </Phase>
       <Phase name='shooting'>
         <>
+          {props.units.map((unit: Unit) => (
+            <ShootingPhaseDetails key={unit.id} unit={unit} />
+          ))}
         </>
       </Phase>
       <Phase name='charge'>
