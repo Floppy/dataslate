@@ -3,6 +3,7 @@ import { Col } from 'react-bootstrap'
 import { CloseButton } from '../CloseButton'
 import { Settings } from '../../types/Settings'
 import Phase from './Phase'
+import { NoPhaseDetails } from './NoPhaseDetails'
 import { DeploymentPhaseDetails } from './DeploymentPhaseDetails'
 import { BattleRoundStartPhaseDetails } from './BattleRoundStartPhaseDetails'
 import { CommandPhaseDetails } from './CommandPhaseDetails'
@@ -48,6 +49,11 @@ export function Roster (props: Props): JSX.Element {
       <p>
         40k support is under development, check back later for more features!
       </p>
+      <>
+        {props.units.map((unit: Unit) => (
+          <NoPhaseDetails key={unit.id} unit={unit} />
+        ))}
+      </>
       <Phase name='deployment'>
         <>
           {props.units.map((unit: Unit) => (
