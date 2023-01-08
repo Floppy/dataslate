@@ -1,4 +1,4 @@
-import { stringAttr, xpSelect } from '../Parser'
+import { stringAttr, nodeMap, xpSelect } from '../Parser'
 import { Roster, Unit, Profile, PsychicPower } from '../../types/WH40k9e'
 import { Ability } from '../../types/Ability'
 import { calculatePhases } from './Abilities'
@@ -31,7 +31,7 @@ const parseUnitProfile = (unitProfileNode: Node): Profile => {
 }
 
 const parseAbility = (node: Node): Ability => {
-  const description = xpSelect(". //bs:characteristic[@name='Description']/text()", node, true).toString()
+  const description = xpSelect(".//bs:characteristic[@name='Description']/text()", node, true).toString()
   return {
     id: stringAttr("@id", node),
     name: stringAttr("@name", node),
@@ -55,9 +55,9 @@ const parseUnitSelection = (unitSelectionNode: Node): Unit => {
     id: stringAttr("@id", unitSelectionNode),
     datasheet: stringAttr("@name", unitSelectionNode),
     name: stringAttr("@customName", unitSelectionNode),
-    profiles: (xpSelect('bs:profiles/bs:profile[@typeName=\'Unit\']', unitSelectionNode, false) as Node[]).map((node: Node) => parseUnitProfile(node)),
-    abilities: (xpSelect('bs:profiles/bs:profile[@typeName=\'Abilities\']', unitSelectionNode, false) as Node[]).map((node: Node) => parseAbility(node)),
-    psychicPowers: (xpSelect('bs:selections/bs:selection/bs:profiles/bs:profile[@typeName=\'Psychic Power\']', unitSelectionNode, false) as Node[]).map((node: Node) => parsePsychicPower(node))
+    profiles: nodeMap("bs:profiles/bs:profile[@typeName='Unit']", unitSelectionNode, parseUnitProfile),
+    abilities: nodeMap("bs:profiles/bs:profile[@typeName='Abilities']", unitSelectionNode, parseAbility),
+    psychicPowers: nodeMap("bs:selections/bs:selection/bs:profiles/bs:profile[@typeName='Psychic Power']", unitSelectionNode, parsePsychicPower)
   }
 }
 
@@ -66,6 +66,6 @@ export const parseBattlescribeXML = (doc: Document): Roster => {
     system: 'WH40k9e',
     name: stringAttr("/bs:roster/@name", doc),
     faction: stringAttr('/bs:roster/bs:forces/bs:force/@catalogueName', doc),
-    units: (xpSelect('/bs:roster/bs:forces/bs:force/bs:selections/bs:selection[@type=\'unit\' or @type=\'model\']', doc, false) as Node[]).map((node: Node) => parseUnitSelection(node))
+    units: nodeMap("/bs:roster/bs:forces/bs:force/bs:selections/bs:selection[@type='unit' or @type='model']", doc, parseUnitSelection)
   }
 }
