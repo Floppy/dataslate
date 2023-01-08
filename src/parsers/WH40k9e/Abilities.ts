@@ -53,7 +53,8 @@ const phasePatterns = {
     / heavy weapons?/
   ],
   charge: [
-    / charge[sd]? /
+    / charge[sd]? /,
+    / heroic intervention/
   ],
   fight: [
     / fight phase /,
@@ -62,6 +63,7 @@ const phasePatterns = {
     / attacks characteristics? /,
     / strength characteristics? /,
     / piles? in /,
+    / pile-in /,
     / consolidates? /,
     / melee /,
     / close combat /
