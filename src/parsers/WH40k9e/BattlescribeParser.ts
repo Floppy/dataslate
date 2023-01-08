@@ -1,14 +1,11 @@
-import { stringAttr, nodeMap, xpSelect, stringContent, numericContent } from '../Parser'
+import { stringAttr, nodeMap, stringContent, numericContent } from '../Parser'
 import { Roster, Unit, Profile, PsychicPower } from '../../types/WH40k9e'
 import { Ability } from '../../types/Ability'
 import { calculatePhases } from './Abilities'
 
-const stat = (name: string, node: Node): number => {
-  const nodes = xpSelect(`.//bs:characteristic[@name='${name}']`, node) as Node[]
-  if (nodes.length > 0) {
-    return parseInt(nodes[0].childNodes[0].nodeValue ?? '-2')
-  } else { return -1 }
-}
+const stat = (name: string, node: Node): number => (
+  numericContent(`.//bs:characteristic[@name='${name}']`, node)
+)
 
 const parseUnitProfile = (unitProfileNode: Node): Profile => {
   return {
