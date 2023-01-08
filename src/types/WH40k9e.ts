@@ -7,6 +7,7 @@ export interface Roster {
 
 export interface Profile {
   name: string
+  id: string
   profileStats: ProfileStats
 }
 

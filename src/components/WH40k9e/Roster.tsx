@@ -9,7 +9,6 @@ import { MoralePhaseDetails } from './MoralePhaseDetails'
 import { ShootingPhaseDetails } from './ShootingPhaseDetails'
 import { Unit } from '../../types/WH40k9e'
 
-
 interface Props {
   name: string
   faction: string

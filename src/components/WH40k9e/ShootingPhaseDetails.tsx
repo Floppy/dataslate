@@ -18,7 +18,7 @@ export function ShootingPhaseDetails (props: Props): JSX.Element {
         </Col>
       </Row>
       {props.unit.profiles.map((profile: Profile) => (
-        <Row>
+        <Row key={profile.id}>
           <Col sm='10'>
             <ProfileTitle name={profile.name} />
           </Col>

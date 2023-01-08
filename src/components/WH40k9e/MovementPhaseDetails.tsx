@@ -19,7 +19,7 @@ export function MovementPhaseDetails (props: Props): JSX.Element {
         </Col>
       </Row>
       {props.unit.profiles.map((profile: Profile) => (
-        <Row>
+        <Row key={profile.id}>
           <Col sm='11'>
             <ProfileTitle name={profile.name} />
           </Col>
