@@ -1,11 +1,7 @@
-import * as XPath from 'xpath-ts'
+import { xpSelect } from '../Parser'
 import { Roster, Unit, Profile, PsychicPower } from '../../types/WH40k9e'
 import { Ability } from '../../types/Ability'
 import { calculatePhases } from './Abilities'
-
-// useNamespaces is NOT a React hook, so:
-// eslint-disable-next-line
-const xpSelect = XPath.useNamespaces({ bs: 'http://www.battlescribe.net/schema/rosterSchema' })
 
 const stat = (name: string, node: Node): number => {
   const nodes = xpSelect(`.//bs:characteristic[@name='${name}']`, node) as Node[]
