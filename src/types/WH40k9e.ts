@@ -23,6 +23,7 @@ export interface ProfileStats {
   attacks: number
   leadership: number
   save: number
+  invulnerable_save: number
 }
 
 export interface PsychicPower {

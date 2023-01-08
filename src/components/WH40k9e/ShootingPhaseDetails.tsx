@@ -29,6 +29,9 @@ export function ShootingPhaseDetails (props: Props): JSX.Element {
           </Col>
           <Col sm='1' className='px-1'>
             <StatBadge name='Sv' value={`${profile.profileStats.save}`} secondaryValue='+' />
+            {profile.profileStats.invulnerable_save > 0
+            ? <StatBadge name='Inv' value={`${profile.profileStats.invulnerable_save}`} secondaryValue='++' />
+            : <></>}
           </Col>
         </Row>
       ))}

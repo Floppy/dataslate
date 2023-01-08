@@ -27,7 +27,8 @@ const parseProfile = (node: Node): Profile => {
       wounds: stat('W', node),
       attacks: stat('A', node),
       leadership: stat('Ld', node),
-      save: stat('Save', node)
+      save: stat('Save', node),
+      invulnerable_save: 0
     }
   }
 }
