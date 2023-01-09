@@ -1,5 +1,7 @@
+import _ from 'lodash'
+import hasher from 'node-object-hash'
 import { stringAttr, nodeMap, stringContent, numericContent } from '../Parser'
-import { Roster, Unit, Profile, PsychicPower } from '../../types/WH40k9e'
+import { Roster, Unit, Profile, PsychicPower, Weapon } from '../../types/WH40k9e'
 import { Ability } from '../../types/Ability'
 import { calculatePhases } from './Abilities'
 
@@ -8,7 +10,7 @@ const stat = (name: string, node: Node): number => (
 )
 
 const parseUnitProfile = (unitProfileNode: Node): Profile => {
-  return {
+  const details = {
     id: stringAttr('@id', unitProfileNode),
     name: stringAttr('@name', unitProfileNode),
     profileStats: {
@@ -24,7 +26,7 @@ const parseUnitProfile = (unitProfileNode: Node): Profile => {
       invulnerable_save: 0
     }
   }
-  }
+  return { ...details, hash: hasher({}).hash(details) }
 }
 
 const parseAbility = (node: Node): Ability => {
@@ -68,10 +70,10 @@ const parseUnitSelection = (unitSelectionNode: Node): Unit => {
     id: stringAttr('@id', unitSelectionNode),
     datasheet: stringAttr('@name', unitSelectionNode),
     name: stringAttr('@customName', unitSelectionNode),
-    profiles: [
+    profiles: _.uniqBy([
       ...nodeMap("bs:profiles/bs:profile[@typeName='Unit']", unitSelectionNode, parseUnitProfile),
       ...nodeMap("bs:selections/bs:selection/bs:profiles/bs:profile[@typeName='Unit']", unitSelectionNode, parseUnitProfile)
-    ],
+    ], (p) => p.hash),
     abilities: nodeMap("bs:profiles/bs:profile[@typeName='Abilities']", unitSelectionNode, parseAbility),
     weapons: nodeMap(".//bs:profiles/bs:profile[@typeName='Weapon']", unitSelectionNode, parseWeaponProfile),
     psychic: {
