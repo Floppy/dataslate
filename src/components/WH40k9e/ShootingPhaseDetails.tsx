@@ -30,13 +30,13 @@ export function ShootingPhaseDetails (props: Props): JSX.Element {
         {props.unit.profiles.map((profile: Profile) => (
           <>
             <StatBadge name='BS' value={`${profile.profileStats.ballistic_skill}`} secondaryValue='+' />
-            <StatBadge name='T' value={`${profile.profileStats.toughness}`} />
           </>
         ))}
       </Col>
       <Col sm='1' className='px-1'>
         {props.unit.profiles.map((profile: Profile) => (
           <>
+            <StatBadge name='T' value={`${profile.profileStats.toughness}`} />
             <StatBadge name='Sv' value={`${profile.profileStats.save}`} secondaryValue='+' />
             {profile.profileStats.invulnerable_save > 0
               ? <StatBadge name='Inv' value={`${profile.profileStats.invulnerable_save}`} secondaryValue='++' />
