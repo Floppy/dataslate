@@ -51,7 +51,7 @@ const parseWeaponProfile = (node: Node): Weapon => {
     shots: stringContent('.//bs:characteristic[@name=\'Type\']', node).split(' ').slice(-1)[0],
     strength: strength,
     armourPiercing: numericContent('.//bs:characteristic[@name=\'AP\']', node),
-    damage: numericContent('.//bs:characteristic[@name=\'D\']', node),
+    damage: stringContent('.//bs:characteristic[@name=\'D\']', node),
     abilities: stringContent('.//bs:characteristic[@name=\'Abilities\']', node)
   }
   return { ...details, hash: hasher({}).hash(details) }
@@ -78,7 +78,19 @@ const parseUnitSelection = (unitSelectionNode: Node): Unit => {
     ], (p) => p.hash),
     abilities: nodeMap("bs:profiles/bs:profile[@typeName='Abilities']", unitSelectionNode, parseAbility),
     weapons: _.uniqBy([
-      ...nodeMap(".//bs:profiles/bs:profile[@typeName='Weapon']", unitSelectionNode, parseWeaponProfile)
+      ...nodeMap(".//bs:profiles/bs:profile[@typeName='Weapon']", unitSelectionNode, parseWeaponProfile),
+      {
+        id: '',
+        name: 'Close combat weapon',
+        range: 0,
+        type: 'Melee',
+        strength: 'User',
+        armourPiercing: 0,
+        damage: "1",
+        shots: "0",
+        abilities: "",
+        hash: ""
+      }
     ], (p) => p.hash),
     psychic: {
       cast: numericContent("bs:profiles/bs:profile[@typeName='Psyker']//bs:characteristic[@name='Cast']", unitSelectionNode),

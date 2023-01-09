@@ -1,6 +1,6 @@
 import React from 'react'
 import { Weapon } from '../../types/WH40k9e'
-import { Table } from 'react-bootstrap'
+import { Alert, Table } from 'react-bootstrap'
 import _ from 'lodash'
 
 interface Props {
@@ -14,7 +14,7 @@ export function WeaponList (props: Props): JSX.Element {
     : props.weapons.filter((x) => (x.type === 'Melee'))
 
   return weapons.length === 0
-    ? <></>
+    ? <Alert variant="warning">No ranged weapon</Alert>
     : (
       <Table striped bordered size='sm'>
         <thead>

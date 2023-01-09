@@ -43,7 +43,7 @@ export interface Weapon {
   shots: string
   strength: string
   armourPiercing: number
-  damage: number
+  damage: string
   abilities: string
   hash: string
 }
