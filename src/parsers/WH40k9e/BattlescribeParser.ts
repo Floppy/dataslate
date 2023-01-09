@@ -35,7 +35,7 @@ const parseAbility = (node: Node): Ability => {
     id: stringAttr('@id', node),
     name: stringAttr('@name', node),
     description: description ?? '',
-    phases: description !== "" ? calculatePhases(description) : []
+    phases: description !== '' ? calculatePhases(description) : []
   }
 }
 
@@ -52,7 +52,7 @@ const parseWeaponProfile = (node: Node): Weapon => {
     strength: strength,
     armourPiercing: numericContent('.//bs:characteristic[@name=\'AP\']', node),
     damage: numericContent('.//bs:characteristic[@name=\'D\']', node),
-    abilities: stringContent('.//bs:characteristic[@name=\'Abilities\']', node),
+    abilities: stringContent('.//bs:characteristic[@name=\'Abilities\']', node)
   }
   return { ...details, hash: hasher({}).hash(details) }
 }
@@ -78,7 +78,7 @@ const parseUnitSelection = (unitSelectionNode: Node): Unit => {
     ], (p) => p.hash),
     abilities: nodeMap("bs:profiles/bs:profile[@typeName='Abilities']", unitSelectionNode, parseAbility),
     weapons: _.uniqBy([
-      ...nodeMap(".//bs:profiles/bs:profile[@typeName='Weapon']", unitSelectionNode, parseWeaponProfile),
+      ...nodeMap(".//bs:profiles/bs:profile[@typeName='Weapon']", unitSelectionNode, parseWeaponProfile)
     ], (p) => p.hash),
     psychic: {
       cast: numericContent("bs:profiles/bs:profile[@typeName='Psyker']//bs:characteristic[@name='Cast']", unitSelectionNode),

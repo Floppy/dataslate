@@ -37,6 +37,6 @@ export function AbilityList (props: Props): JSX.Element {
       )
 }
 
-export const hasAbilitiesForPhase = (abilities: Ability[], phase: string) => (
+export const hasAbilitiesForPhase = (abilities: Ability[], phase: string): boolean => (
   (abilities.filter((x) => (x.phases?.includes(phase)))).length > 0
 )
