@@ -14,21 +14,23 @@ export function MovementPhaseDetails (props: Props): JSX.Element {
   return (
     <>
       <Row>
-        <Col sm='12'>
+        <Col sm='11'>
           <UnitTitle name={props.unit.name} uuid={props.unit.id} datasheet={props.unit.datasheet} />
+          {
+            props.unit.profiles.length > 1
+            ? props.unit.profiles.map((profile: Profile) => (
+              <ProfileTitle name={profile.name} />
+            ))
+            : <></>
+          }
+          <AbilityList abilities={props.unit.abilities} phase='movement' />
+        </Col>
+        <Col sm='1' className='px-1'>
+          {props.unit.profiles.map((profile: Profile) => (
+            <StatBadge name='M' value={profile.profileStats.movement.toString()} />
+          ))}
         </Col>
       </Row>
-      {props.unit.profiles.map((profile: Profile) => (
-        <Row key={profile.id}>
-          <Col sm='11'>
-            <ProfileTitle name={profile.name} />
-          </Col>
-          <Col sm='1' className='px-1'>
-            <StatBadge name='M' value={profile.profileStats.movement.toString()} />
-          </Col>
-        </Row>
-      ))}
-      <AbilityList abilities={props.unit.abilities} phase='movement' />
     </>
   )
 }
