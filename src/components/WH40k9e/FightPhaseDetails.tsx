@@ -23,7 +23,6 @@ export function FightPhaseDetails (props: Props): JSX.Element {
         <Row key={profile.id}>
           <Col sm='10'>
             <ProfileTitle name={profile.name} />
-            <WeaponList weapons={profile.weapons} phase='fight' />
           </Col>
           <Col sm='1' className='px-1'>
             <StatBadge name='A' value={`${profile.profileStats.attacks}`} />
@@ -39,6 +38,7 @@ export function FightPhaseDetails (props: Props): JSX.Element {
           </Col>
         </Row>
       ))}
+      <WeaponList weapons={props.unit.weapons} phase='fight' />
       <AbilityList abilities={props.unit.abilities} phase='fight' />
     </>
   )

@@ -22,8 +22,8 @@ const parseUnitProfile = (unitProfileNode: Node): Profile => {
       leadership: stat('Ld', unitProfileNode),
       save: stat('Save', unitProfileNode),
       invulnerable_save: 0
-    },
-    weapons: []
+    }
+  }
   }
 }
 
@@ -34,6 +34,22 @@ const parseAbility = (node: Node): Ability => {
     name: stringAttr('@name', node),
     description: description ?? '',
     phases: description !== "" ? calculatePhases(description) : []
+  }
+}
+
+const parseWeaponProfile = (node: Node): Weapon => {
+  const weaponType = stringContent('.//bs:characteristic[@name=\'Type\']', node)
+  const strength = stringContent('.//bs:characteristic[@name=\'S\']', node)
+  return {
+    id: stringAttr('@id', node),
+    name: stringAttr('@name', node),
+    range: numericContent('.//bs:characteristic[@name=\'Range\']', node),
+    type: weaponType,
+    shots: "",
+    strength: strength,
+    armourPiercing: numericContent('.//bs:characteristic[@name=\'AP\']', node),
+    damage: numericContent('.//bs:characteristic[@name=\'D\']', node),
+    abilities: stringContent('.//bs:characteristic[@name=\'Abilities\']', node),
   }
 }
 
@@ -57,6 +73,7 @@ const parseUnitSelection = (unitSelectionNode: Node): Unit => {
       ...nodeMap("bs:selections/bs:selection/bs:profiles/bs:profile[@typeName='Unit']", unitSelectionNode, parseUnitProfile)
     ],
     abilities: nodeMap("bs:profiles/bs:profile[@typeName='Abilities']", unitSelectionNode, parseAbility),
+    weapons: nodeMap(".//bs:profiles/bs:profile[@typeName='Weapon']", unitSelectionNode, parseWeaponProfile),
     psychic: {
       cast: numericContent("bs:profiles/bs:profile[@typeName='Psyker']//bs:characteristic[@name='Cast']", unitSelectionNode),
       deny: numericContent("bs:profiles/bs:profile[@typeName='Psyker']//bs:characteristic[@name='Deny']", unitSelectionNode),

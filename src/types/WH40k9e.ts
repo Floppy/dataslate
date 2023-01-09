@@ -11,7 +11,7 @@ export interface Profile {
   name: string
   id: string
   profileStats: ProfileStats
-  weapons: Weapon[]
+  hash: string
 }
 
 export interface ProfileStats {
@@ -41,7 +41,7 @@ export interface Weapon {
   range: number
   type: string
   shots: string
-  strength: number
+  strength: string
   armourPiercing: number
   damage: number
   abilities: string
@@ -53,6 +53,7 @@ export interface Unit {
   name: string
   profiles: Profile[]
   abilities: Ability[]
+  weapons: Weapon[]
   psychic: {
     cast: number
     deny: number
