@@ -36,3 +36,7 @@ export function AbilityList (props: Props): JSX.Element {
       </Table>
       )
 }
+
+export const hasAbilitiesForPhase = (abilities: Ability[], phase: string) => (
+  (abilities.filter((x) => (x.phases?.includes(phase)))).length > 0
+)
