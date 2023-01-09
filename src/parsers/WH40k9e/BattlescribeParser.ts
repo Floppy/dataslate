@@ -42,7 +42,7 @@ const parseAbility = (node: Node): Ability => {
 const parseWeaponProfile = (node: Node): Weapon => {
   const weaponType = stringContent('.//bs:characteristic[@name=\'Type\']', node)
   const strength = stringContent('.//bs:characteristic[@name=\'S\']', node)
-  return {
+  const details = {
     id: stringAttr('@id', node),
     name: stringAttr('@name', node),
     range: numericContent('.//bs:characteristic[@name=\'Range\']', node),
@@ -53,6 +53,7 @@ const parseWeaponProfile = (node: Node): Weapon => {
     damage: numericContent('.//bs:characteristic[@name=\'D\']', node),
     abilities: stringContent('.//bs:characteristic[@name=\'Abilities\']', node),
   }
+  return { ...details, hash: hasher({}).hash(details) }
 }
 
 const parsePsychicPower = (node: Node): PsychicPower => {
@@ -75,7 +76,9 @@ const parseUnitSelection = (unitSelectionNode: Node): Unit => {
       ...nodeMap("bs:selections/bs:selection/bs:profiles/bs:profile[@typeName='Unit']", unitSelectionNode, parseUnitProfile)
     ], (p) => p.hash),
     abilities: nodeMap("bs:profiles/bs:profile[@typeName='Abilities']", unitSelectionNode, parseAbility),
-    weapons: nodeMap(".//bs:profiles/bs:profile[@typeName='Weapon']", unitSelectionNode, parseWeaponProfile),
+    weapons: _.uniqBy([
+      ...nodeMap(".//bs:profiles/bs:profile[@typeName='Weapon']", unitSelectionNode, parseWeaponProfile),
+    ], (p) => p.hash),
     psychic: {
       cast: numericContent("bs:profiles/bs:profile[@typeName='Psyker']//bs:characteristic[@name='Cast']", unitSelectionNode),
       deny: numericContent("bs:profiles/bs:profile[@typeName='Psyker']//bs:characteristic[@name='Deny']", unitSelectionNode),

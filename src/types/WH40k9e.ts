@@ -45,6 +45,7 @@ export interface Weapon {
   armourPiercing: number
   damage: number
   abilities: string
+  hash: string
 }
 
 export interface Unit {
