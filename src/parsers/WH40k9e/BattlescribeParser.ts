@@ -57,7 +57,11 @@ const parseUnitSelection = (unitSelectionNode: Node): Unit => {
       ...nodeMap("bs:selections/bs:selection/bs:profiles/bs:profile[@typeName='Unit']", unitSelectionNode, parseUnitProfile)
     ],
     abilities: nodeMap("bs:profiles/bs:profile[@typeName='Abilities']", unitSelectionNode, parseAbility),
-    psychicPowers: nodeMap("bs:selections/bs:selection/bs:profiles/bs:profile[@typeName='Psychic Power']", unitSelectionNode, parsePsychicPower)
+    psychic: {
+      cast: numericContent("bs:profiles/bs:profile[@typeName='Psyker']//bs:characteristic[@name='Cast']", unitSelectionNode),
+      deny: numericContent("bs:profiles/bs:profile[@typeName='Psyker']//bs:characteristic[@name='Deny']", unitSelectionNode),
+      powers: nodeMap("bs:selections/bs:selection/bs:profiles/bs:profile[@typeName='Psychic Power']", unitSelectionNode, parsePsychicPower)
+    }
   }
 }
 

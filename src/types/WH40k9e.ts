@@ -53,5 +53,9 @@ export interface Unit {
   name: string
   profiles: Profile[]
   abilities: Ability[]
-  psychicPowers: PsychicPower[]
+  psychic: {
+    cast: number
+    deny: number
+    powers: PsychicPower[]
+  }
 }

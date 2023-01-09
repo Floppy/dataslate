@@ -13,25 +13,19 @@ interface Props {
 
 export function PsychicPhaseDetails (props: Props): JSX.Element {
   return (
-    hasAbilitiesForPhase(props.unit.abilities, "psychic") || props.unit.psychicPowers.length > 0
+    hasAbilitiesForPhase(props.unit.abilities, "psychic") || props.unit.psychic.powers.length > 0
     ? <>
         <Row>
-          <Col sm='12'>
+          <Col sm='11'>
             <UnitTitle name={props.unit.name} uuid={props.unit.id} datasheet={props.unit.datasheet} />
+            <PsychicPowerList powers={props.unit.psychic.powers} />
+            <AbilityList abilities={props.unit.abilities} phase='psychic' />
+          </Col>
+          <Col sm='1' className='px-1'>
+            {props.unit.psychic.cast ? <StatBadge name='Cast' value={props.unit.psychic.cast.toString()} /> : <></>}
+            {props.unit.psychic.deny ? <StatBadge name='Deny' value={props.unit.psychic.deny.toString()} /> : <></>}
           </Col>
         </Row>
-        {props.unit.profiles.map((profile: Profile) => (
-          <Row key={profile.id}>
-            <Col sm='11'>
-              <ProfileTitle name={profile.name} />
-            </Col>
-            <Col sm='1' className='px-1'>
-              <StatBadge name='Ld' value={`${profile.profileStats.leadership}`} />
-            </Col>
-          </Row>
-        ))}
-        <PsychicPowerList powers={props.unit.psychicPowers} />
-        <AbilityList abilities={props.unit.abilities} phase='psychic' />
       </>
     : <></>
   )
