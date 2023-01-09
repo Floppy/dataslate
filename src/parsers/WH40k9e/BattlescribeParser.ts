@@ -40,14 +40,15 @@ const parseAbility = (node: Node): Ability => {
 }
 
 const parseWeaponProfile = (node: Node): Weapon => {
-  const weaponType = stringContent('.//bs:characteristic[@name=\'Type\']', node)
+  let weaponType = stringContent('.//bs:characteristic[@name=\'Type\']', node)
+  if (weaponType !== 'Melee') { weaponType = weaponType.split(' ').slice(0, -1).join(' ') }
   const strength = stringContent('.//bs:characteristic[@name=\'S\']', node)
   const details = {
     id: stringAttr('@id', node),
     name: stringAttr('@name', node),
     range: numericContent('.//bs:characteristic[@name=\'Range\']', node),
     type: weaponType,
-    shots: "",
+    shots: stringContent('.//bs:characteristic[@name=\'Type\']', node).split(' ').slice(-1)[0],
     strength: strength,
     armourPiercing: numericContent('.//bs:characteristic[@name=\'AP\']', node),
     damage: numericContent('.//bs:characteristic[@name=\'D\']', node),
