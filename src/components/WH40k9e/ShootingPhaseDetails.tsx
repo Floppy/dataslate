@@ -19,7 +19,7 @@ export function ShootingPhaseDetails (props: Props): JSX.Element {
         {
           props.unit.profiles.length > 1
             ? props.unit.profiles.map((profile: Profile) => (
-              <ProfileTitle name={profile.name} />
+              <ProfileTitle name={profile.name} key={`title-${profile.id}`} />
             ))
             : <></>
         }
@@ -28,20 +28,18 @@ export function ShootingPhaseDetails (props: Props): JSX.Element {
       </Col>
       <Col sm='1' className='px-1'>
         {props.unit.profiles.map((profile: Profile) => (
-          <>
-            <StatBadge name='BS' value={`${profile.profileStats.ballistic_skill}`} secondaryValue='+' />
-          </>
+          <StatBadge name='BS' value={`${profile.profileStats.ballistic_skill}`} secondaryValue='+' key={`badge-bs-${profile.id}`} />
         ))}
       </Col>
       <Col sm='1' className='px-1'>
         {props.unit.profiles.map((profile: Profile) => (
-          <>
+          <React.Fragment key={`badges-${profile.id}`}>
             <StatBadge name='T' value={`${profile.profileStats.toughness}`} />
             <StatBadge name='Sv' value={`${profile.profileStats.save}`} secondaryValue='+' />
             {profile.profileStats.invulnerable_save > 0
-              ? <StatBadge name='Inv' value={`${profile.profileStats.invulnerable_save}`} secondaryValue='++' />
+              ? <StatBadge name='Inv' value={`${profile.profileStats.invulnerable_save}`} secondaryValue='++' key={`badge-inv-${profile.id}`} />
               : <></>}
-          </>
+          </React.Fragment>
         ))}
       </Col>
     </Row>

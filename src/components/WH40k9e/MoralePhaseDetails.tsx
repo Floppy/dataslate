@@ -19,7 +19,7 @@ export function MoralePhaseDetails (props: Props): JSX.Element {
           {
             props.unit.profiles.length > 1
               ? props.unit.profiles.map((profile: Profile) => (
-                <ProfileTitle name={profile.name} />
+                <ProfileTitle name={profile.name} key={`title-${profile.id}`} />
               ))
               : <></>
           }
@@ -27,7 +27,7 @@ export function MoralePhaseDetails (props: Props): JSX.Element {
         </Col>
         <Col sm='1' className='px-1'>
           {props.unit.profiles.map((profile: Profile) => (
-            <StatBadge name='Ld' value={profile.profileStats.leadership.toString()} />
+            <StatBadge name='Ld' value={profile.profileStats.leadership.toString()} key={`badge-ld-${profile.id}`} />
           ))}
         </Col>
       </Row>

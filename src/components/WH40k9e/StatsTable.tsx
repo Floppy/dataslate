@@ -25,7 +25,7 @@ export function StatsTable (props: Props): JSX.Element {
       </thead>
       <tbody>
         {props.profiles.map((profile: Profile) => (
-          <tr>
+          <tr key={`statline-${profile.id}`}>
             <td>{profile.name}</td>
             <td>{profile.profileStats.movement}&quot;</td>
             <td>{profile.profileStats.weapon_skill}+</td>
