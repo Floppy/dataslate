@@ -4,6 +4,7 @@ import { stringAttr, nodeMap, stringContent, numericContent } from '../Parser'
 import { Roster, Unit, Profile, PsychicPower, Weapon } from '../../types/WH40k9e'
 import { Ability } from '../../types/Ability'
 import { calculatePhases } from './Abilities'
+import { stratagems } from './Stratagems'
 
 const stat = (name: string, node: Node): number => (
   numericContent(`.//bs:characteristic[@name='${name}']`, node)
@@ -101,10 +102,15 @@ const parseUnitSelection = (unitSelectionNode: Node): Unit => {
 }
 
 export const parseBattlescribeXML = (doc: Document): Roster => {
+  const units = nodeMap("/bs:roster/bs:forces/bs:force/bs:selections/bs:selection[@type='unit' or @type='model']", doc, parseUnitSelection)
+  const datasheetNames = units.map((u) => u.datasheet)
   return {
     system: 'WH40k9e',
     name: stringAttr('/bs:roster/@name', doc),
     faction: stringAttr('/bs:roster/bs:forces/bs:force/@catalogueName', doc),
-    units: nodeMap("/bs:roster/bs:forces/bs:force/bs:selections/bs:selection[@type='unit' or @type='model']", doc, parseUnitSelection)
+    units,
+    stratagems: stratagems.filter((s) => (
+      s.datasheets.length === 0 || _.intersection(s.datasheets, datasheetNames).length > 0
+    ))
   }
 }

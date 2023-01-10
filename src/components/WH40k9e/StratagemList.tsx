@@ -1,45 +1,48 @@
-import { useState } from 'react'
 import { Card, CardColumns, Badge } from 'react-bootstrap'
-import { usePapaParse } from 'react-papaparse'
+import { Stratagem } from '../../types/WH40k9e'
 
+interface Props {
+  phase: string
+  stratagems: Stratagem[]
+}
 const headingStyle = {
-  background: '#FF6F2D',
-  color: 'black',
-  padding: '10px',
-  width: '100%',
-  display: 'flex'
+  background: "black",
+  color: "white",
+  padding: "5px 20px",
+  display: "flex",
+  width: "100%",
+  justifyContent: "space-between"
 }
 
-const getData = (setStratagems: any): void => {
-  // eslint-disable-next-line
-  const { readRemoteFile } = usePapaParse();
-  const url = '/waha/wh40k9ed/Stratagems.csv'
+// const loadWahaCSV = (name: string, setMethod: any): void => {
+//   const url = `/waha/wh40k9ed/${name}.csv`
+//   // eslint-disable-next-line
+//   const { readRemoteFile } = usePapaParse();
+//   readRemoteFile(url, {
+//     header: true,
+//     download: true,
+//     fastMode: true,
+//     complete: (results) => setMethod(results.data)
+//   })
+// }
 
-  readRemoteFile(url, {
-    header: true,
-    download: true,
-    fastMode: true,
-    complete: (results) => {
-      setStratagems(results.data)
-    }
-  })
-}
-
-export function StratagemList (): JSX.Element {
-  const [stratagems, setStratagems] = useState([])
-  getData(setStratagems)
-  return (
-    <Card>
-      <Card.Header style={{ ...headingStyle }} as='h2'>Stratagems</Card.Header>
+export function StratagemList (props: Props): JSX.Element {
+  // Find stratagems for this phase
+  const stratagems = props.phase !== ''
+    ? props.stratagems.filter((x) => (x.phases?.includes(props.phase)))
+    : props.stratagems.filter((x) => (x.phases?.length === 0))
+  return stratagems.length > 0
+    ? <Card>
+      <Card.Header style={{ ...headingStyle }} as='h3'>Stratagems</Card.Header>
       <Card.Body>
         <CardColumns>
-          {stratagems.filter((stratagem) => (stratagem.faction_id === 'TYR')).map((stratagem) => (
+          {stratagems.map((stratagem) => (
             <Card key={stratagem.id} border='secondary' bg='light'>
               <Card.Header style={{ background: 'rgba(0, 0, 0, 0.05)' }} as='h4'>
-                {stratagem.name} <Badge variant='primary' className='float-right'>{stratagem.cp_cost} CP</Badge>
+                {stratagem.name}
+                <Badge variant='primary' className='float-right'>{stratagem.cp_cost}</Badge>
               </Card.Header>
               <Card.Body>
-                <p><strong>{stratagem.type}</strong></p>
                 <p dangerouslySetInnerHTML={{
                   __html: stratagem.description
                 }}
@@ -49,7 +52,7 @@ export function StratagemList (): JSX.Element {
           ))}
         </CardColumns>
       </Card.Body>
-      <Card.Footer>Powered by Wahapedia</Card.Footer>
+      <Card.Footer>Powered by <a href='https://wahapedia.ru'>Wahapedia</a></Card.Footer>
     </Card>
-  )
+    : <></>
 }
