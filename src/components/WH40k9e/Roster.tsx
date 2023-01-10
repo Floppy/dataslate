@@ -52,14 +52,14 @@ export function Roster (props: Props): JSX.Element {
         {props.units.map((unit: Unit) => (
           <NoPhaseDetails key={unit.id} unit={unit} />
         ))}
-        <StratagemList phase='' stratagems={props.stratagems}/>
+        <StratagemList phase='' stratagems={props.stratagems} />
       </Phase>
       <Phase name='deployment'>
         <>
           {props.units.map((unit: Unit) => (
             <DeploymentPhaseDetails key={unit.id} unit={unit} />
           ))}
-          <StratagemList phase='deployment' stratagems={props.stratagems}/>
+          <StratagemList phase='deployment' stratagems={props.stratagems} />
         </>
       </Phase>
       <Phase name='start of battle round'>
@@ -67,7 +67,7 @@ export function Roster (props: Props): JSX.Element {
           {props.units.map((unit: Unit) => (
             <BattleRoundStartPhaseDetails key={unit.id} unit={unit} />
           ))}
-          <StratagemList phase='battle_round_start' stratagems={props.stratagems}/>
+          <StratagemList phase='battle_round_start' stratagems={props.stratagems} />
         </>
       </Phase>
       <Phase name='command'>
@@ -76,7 +76,7 @@ export function Roster (props: Props): JSX.Element {
             <CommandPhaseDetails key={unit.id} unit={unit} />
           ))}
         </>
-        <StratagemList phase='command' stratagems={props.stratagems}/>
+        <StratagemList phase='command' stratagems={props.stratagems} />
       </Phase>
       <Phase name='movement'>
         <>
@@ -84,7 +84,7 @@ export function Roster (props: Props): JSX.Element {
             <MovementPhaseDetails key={unit.id} unit={unit} />
           ))}
         </>
-        <StratagemList phase='movement' stratagems={props.stratagems}/>
+        <StratagemList phase='movement' stratagems={props.stratagems} />
       </Phase>
       <Phase name='psychic'>
         <>
@@ -92,7 +92,7 @@ export function Roster (props: Props): JSX.Element {
             <PsychicPhaseDetails key={unit.id} unit={unit} />
           ))}
         </>
-        <StratagemList phase='psychic' stratagems={props.stratagems}/>
+        <StratagemList phase='psychic' stratagems={props.stratagems} />
       </Phase>
       <Phase name='shooting'>
         <>
@@ -100,7 +100,7 @@ export function Roster (props: Props): JSX.Element {
             <ShootingPhaseDetails key={unit.id} unit={unit} />
           ))}
         </>
-        <StratagemList phase='shooting' stratagems={props.stratagems}/>
+        <StratagemList phase='shooting' stratagems={props.stratagems} />
       </Phase>
       <Phase name='charge'>
         <>
@@ -108,7 +108,7 @@ export function Roster (props: Props): JSX.Element {
             <ChargePhaseDetails key={unit.id} unit={unit} />
           ))}
         </>
-        <StratagemList phase='charge' stratagems={props.stratagems}/>
+        <StratagemList phase='charge' stratagems={props.stratagems} />
       </Phase>
       <Phase name='fight'>
         <>
@@ -116,7 +116,7 @@ export function Roster (props: Props): JSX.Element {
             <FightPhaseDetails key={unit.id} unit={unit} />
           ))}
         </>
-        <StratagemList phase='fight' stratagems={props.stratagems}/>
+        <StratagemList phase='fight' stratagems={props.stratagems} />
       </Phase>
       <Phase name='morale'>
         <>
@@ -124,7 +124,7 @@ export function Roster (props: Props): JSX.Element {
             <MoralePhaseDetails key={unit.id} unit={unit} />
           ))}
         </>
-        <StratagemList phase='morale' stratagems={props.stratagems}/>
+        <StratagemList phase='morale' stratagems={props.stratagems} />
       </Phase>
     </>
   )
