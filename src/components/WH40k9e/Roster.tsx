@@ -46,11 +46,11 @@ export function Roster (props: Props): JSX.Element {
         please file a report <a href='https://github.com/floppy/dataslate/issues/new'>on GitHub</a> including
         your roster file.
       </p>
-      <>
+      <Phase name='Overview'>
         {props.units.map((unit: Unit) => (
           <NoPhaseDetails key={unit.id} unit={unit} />
         ))}
-      </>
+      </Phase>
       <Phase name='deployment'>
         <>
           {props.units.map((unit: Unit) => (
