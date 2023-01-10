@@ -3,9 +3,7 @@ import { Ability } from '../../types/Ability'
 
 const phasePatterns = {
   deployment: [
-    / before the first battle round /,
-    / set up /,
-    / cult ambush /
+    / deployment/
   ],
   battle_round_start: [
     / start of each battle round /,
@@ -78,7 +76,9 @@ const phasePatterns = {
 
 const genericPatterns = [
   / loses? a wound /,
-  / this model is destroyed/
+  / this model is destroyed/,
+  / attack is allocated/,
+  / as a result of an attack/
 ]
 
 const antiPatterns = {
