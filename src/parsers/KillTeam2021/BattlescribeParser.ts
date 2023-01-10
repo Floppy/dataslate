@@ -1,11 +1,7 @@
 import _ from 'lodash'
-import * as XPath from 'xpath-ts'
+import { xpSelect } from '../Parser'
 import { Roster, Operative, Weapon, Equipment, Action, PsychicPower } from '../../types/KillTeam2021'
 import { Ability } from '../../types/Ability'
-
-// useNamespaces is NOT a React hook, so:
-// eslint-disable-next-line
-const xpSelect = XPath.useNamespaces({ bs: 'http://www.battlescribe.net/schema/rosterSchema' })
 
 const stat = (name: string, model: Element): number => {
   const node = xpSelect(`bs:profiles/bs:profile[@typeName='Operative']//bs:characteristic[@name='${name}']/text()`, model, true)
@@ -78,12 +74,12 @@ const parseAction = (action: Node, psychicDiscipline: string|null, psychicPowers
 
   if (psychicDiscipline !== null && name.toLowerCase().includes('psychic power')) {
     description += `
-    
+
 **Psychic Discipline**:` + psychicDiscipline
   }
 
   if (psychicPowers !== null && name.toLowerCase().includes('psychic power')) {
-    description += `   
+    description += `
 
 **Available Powers**: ` + psychicPowers
   }
