@@ -18,10 +18,10 @@ export function MoralePhaseDetails (props: Props): JSX.Element {
           <UnitTitle name={props.unit.name} uuid={props.unit.id} datasheet={props.unit.datasheet} />
           {
             props.unit.profiles.length > 1
-            ? props.unit.profiles.map((profile: Profile) => (
-              <ProfileTitle name={profile.name} />
-            ))
-            : <></>
+              ? props.unit.profiles.map((profile: Profile) => (
+                <ProfileTitle name={profile.name} />
+              ))
+              : <></>
           }
           <AbilityList abilities={props.unit.abilities} phase='morale' />
         </Col>

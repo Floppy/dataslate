@@ -86,10 +86,10 @@ const parseUnitSelection = (unitSelectionNode: Node): Unit => {
         type: 'Melee',
         strength: 'User',
         armourPiercing: 0,
-        damage: "1",
-        shots: "0",
-        abilities: "",
-        hash: ""
+        damage: '1',
+        shots: '0',
+        abilities: '',
+        hash: ''
       }
     ], (p) => p.hash),
     psychic: {

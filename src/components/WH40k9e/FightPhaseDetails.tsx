@@ -19,10 +19,10 @@ export function FightPhaseDetails (props: Props): JSX.Element {
           <UnitTitle name={props.unit.name} uuid={props.unit.id} datasheet={props.unit.datasheet} />
           {
             props.unit.profiles.length > 1
-            ? props.unit.profiles.map((profile: Profile) => (
-              <ProfileTitle name={profile.name} />
-            ))
-            : <></>
+              ? props.unit.profiles.map((profile: Profile) => (
+                <ProfileTitle name={profile.name} />
+              ))
+              : <></>
           }
           <WeaponList weapons={props.unit.weapons} phase='fight' />
           <AbilityList abilities={props.unit.abilities} phase='fight' />

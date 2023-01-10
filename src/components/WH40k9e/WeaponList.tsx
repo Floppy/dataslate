@@ -14,7 +14,7 @@ export function WeaponList (props: Props): JSX.Element {
     : props.weapons.filter((x) => (x.type === 'Melee'))
 
   return weapons.length === 0
-    ? <Alert variant="warning">No ranged weapon</Alert>
+    ? <Alert variant='warning'>No ranged weapon</Alert>
     : (
       <Table striped bordered size='sm'>
         <thead>
