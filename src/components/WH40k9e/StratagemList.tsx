@@ -32,6 +32,7 @@ export function StratagemList (props: Props): JSX.Element {
                   <Badge variant='primary' className='float-right'>{stratagem.cp_cost} CP</Badge>
                 </Card.Header>
                 <Card.Body>
+                  <p><small><em>{stratagem.type}</em></small></p>
                   <p dangerouslySetInnerHTML={{
                     __html: stratagem.description
                   }}
