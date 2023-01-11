@@ -77,6 +77,21 @@ class StratagemDownloaderPlugin {
             stratagemPhaseData.filter((p) => (p.stratagem_id === data.id)).map((p) => phaseMapping[p.phase])
           )),
           faction: data.faction_id ? factionData.find((x) => (x.id === data.faction_id))?.name : null,
+          subfaction: data.subfaction_id !== data.faction_id ? factionData.find((x) => (x.id === data.subfaction_id))?.name : null,
+          sourceType: data.source_id ? sourceData.find((x) => x.id === data.source_id)?.type : null
+        })).filter((strat) => {
+          let reject = false
+          // Dump anything that's not from a rulebook or codex (or if we can't tell)
+          reject ||= !(strat.sourceType === null || ["Rulebook", "Codex", "Codex Supplement"].includes(strat.sourceType))
+          // Remove non-faction strats that aren't from the core rules, they're just clutter
+          reject ||= (strat.faction === null && strat.type !== "Core Stratagem")
+          // Also remove specialist detachment strats - they're pretty rarely used I think
+          reject ||= (strat.type === "Specialist Detachment Stratagem")
+          // Dump crusade strats too
+          reject ||= (strat.type.includes("Crusade"))
+          // Keep the rest!
+          return !reject
+        })
         console.log('Writing stratagem code')
         fs.writeFile('src/parsers/WH40k9e/Stratagems.ts', `import { Stratagem } from '../../types/WH40k9e'
           export const stratagems: Stratagem[] = ${JSON.stringify(stratagems, null, 2)}`, () => true)
