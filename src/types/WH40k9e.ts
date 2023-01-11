@@ -5,6 +5,7 @@ export interface Roster {
   faction: string
   name: string
   units: Unit[]
+  stratagems: Stratagem[]
 }
 
 export interface Profile {
@@ -60,4 +61,17 @@ export interface Unit {
     deny: number
     powers: PsychicPower[]
   }
+}
+
+export interface Stratagem {
+  id: string
+  name: string
+  cp_cost: string
+  type: string
+  description: string
+  datasheets: string[]
+  phases: string[]
+  faction?: string | null
+  subfaction?: string | null
+  sourceType?: string | null
 }
