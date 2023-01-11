@@ -71,4 +71,7 @@ export interface Stratagem {
   description: string
   datasheets: string[]
   phases: string[]
+  faction?: string | null
+  subfaction?: string | null
+  sourceType?: string | null
 }

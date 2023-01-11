@@ -75,8 +75,8 @@ class StratagemDownloaderPlugin {
           )),
           phases: _.uniq(_.flatten(
             stratagemPhaseData.filter((p) => (p.stratagem_id === data.id)).map((p) => phaseMapping[p.phase])
-          ))
-        }))
+          )),
+          faction: data.faction_id ? factionData.find((x) => (x.id === data.faction_id))?.name : null,
         console.log('Writing stratagem code')
         fs.writeFile('src/parsers/WH40k9e/Stratagems.ts', `import { Stratagem } from '../../types/WH40k9e'
           export const stratagems: Stratagem[] = ${JSON.stringify(stratagems, null, 2)}`, () => true)

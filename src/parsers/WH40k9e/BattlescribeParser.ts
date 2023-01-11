@@ -105,13 +105,15 @@ const parseUnitSelection = (unitSelectionNode: Node): Unit => {
 export const parseBattlescribeXML = (doc: Document): Roster => {
   const units = nodeMap("/bs:roster/bs:forces/bs:force/bs:selections/bs:selection[@type='unit' or @type='model']", doc, parseUnitSelection)
   const datasheetNames = units.map((u) => slugify(u.datasheet, {lower: true, strict: true}))
+  const faction = stringAttr('/bs:roster/bs:forces/bs:force/@catalogueName', doc).split(" - ").pop() ?? "Unknown"
   return {
     system: 'WH40k9e',
     name: stringAttr('/bs:roster/@name', doc),
-    faction: stringAttr('/bs:roster/bs:forces/bs:force/@catalogueName', doc),
+    faction,
     units,
     stratagems: stratagems.filter((s) => (
-      s.datasheets.length === 0 || _.intersection(s.datasheets, datasheetNames).length > 0
+      (s.faction === null || s.faction === faction) &&
+      (s.datasheets.length === 0 || _.intersection(s.datasheets, datasheetNames).length > 0)
     ))
   }
 }
