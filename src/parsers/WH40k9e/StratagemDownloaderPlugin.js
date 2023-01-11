@@ -82,13 +82,13 @@ class StratagemDownloaderPlugin {
         })).filter((strat) => {
           let reject = false
           // Dump anything that's not from a rulebook or codex (or if we can't tell)
-          reject ||= !(strat.sourceType === null || ["Rulebook", "Codex", "Codex Supplement"].includes(strat.sourceType))
+          reject ||= !(strat.sourceType === null || ['Rulebook', 'Codex', 'Codex Supplement'].includes(strat.sourceType))
           // Remove non-faction strats that aren't from the core rules, they're just clutter
-          reject ||= (strat.faction === null && strat.type !== "Core Stratagem")
+          reject ||= (strat.faction === null && strat.type !== 'Core Stratagem')
           // Also remove specialist detachment strats - they're pretty rarely used I think
-          reject ||= (strat.type === "Specialist Detachment Stratagem")
+          reject ||= (strat.type === 'Specialist Detachment Stratagem')
           // Dump crusade strats too
-          reject ||= (strat.type.includes("Crusade"))
+          reject ||= (strat.type.includes('Crusade'))
           // Keep the rest!
           return !reject
         })
