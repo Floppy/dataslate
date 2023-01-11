@@ -1,4 +1,4 @@
-const StratagemDownloaderPlugin = require('./src/parsers/WH40k9e/StratagemDownloaderPlugin');
+const StratagemDownloaderPlugin = require('./src/parsers/WH40k9e/StratagemDownloaderPlugin')
 
 module.exports = {
   webpack: function (config, env) {

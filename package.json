@@ -85,7 +85,8 @@
     "ignore": [
       "build/*",
       "docs/*",
-      "src/react-app-env.d.ts"
+      "src/react-app-env.d.ts",
+      "src/parsers/WH40k9e/Stratagems.ts"
     ]
   },
   "jest": {
