@@ -29,7 +29,7 @@ export function StratagemList (props: Props): JSX.Element {
               <Card key={stratagem.id} border='secondary' bg='light'>
                 <Card.Header style={{ background: 'rgba(0, 0, 0, 0.05)' }} as='h4'>
                   {stratagem.name}
-                  <Badge variant='primary' className='float-right'>{stratagem.cp_cost}</Badge>
+                  <Badge variant='primary' className='float-right'>{stratagem.cp_cost} CP</Badge>
                 </Card.Header>
                 <Card.Body>
                   <p dangerouslySetInnerHTML={{
