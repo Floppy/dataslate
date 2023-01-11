@@ -45,8 +45,9 @@ function Homepage (props: Props): JSX.Element {
               <Card.Text>
                 Supported systems:
                 <ul>
-                  <li>Kill Team 2018</li>
+                  <li>Warhammer 40k 9e</li>
                   <li>Kill Team 2021</li>
+                  <li>Kill Team 2018</li>
                 </ul>
               </Card.Text>
               <Card.Text>
@@ -87,6 +88,7 @@ function Homepage (props: Props): JSX.Element {
       <footer>
         Built with <a href='https://reactjs.org/'>React</a> and <a href='https://getbootstrap.com'>Bootstrap</a>.
         Icons courtesy of <a href='https://killteam.app/'>Companion for Kill Team</a>.
+        40k stratagems powered by <a href='https://wahapedia.ru/'>Wahapedia</a>.
         Released as <a href='https://github.com/floppy/dataslate'>Open Source</a>,
         report problems <a href='https://github.com/floppy/dataslate/issues/new'>on GitHub</a> or on <a href='https://discord.gg/8DTSYxbhfV'> Discord</a>.
         Version: <em><a {...{ href: `https://github.com/floppy/dataslate/tree/${process.env.REACT_APP_GIT_SHA !== undefined ? process.env.REACT_APP_GIT_SHA : ''}` }}>{process.env.REACT_APP_GIT_SHA}</a></em>
