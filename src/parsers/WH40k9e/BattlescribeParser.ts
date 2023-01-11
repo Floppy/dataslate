@@ -5,6 +5,7 @@ import { Roster, Unit, Profile, PsychicPower, Weapon } from '../../types/WH40k9e
 import { Ability } from '../../types/Ability'
 import { calculatePhases } from './Abilities'
 import { stratagems } from './Stratagems'
+import slugify from 'slugify'
 
 const stat = (name: string, node: Node): number => (
   numericContent(`.//bs:characteristic[@name='${name}']`, node)
@@ -103,7 +104,7 @@ const parseUnitSelection = (unitSelectionNode: Node): Unit => {
 
 export const parseBattlescribeXML = (doc: Document): Roster => {
   const units = nodeMap("/bs:roster/bs:forces/bs:force/bs:selections/bs:selection[@type='unit' or @type='model']", doc, parseUnitSelection)
-  const datasheetNames = units.map((u) => u.datasheet)
+  const datasheetNames = units.map((u) => slugify(u.datasheet, {lower: true, strict: true}))
   return {
     system: 'WH40k9e',
     name: stringAttr('/bs:roster/@name', doc),

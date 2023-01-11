@@ -2,6 +2,7 @@ const _ = require('lodash')
 const axios = require('axios').default
 const fs = require('fs')
 const parse = require('csv-parse/sync').parse
+const slugify = require('slugify')
 
 class StratagemDownloaderPlugin {
   apply (compiler) {
@@ -64,7 +65,10 @@ class StratagemDownloaderPlugin {
             datasheetStratagemData.filter((p) => (
               p.stratagem_id === data.id)).map((p) => p.datasheet_id
             ).map((p) => (
-              datasheetData.find((d) => (p === d.id))?.name.toLowerCase()
+              slugify(datasheetData.find((d) => (p === d.id))?.name, {
+                lower: true,
+                strict: true
+              })
             ))
           )),
           phases: _.uniq(_.flatten(
