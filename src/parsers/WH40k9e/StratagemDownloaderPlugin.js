@@ -44,9 +44,15 @@ class StratagemDownloaderPlugin {
         console.log('Downloading stratagem data')
         const stratagemFile = await axios.get('https://wahapedia.ru/wh40k9ed/Stratagems.csv')
         const stratagemData = parse(stratagemFile.data, csvOptions)
-        console.log('Downloading phase data')
+        console.log('Downloading stratagem->phase mapping')
         const stratagemPhaseFile = await axios.get('https://wahapedia.ru/wh40k9ed/StratagemPhases.csv')
         const stratagemPhaseData = parse(stratagemPhaseFile.data, csvOptions)
+        console.log('Downloading datasheet data')
+        const datasheetFile = await axios.get('https://wahapedia.ru/wh40k9ed/Datasheets.csv')
+        const datasheetData = parse(datasheetFile.data, csvOptions)
+        console.log('Downloading datasheet->stratagem mapping')
+        const datasheetStratagemFile = await axios.get('https://wahapedia.ru/wh40k9ed/Datasheets_stratagems.csv')
+        const datasheetStratagemData = parse(datasheetStratagemFile.data, csvOptions)
         console.log('Building stratagems')
         const stratagems = stratagemData.map((data) => ({
           id: data.id,
@@ -54,11 +60,19 @@ class StratagemDownloaderPlugin {
           cp_cost: data.cp_cost,
           type: data.type,
           description: data.description,
-          datasheets: [],
-          phases: _.uniq(_.flatten(stratagemPhaseData.filter((p) => (p.stratagem_id === data.id)).map((p) => phaseMapping[p.phase])))
+          datasheets: _.uniq(_.flatten(
+            datasheetStratagemData.filter((p) => (
+              p.stratagem_id === data.id)).map((p) => p.datasheet_id
+            ).map((p) => (
+              datasheetData.find((d) => (p === d.id))?.name.toLowerCase()
+            ))
+          )),
+          phases: _.uniq(_.flatten(
+            stratagemPhaseData.filter((p) => (p.stratagem_id === data.id)).map((p) => phaseMapping[p.phase])
+          ))
         }))
         console.log('Writing stratagem code')
-        await fs.writeFile('src/parsers/WH40k9e/Stratagems.ts', `import { Stratagem } from '../../types/WH40k9e'
+        fs.writeFile('src/parsers/WH40k9e/Stratagems.ts', `import { Stratagem } from '../../types/WH40k9e'
           export const stratagems: Stratagem[] = ${JSON.stringify(stratagems, null, 2)}`, () => true)
       } catch (error) {
         console.error(error)
