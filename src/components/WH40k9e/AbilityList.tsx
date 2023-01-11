@@ -29,7 +29,10 @@ export function AbilityList (props: Props): JSX.Element {
           {_.sortBy(abilities, ['name']).map((x: Ability) => (
             <tr key={x.id}>
               <td>{x.name}</td>
-              <td>{x.description}</td>
+              <td dangerouslySetInnerHTML={{
+                __html: x.description
+              }}
+              />
             </tr>
           ))}
         </tbody>
