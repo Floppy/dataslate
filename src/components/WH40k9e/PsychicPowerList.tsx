@@ -26,7 +26,10 @@ export function PsychicPowerList (props: Props): JSX.Element {
               <td>{x.name}</td>
               <td>{x.charge}</td>
               <td>{x.range}</td>
-              <td>{x.description}</td>
+              <td dangerouslySetInnerHTML={{
+                __html: x.description
+              }}
+              />
             </tr>
           ))}
         </tbody>
