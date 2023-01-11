@@ -13,7 +13,6 @@ const stat = (name: string, node: Node): number => (
 
 const parseUnitProfile = (unitProfileNode: Node): Profile => {
   const details = {
-    id: stringAttr('@id', unitProfileNode),
     name: stringAttr('@name', unitProfileNode),
     profileStats: {
       movement: stat('M', unitProfileNode),
@@ -28,7 +27,11 @@ const parseUnitProfile = (unitProfileNode: Node): Profile => {
       invulnerable_save: 0
     }
   }
-  return { ...details, hash: hasher({}).hash(details) }
+  return {
+    ...details,
+    hash: hasher({}).hash(details),
+    id: stringAttr('@id', unitProfileNode)
+  }
 }
 
 const parseAbility = (node: Node): Ability => {
@@ -46,7 +49,6 @@ const parseWeaponProfile = (node: Node): Weapon => {
   if (weaponType !== 'Melee') { weaponType = weaponType.split(' ').slice(0, -1).join(' ') }
   const strength = stringContent('.//bs:characteristic[@name=\'S\']', node)
   const details = {
-    id: stringAttr('@id', node),
     name: stringAttr('@name', node),
     range: numericContent('.//bs:characteristic[@name=\'Range\']', node),
     type: weaponType,
@@ -56,7 +58,11 @@ const parseWeaponProfile = (node: Node): Weapon => {
     damage: stringContent('.//bs:characteristic[@name=\'D\']', node),
     abilities: stringContent('.//bs:characteristic[@name=\'Abilities\']', node)
   }
-  return { ...details, hash: hasher({}).hash(details) }
+  return {
+    ...details,
+    hash: hasher({}).hash(details),
+    id: stringAttr('@id', node)
+  }
 }
 
 const parsePsychicPower = (node: Node): PsychicPower => {
@@ -82,8 +88,8 @@ const parseUnitSelection = (unitSelectionNode: Node): Unit => {
     weapons: _.uniqBy([
       ...nodeMap(".//bs:profiles/bs:profile[@typeName='Weapon']", unitSelectionNode, parseWeaponProfile),
       {
-        id: '',
-        name: 'Close combat weapon',
+        id: 'generic-ccw',
+        name: 'Close Combat Weapon',
         range: 0,
         type: 'Melee',
         strength: 'User',
