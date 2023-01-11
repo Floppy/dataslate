@@ -14,18 +14,6 @@ const headingStyle = {
   justifyContent: 'space-between'
 }
 
-// const loadWahaCSV = (name: string, setMethod: any): void => {
-//   const url = `/waha/wh40k9ed/${name}.csv`
-//   // eslint-disable-next-line
-//   const { readRemoteFile } = usePapaParse();
-//   readRemoteFile(url, {
-//     header: true,
-//     download: true,
-//     fastMode: true,
-//     complete: (results) => setMethod(results.data)
-//   })
-// }
-
 export function StratagemList (props: Props): JSX.Element {
   // Find stratagems for this phase
   const stratagems = props.phase !== ''
