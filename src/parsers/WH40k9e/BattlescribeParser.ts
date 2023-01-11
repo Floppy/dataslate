@@ -104,7 +104,11 @@ const parseUnitSelection = (unitSelectionNode: Node): Unit => {
       cast: numericContent("bs:profiles/bs:profile[@typeName='Psyker']//bs:characteristic[@name='Cast']", unitSelectionNode),
       deny: numericContent("bs:profiles/bs:profile[@typeName='Psyker']//bs:characteristic[@name='Deny']", unitSelectionNode),
       powers: nodeMap("bs:selections/bs:selection/bs:profiles/bs:profile[@typeName='Psychic Power']", unitSelectionNode, parsePsychicPower)
-    }
+    },
+    keywords: _.compact(
+      nodeMap("bs:categories/bs:category[@primary='false']/@name", unitSelectionNode, (n) => n.textContent)
+    ).filter((x) => !x.toLowerCase().startsWith("faction:")),
+    role: stringAttr("bs:categories/bs:category[@primary='true']/@name", unitSelectionNode)
   }
 }
 
