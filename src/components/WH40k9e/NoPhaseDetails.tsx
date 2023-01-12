@@ -16,7 +16,7 @@ export function NoPhaseDetails (props: Props): JSX.Element {
       <Row>
         <Col sm='12'>
           <UnitTitle name={props.unit.name} uuid={props.unit.id} datasheet={props.unit.datasheet} />
-          <KeywordList keywords={props.unit.keywords} faction={""}/>
+          <KeywordList keywords={props.unit.keywords} faction='' />
           <StatsTable profiles={props.unit.profiles} />
           <AbilityList abilities={props.unit.abilities} phase='' />
         </Col>

@@ -107,7 +107,7 @@ const parseUnitSelection = (unitSelectionNode: Node): Unit => {
     },
     keywords: _.compact(
       nodeMap("bs:categories/bs:category[@primary='false']/@name", unitSelectionNode, (n) => n.textContent)
-    ).filter((x) => !x.toLowerCase().startsWith("faction:")),
+    ).filter((x) => !x.toLowerCase().startsWith('faction:')),
     role: stringAttr("bs:categories/bs:category[@primary='true']/@name", unitSelectionNode)
   }
 }
