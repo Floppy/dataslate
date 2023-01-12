@@ -3,7 +3,8 @@ import { Ability } from '../../types/Ability'
 
 const phasePatterns = {
   deployment: [
-    / deployment/
+    / deployment/,
+    / first set up/
   ],
   battle_round_start: [
     / start of each battle round /,
@@ -48,7 +49,8 @@ const phasePatterns = {
     / firing /,
     / obscured /,
     / pistol /,
-    / heavy weapons?/
+    / heavy weapons?/,
+    / look out sir/
   ],
   charge: [
     / charge[sd]? /,
@@ -76,9 +78,10 @@ const phasePatterns = {
 
 const genericPatterns = [
   / loses? a wound /,
-  / this model is destroyed/,
+  / model is destroyed/,
   / attack is allocated/,
-  / as a result of an attack/
+  / as a result of an attack/,
+  / an attack is made against this (model|unit)/
 ]
 
 const antiPatterns = {
