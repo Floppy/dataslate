@@ -25,7 +25,8 @@ const parseUnitProfile = (unitProfileNode: Node): Profile => {
       leadership: stat('Ld', unitProfileNode),
       save: stat('Save', unitProfileNode),
       invulnerable_save: 0
-    }
+    },
+    degradedProfiles: [] // Handled later on
   }
   return {
     ...details,
@@ -75,15 +76,43 @@ const parsePsychicPower = (node: Node): PsychicPower => {
   }
 }
 
+const handleDegradingProfiles = (profiles: Profile[]): Profile[] => {
+  if (profiles[0].name.includes('+ wounds)')) {
+    const profile = profiles[0]
+    profile.name = profile.name.split('[')[0].trimEnd()
+    profile.degradedProfiles = profiles.slice(1).map((p) => ({
+      name: p.name.split('(').pop()?.replace(')','') ?? '?',
+      profileStats: {
+        movement: p.profileStats.movement === profile.profileStats.movement ? NaN : p.profileStats.movement,
+        weapon_skill: p.profileStats.weapon_skill === profile.profileStats.weapon_skill ? NaN : p.profileStats.weapon_skill,
+        ballistic_skill: p.profileStats.ballistic_skill === profile.profileStats.ballistic_skill ? NaN : p.profileStats.ballistic_skill,
+        strength: p.profileStats.strength === profile.profileStats.strength ? NaN : p.profileStats.strength,
+        toughness: p.profileStats.toughness === profile.profileStats.toughness ? NaN : p.profileStats.toughness,
+        wounds: p.profileStats.wounds === profile.profileStats.wounds ? NaN : p.profileStats.wounds,
+        attacks: p.profileStats.attacks === profile.profileStats.attacks ? NaN : p.profileStats.attacks,
+        leadership: p.profileStats.leadership === profile.profileStats.leadership ? NaN : p.profileStats.leadership,
+        save: p.profileStats.save === profile.profileStats.save ? NaN : p.profileStats.save,
+        invulnerable_save: p.profileStats.invulnerable_save === profile.profileStats.invulnerable_save ? NaN : p.profileStats.invulnerable_save,
+        }
+    }))
+    return [profile]
+  }
+  else {
+    return profiles
+  }
+}
+
 const parseUnitSelection = (unitSelectionNode: Node): Unit => {
+  let profiles = _.uniqBy([
+    ...nodeMap("bs:profiles/bs:profile[@typeName='Unit']", unitSelectionNode, parseUnitProfile),
+    ...nodeMap("bs:selections/bs:selection/bs:profiles/bs:profile[@typeName='Unit']", unitSelectionNode, parseUnitProfile)
+  ], (p) => p.hash)
+  profiles = handleDegradingProfiles(profiles)
   return {
     id: stringAttr('@id', unitSelectionNode),
     datasheet: stringAttr('@name', unitSelectionNode),
     name: stringAttr('@customName', unitSelectionNode),
-    profiles: _.uniqBy([
-      ...nodeMap("bs:profiles/bs:profile[@typeName='Unit']", unitSelectionNode, parseUnitProfile),
-      ...nodeMap("bs:selections/bs:selection/bs:profiles/bs:profile[@typeName='Unit']", unitSelectionNode, parseUnitProfile)
-    ], (p) => p.hash),
+    profiles,
     abilities: [
       ...nodeMap("bs:profiles/bs:profile[@typeName='Abilities']", unitSelectionNode, parseAbility),
       ...nodeMap("bs:selections/bs:selection/bs:profiles/bs:profile[@typeName='Abilities']", unitSelectionNode, parseAbility)
