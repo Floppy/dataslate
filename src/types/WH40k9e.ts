@@ -61,6 +61,8 @@ export interface Unit {
     deny: number
     powers: PsychicPower[]
   }
+  keywords: string[]
+  role: string
 }
 
 export interface Stratagem {
