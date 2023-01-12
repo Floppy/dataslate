@@ -85,7 +85,8 @@ const genericPatterns = [
   / model is destroyed/,
   / attack is allocated/,
   / as a result of an attack/,
-  / an attack is made against this (model|unit)/
+  / an attack is made against this (model|unit)/,
+  / invulnera.le save/ // the dot is to handle a typo
 ]
 
 const antiPatterns = {
