@@ -2,6 +2,10 @@ import _ from 'lodash'
 import { Ability } from '../../types/Ability'
 
 const phasePatterns = {
+  before_battle: [
+    / before the battle/,
+    / without taking up a battlefield role slot/
+  ],
   deployment: [
     / deployment/,
     / first set up/
