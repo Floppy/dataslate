@@ -84,7 +84,10 @@ const parseUnitSelection = (unitSelectionNode: Node): Unit => {
       ...nodeMap("bs:profiles/bs:profile[@typeName='Unit']", unitSelectionNode, parseUnitProfile),
       ...nodeMap("bs:selections/bs:selection/bs:profiles/bs:profile[@typeName='Unit']", unitSelectionNode, parseUnitProfile)
     ], (p) => p.hash),
-    abilities: nodeMap("bs:profiles/bs:profile[@typeName='Abilities']", unitSelectionNode, parseAbility),
+    abilities: [
+      ...nodeMap("bs:profiles/bs:profile[@typeName='Abilities']", unitSelectionNode, parseAbility),
+      ...nodeMap("bs:selections/bs:selection/bs:profiles/bs:profile[@typeName='Abilities']", unitSelectionNode, parseAbility)
+    ],
     weapons: _.uniqBy([
       ...nodeMap(".//bs:profiles/bs:profile[@typeName='Weapon']", unitSelectionNode, parseWeaponProfile),
       {
