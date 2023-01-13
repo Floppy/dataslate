@@ -81,7 +81,7 @@ const handleDegradingProfiles = (profiles: Profile[]): Profile[] => {
     const profile = profiles[0]
     profile.name = profile.name.split('[')[0].trimEnd()
     profile.degradedProfiles = profiles.slice(1).map((p) => ({
-      name: p.name.split('(').pop()?.replace(')','') ?? '?',
+      name: p.name.split('(').pop()?.replace(')', '') ?? '?',
       profileStats: {
         movement: p.profileStats.movement === profile.profileStats.movement ? NaN : p.profileStats.movement,
         weapon_skill: p.profileStats.weapon_skill === profile.profileStats.weapon_skill ? NaN : p.profileStats.weapon_skill,
@@ -92,19 +92,18 @@ const handleDegradingProfiles = (profiles: Profile[]): Profile[] => {
         attacks: p.profileStats.attacks === profile.profileStats.attacks ? NaN : p.profileStats.attacks,
         leadership: p.profileStats.leadership === profile.profileStats.leadership ? NaN : p.profileStats.leadership,
         save: p.profileStats.save === profile.profileStats.save ? NaN : p.profileStats.save,
-        invulnerable_save: p.profileStats.invulnerable_save === profile.profileStats.invulnerable_save ? NaN : p.profileStats.invulnerable_save,
-        }
+        invulnerable_save: p.profileStats.invulnerable_save === profile.profileStats.invulnerable_save ? NaN : p.profileStats.invulnerable_save
+      }
     }))
     return [profile]
-  }
-  else {
+  } else {
     return profiles
   }
 }
 
-const handleInvulnerableSaves = (profiles: Profile[], abilities: Ability[]) => {
+const handleInvulnerableSaves = (profiles: Profile[], abilities: Ability[]): Profile[] => {
   const patterns = [
-    /has a ([1-6]{1})\+ invulnera.le save/, // dot handles a common typo
+    /has a ([1-6]{1})\+ invulnera.le save/ // dot handles a common typo
   ]
   const saves = _.map(abilities, (a) => {
     return _.min(_.map(patterns, (pattern) => {

@@ -53,7 +53,8 @@ export function StatsTable (props: Props): JSX.Element {
             <td>{isNaN(profile.profileStats.leadership) ? '-' : `${profile.profileStats.leadership}`}</td>
             <td>{isNaN(profile.profileStats.save) ? '-' : `${profile.profileStats.save}+`}</td>
           </tr>
-        ))}      </tbody>
+        ))}
+      </tbody>
     </Table>
   )
 }

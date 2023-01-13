@@ -13,10 +13,10 @@ export interface Profile {
   id: string
   profileStats: ProfileStats
   hash: string
-  degradedProfiles: {
-      name: string,
-      profileStats: ProfileStats
-  }[]
+  degradedProfiles: Array<{
+    name: string
+    profileStats: ProfileStats
+  }>
 }
 
 export interface ProfileStats {
