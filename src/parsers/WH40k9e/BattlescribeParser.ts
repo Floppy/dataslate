@@ -24,7 +24,7 @@ const parseUnitProfile = (unitProfileNode: Node): Profile => {
       attacks: stat('A', unitProfileNode),
       leadership: stat('Ld', unitProfileNode),
       save: stat('Save', unitProfileNode),
-      invulnerable_save: 0
+      invulnerable_save: NaN
     },
     degradedProfiles: [] // Handled later on
   }
@@ -102,21 +102,43 @@ const handleDegradingProfiles = (profiles: Profile[]): Profile[] => {
   }
 }
 
+const handleInvulnerableSaves = (profiles: Profile[], abilities: Ability[]) => {
+  const patterns = [
+    /has a ([1-6]{1})\+ invulnera.le save/, // dot handles a common typo
+  ]
+  const saves = _.map(abilities, (a) => {
+    return _.min(_.map(patterns, (pattern) => {
+      const match = a.description.match(pattern)
+      if (match != null) {
+        return parseInt(match[1])
+      }
+      return NaN
+    }))
+  })
+  const invuln = _.min(saves) ?? NaN
+  return profiles.map((p) => {
+    p.profileStats.invulnerable_save = invuln
+    return p
+  })
+}
+
 const parseUnitSelection = (unitSelectionNode: Node): Unit => {
   let profiles = _.uniqBy([
     ...nodeMap("bs:profiles/bs:profile[@typeName='Unit']", unitSelectionNode, parseUnitProfile),
     ...nodeMap("bs:selections/bs:selection/bs:profiles/bs:profile[@typeName='Unit']", unitSelectionNode, parseUnitProfile)
   ], (p) => p.hash)
+  const abilities = [
+    ...nodeMap("bs:profiles/bs:profile[@typeName='Abilities']", unitSelectionNode, parseAbility),
+    ...nodeMap("bs:selections/bs:selection/bs:profiles/bs:profile[@typeName='Abilities']", unitSelectionNode, parseAbility)
+  ]
   profiles = handleDegradingProfiles(profiles)
+  profiles = handleInvulnerableSaves(profiles, abilities)
   return {
     id: stringAttr('@id', unitSelectionNode),
     datasheet: stringAttr('@name', unitSelectionNode),
     name: stringAttr('@customName', unitSelectionNode),
     profiles,
-    abilities: [
-      ...nodeMap("bs:profiles/bs:profile[@typeName='Abilities']", unitSelectionNode, parseAbility),
-      ...nodeMap("bs:selections/bs:selection/bs:profiles/bs:profile[@typeName='Abilities']", unitSelectionNode, parseAbility)
-    ],
+    abilities,
     weapons: _.uniqBy([
       ...nodeMap(".//bs:profiles/bs:profile[@typeName='Weapon']", unitSelectionNode, parseWeaponProfile),
       {
