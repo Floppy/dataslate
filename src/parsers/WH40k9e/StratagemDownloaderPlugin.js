@@ -92,7 +92,7 @@ class StratagemDownloaderPlugin {
           // Keep the rest!
           return !reject
         })
-        console.log('Writing stratagem code')
+        console.log(`Writing stratagem code for ${stratagems.length} strats.`)
         fs.writeFile('src/parsers/WH40k9e/Stratagems.ts', `import { Stratagem } from '../../types/WH40k9e'
           export const stratagems: Stratagem[] = ${JSON.stringify(stratagems, null, 2)}`, () => true)
         console.log('Stratagems complete!')
