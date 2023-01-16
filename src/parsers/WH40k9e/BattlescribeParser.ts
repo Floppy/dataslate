@@ -33,6 +33,10 @@ const stat = (name: string, node: Node): number => (
   numericContent(`.//bs:characteristic[@name='${name}']`, node)
 )
 
+const stringStat = (name: string, node: Node): string => (
+  stringContent(`.//bs:characteristic[@name='${name}']`, node)
+)
+
 const parseUnitProfile = (unitProfileNode: Node): Profile => {
   const details = {
     name: stringAttr('@name', unitProfileNode),
@@ -43,7 +47,7 @@ const parseUnitProfile = (unitProfileNode: Node): Profile => {
       strength: stat('S', unitProfileNode),
       toughness: stat('T', unitProfileNode),
       wounds: stat('W', unitProfileNode),
-      attacks: stat('A', unitProfileNode),
+      attacks: stringStat('A', unitProfileNode),
       leadership: stat('Ld', unitProfileNode),
       save: stat('Save', unitProfileNode),
       invulnerable_save: NaN
@@ -99,9 +103,9 @@ const parsePsychicPower = (node: Node): PsychicPower => {
 }
 
 const handleDegradingProfiles = (profiles: Profile[]): Profile[] => {
-  if (profiles[0].name.includes('+ wounds)')) {
+  if (profiles.some((x) => x.name.includes('wounds'))) {
     const profile = profiles[0]
-    profile.name = profile.name.split('[')[0].trimEnd()
+    profile.name = profile.name.split(/[[0-9]/)[0].trimEnd()
     profile.degradedProfiles = profiles.slice(1).map((p) => ({
       name: p.name.split('(').pop()?.replace(')', '') ?? '?',
       profileStats: {
@@ -111,7 +115,7 @@ const handleDegradingProfiles = (profiles: Profile[]): Profile[] => {
         strength: p.profileStats.strength === profile.profileStats.strength ? NaN : p.profileStats.strength,
         toughness: p.profileStats.toughness === profile.profileStats.toughness ? NaN : p.profileStats.toughness,
         wounds: p.profileStats.wounds === profile.profileStats.wounds ? NaN : p.profileStats.wounds,
-        attacks: p.profileStats.attacks === profile.profileStats.attacks ? NaN : p.profileStats.attacks,
+        attacks: p.profileStats.attacks === profile.profileStats.attacks ? '-' : p.profileStats.attacks,
         leadership: p.profileStats.leadership === profile.profileStats.leadership ? NaN : p.profileStats.leadership,
         save: p.profileStats.save === profile.profileStats.save ? NaN : p.profileStats.save,
         invulnerable_save: p.profileStats.invulnerable_save === profile.profileStats.invulnerable_save ? NaN : p.profileStats.invulnerable_save
@@ -147,7 +151,7 @@ const parseUnitSelection = (unitSelectionNode: Node): Unit => {
   let profiles = _.uniqBy([
     ...nodeMap("bs:profiles/bs:profile[@typeName='Unit']", unitSelectionNode, parseUnitProfile),
     ...nodeMap("bs:selections/bs:selection/bs:profiles/bs:profile[@typeName='Unit']", unitSelectionNode, parseUnitProfile)
-  ], (p) => p.hash)
+  ], (p) => p.hash).sort((a: Profile, b: Profile) => (a.name.localeCompare(b.name)))
   const abilities = [
     ...nodeMap("bs:profiles/bs:profile[@typeName='Abilities']", unitSelectionNode, parseAbility),
     ...nodeMap("bs:selections/bs:selection/bs:profiles/bs:profile[@typeName='Abilities']", unitSelectionNode, parseAbility)

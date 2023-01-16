@@ -43,13 +43,13 @@ export function StatsTable (props: Props): JSX.Element {
         {props.profiles[0]?.degradedProfiles.map((profile) => (
           <tr key={`statline-degraded-${profile.name}`}>
             <td>... {profile.name}</td>
-            <td>{isNaN(profile.profileStats.movement) ? '-' : `${profile.profileStats.movement}`}</td>
+            <td>{isNaN(profile.profileStats.movement) ? '-' : `${profile.profileStats.movement}"`}</td>
             <td>{isNaN(profile.profileStats.weapon_skill) ? '-' : `${profile.profileStats.weapon_skill}+`}</td>
             <td>{isNaN(profile.profileStats.ballistic_skill) ? '-' : `${profile.profileStats.ballistic_skill}+`}</td>
             <td>{isNaN(profile.profileStats.strength) ? '-' : `${profile.profileStats.strength}`}</td>
             <td>{isNaN(profile.profileStats.toughness) ? '-' : `${profile.profileStats.toughness}`}</td>
             <td>{isNaN(profile.profileStats.wounds) ? '-' : profile.profileStats.wounds}</td>
-            <td>{isNaN(profile.profileStats.attacks) ? '-' : `${profile.profileStats.attacks}`}</td>
+            <td>{profile.profileStats.attacks}</td>
             <td>{isNaN(profile.profileStats.leadership) ? '-' : `${profile.profileStats.leadership}`}</td>
             <td>{isNaN(profile.profileStats.save) ? '-' : `${profile.profileStats.save}+`}</td>
           </tr>
