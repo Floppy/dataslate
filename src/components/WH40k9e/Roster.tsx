@@ -4,6 +4,7 @@ import { CloseButton } from '../CloseButton'
 import { StratagemList } from './StratagemList'
 import { Settings } from '../../types/Settings'
 import Phase from './Phase'
+import { AbilityList } from './AbilityList'
 import { NoPhaseDetails } from './NoPhaseDetails'
 import { DeploymentPhaseDetails } from './DeploymentPhaseDetails'
 import { BattleRoundStartPhaseDetails } from './BattleRoundStartPhaseDetails'
@@ -15,12 +16,14 @@ import { ChargePhaseDetails } from './ChargePhaseDetails'
 import { FightPhaseDetails } from './FightPhaseDetails'
 import { MoralePhaseDetails } from './MoralePhaseDetails'
 import { Unit, Stratagem } from '../../types/WH40k9e'
+import { Ability } from '../../types/Ability'
 
 interface Props {
   name: string
   faction: string
   subfaction: string
   units: Unit[]
+  abilities: Ability[]
   stratagems: Stratagem[]
   onClose: (event: MouseEvent<HTMLButtonElement>) => void
   settings: Settings
@@ -38,7 +41,7 @@ export function Roster (props: Props): JSX.Element {
     <>
       <h1 style={headingStyle}>
         <Col>
-          {props.name} <small>({[props.faction, props.subfaction].join(", ")})</small>
+          {props.name} <small>({[props.faction, props.subfaction].join(', ')})</small>
         </Col>
         <Col style={{ flexGrow: 0, textAlign: 'right' }}>
           <CloseButton onClose={props.onClose} />
@@ -56,6 +59,7 @@ export function Roster (props: Props): JSX.Element {
         <StratagemList phase='' stratagems={props.stratagems} />
       </Phase>
       <Phase name='deployment'>
+        <AbilityList abilities={props.abilities} phase='deployment' />
         <>
           {props.units.map((unit: Unit) => (
             <DeploymentPhaseDetails key={unit.id} unit={unit} />
@@ -64,6 +68,7 @@ export function Roster (props: Props): JSX.Element {
         </>
       </Phase>
       <Phase name='start of battle round'>
+        <AbilityList abilities={props.abilities} phase='battle_round_start' />
         <>
           {props.units.map((unit: Unit) => (
             <BattleRoundStartPhaseDetails key={unit.id} unit={unit} />
@@ -72,6 +77,7 @@ export function Roster (props: Props): JSX.Element {
         </>
       </Phase>
       <Phase name='command'>
+        <AbilityList abilities={props.abilities} phase='command' />
         <>
           {props.units.map((unit: Unit) => (
             <CommandPhaseDetails key={unit.id} unit={unit} />
@@ -80,6 +86,7 @@ export function Roster (props: Props): JSX.Element {
         <StratagemList phase='command' stratagems={props.stratagems} />
       </Phase>
       <Phase name='movement'>
+        <AbilityList abilities={props.abilities} phase='movement' />
         <>
           {props.units.map((unit: Unit) => (
             <MovementPhaseDetails key={unit.id} unit={unit} />
@@ -89,6 +96,7 @@ export function Roster (props: Props): JSX.Element {
       </Phase>
       <Phase name='psychic'>
         <>
+          <AbilityList abilities={props.abilities} phase='psychic' />
           {props.units.map((unit: Unit) => (
             <PsychicPhaseDetails key={unit.id} unit={unit} />
           ))}
@@ -96,6 +104,7 @@ export function Roster (props: Props): JSX.Element {
         <StratagemList phase='psychic' stratagems={props.stratagems} />
       </Phase>
       <Phase name='shooting'>
+        <AbilityList abilities={props.abilities} phase='shooting' />
         <>
           {props.units.map((unit: Unit) => (
             <ShootingPhaseDetails key={unit.id} unit={unit} />
@@ -104,6 +113,7 @@ export function Roster (props: Props): JSX.Element {
         <StratagemList phase='shooting' stratagems={props.stratagems} />
       </Phase>
       <Phase name='charge'>
+        <AbilityList abilities={props.abilities} phase='charge' />
         <>
           {props.units.map((unit: Unit) => (
             <ChargePhaseDetails key={unit.id} unit={unit} />
@@ -112,6 +122,7 @@ export function Roster (props: Props): JSX.Element {
         <StratagemList phase='charge' stratagems={props.stratagems} />
       </Phase>
       <Phase name='fight'>
+        <AbilityList abilities={props.abilities} phase='fight' />
         <>
           {props.units.map((unit: Unit) => (
             <FightPhaseDetails key={unit.id} unit={unit} />
@@ -120,6 +131,7 @@ export function Roster (props: Props): JSX.Element {
         <StratagemList phase='fight' stratagems={props.stratagems} />
       </Phase>
       <Phase name='morale'>
+        <AbilityList abilities={props.abilities} phase='morale' />
         <>
           {props.units.map((unit: Unit) => (
             <MoralePhaseDetails key={unit.id} unit={unit} />

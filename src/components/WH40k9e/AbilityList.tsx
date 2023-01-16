@@ -5,20 +5,22 @@ import _ from 'lodash'
 
 interface Props {
   abilities: Ability[]
-  phase: string
-  highlight?: boolean
+  phase?: string
 }
 
 export function AbilityList (props: Props): JSX.Element {
-  const abilities = props.phase !== ''
-    ? props.abilities.filter((x) => (x.phases?.includes(props.phase)))
-    : props.abilities.filter((x) => (x.phases?.length === 0))
-  const variant = props.highlight === true ? 'primary' : ''
+  let abilities = props.abilities
+  console.log(abilities)
+  if (typeof (props.phase) === 'string') {
+    abilities = props.phase !== ''
+      ? props.abilities.filter((x) => (x.phases?.includes(props.phase as string)))
+      : props.abilities.filter((x) => (x.phases?.length === 0))
+  }
 
   return abilities.length === 0
     ? <></>
     : (
-      <Table striped bordered size='sm' variant={variant}>
+      <Table striped bordered size='sm'>
         <thead>
           <tr>
             <th>Ability</th>

@@ -7,6 +7,7 @@ export interface Roster {
   name: string
   units: Unit[]
   stratagems: Stratagem[]
+  abilities: Ability[]
 }
 
 export interface Profile {

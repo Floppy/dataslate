@@ -196,12 +196,16 @@ export const parseBattlescribeXML = (doc: Document): Roster => {
     name: stringAttr('/bs:roster/@name', doc),
     faction,
     subfaction: stringAttr(`/bs:roster/bs:forces/bs:force/bs:selections/bs:selection[
-      ${ subfactionChoiceNames.map((x) => (`@name='${x}'`)).join(' or ') }
+      ${subfactionChoiceNames.map((x) => (`@name='${x}'`)).join(' or ')}
     ]//bs:selections/bs:selection/@name`, doc),
     units,
     stratagems: stratagems.filter((s) => (
       (s.faction === null || s.faction === faction) &&
       (s.datasheets.length === 0 || _.intersection(s.datasheets, datasheetNames).length > 0)
-    ))
+    )),
+    abilities: [
+      ...nodeMap("/bs:roster/bs:forces/bs:force/bs:selections/bs:selection[@type='upgrade']/bs:profiles/bs:profile[@typeName='Abilities']", doc, parseAbility),
+      ...nodeMap("/bs:roster/bs:forces/bs:force/bs:selections/bs:selection[@type='upgrade']/bs:selections/bs:selection[@type='upgrade']/bs:profiles/bs:profile[@typeName='Abilities']", doc, parseAbility)
+    ]
   }
 }
