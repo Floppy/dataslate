@@ -7,6 +7,28 @@ import { calculatePhases } from './Abilities'
 import { stratagems } from './Stratagems'
 import slugify from 'slugify'
 
+const subfactionChoiceNames: string[] = [
+  'Craftworld Selection', // Aeldari
+  'Obsession', // Drukhari
+  'Dread Household', // Chaos Knights
+  'Legion', // Chaos Space Marines
+  'Chaos Allegiance', // Chaos Daemons
+  'Plague Company', // Death Guard
+  'Cults of the Legion', // Thousand Sons
+  'Order Convictions', // Adepta Sororitas
+  'Shield Host', // Adeptus Custodes
+  'Forge World Choice', // Adeptus Mechanicus
+  'Brotherhood', // Grey Knights
+  'Chapter Selection', // Space Marines
+  '**Chapter Selector**', // Space Marines
+  'League', // Votann
+  'Dynasty Choice', // Necrons
+  'Clan Kultur', // Orks
+  'Sept Choice', // T'au
+  'Cult Creed', // Genestealer Cults
+  'Hive Fleet' // Tyranids
+]
+
 const stat = (name: string, node: Node): number => (
   numericContent(`.//bs:characteristic[@name='${name}']`, node)
 )
@@ -173,6 +195,9 @@ export const parseBattlescribeXML = (doc: Document): Roster => {
     system: 'WH40k9e',
     name: stringAttr('/bs:roster/@name', doc),
     faction,
+    subfaction: stringAttr(`/bs:roster/bs:forces/bs:force/bs:selections/bs:selection[
+      ${ subfactionChoiceNames.map((x) => (`@name='${x}'`)).join(' or ') }
+    ]//bs:selections/bs:selection/@name`, doc),
     units,
     stratagems: stratagems.filter((s) => (
       (s.faction === null || s.faction === faction) &&

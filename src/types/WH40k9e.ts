@@ -3,6 +3,7 @@ import { Ability } from './Ability'
 export interface Roster {
   system: string
   faction: string
+  subfaction: string
   name: string
   units: Unit[]
   stratagems: Stratagem[]

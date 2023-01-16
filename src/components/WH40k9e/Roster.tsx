@@ -19,6 +19,7 @@ import { Unit, Stratagem } from '../../types/WH40k9e'
 interface Props {
   name: string
   faction: string
+  subfaction: string
   units: Unit[]
   stratagems: Stratagem[]
   onClose: (event: MouseEvent<HTMLButtonElement>) => void
@@ -37,7 +38,7 @@ export function Roster (props: Props): JSX.Element {
     <>
       <h1 style={headingStyle}>
         <Col>
-          {props.name} ({props.faction})
+          {props.name} <small>({[props.faction, props.subfaction].join(", ")})</small>
         </Col>
         <Col style={{ flexGrow: 0, textAlign: 'right' }}>
           <CloseButton onClose={props.onClose} />
