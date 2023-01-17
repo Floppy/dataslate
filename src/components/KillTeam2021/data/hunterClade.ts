@@ -78,7 +78,10 @@ const tacOps: TacOp[] = [
   - At the end of any Turning Point, if an Imperative is active for your kill team, and the total wounds lost by enemy operatives during that Turning Point is greater than
     that lost by friendly operatives, you score 1VP
   - At the end of any Turning Point, if a different Imperative is active for your kill team, and the total wounds lost by enemy operatives during that Turning Point is
-    greater than that lost by friendly operatives, you score 1VP`
+    greater than that lost by friendly operatives, you score 1VP
+    
+When counting wounds lost for this Tac Op, if an operative is reduced to 0 wounds, ignore excess wounds lost. For example, if 5
+damage is inflicted on an operative with 2 wounds remaining, count 2 wounds lost.’`
   }, {
     id: 3,
     name: 'Assassination Order',

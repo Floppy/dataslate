@@ -17,7 +17,8 @@ const strategicPloys: Ploy[] = [
     name: 'Lurk',
     cost: 1,
     description: `Until the end of the Turning Point, each time a shooting attack is made against a friendly HIVE FLEET💀 operative, in the Roll Defence Dice step of that shooting attack, before
-                  rolling your defence dice, if it is in Cover and either has a Conceal order or is ready, one additional dice can be retained as a successful normal save as a result of Cover.`
+                  rolling your defence dice, if it is in Cover and either has a Conceal order or is ready, one additional dice can be retained as a successful normal save as a result of Cover 
+                  regardless of any rules that treat the operative as having an Engage order (e.g. Vantage Point).`
   }, {
     name: 'Feed',
     cost: 1,
