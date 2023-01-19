@@ -20,7 +20,10 @@ const strategicPloys: Ploy[] = [
     description: `Until the end of the Turning Point or until it makes a shooting attack, each friendly **VOID-DANCER TROUPE💀** 
         operative has a domino field. For the purposes of determining Line of Sight, while a friendly operative with a domino field
         is within ▲ of a terrain feature and more than ⬟ from the active operative, the active operative always treats that friendly
-        operative as having a Conceal order, regardless of any other rules (e.g. Vantage Point).`
+        operative as having a Conceal order, regardless of any other rules (e.g. Vantage Point).
+        
+        This Strategic Ploy costs 1 additional Command point for each previous time you've used it during the battle (e.g. 1CP the 
+        first time you would use it, 2CP the secod time, etc.).`
   },
   {
     name: 'Prismatic Blur',

@@ -13,7 +13,7 @@ const strategicPloys: Ploy[] = [
     name: 'Cut-Throats',
     cost: 1,
     description: `Until the end of the Turning Point, add 1 to the Attacks characteristic of melee weapons
-    friendly **FARSTALKER KINBAND💀** operatives are equipped with (to a maximum of 4).`
+    friendly **FARSTALKER KINBAND💀** operatives are equipped with (to a maximum of 5).`
   },
   {
     name: 'Farstalk',

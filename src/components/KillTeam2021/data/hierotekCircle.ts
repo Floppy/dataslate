@@ -74,7 +74,7 @@ const tacticalPloys: Ploy[] = [
   },
   {
     name: 'Commence Reanimation',
-    cost: 1,
+    cost: 0,
     description: `Use this Tactical Ploy when a friendly **HIEROTEK CIRCLE💀** operative is incapacitated for the first
     time during the battle. That operative attempts reanimation (pg 53).`
   }
