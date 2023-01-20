@@ -37,7 +37,9 @@ const strategicPloys: Ploy[] = [
     same rules as a **Normal Move** action, with the following exceptions:
 * It can only move up to ■.
 * It can move within Engagement Range of enemy operatives.
-* If it can, it must finish the move within Engagement Range of the closest Visible enemy operative.`
+* If it can, it must finish the move within Engagement Range of the closest Visible enemy operative.
+* It can do so even if it's performed a **Normal Move** or **Charge** action during the activation, and vice versa, doing so doesn't
+prevent it from subsequently performing a **Normal Move** or **Charge** action during that activation in the normal manner.`
   },
   {
     name: 'Mutagenic Flesh',
@@ -101,7 +103,7 @@ const tacticalPloys: Ploy[] = [
   {
     name: 'Mutability and Change',
     cost: 1,
-    description: `Use this Tactical Ploy during a friendly **TZEENTCH** operative's activation. Add 1 to
+    description: `Use this Tactical Ploy when a friendly **TZEENTCH** operative is activated. Add 1 to
     that operative's APL.`
   },
   {
@@ -144,13 +146,15 @@ const tacOps: TacOp[] = [
   },
   {
     id: 2,
-    name: 'Desecration',
+    name: 'Dark Desecration',
     description: `Reveal this Tac Op in the Target Reveal stage of the first Turning Point. Select one terrain
     feature that includes any parts with the Heavy trait.
 
 * If two or more enemy operatives are incapacitated while within ▲ of that terrain feature, you score 1VP.
 * If you achieve the first condition and at the end of the battle the total APL of friendly operatives
-within ▲ of that terrain feature is greater than that of enemy operatives, you score 1VP.`
+within ▲ of that terrain feature is greater than that of enemy operatives, you score 1VP.
+
+This Tac Op is not in use when the Close Quarters rules are in effect.`
   },
   {
     id: 3,

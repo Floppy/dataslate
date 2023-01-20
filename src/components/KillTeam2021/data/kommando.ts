@@ -26,7 +26,8 @@ const strategicPloys: Ploy[] = [
     name: 'Skulk about',
     cost: 1,
     description: `Until the end of the Turning Point, each time a shooting attack is made against a friendly KOMMANDO💀 operative, before rolling defence dice for that shooting attack,
-                  if it has a Conceal order, you can retain one as a successfull normal save without rolling it.`
+                  if it has a Conceal order, you can retain one as a successfull normal save without rolling it, regardless of any rules that treat the operative as
+                  having an Engage order (e.g. Vantage Point).`
   }
 ]
 
@@ -54,7 +55,9 @@ const tacOps: TacOp[] = [
     name: 'Blow it up!',
     description: `You can reveal this Tac Op in the Target Reveal step of the first Turning Point.
                  Your opponent selects one terrain feature that includes any parts with the Heavy trait to be their bulwark.
-  - If a friendly operative performs the **'Blow it up!'** action, you score 2VPs`,
+  - If a friendly operative performs the **'Blow it up!'** action, you score 2VPs
+  
+  Tac Op not in use if Close Quarters rules are in effect.`,
     action: {
       id: 'c5599e16-997d-47e9-ae64-7cdc8cd6d123',
       name: 'Blow it up!',
