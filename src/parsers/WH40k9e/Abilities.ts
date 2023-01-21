@@ -2,9 +2,12 @@ import _ from 'lodash'
 import { Ability } from '../../types/Ability'
 
 const phasePatterns = {
+  muster: [
+    / taking up a battlefield role slot/,
+    / Relic replaces/,
+  ],
   before_battle: [
-    / before the battle/,
-    / without taking up a battlefield role slot/
+    / before the battle/
   ],
   deployment: [
     / deployment/,
@@ -83,6 +86,7 @@ const phasePatterns = {
 const genericPatterns = [
   / loses? a wound /,
   / model is destroyed/,
+  / model in this unit is destroyed/,
   / attack is allocated/,
   / as a result of an attack/,
   / an attack is made against this (model|unit)/,
@@ -90,24 +94,8 @@ const genericPatterns = [
 ]
 
 const antiPatterns = {
-  deployment: [
-  ],
-  battle_round_start: [
-  ],
-  command: [
-  ],
-  movement: [
-  ],
-  psychic: [
-  ],
   shooting: [
     /not equipped with any ranged weapons/
-  ],
-  charge: [
-  ],
-  fight: [
-  ],
-  morale: [
   ]
 }
 
