@@ -59,10 +59,15 @@ span {
 
 .WH40k9e {
 
-  .phase-morale .card-columns, .phase-charge .card-columns, .phase-movement .card-columns {
+  .phase-morale .units, .phase-movement .units {
     -webkit-column-count: 2;
     -moz-column-count: 2;
     column-count: 2;
+
+    .card {
+      border: 0;
+    }
+
   }
 
   @media print {

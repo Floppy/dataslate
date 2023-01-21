@@ -87,7 +87,7 @@ export function Roster (props: Props): JSX.Element {
       </Phase>
       <Phase name='movement'>
         <AbilityList abilities={props.abilities} phase='movement' />
-        <CardColumns>
+        <CardColumns className="units">
           {props.units.map((unit: Unit) => (
             <MovementPhaseDetails key={unit.id} unit={unit} />
           ))}
@@ -132,7 +132,7 @@ export function Roster (props: Props): JSX.Element {
       </Phase>
       <Phase name='morale'>
         <AbilityList abilities={props.abilities} phase='morale' />
-        <CardColumns>
+        <CardColumns className="units">
           {props.units.map((unit: Unit) => (
             <MoralePhaseDetails key={unit.id} unit={unit} />
           ))}

@@ -21,7 +21,7 @@ export function StratagemList (props: Props): JSX.Element {
     : props.stratagems.filter((x) => (x.phases?.length === 0))
   return stratagems.length > 0
     ? (
-      <Card>
+      <Card className='stratagems'>
         <Card.Header style={{ ...headingStyle }} as='h3'>Stratagems</Card.Header>
         <Card.Body className='clearfix'>
           <CardColumns>
