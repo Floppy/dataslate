@@ -14,7 +14,9 @@ export function BattleRoundStartPhaseDetails (props: Props): JSX.Element {
     hasAbilitiesForPhase(props.unit.abilities, 'battle_round_start')
       ? (
         <>
-          <Row>
+          <Row style={{
+            pageBreakInside: 'avoid'
+          }}>
             <Col sm='12'>
               <UnitTitle name={props.unit.name} uuid={props.unit.id} datasheet={props.unit.datasheet} />
             </Col>

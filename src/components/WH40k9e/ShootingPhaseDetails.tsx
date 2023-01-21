@@ -13,7 +13,9 @@ interface Props {
 
 export function ShootingPhaseDetails (props: Props): JSX.Element {
   return (
-    <Row>
+    <Row style={{
+      pageBreakInside: 'avoid'
+    }}>
       <Col sm='10'>
         <UnitTitle name={props.unit.name} uuid={props.unit.id} datasheet={props.unit.datasheet} />
         {
