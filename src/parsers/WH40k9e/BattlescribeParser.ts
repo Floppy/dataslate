@@ -195,16 +195,18 @@ export const parseBattlescribeXML = (doc: Document): Roster => {
   const units = nodeMap("/bs:roster/bs:forces/bs:force/bs:selections/bs:selection[@type='unit' or @type='model']", doc, parseUnitSelection)
   const datasheetNames = units.map((u) => slugify(u.datasheet, { lower: true, strict: true }))
   const faction = stringAttr('/bs:roster/bs:forces/bs:force/@catalogueName', doc).split(' - ').pop() ?? 'Unknown'
+  const subfaction = stringAttr(`/bs:roster/bs:forces/bs:force/bs:selections/bs:selection[
+    ${subfactionChoiceNames.map((x) => (`@name='${x}'`)).join(' or ')}
+  ]//bs:selections/bs:selection/@name`, doc)
   return {
     system: 'WH40k9e',
     name: stringAttr('/bs:roster/@name', doc),
     faction,
-    subfaction: stringAttr(`/bs:roster/bs:forces/bs:force/bs:selections/bs:selection[
-      ${subfactionChoiceNames.map((x) => (`@name='${x}'`)).join(' or ')}
-    ]//bs:selections/bs:selection/@name`, doc),
+    subfaction,
     units,
     stratagems: stratagems.filter((s) => (
       (s.faction === null || s.faction === faction) &&
+      (s.subfaction === null || s.subfaction === subfaction) &&
       (s.datasheets.length === 0 || _.intersection(s.datasheets, datasheetNames).length > 0)
     )),
     abilities: [
