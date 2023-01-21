@@ -8,6 +8,14 @@ $theme-colors: (
 
 @import "~bootstrap/scss/bootstrap";
 
+@media print {
+  .card-columns {
+      -webkit-column-count: 2;
+      -moz-column-count: 2;
+      column-count: 2;
+  }
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
