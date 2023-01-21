@@ -23,7 +23,7 @@ export function StratagemList (props: Props): JSX.Element {
     ? (
       <Card>
         <Card.Header style={{ ...headingStyle }} as='h3'>Stratagems</Card.Header>
-        <Card.Body>
+        <Card.Body className="clearfix">
           <CardColumns>
             {stratagems.map((stratagem) => (
               <Card key={stratagem.id} border='secondary' bg='light'>
@@ -42,7 +42,7 @@ export function StratagemList (props: Props): JSX.Element {
             ))}
           </CardColumns>
         </Card.Body>
-        <Card.Footer>Powered by <a href='https://wahapedia.ru'>Wahapedia</a></Card.Footer>
+        <Card.Footer className='d-print-none'>Powered by <a href='https://wahapedia.ru'>Wahapedia</a></Card.Footer>
       </Card>)
     : <></>
 }

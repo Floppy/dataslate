@@ -15,7 +15,8 @@ export function UnitTitle (props: Props): JSX.Element {
     padding: '5px',
     display: 'flex',
     width: '100%',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    marginBottom: '0'
   }
   const titleComponents = _.without([
     props.name,

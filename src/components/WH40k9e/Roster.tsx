@@ -47,12 +47,12 @@ export function Roster (props: Props): JSX.Element {
           <CloseButton onClose={props.onClose} />
         </Col>
       </h1>
-      <p className='alert alert-info'>
+      <p className='alert alert-info d-print-none'>
         40k support is under active development, check back soon for improvements! If you spot anything broken,
         please file a report <a href='https://github.com/floppy/dataslate/issues/new'>on GitHub</a> including
         your roster file.
       </p>
-      <Phase name='Overview'>
+      <Phase name=''>
         {props.units.map((unit: Unit) => (
           <NoPhaseDetails key={unit.id} unit={unit} />
         ))}
