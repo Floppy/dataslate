@@ -8,14 +8,6 @@ $theme-colors: (
 
 @import "~bootstrap/scss/bootstrap";
 
-@media print {
-  .card-columns {
-      -webkit-column-count: 2;
-      -moz-column-count: 2;
-      column-count: 2;
-  }
-}
-
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -63,4 +55,14 @@ span {
 
 .jumbotron {
   background: linear-gradient(90deg, lightgray 50%, transparent), black url('images/background.jpeg') right/contain no-repeat;
+}
+
+.WH40k9e {
+  @media print {
+    .card-columns {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+    }
+  }
 }

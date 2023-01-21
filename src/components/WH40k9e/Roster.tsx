@@ -38,7 +38,7 @@ export function Roster (props: Props): JSX.Element {
     display: 'flex'
   }
   return (
-    <>
+    <div className="WH40k9e">
       <h1 style={headingStyle}>
         <Col>
           {props.name} <small>({[props.faction, props.subfaction].join(', ')})</small>
@@ -139,6 +139,6 @@ export function Roster (props: Props): JSX.Element {
         </>
         <StratagemList phase='morale' stratagems={props.stratagems} />
       </Phase>
-    </>
+    </div>
   )
 }
