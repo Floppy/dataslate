@@ -139,6 +139,10 @@ export function Roster (props: Props): JSX.Element {
         </>
         <StratagemList phase='morale' stratagems={props.stratagems} />
       </Phase>
+      <Phase name='At the end of your turn'>
+        <AbilityList abilities={props.abilities} phase='end_of_turn' />
+        <StratagemList phase='end_of_turn' stratagems={props.stratagems} />
+      </Phase>
     </div>
   )
 }
