@@ -114,11 +114,11 @@ export function Roster (props: Props): JSX.Element {
       </Phase>
       <Phase name='charge'>
         <AbilityList abilities={props.abilities} phase='charge' />
-        <CardColumns>
+        <>
           {props.units.map((unit: Unit) => (
             <ChargePhaseDetails key={unit.id} unit={unit} />
           ))}
-        </CardColumns>
+        </>
         <StratagemList phase='charge' stratagems={props.stratagems} />
       </Phase>
       <Phase name='fight'>
