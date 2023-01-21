@@ -1,6 +1,6 @@
 import React from 'react'
 import { StatBadge } from '../StatBadge'
-import { Row, Col } from 'react-bootstrap'
+import { Row, Col, Card } from 'react-bootstrap'
 import { UnitTitle } from './UnitTitle'
 import { ProfileTitle } from './ProfileTitle'
 import { AbilityList } from './AbilityList'
@@ -12,9 +12,9 @@ interface Props {
 
 export function MoralePhaseDetails (props: Props): JSX.Element {
   return (
-    <>
+    <Card>
       <Row>
-        <Col sm='11'>
+        <Col sm='10'>
           <UnitTitle name={props.unit.name} uuid={props.unit.id} datasheet={props.unit.datasheet} />
           {
             props.unit.profiles.length > 1
@@ -25,12 +25,12 @@ export function MoralePhaseDetails (props: Props): JSX.Element {
           }
           <AbilityList abilities={props.unit.abilities} phase='morale' />
         </Col>
-        <Col sm='1' className='px-1'>
+        <Col sm='2' className='px-1'>
           {props.unit.profiles.map((profile: Profile) => (
             <StatBadge name='Ld' value={profile.profileStats.leadership.toString()} key={`badge-ld-${profile.id}`} />
           ))}
         </Col>
       </Row>
-    </>
+    </Card>
   )
 }

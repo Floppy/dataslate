@@ -1,5 +1,5 @@
 import React, { MouseEvent } from 'react'
-import { Col } from 'react-bootstrap'
+import { Col, CardColumns } from 'react-bootstrap'
 import { CloseButton } from '../CloseButton'
 import { StratagemList } from './StratagemList'
 import { Settings } from '../../types/Settings'
@@ -87,11 +87,11 @@ export function Roster (props: Props): JSX.Element {
       </Phase>
       <Phase name='movement'>
         <AbilityList abilities={props.abilities} phase='movement' />
-        <>
+        <CardColumns>
           {props.units.map((unit: Unit) => (
             <MovementPhaseDetails key={unit.id} unit={unit} />
           ))}
-        </>
+        </CardColumns>
         <StratagemList phase='movement' stratagems={props.stratagems} />
       </Phase>
       <Phase name='psychic'>
@@ -114,11 +114,11 @@ export function Roster (props: Props): JSX.Element {
       </Phase>
       <Phase name='charge'>
         <AbilityList abilities={props.abilities} phase='charge' />
-        <>
+        <CardColumns>
           {props.units.map((unit: Unit) => (
             <ChargePhaseDetails key={unit.id} unit={unit} />
           ))}
-        </>
+        </CardColumns>
         <StratagemList phase='charge' stratagems={props.stratagems} />
       </Phase>
       <Phase name='fight'>
@@ -132,11 +132,11 @@ export function Roster (props: Props): JSX.Element {
       </Phase>
       <Phase name='morale'>
         <AbilityList abilities={props.abilities} phase='morale' />
-        <>
+        <CardColumns>
           {props.units.map((unit: Unit) => (
             <MoralePhaseDetails key={unit.id} unit={unit} />
           ))}
-        </>
+        </CardColumns>
         <StratagemList phase='morale' stratagems={props.stratagems} />
       </Phase>
       {props.stratagems.filter((x) => (x.phases?.includes('end_of_turn'))).length > 0

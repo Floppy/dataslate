@@ -4,7 +4,7 @@ import { Ability } from '../../types/Ability'
 const phasePatterns = {
   muster: [
     / taking up a battlefield role slot/,
-    / Relic replaces/,
+    / Relic replaces/
   ],
   before_battle: [
     / before the battle/

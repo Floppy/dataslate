@@ -9,9 +9,10 @@ interface Props {
 
 function Phase (props: Props): JSX.Element {
   return (
-    <div style={{
-      pageBreakAfter: 'always'
-    }}
+    <div
+      className={`phase-${props.name}`} style={{
+        pageBreakAfter: 'always'
+      }}
     >
       {props.name !== ''
         ? (
