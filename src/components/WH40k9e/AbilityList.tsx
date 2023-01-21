@@ -10,7 +10,6 @@ interface Props {
 
 export function AbilityList (props: Props): JSX.Element {
   let abilities = props.abilities
-  console.log(abilities)
   if (typeof (props.phase) === 'string') {
     abilities = props.phase !== ''
       ? props.abilities.filter((x) => (x.phases?.includes(props.phase as string)))
