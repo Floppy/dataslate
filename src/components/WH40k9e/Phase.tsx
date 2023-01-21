@@ -13,8 +13,9 @@ function Phase (props: Props): JSX.Element {
       pageBreakAfter: 'always'
     }}
     >
-      { props.name
-        ? <h2 style={{
+      {props.name !== ''
+        ? (
+          <h2 style={{
             background: '#FF6F2D',
             color: 'white',
             padding: '10px',
@@ -31,6 +32,7 @@ function Phase (props: Props): JSX.Element {
               )}
             </Col>
           </h2>
+          )
         : <></>}
       {props.children}
     </div>

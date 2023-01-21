@@ -23,7 +23,7 @@ export function StratagemList (props: Props): JSX.Element {
     ? (
       <Card>
         <Card.Header style={{ ...headingStyle }} as='h3'>Stratagems</Card.Header>
-        <Card.Body className="clearfix">
+        <Card.Body className='clearfix'>
           <CardColumns>
             {stratagems.map((stratagem) => (
               <Card key={stratagem.id} border='secondary' bg='light'>
