@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, Col, Card } from 'react-bootstrap'
+import { Row, Col } from 'react-bootstrap'
 import { UnitTitle } from './UnitTitle'
 import { AbilityList, hasAbilitiesForPhase } from './AbilityList'
 import { Unit } from '../../types/WH40k9e'
