@@ -16,7 +16,8 @@ export function BattleRoundStartPhaseDetails (props: Props): JSX.Element {
         <>
           <Row style={{
             pageBreakInside: 'avoid'
-          }}>
+          }}
+          >
             <Col sm='12'>
               <UnitTitle name={props.unit.name} uuid={props.unit.id} datasheet={props.unit.datasheet} />
             </Col>

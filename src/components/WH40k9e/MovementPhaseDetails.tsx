@@ -15,7 +15,8 @@ export function MovementPhaseDetails (props: Props): JSX.Element {
     <Card>
       <Row style={{
         pageBreakInside: 'avoid'
-      }}>
+      }}
+      >
         <Col sm='10'>
           <UnitTitle name={props.unit.name} uuid={props.unit.id} datasheet={props.unit.datasheet} />
           {

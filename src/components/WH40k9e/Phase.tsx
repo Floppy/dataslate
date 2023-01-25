@@ -11,7 +11,7 @@ function Phase (props: Props): JSX.Element {
   return (
     <div
       className={`phase-${props.name}`} style={{
-        pageBreakInside: 'avoid'
+        pageBreakInside: props.name === '' ? 'auto' : 'avoid'
       }}
     >
       {props.name !== ''
