@@ -4,4 +4,5 @@ export interface Ability {
   description: string
   phases?: string[]
   rule?: boolean
+  hash?: string
 }

@@ -63,11 +63,15 @@ const parseUnitProfile = (unitProfileNode: Node): Profile => {
 
 const parseAbility = (node: Node): Ability => {
   const description = stringContent(".//bs:characteristic[@name='Description']", node)
-  return {
-    id: stringAttr('@id', node),
+  const details = {
     name: stringAttr('@name', node),
     description: description ?? '',
     phases: description !== '' ? calculatePhases(description) : []
+  }
+  return {
+    ...details,
+    hash: hasher({}).hash(details),
+    id: stringAttr('@id', node)
   }
 }
 
@@ -152,10 +156,11 @@ const parseUnitSelection = (unitSelectionNode: Node): Unit => {
     ...nodeMap("bs:profiles/bs:profile[@typeName='Unit']", unitSelectionNode, parseUnitProfile),
     ...nodeMap("bs:selections/bs:selection/bs:profiles/bs:profile[@typeName='Unit']", unitSelectionNode, parseUnitProfile)
   ], (p) => p.hash).sort((a: Profile, b: Profile) => (a.name.localeCompare(b.name)))
-  const abilities = [
+  const abilities = _.uniqBy([
     ...nodeMap("bs:profiles/bs:profile[@typeName='Abilities']", unitSelectionNode, parseAbility),
-    ...nodeMap("bs:selections/bs:selection/bs:profiles/bs:profile[@typeName='Abilities']", unitSelectionNode, parseAbility)
-  ]
+    ...nodeMap("bs:selections/bs:selection/bs:profiles/bs:profile[@typeName='Abilities']", unitSelectionNode, parseAbility),
+    ...nodeMap("bs:selections/bs:selection/bs:selections/bs:selection/bs:profiles/bs:profile[@typeName='Abilities']", unitSelectionNode, parseAbility)
+  ], (p) => p.hash)
   profiles = handleDegradingProfiles(profiles)
   profiles = handleInvulnerableSaves(profiles, abilities)
   return {
