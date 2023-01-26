@@ -14,7 +14,7 @@ import { DataDevPage } from './components/KillTeam2021/DataDevPage'
 import { DEFAULT_SETTINGS, Settings } from './types/Settings'
 
 export function App (): JSX.Element {
-  const [roster, setRoster] = useState<Roster2018|Roster2021|RosterWH40k9e|null>(null)
+  const [roster, setRoster] = useState<Roster2018 | Roster2021 | RosterWH40k9e | null>(null)
 
   const [settings, setSettings] = useState(DEFAULT_SETTINGS)
 

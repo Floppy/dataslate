@@ -64,11 +64,11 @@ const parsePsychicPower = (power: Node): PsychicPower => {
     id: xpSelect('string(@id)', power, true).toString(),
     name,
     description: (xpSelect(".//bs:characteristic[@name='Effect']/text()", power, true) ?? '-').toString(),
-    weapon: weapon
+    weapon
   }
 }
 
-const parseAction = (action: Node, psychicDiscipline: string|null, psychicPowers: string|null): Action => {
+const parseAction = (action: Node, psychicDiscipline: string | null, psychicPowers: string | null): Action => {
   const name = xpSelect('string(@name)', action, true).toString() ?? ''
   let description = (xpSelect(".//bs:characteristic[@name='Unique Action']/text()", action, true) ?? '-').toString()
 
@@ -86,8 +86,8 @@ const parseAction = (action: Node, psychicDiscipline: string|null, psychicPowers
 
   return {
     id: xpSelect('string(@id)', action, true).toString(),
-    name: name,
-    description: description,
+    name,
+    description,
     cost: 1
   }
 }
@@ -180,12 +180,12 @@ const parseOperative = (model: Element): Operative => {
     },
     weapons: (xpSelect(".//bs:profile[@typeName='Weapons']", model) as Node[]).map(parseWeapon),
     equipment: (xpSelect(".//bs:selection[(@type='upgrade') and (.//bs:cost/@value!=\"0.0\")]", model) as Node[]).map(parseEquipment),
-    abilities: abilities,
-    actions: actions,
+    abilities,
+    actions,
     rules: (xpSelect('.//bs:rules/bs:rule', model) as Node[]).map(parseRule),
     leader: (xpSelect("string(.//bs:categories/bs:category[@primary='true']/@name)", model, true).toString() === 'Leader'),
-    psychicDiscipline: psychicDiscipline,
-    psychicPowers: psychicPowers,
+    psychicDiscipline,
+    psychicPowers,
     keywords,
     faction
   }

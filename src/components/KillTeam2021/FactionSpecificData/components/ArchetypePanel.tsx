@@ -6,7 +6,7 @@ import { ArchetypeBadge } from './ArchetypeBadge'
 
 interface Props {
   archetypes: Archetype[]
-  archetypeRules: string|null
+  archetypeRules: string | null
 }
 
 export function ArchetypePanel (props: Props): JSX.Element {

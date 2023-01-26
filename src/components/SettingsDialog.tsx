@@ -24,7 +24,7 @@ function SettingsDialog (props: Props): JSX.Element {
     const showWoundTrack: boolean = target.checked
     const newSettings = {
       ...props.settings,
-      showWoundTrack: showWoundTrack
+      showWoundTrack
     }
     props.setSettings(newSettings)
   }

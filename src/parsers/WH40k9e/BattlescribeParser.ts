@@ -84,7 +84,7 @@ const parseWeaponProfile = (node: Node): Weapon => {
     range: numericContent('.//bs:characteristic[@name=\'Range\']', node),
     type: weaponType,
     shots: stringContent('.//bs:characteristic[@name=\'Type\']', node).split(' ').slice(-1)[0],
-    strength: strength,
+    strength,
     armourPiercing: numericContent('.//bs:characteristic[@name=\'AP\']', node),
     damage: stringContent('.//bs:characteristic[@name=\'D\']', node),
     abilities: stringContent('.//bs:characteristic[@name=\'Abilities\']', node)
