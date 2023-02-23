@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "18.14.0"
+    "node": "18.14.2"
   },
   "dependencies": {
     "@sentry/react": "^7.37.2",
