@@ -55,7 +55,7 @@ const tacticalPloys: Ploy[] = [
   {
     name: 'Heinous Arrogance',
     cost: 1,
-    description: `Use this Tactical Ploy when it is your turn to activate a ready friendly operative. You can skip on that activation.`
+    description: 'Use this Tactical Ploy when it is your turn to activate a ready friendly operative. You can skip on that activation.'
   },
   {
     name: 'Prey on the Wounded',
