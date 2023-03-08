@@ -36,6 +36,7 @@ import gellerpoxInfected from './gellerpoxInfected'
 import elucidianStarStriders from './elucidianStarStriders'
 import imperialNavyBreachers from './imperialNavyBreachers'
 import kasrkin from './kasrkin'
+import handOfTheArchon from './handOfTheArchon'
 
 const data = [
   blooded,
@@ -53,6 +54,7 @@ const data = [
   gellerpoxInfected,
   greenskin,
   greyKnights,
+  handOfTheArchon,
   hierotekCircle,
   hiveFleet,
   hunterCadre,
