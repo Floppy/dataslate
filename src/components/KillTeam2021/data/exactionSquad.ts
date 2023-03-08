@@ -4,7 +4,6 @@ const factionLabel = '**EXACTION SQUAD💀**'
 const pentagon = '⬟'
 const circle = '⬤'
 const square = '■'
-const triangle = ''
 
 const archetypes: FireteamArchetypes = {
   fireteams: {

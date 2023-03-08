@@ -6,7 +6,7 @@ const archetypes: FireteamArchetypes = {
   fireteams: {
     'Hand of the Archon': [Archetype.RECON, Archetype.SECURITY, Archetype.SEEK_AND_DESTROY],
     // Battlescribe data currently has 'Kill Team' as catalogue name, not Hand of the Archon
-    'Kill Team': [Archetype.RECON, Archetype.SECURITY, Archetype.SEEK_AND_DESTROY],
+    'Kill Team': [Archetype.RECON, Archetype.SECURITY, Archetype.SEEK_AND_DESTROY]
   }
 
 }
