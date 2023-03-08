@@ -61,7 +61,7 @@ const tacticalPloys: Ploy[] = [
   {
     name: 'Dark Favour',
     cost: 1,
-    description: `Use this Tactical Ploy when a friendly **BLOODED💀** operative that has a Blooded token is slected as the target of a shooting attack.
+    description: `Use this Tactical Ploy when a friendly **BLOODED💀** operative that has a Blooded token is selected as the target of a shooting attack.
     Select one other friendly **BLOODED💀** operative that:
   * Does not have a Blooded token.
   * Is within ⬤ of that friendly operative.
