@@ -21,8 +21,8 @@ gain the Rending critical hit rule.`
   {
     name: 'Fleet of Foot',
     cost: 1,
-    description: `Until the end of the Turning Point, each time a friendly ${factionLabel} operative performs a Fall Back
-or Normal Move action, it can immediately perform a free Dash action after that action, or vice versa.`
+    description: `Until the end of the Turning Point, each time a friendly ${factionLabel} operative performs a **Fall Back**
+or **Normal Move** action, it can immediately perform a free **Dash** action after that action, or vice versa.`
   },
   {
     name: 'From Darkness, Death',
