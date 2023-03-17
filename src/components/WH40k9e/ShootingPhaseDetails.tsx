@@ -11,7 +11,7 @@ interface Props {
   unit: Unit
 }
 
-export function ShootingPhaseDetails (props: Props): JSX.Element {
+export function ShootingPhaseDetails(props: Props): JSX.Element {
   return (
     <Row style={{
       pageBreakInside: 'avoid'
@@ -31,7 +31,10 @@ export function ShootingPhaseDetails (props: Props): JSX.Element {
       </Col>
       <Col sm='1' className='px-1'>
         {props.unit.profiles.map((profile: Profile) => (
-          <StatBadge name='BS' value={`${profile.profileStats.ballistic_skill}`} secondaryValue='+' key={`badge-bs-${profile.id}`} />
+          <React.Fragment key={`badges-${profile.id}`}>
+            <StatBadge name='BS' value={`${profile.profileStats.ballistic_skill}`} secondaryValue='+' key={`badge-bs-${profile.id}`} />
+            <StatBadge name='W' value={`${profile.profileStats.wounds}`} />
+          </React.Fragment>
         ))}
       </Col>
       <Col sm='1' className='px-1'>

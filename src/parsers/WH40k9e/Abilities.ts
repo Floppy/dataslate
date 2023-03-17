@@ -73,7 +73,8 @@ const phasePatterns = {
     / pile-in /,
     / consolidates? /,
     / melee /,
-    / close combat /
+    / close combat /,
+    / each time an attack is made /,
   ],
   morale: [
     / nerve /,
@@ -125,7 +126,7 @@ export const calculatePhases = (description: string): string[] => {
 
 export const invulnerableSave = (abilities: Ability[]): number | null | undefined => {
   const patterns = [
-    /models with this ability have a ([1-6]{1})\+ invulnerable save/,
+    /a ([1-6]{1})\+ invulnera.le save/,
     /has a ([1-6]{1})\+ invulnerable save($|\.|,| and| instead of)/,
     /has an invulnerable save of ([1-6]{1})\+/
   ]

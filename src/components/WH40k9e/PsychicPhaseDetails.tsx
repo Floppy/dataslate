@@ -10,7 +10,7 @@ interface Props {
   unit: Unit
 }
 
-export function PsychicPhaseDetails (props: Props): JSX.Element {
+export function PsychicPhaseDetails(props: Props): JSX.Element {
   return (
     hasAbilitiesForPhase(props.unit.abilities, 'psychic') || props.unit.psychic.powers.length > 0
       ? (

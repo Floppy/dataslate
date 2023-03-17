@@ -13,9 +13,9 @@ interface Props {
   setSettings: (settings: Settings) => void
 }
 
-function fileDropZone (props: Props): JSX.Element {
+function fileDropZone(props: Props): JSX.Element {
   return (
-    <Dropzone onDrop={props.onUpload} accept='.ros,.rosz'>
+    <Dropzone onDrop={props.onUpload} accept='.ros,.rosz,.xml'>
       {({ getRootProps, getInputProps }) => (
         <Alert variant='primary' {...getRootProps()} style={{ textAlign: 'center' }}>
           <input {...getInputProps()} />
@@ -27,7 +27,7 @@ function fileDropZone (props: Props): JSX.Element {
   )
 }
 
-function Homepage (props: Props): JSX.Element {
+function Homepage(props: Props): JSX.Element {
   const [showSettings, setShowSettings] = useState(false)
 
   return (

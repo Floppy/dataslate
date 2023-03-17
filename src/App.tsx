@@ -6,15 +6,17 @@ import Homepage from './components/Homepage'
 import { Roster as RosterView2018 } from './components/KillTeam2018/Roster'
 import { Roster as RosterView2021 } from './components/KillTeam2021/Roster'
 import { Roster as RosterView40k9e } from './components/WH40k9e/Roster'
+import { Roster as RosterViewNecromunda } from './components/Necromunda/Roster'
 import { loadFiles } from './FileLoader'
 import { Roster as Roster2018 } from './types/KillTeam2018'
 import { Roster as Roster2021 } from './types/KillTeam2021'
 import { Roster as RosterWH40k9e } from './types/WH40k9e'
+import { Gang } from './types/Necromunda'
 import { DataDevPage } from './components/KillTeam2021/DataDevPage'
 import { DEFAULT_SETTINGS, Settings } from './types/Settings'
 
-export function App (): JSX.Element {
-  const [roster, setRoster] = useState<Roster2018 | Roster2021 | RosterWH40k9e | null>(null)
+export function App(): JSX.Element {
+  const [roster, setRoster] = useState<Roster2018 | Roster2021 | RosterWH40k9e | Gang | null>(null)
 
   const [settings, setSettings] = useState(DEFAULT_SETTINGS)
 
@@ -66,6 +68,7 @@ export function App (): JSX.Element {
   const isRosterKT18 = (roster: any): roster is Roster2018 => (roster.system === 'KillTeam2018')
   const isRosterKT21 = (roster: any): roster is Roster2021 => (roster.system === 'KillTeam2021')
   const isRoster40k9e = (roster: any): roster is RosterWH40k9e => (roster.system === 'WH40k9e')
+  const isRosterNecromunda = (roster: any): roster is Gang => (roster.system === 'Necromunda')
 
   return (
     <Router>
@@ -82,6 +85,7 @@ export function App (): JSX.Element {
             {(roster != null) && isRosterKT18(roster) ? <RosterView2018 name={roster.name} models={roster.models} onClose={handleClose} forceRules={roster.forceRules} onSelectionChanged={handleSelectionChanged} /> : <></>}
             {(roster != null) && isRosterKT21(roster) ? <RosterView2021 name={roster.name} operatives={roster.operatives} psychicPowers={roster.psychicPowers} faction={roster.faction} fireteams={roster.fireteams} onClose={handleClose} settings={settings} /> : <></>}
             {(roster != null) && isRoster40k9e(roster) ? <RosterView40k9e name={roster.name} faction={roster.faction} subfaction={roster.subfaction} units={roster.units} abilities={roster.abilities} onClose={handleClose} settings={settings} stratagems={roster.stratagems} /> : <></>}
+            {(roster != null) && isRosterNecromunda(roster) ? <RosterViewNecromunda gang={roster} onClose={handleClose} /> : <></>}
           </Container>
         </Route>
       </Switch>

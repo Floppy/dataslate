@@ -1,12 +1,14 @@
 import { parseBattlescribeXML as parseKillTeam2018 } from './parsers/KillTeam2018/BattlescribeParser'
 import { parseBattlescribeXML as parseKillTeam2021 } from './parsers/KillTeam2021/BattlescribeParser'
 import { parseBattlescribeXML as parse40k9e } from './parsers/WH40k9e/BattlescribeParser'
+import { parseYaktribeXML as parseNecromunda } from './parsers/Necromunda/YaktribeParser'
 import JSZip from 'jszip'
 import { DOMParserImpl } from 'xmldom-ts'
 import * as XPath from 'xpath-ts'
 import { Roster as Roster2018 } from './types/KillTeam2018'
 import { Roster as Roster2021 } from './types/KillTeam2021'
 import { Roster as Roster40k9e } from './types/WH40k9e'
+import { Gang } from './types/Necromunda'
 
 // useNamespaces is NOT a React hook, so:
 // eslint-disable-next-line
@@ -22,9 +24,12 @@ const unzip = async (file: string): Promise<string> => {
   }
 }
 
-const parseFile = (file: string): Roster2018 | Roster2021 | Roster40k9e => {
+const parseFile = (file: string): Roster2018 | Roster2021 | Roster40k9e | Gang => {
   const doc = new DOMParserImpl().parseFromString(file)
-  const gameSystemId = (xpSelect('/bs:roster/@gameSystemId', doc, true) as Node).nodeValue
+  let gameSystemId = (xpSelect('/bs:roster/@gameSystemId', doc, true) as Node)?.nodeValue
+  if (gameSystemId == null && xpSelect('/gang', doc, true)) {
+    gameSystemId = "necromunda"
+  }
   switch (gameSystemId) {
     case 'a467-5f42-d24c-6e5b':
       return parseKillTeam2018(doc) as Roster2018
@@ -32,12 +37,14 @@ const parseFile = (file: string): Roster2018 | Roster2021 | Roster40k9e => {
       return parseKillTeam2021(doc)
     case '28ec-711c-d87f-3aeb':
       return parse40k9e(doc)
+    case 'necromunda':
+      return parseNecromunda(doc)
     default:
       throw new Error('Unsupported game system!')
   }
 }
 
-export const loadFile = async (file: File): Promise<Roster2018 | Roster2021 | Roster40k9e> => {
+export const loadFile = async (file: File): Promise<Roster2018 | Roster2021 | Roster40k9e | Gang> => {
   const reader = new FileReader()
   return await new Promise((resolve, reject) => {
     reader.onerror = () => {
@@ -53,6 +60,6 @@ export const loadFile = async (file: File): Promise<Roster2018 | Roster2021 | Ro
   })
 }
 
-export const loadFiles = async (files: File[]): Promise<Roster2018 | Roster2021 | Roster40k9e> => {
+export const loadFiles = async (files: File[]): Promise<Roster2018 | Roster2021 | Roster40k9e | Gang> => {
   return await loadFile(files[0])
 }

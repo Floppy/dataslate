@@ -11,7 +11,7 @@ interface Props {
   unit: Unit
 }
 
-export function FightPhaseDetails (props: Props): JSX.Element {
+export function FightPhaseDetails(props: Props): JSX.Element {
   return (
     <>
       <Row style={{
@@ -36,6 +36,7 @@ export function FightPhaseDetails (props: Props): JSX.Element {
               <StatBadge name='A' value={`${profile.profileStats.attacks}`} />
               <StatBadge name='WS' value={`${profile.profileStats.weapon_skill}`} secondaryValue='+' />
               <StatBadge name='S' value={`${profile.profileStats.strength}`} />
+              <StatBadge name='W' value={`${profile.profileStats.wounds}`} />
             </React.Fragment>
           ))}
         </Col>
