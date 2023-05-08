@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "@sentry/react": "^7.51.0",
-    "@sentry/tracing": "^7.51.0",
+    "@sentry/tracing": "^7.51.2",
     "@types/jest": "^29.5.1",
     "@types/lodash": "^4.14.194",
     "@types/node": "^18.16.3",
