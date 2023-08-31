@@ -70,7 +70,7 @@
     "@types/react-router-dom": "^5.3.3",
     "@types/react-test-renderer": "^18.0.0",
     "@types/uuid": "^9.0.2",
-    "@types/xmldom": "^0.1.31",
+    "@types/xmldom": "^0.1.32",
     "csv-parse": "^5.5.0",
     "react-app-rewired": "^2.2.1",
     "react-scripts": "^5.0.1",
