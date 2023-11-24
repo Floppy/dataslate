@@ -18,7 +18,7 @@ jobs:
       env:
         REACT_APP_GIT_SHA: ${{ env.CI_SHA_SHORT }}
     - name: Deploy
-      uses: JamesIves/github-pages-deploy-action@3.6.2
+      uses: JamesIves/github-pages-deploy-action@v4
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         BRANCH: gh-pages
