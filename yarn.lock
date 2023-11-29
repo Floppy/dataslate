@@ -3026,10 +3026,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/xmldom@^0.1.32":
-  version "0.1.32"
-  resolved "https://registry.yarnpkg.com/@types/xmldom/-/xmldom-0.1.32.tgz#3d0c24e3f4d07927a7ddabea5b5d40aa4253772f"
-  integrity sha512-zPO1iqnODar0cIXhuCc0QyGP+t2IG9dr//VkxDtYKZJSikgN7bdLyMdnUNWRtCKeHkgc9KkbgsdccVbrCHCn2g==
+"@types/xmldom@^0.1.34":
+  version "0.1.34"
+  resolved "https://registry.yarnpkg.com/@types/xmldom/-/xmldom-0.1.34.tgz#a752f73bdf09cc6d78b3d3b2e7ca4dd04cc96fd2"
+  integrity sha512-7eZFfxI9XHYjJJuugddV6N5YNeXgQE1lArWOcd1eCOKWb/FGs5SIjacSYuEJuwhsGS3gy4RuZ5EUIcqYscuPDA==
 
 "@types/yargs-parser@*":
   version "20.2.1"
