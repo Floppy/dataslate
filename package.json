@@ -10,7 +10,7 @@
     "@sentry/tracing": "^7.93.0",
     "@types/jest": "^29.5.11",
     "@types/lodash": "^4.14.202",
-    "@types/node": "^20.11.0",
+    "@types/node": "^20.11.3",
     "@types/react": "^16.14.17",
     "@types/react-dom": "^16.9.8",
     "axios": "^1.6.5",
