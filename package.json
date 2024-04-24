@@ -6,7 +6,7 @@
     "node": ">=20.9.0 <21.0.0"
   },
   "dependencies": {
-    "@sentry/react": "^7.112.1",
+    "@sentry/react": "^7.112.2",
     "@sentry/tracing": "^7.112.1",
     "@types/jest": "^29.5.12",
     "@types/lodash": "^4.17.0",
