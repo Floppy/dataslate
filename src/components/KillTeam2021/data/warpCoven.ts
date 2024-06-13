@@ -11,7 +11,7 @@ If your kill team includes five or more **TZAANG0R** operatives, this kill team 
 const strategicPloys: Ploy[] = [
   {
     name: 'Exalted Astartes',
-    cost: 1,
+    cost: 0,
     description: `Until the end of the Turning Point, each time a friendly SORCERER operative is activated:
 - If it does not perform a **Shoot** action during that activation, it can perform two **Fight** actions during that activation
 - If it does not perform a **Fight** action during that activation, it can perform two **Shoot** actions during that activation, but it must select different
