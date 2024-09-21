@@ -14,7 +14,7 @@
     "@types/react": "^16.14.17",
     "@types/react-dom": "^16.9.8",
     "axios": "^1.7.4",
-    "bootstrap": "^4.6.2",
+    "bootstrap": "^5.0.0",
     "browserify": "^17.0.0",
     "crypto-browserify": "^3.12.0",
     "jquery": "^3.7.1",
